@@ -18,21 +18,29 @@ function validarFormulario(evento) {
     if (nombre.length < 3) {
         mostrarError("nombre", "Escribe tu nombre completo.");
         esValido = false;
+    } else {
+        marcarCorrecto("nombre");
     }
 
     if (!validarRut(rut)) {
         mostrarError("rut", "Escribe un RUT válido. Ejemplo: 12.345.678-5.");
         esValido = false;
+    } else {
+        marcarCorrecto("rut");
     }
 
     if (!correo.includes("@") || !correo.includes(".")) {
         mostrarError("correo", "Escribe un correo válido.");
         esValido = false;
+    } else {
+        marcarCorrecto("correo");
     }
 
     if (servicio === "") {
         mostrarError("servicio", "Selecciona un servicio.");
         esValido = false;
+    } else {
+        marcarCorrecto("servicio");
     }
 
     const resultado = document.getElementById("resultado");
@@ -48,6 +56,11 @@ function validarFormulario(evento) {
 
 function mostrarError(campo, mensaje) {
     document.getElementById("error-" + campo).textContent = mensaje;
+    document.getElementById(campo).classList.add("incorrecto");
+}
+
+function marcarCorrecto(campo) {
+    document.getElementById(campo).classList.add("correcto");
 }
 
 function limpiarMensajes() {
@@ -55,6 +68,12 @@ function limpiarMensajes() {
 
     mensajes.forEach(function (mensaje) {
         mensaje.textContent = "";
+    });
+
+    const campos = document.querySelectorAll("form input, form select, form textarea");
+
+    campos.forEach(function (campo) {
+        campo.classList.remove("correcto", "incorrecto");
     });
 
     const resultado = document.getElementById("resultado");
