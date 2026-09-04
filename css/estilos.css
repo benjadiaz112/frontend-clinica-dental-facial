@@ -50,12 +50,35 @@ main {
     padding: 20px 0;
 }
 
+/* Estilos de las secciones que antes estaban escritos dentro del HTML */
+.seccion-servicios,
+.contenido-servicios {
+    padding: 20px;
+}
+
+.lista-servicios {
+    padding: 0;
+    margin: 20px 0;
+}
+
+.tarjeta-servicio {
+    background-color: white;
+    border: 1px solid black;
+    padding: 15px;
+}
+
+.video-dental {
+    width: 100%;
+    height: 250px;
+    border: 1px solid black;
+}
+
 
 form, .tarjeta, .servicio, article, .card {
     background-color: white;
     border-radius: 15px;
     padding: 25px;
-    color: darkslategray; /* Texto oscuro para que se lea sobre el fondo blanco */
+    color: darkslategray; 
 }
 
 
@@ -130,12 +153,12 @@ footer {
     margin-top: 40px;
 }
 
-.correcto { 
+#resultado.correcto { 
     color: green; 
     font-weight: bold; 
 }
 
-.incorrecto, small, .error { 
+#resultado.incorrecto, small, .error { 
     color: red; 
     display: block; 
     font-size: 13px;
