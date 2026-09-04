@@ -16,7 +16,7 @@ Personas mayores de edad que buscan información básica sobre servicios dentale
 
 ## 2. Requerimientos funcionales
 
-| Código | Requerimiento |
+
 |---|---|
 | RF-01 | El usuario podrá navegar entre Inicio, Servicios y Reserva. |
 | RF-02 | El usuario podrá revisar tratamientos dentales, estéticos y faciales. |
@@ -29,7 +29,6 @@ Personas mayores de edad que buscan información básica sobre servicios dentale
 
 ## 3. Requerimientos no funcionales
 
-| Código | Requerimiento |
 |---|---|
 | RNF-01 | El sitio utilizará HTML5 semántico. |
 | RNF-02 | Los estilos estarán en una hoja CSS externa. |
@@ -42,7 +41,6 @@ Personas mayores de edad que buscan información básica sobre servicios dentale
 
 - Visual Studio Code para editar el proyecto.
 - HTML5 para la estructura y el contenido.
-- Bootstrap 5 para columnas, tarjetas, botones y formularios adaptables.
 - CSS3 externo para personalizar los colores del sitio.
 - JavaScript para interacción y validación.
 - XAMPP/Apache para ejecutar el sitio en `localhost`.

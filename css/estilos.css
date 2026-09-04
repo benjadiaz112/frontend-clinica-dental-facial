@@ -1,73 +1,144 @@
-
 body {
-    background-color: blue;
-    font-family: Arial, sans-serif;
-    color: black;
+    background-color: darkcyan;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: white;
     margin: 0;
+    line-height: 1.5;
 }
 
 
-main {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 20px;
+a {
+    color: white;
+    font-weight: bold;
+    text-decoration: underline;
 }
 
-header, footer {
-    border: 1px solid black;
-    padding: 10px 20px;
-    text-align: center;
+a:hover {
+    color: aliceblue;
+}
+
+header {
+    background-color: transparent;
+    padding: 15px 40px;
+    border-bottom: 1px solid lightseagreen;
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
+nav a {
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
 
 .disposicion-contacto {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    align-items: center;
     padding: 20px 0;
 }
 
 
-form {
-    background-color: lightgray;
-    border: 2px solid gray;
-    padding: 15px;
+form, .tarjeta, .servicio, article, .card {
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+    color: darkslategray; /* Texto oscuro para que se lea sobre el fondo blanco */
+}
+
+
+form a, .tarjeta a, .servicio a, article a {
+    color: darkcyan;
 }
 
 input, select, textarea {
     width: 100%;
     background-color: white;
-    border: 2px inset gray;
-    margin-bottom: 8px;
+    border: 1px solid silver;
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 10px;
     box-sizing: border-box;
+    font-size: 14px;
 }
 
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: dodgerblue;
+}
 
+/* Validaciones JS */
+input.correcto, select.correcto, textarea.correcto {
+    border-color: green;
+    background-color: honeydew;
+}
+
+input.incorrecto, select.incorrecto, textarea.incorrecto {
+    border-color: red;
+    background-color: mistyrose;
+}
+
+/* Botones estilo cápsula */
 .btn, button {
     background-color: white;
-    color: black;
-    border: 2px outset gray;
-    padding: 4px 10px;
-    text-decoration: none;
+    color: darkcyan;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-size: 15px;
+    font-weight: bold;
     cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s, background-color 0.2s;
 }
 
-.btn:active, button:active { border-style: inset; }
+.btn:hover, button:hover {
+    background-color: aliceblue;
+}
+
+.btn:active, button:active {
+    transform: scale(0.96);
+}
 
 img {
     width: 100%;
-    max-height: 450px;
+    max-height: 480px;
     object-fit: cover;
-    border: 1px solid black;
+    border-radius: 20px;
+    border: none;
 }
 
-.correcto { color: green; font-weight: bold; }
-.incorrecto, small, .error { color: red; display: block; margin-bottom: 6px; }
+footer {
+    background-color: transparent;
+    border-top: 1px solid lightseagreen;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    margin-top: 40px;
+}
+
+.correcto { 
+    color: green; 
+    font-weight: bold; 
+}
+
+.incorrecto, small, .error { 
+    color: red; 
+    display: block; 
+    font-size: 13px;
+    margin-top: -4px;
+    margin-bottom: 10px; 
+}
