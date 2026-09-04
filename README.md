@@ -53,13 +53,8 @@ clinica-dental-frontend/
 - HTML5 semántico: `header`, `nav`, `main`, `section`, `article`, `aside` y `footer`.
 - Navegación: tres páginas HTML interconectadas.
 - Contenido: hipervínculos, imágenes locales, botones, video embebido y formulario.
-- Bootstrap: se usa para columnas, tarjetas, botones y formularios adaptables.
 - CSS externo: todas las páginas usan `css/estilos.css` para personalizar colores.
 - JavaScript externo: todas las páginas usan `js/script.js`.
 - Formulario: etiquetas asociadas, autocompletado, ayudas y mensajes de error personalizados.
-- Diseño adaptable: Bootstrap organiza el contenido en computadores y celulares.
+- Diseño adaptable: CSS organiza el contenido en computadores y celulares.
 - Documentación: ERS y guía de presentación en la carpeta `documentacion`.
-
-## Importante para GitHub
-
-La rúbrica también evalúa el repositorio remoto y el trabajo colaborativo. Cada integrante debe subir cambios reales con mensajes claros; no se deben inventar autores ni tareas. La guía completa está en `documentacion/GUIA_GIT_GITHUB.md`.
