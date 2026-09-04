@@ -1,6 +1,6 @@
 # Clínica Aura
 
-Proyecto frontend académico de una clínica dental y de armonización facial. Está realizado con HTML5, Bootstrap, CSS y JavaScript básico.
+Proyecto frontend académico de una clínica dental y de armonización facial, desarrollado con HTML5, CSS y JavaScript.
 
 ## Estructura
 
@@ -9,52 +9,54 @@ clinica-dental-frontend/
 ├── index.html
 ├── servicios.html
 ├── contacto.html
-├── css/
-│   └── estilos.css
-├── js/
-│   └── script.js
+├── css/estilos.css
+├── js/script.js
 ├── imagenes/
-└── documentacion/
+└── documentacion/ERS.md
 ```
 
-## Cómo ejecutarlo con XAMPP
+## Ejecutar con XAMPP
 
-1. Descarga e instala XAMPP desde su sitio oficial.
-2. Abre el **Panel de control de XAMPP**.
-3. Presiona **Start** en la fila de **Apache**.
-4. Abre la carpeta donde instalaste XAMPP. Normalmente es `C:\xampp`.
-5. Entra en la carpeta `htdocs`.
-6. Copia la carpeta completa `clinica-dental-frontend` dentro de `htdocs`.
-7. Revisa que quede así: `C:\xampp\htdocs\clinica-dental-frontend\index.html`.
-8. Abre el navegador y escribe:
+1. Abre XAMPP e inicia **Apache**.
+2. Copia `clinica-dental-frontend` dentro de:
 
-   `http://localhost/clinica-dental-frontend/`
+   ```text
+   C:\xampp\htdocs
+   ```
 
-9. Para detener el servidor, vuelve al panel de XAMPP y presiona **Stop** en Apache.
+3. Abre en el navegador:
 
-### Si no abre
+   ```text
+   http://localhost/clinica-dental-frontend/
+   ```
 
-- Comprueba que Apache esté de color verde y diga **Running**.
-- Verifica que la carpeta esté dentro de `htdocs` y no dentro de otra carpeta duplicada.
-- Si Apache utiliza otro puerto, prueba `http://localhost:8080/clinica-dental-frontend/`.
-- No es necesario encender MySQL, porque este proyecto no usa base de datos.
-- Mantén conexión a Internet para cargar Bootstrap y el video.
+No es necesario iniciar MySQL porque el proyecto no utiliza una base de datos.
 
-## Prueba rápida del formulario
+## Funcionalidades
 
-1. Abre la página **Reserva**.
-2. Presiona **Enviar solicitud** con el formulario vacío: deben aparecer mensajes de error.
-3. Completa los datos. Puedes usar el RUT de prueba `12.345.678-5`.
-4. Selecciona un servicio.
-5. Al enviar correctamente aparecerá un mensaje verde. Los datos no se guardan porque el proyecto es solo frontend.
+- Navegación entre Inicio, Servicios y Contacto.
+- Información sobre servicios dentales y faciales.
+- Imágenes y video educativo.
+- Formulario para solicitar una reserva.
+- Validación de nombre, RUT, correo y servicio.
+- Mensajes y colores para campos correctos e incorrectos.
+- Botón para limpiar el formulario.
+- Diseño adaptable mediante CSS externo.
 
-## Relación con la rúbrica
+## Prueba del formulario
 
-- HTML5 semántico: `header`, `nav`, `main`, `section`, `article`, `aside` y `footer`.
-- Navegación: tres páginas HTML interconectadas.
-- Contenido: hipervínculos, imágenes locales, botones, video embebido y formulario.
-- CSS externo: todas las páginas usan `css/estilos.css` para personalizar colores.
-- JavaScript externo: todas las páginas usan `js/script.js`.
-- Formulario: etiquetas asociadas, autocompletado, ayudas y mensajes de error personalizados.
-- Diseño adaptable: CSS organiza el contenido en computadores y celulares.
-- Documentación: ERS y guía de presentación en la carpeta `documentacion`.
+1. Abre **Contacto**.
+2. Presiona **Enviar** con los campos vacíos.
+3. Revisa los mensajes de error.
+4. Completa los datos y selecciona un servicio.
+5. Puedes probar con el RUT `12.345.678-5`.
+
+Los datos no se guardan porque el proyecto es solamente frontend.
+
+## Tecnologías
+
+- HTML5
+- CSS
+- JavaScript
+- XAMPP
+- Git y GitHub
