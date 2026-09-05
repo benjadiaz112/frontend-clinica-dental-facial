@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Clínica Aura</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header class="encabezado">
+        <nav class="navegacion">
+            <a class="logo" href="index.html">Clínica Aura</a>
+            <div class="menu">
+                <a class="btn" href="index.html">Inicio</a>
+                <a class="btn" href="servicios.html">Servicios</a>
+                <a class="btn" href="contacto.html">Contacto</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="contenedor principal">
+        <h1>Reserva una hora</h1>
+        <p>Completa los datos y te contactaremos.</p>
+
+        <div class="disposicion-contacto">
+            <div class="columna-formulario">
+                <form id="formulario" novalidate>
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" autocomplete="name" placeholder="Ejemplo: Ana Pérez">
+                    <small class="error" id="error-nombre"></small>
+
+                    <label for="rut">RUT</label>
+                    <input type="text" id="rut" placeholder="12.345.678-5">
+                    <small class="error" id="error-rut"></small>
+
+                    <label for="correo">Correo</label>
+                    <input type="email" id="correo" autocomplete="email" placeholder="nombre@correo.cl">
+                    <small class="error" id="error-correo"></small>
+
+                    <label for="servicio">Servicio</label>
+                    <select id="servicio">
+                        <option value="">Selecciona una opción</option>
+                        <option>Odontología general</option>
+                        <option>Estética dental</option>
+                        <option>Armonización facial</option>
+                    </select>
+                    <small class="error" id="error-servicio"></small>
+
+                    <label for="mensaje">Comentario</label>
+                    <textarea id="mensaje" rows="4" placeholder="Escribe tu consulta"></textarea>
+
+                    <div class="acciones-form">
+                        <button class="btn" type="submit">Enviar</button>
+                        <button class="btn" type="reset">Limpiar</button>
+                    </div>
+                    <p id="resultado"></p>
+                </form>
+            </div>
+
+            <div class="columna-imagen">
+                <img class="imagen-contacto" src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&auto=format&fit=crop&q=80" alt="Atención en clínica">
+            </div>
+        </div>
+    </main>
+
+    <footer class="pie-pagina">
+        <p>Clínica Aura | Providencia, Santiago/p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
