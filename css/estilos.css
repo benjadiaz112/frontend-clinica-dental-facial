@@ -1,11 +1,10 @@
 body {
     background-color: darkcyan;
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-family: Raleway;
     color: white;
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.8;
 }
-
 
 a {
     color: white;
@@ -102,7 +101,7 @@ input:focus, select:focus, textarea:focus {
     border-color: dodgerblue;
 }
 
-/* Validaciones JS */
+
 input.correcto, select.correcto, textarea.correcto {
     border-color: green;
     background-color: honeydew;
@@ -113,7 +112,7 @@ input.incorrecto, select.incorrecto, textarea.incorrecto {
     background-color: mistyrose;
 }
 
-/* Botones estilo cápsula */
+
 .btn, button {
     background-color: white;
     color: darkcyan;
