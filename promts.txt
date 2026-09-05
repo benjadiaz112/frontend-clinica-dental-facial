@@ -1,0 +1,18 @@
+PROMPTS USADOS:
+
+1. redacción del ERS
+Ayudame a redactar una primera version del documento ERS para el sitio web frontend y de armonización facial. Incluye descripción del proyecto, objetivos, requerimientos funcionales, requerimientos no funcionales y herramientas utilizadas Utiliza un lenguaje académico claro y sencillo.
+
+2. redacción del readme 
+corrige las faltas de ortografia de este README breve esta desarrollado con HTML5, CSS y JavaScript. Incluye la estructura de carpetas, instrucciones para ejecutarlo con XAMPP y una descripción de sus funcionalidades principales.
+
+3. medidas y diseño adaptable
+que medidas sencillas puedo utilizar en CSS para que una página web se vea correctamente en computadores y celulares? Explicame como usar max-width, porcentajes, padding, CSS Grid y object-fit con ejemplos simples.
+
+
+4.analisis de accesibilidad
+Analiza la accesibilidad de un sitio web de una clínica y explica qué aspectos deberían revisarse para que sea fácil de utilizar por diferentes personas
+
+
+5. Analisis del público objetivo
+Analiza cuál sería el público objetivo de Clínica Aura y explica qué necesidades tendría al visitar el sitio web
