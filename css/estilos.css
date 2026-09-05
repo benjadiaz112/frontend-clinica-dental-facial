@@ -1,6 +1,6 @@
 body {
     background-color: darkcyan;
-    font-family: Raleway;
+    font-family: 'Raleway', sans-serif;
     color: white;
     margin: 0;
     line-height: 1.8;
@@ -41,14 +41,14 @@ main {
     padding: 40px 20px;
 }
 
+
 .disposicion-contacto {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    display: flex;
+    flex-direction: row-reverse; 
     gap: 40px;
     align-items: center;
     padding: 20px 0;
 }
-
 
 .seccion-servicios,
 .contenido-servicios {
@@ -72,14 +72,12 @@ main {
     border: 1px solid black;
 }
 
-
 form, .tarjeta, .servicio, article, .card {
     background-color: white;
     border-radius: 15px;
     padding: 25px;
     color: darkslategray; 
 }
-
 
 form a, .tarjeta a, .servicio a, article a {
     color: darkcyan;
@@ -101,7 +99,6 @@ input:focus, select:focus, textarea:focus {
     border-color: dodgerblue;
 }
 
-
 input.correcto, select.correcto, textarea.correcto {
     border-color: green;
     background-color: honeydew;
@@ -111,7 +108,6 @@ input.incorrecto, select.incorrecto, textarea.incorrecto {
     border-color: red;
     background-color: mistyrose;
 }
-
 
 .btn, button {
     background-color: white;
