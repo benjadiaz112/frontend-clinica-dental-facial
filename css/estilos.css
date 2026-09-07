@@ -41,7 +41,6 @@ main {
     padding: 40px 20px;
 }
 
-
 .disposicion-contacto {
     display: flex;
     flex-direction: row-reverse; 
@@ -159,4 +158,37 @@ footer {
     font-size: 13px;
     margin-top: -4px;
     margin-bottom: 10px; 
+}
+
+
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav a {
+        margin-right: 0;
+    }
+
+    main {
+        padding: 20px 15px;
+    }
+
+    .disposicion-contacto {
+        flex-direction: column-reverse;
+        gap: 20px;
+    }
+
+    form, .tarjeta, .servicio, article, .card {
+        padding: 18px;
+    }
+
+    img {
+        max-height: 300px;
+    }
 }
