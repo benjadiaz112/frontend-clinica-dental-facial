@@ -3,50 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios | Clínica Aura</title>
+    <title>Tratamientos | Clínica Aura</title>
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
     <header>
         <nav>
             <a class="logo" href="index.html">Clínica Aura</a>
-            <div>
+            <div class="menu">
                 <a class="btn" href="index.html">Inicio</a>
-                <a class="btn" href="servicios.html">Servicios</a>
-                <a class="btn" href="contacto.html">Contacto</a>
+                <a class="btn" href="nosotros.html">Nosotros</a>
+                <a class="btn" href="servicios.html">Tratamientos</a>
+                <a class="btn" href="presupuesto.html">Mi pedido <span class="contador-carrito">0</span></a>
+                <a class="btn" href="contacto.html">Reserva</a>
+                <a class="btn" href="login.html">Ingresar</a>
+                <a class="btn" href="registro.html">Registro</a>
             </div>
         </nav>
     </header>
 
     <main class="contenido-servicios">
-        <h1>Nuestros servicios</h1>
-        <p>Todos los tratamientos necesitan una evaluación profesional.</p>
-
-        <section class="disposicion-contacto lista-servicios">
-            <article class="tarjeta-servicio">
-                <h2>Odontología general</h2>
-                <p>Evaluación, limpieza y restauraciones.</p>
-                <a class="btn" href="contacto.html">Consultar</a>
-            </article>
-            <article class="tarjeta-servicio">
-                <h2>Estética dental</h2>
-                <p>Blanqueamiento y diseño de sonrisa.</p>
-                <a class="btn" href="contacto.html">Consultar</a>
-            </article>
-            <article class="tarjeta-servicio">
-                <h2>Armonización facial</h2>
-                <p>Evaluación y tratamientos personalizados.</p>
-                <a class="btn" href="contacto.html">Consultar</a>
-            </article>
-        </section>
-
-        <img src="imagenes/armonia-facial.jpg" alt="Profesional explicando un tratamiento facial">
+        <h1>Tratamientos odontológicos</h1>
+        <p>Los valores son referenciales y cada tratamiento requiere una evaluación profesional.</p>
+        <section id="catalogo-servicios" class="rejilla-productos" aria-label="Catálogo de tratamientos"></section>
+        <p id="aviso-carrito" class="aviso" aria-live="polite"></p>
+        <a class="btn" href="presupuesto.html">Revisar pedido</a>
     </main>
 
-    <footer>
-        <p>Clínica Aura | Providencia, Santiago | +56 2 2345 6789</p>
-    </footer>
-
-    <script src="js/script.js"></script>
+    <footer><p>Clínica Aura | Providencia, Santiago | +56 2 2345 6789</p></footer>
+    <script src="js/carrito.js"></script>
 </body>
 </html>
