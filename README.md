@@ -16,9 +16,9 @@ Proyecto frontend académico de una clínica dental y de armonización facial, d
 
 ## Ejecutar con XAMPP
 
-1. Copia la carpeta `clinica-dental-combinada` dentro de `C:\xampp\htdocs`.
+1. Copia la carpeta `clinica-dental-frontend` dentro de `C:\xampp\htdocs`.
 2. Inicia Apache desde XAMPP.
-3. Abre `http://localhost/clinica-dental-combinada/`.
+3. Abre `http://localhost/clinica-dental-frontend/`.
 
 No se necesita MySQL porque los datos del pedido se guardan localmente en el navegador.
 
