@@ -2,61 +2,39 @@
 
 Proyecto frontend académico de una clínica dental y de armonización facial, desarrollado con HTML5, CSS y JavaScript.
 
-## Estructura
+## Funcionalidades
 
-```text
-clinica-dental-frontend/
-├── index.html
-├── servicios.html
-├── contacto.html
-├── css/estilos.css
-├── js/script.js
-├── imagenes/
-└── documentacion/ERS.md
-```
+- Navegación entre Inicio, Nosotros, Tratamientos, Mi pedido y Reserva.
+- Catálogo generado desde un arreglo JavaScript.
+- Imágenes y precios referenciales de tratamientos.
+- Carrito con cantidades, subtotales, total y persistencia en `localStorage`.
+- Formulario de reserva con validación de nombre, RUT, correo y servicio.
+- Registro de usuarios e inicio de sesión básico mediante `localStorage`.
+- Validación de RUN, dominios de correo, contraseña, región, comuna y dirección.
+- Mensajes e indicadores visuales para campos correctos e incorrectos.
+- Video educativo y diseño responsivo mediante CSS externo.
 
 ## Ejecutar con XAMPP
 
-1. Abre XAMPP e inicia **Apache**.
-2. Copia `clinica-dental-frontend` dentro de:
+1. Copia la carpeta `clinica-dental-combinada` dentro de `C:\xampp\htdocs`.
+2. Inicia Apache desde XAMPP.
+3. Abre `http://localhost/clinica-dental-combinada/`.
 
-   ```text
-   C:\xampp\htdocs
-   ```
+No se necesita MySQL porque los datos del pedido se guardan localmente en el navegador.
 
-3. Abre en el navegador:
+## Pruebas rápidas
 
-   ```text
-   http://localhost/clinica-dental-frontend/
-   ```
-
-No es necesario iniciar MySQL porque el proyecto no utiliza una base de datos.
-
-## Funcionalidades
-
-- Navegación entre Inicio, Servicios y Contacto.
-- Información sobre servicios dentales y faciales.
-- Imágenes y video educativo.
-- Formulario para solicitar una reserva.
-- Validación de nombre, RUT, correo y servicio.
-- Mensajes y colores para campos correctos e incorrectos.
-- Botón para limpiar el formulario.
-- Diseño adaptable mediante CSS externo.
-
-## Prueba del formulario
-
-1. Abre **Contacto**.
-2. Presiona **Enviar** con los campos vacíos.
-3. Revisa los mensajes de error.
-4. Completa los datos y selecciona un servicio.
-5. Puedes probar con el RUT `12.345.678-5`.
-
-Los datos no se guardan porque el proyecto es solamente frontend.
+- En Tratamientos, agrega productos y revisa que el contador cambie.
+- Abre Mi pedido y confirma cantidades, subtotales y total.
+- Recarga la página para comprobar que el pedido se conserva.
+- En Reserva, envía campos vacíos y revisa los mensajes.
+- RUT válido de prueba: `12.345.678-5`.
 
 ## Tecnologías
 
 - HTML5
-- CSS
+- CSS3
 - JavaScript
+- LocalStorage
 - XAMPP
 - Git y GitHub

@@ -10,60 +10,57 @@
     <header>
         <nav>
             <a class="logo" href="index.html">Clínica Aura</a>
-            <div>
+            <div class="menu">
                 <a class="btn" href="index.html">Inicio</a>
-                <a class="btn" href="servicios.html">Servicios</a>
-                <a class="btn" href="contacto.html">Contacto</a>
+                <a class="btn" href="nosotros.html">Nosotros</a>
+                <a class="btn" href="servicios.html">Tratamientos</a>
+                <a class="btn" href="presupuesto.html">Mi pedido <span class="contador-carrito">0</span></a>
+                <a class="btn" href="contacto.html">Reserva</a>
+                <a class="btn" href="login.html">Ingresar</a>
+                <a class="btn" href="registro.html">Registro</a>
             </div>
         </nav>
     </header>
 
     <main>
-        <section class="disposicion-contacto">
+        <section class="disposicion-contacto portada">
             <div>
                 <h1>Clínica dental y facial</h1>
-                <p>Cuidamos tu sonrisa con una atención cercana y profesional.</p>
+                <p>Cuidamos tu sonrisa con atención cercana, tratamientos personalizados y profesionales especializados.</p>
                 <a class="btn" href="contacto.html">Reservar hora</a>
             </div>
-            <div>
-                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&auto=format&fit=crop&q=80" alt="Consulta dental">
-            </div>
+            <img src="imagenes/consulta-dental.jpg" alt="Profesional atendiendo a una paciente en una consulta dental">
         </section>
 
         <section class="seccion-servicios">
-            <h2>Nuestros servicios</h2>
-            <div class="disposicion-contacto lista-servicios">
+            <h2>Tratamientos destacados</h2>
+            <div class="rejilla-tarjetas">
                 <article class="tarjeta-servicio">
                     <h3>Limpieza dental</h3>
-                    <p>Ayuda a eliminar sarro y cuidar las encías.</p>
+                    <p>Eliminación de sarro y pulido para cuidar dientes y encías.</p>
                 </article>
                 <article class="tarjeta-servicio">
                     <h3>Estética dental</h3>
-                    <p>Tratamientos para mejorar tu sonrisa.</p>
+                    <p>Alternativas personalizadas para mejorar la apariencia de tu sonrisa.</p>
                 </article>
                 <article class="tarjeta-servicio">
                     <h3>Armonización facial</h3>
-                    <p>Procedimientos con resultados naturales.</p>
+                    <p>Evaluación profesional y procedimientos de resultado natural.</p>
                 </article>
             </div>
-            <a href="servicios.html">Ver todos los servicios</a>
+            <a href="servicios.html">Ver tratamientos y precios</a>
         </section>
 
-        <section class="disposicion-contacto">
+        <section class="disposicion-contacto consejo">
             <div>
                 <h2>Consejo para tu sonrisa</h2>
-                <p>Una buena técnica de cepillado ayuda a prevenir problemas dentales.</p>
+                <p>Una buena técnica de cepillado ayuda a prevenir caries y problemas en las encías.</p>
             </div>
-            <div>
-                <iframe class="video-dental" src="https://www.youtube-nocookie.com/embed/F20LjQqBtkc" title="Video sobre cepillado dental" allowfullscreen></iframe>
-            </div>
+            <iframe class="video-dental" src="https://www.youtube-nocookie.com/embed/F20LjQqBtkc" title="Video educativo sobre cepillado dental" allowfullscreen></iframe>
         </section>
     </main>
 
-    <footer>
-        <p>Clínica Aura | Providencia, Santiago | +56 2 2345 6789</p>
-    </footer>
-
-    <script src="js/script.js"></script>
+    <footer><p>Clínica Aura | Providencia, Santiago | +56 2 2345 6789</p></footer>
+    <script src="js/carrito.js"></script>
 </body>
 </html>

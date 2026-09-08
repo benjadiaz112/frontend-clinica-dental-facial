@@ -29,7 +29,7 @@ function validarFormulario(evento) {
         marcarCorrecto("rut");
     }
 
-    if (!correo.includes("@") || !correo.includes(".")) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) {
         mostrarError("correo", "Escribe un correo válido.");
         esValido = false;
     } else {
@@ -44,7 +44,6 @@ function validarFormulario(evento) {
     }
 
     const resultado = document.getElementById("resultado");
-
     if (esValido) {
         resultado.textContent = "Solicitud enviada correctamente.";
         resultado.className = "correcto";
@@ -64,18 +63,12 @@ function marcarCorrecto(campo) {
 }
 
 function limpiarMensajes() {
-    const mensajes = document.querySelectorAll("form small");
-
-    mensajes.forEach(function (mensaje) {
+    document.querySelectorAll("form small").forEach(function (mensaje) {
         mensaje.textContent = "";
     });
-
-    const campos = document.querySelectorAll("form input, form select, form textarea");
-
-    campos.forEach(function (campo) {
+    document.querySelectorAll("form input, form select, form textarea").forEach(function (campo) {
         campo.classList.remove("correcto", "incorrecto");
     });
-
     const resultado = document.getElementById("resultado");
     resultado.textContent = "";
     resultado.className = "";
@@ -83,21 +76,14 @@ function limpiarMensajes() {
 
 function validarRut(rut) {
     const limpio = rut.replace(/\.|-/g, "").toUpperCase();
-
-    if (limpio.length < 8) {
-        return false;
-    }
+    if (limpio.length < 8) return false;
 
     const cuerpo = limpio.slice(0, -1);
     const digito = limpio.slice(-1);
-
-    if (!/^\d+$/.test(cuerpo)) {
-        return false;
-    }
+    if (!/^\d+$/.test(cuerpo)) return false;
 
     let suma = 0;
     let multiplo = 2;
-
     for (let i = cuerpo.length - 1; i >= 0; i--) {
         suma += Number(cuerpo[i]) * multiplo;
         multiplo = multiplo === 7 ? 2 : multiplo + 1;
@@ -105,9 +91,7 @@ function validarRut(rut) {
 
     const resto = 11 - (suma % 11);
     let digitoCorrecto = String(resto);
-
     if (resto === 11) digitoCorrecto = "0";
     if (resto === 10) digitoCorrecto = "K";
-
     return digito === digitoCorrecto;
 }
