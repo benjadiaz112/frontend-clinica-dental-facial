@@ -14,10 +14,7 @@
                 <a class="btn" href="index.html">Inicio</a>
                 <a class="btn" href="nosotros.html">Nosotros</a>
                 <a class="btn" href="servicios.html">Tratamientos</a>
-                <a class="btn" href="presupuesto.html">Mi pedido <span class="contador-carrito">0</span></a>
                 <a class="btn" href="contacto.html">Reserva</a>
-                <a class="btn" href="login.html">Ingresar</a>
-                <a class="btn" href="registro.html">Registro</a>
             </div>
         </nav>
     </header>
@@ -25,12 +22,37 @@
     <main class="contenido-servicios">
         <h1>Tratamientos odontológicos</h1>
         <p>Los valores son referenciales y cada tratamiento requiere una evaluación profesional.</p>
-        <section id="catalogo-servicios" class="rejilla-productos" aria-label="Catálogo de tratamientos"></section>
-        <p id="aviso-carrito" class="aviso" aria-live="polite"></p>
-        <a class="btn" href="presupuesto.html">Revisar pedido</a>
+        <section class="rejilla-productos" aria-label="Tratamientos disponibles">
+            <article class="tarjeta-producto">
+                <img src="imagenes/limpieza.jpg" alt="Tratamiento de limpieza dental">
+                <div class="contenido-tarjeta">
+                    <h2>Limpieza dental</h2>
+                    <p>Eliminación de sarro y pulido para cuidar dientes y encías.</p>
+                    <p class="precio">Desde $25.000</p>
+                    <a class="btn" href="contacto.html">Reservar evaluación</a>
+                </div>
+            </article>
+            <article class="tarjeta-producto">
+                <img src="imagenes/blanqueamiento.jpg" alt="Tratamiento de blanqueamiento dental">
+                <div class="contenido-tarjeta">
+                    <h2>Blanqueamiento dental</h2>
+                    <p>Tratamiento estético para aclarar el tono de los dientes.</p>
+                    <p class="precio">Desde $80.000</p>
+                    <a class="btn" href="contacto.html">Reservar evaluación</a>
+                </div>
+            </article>
+            <article class="tarjeta-producto">
+                <img src="imagenes/ortodoncia.jpg" alt="Tratamiento de ortodoncia">
+                <div class="contenido-tarjeta">
+                    <h2>Ortodoncia</h2>
+                    <p>Evaluación y corrección de la posición dental.</p>
+                    <p class="precio">Evaluación desde $20.000</p>
+                    <a class="btn" href="contacto.html">Reservar evaluación</a>
+                </div>
+            </article>
+        </section>
     </main>
 
     <footer><p>Clínica Aura | Providencia, Santiago | +56 2 2345 6789</p></footer>
-    <script src="js/carrito.js"></script>
 </body>
 </html>
