@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de usuario | Clínica Aura</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a class="logo" href="index.html">Clínica Aura</a>
+            <div class="menu">
+                <a class="btn" href="index.html">Inicio</a>
+                <a class="btn" href="nosotros.html">Nosotros</a>
+                <a class="btn" href="servicios.html">Tratamientos</a>
+                <a class="btn" href="presupuesto.html">Mi pedido <span class="contador-carrito">0</span></a>
+                <a class="btn" href="contacto.html">Reserva</a>
+                <a class="btn" href="login.html">Ingresar</a>
+                <a class="btn" href="registro.html">Registro</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="contenedor-autenticacion">
+        <h1>Registro de usuario</h1>
+        <form id="form-registro" novalidate>
+            <label for="registro-run">RUN sin puntos ni guion</label>
+            <input type="text" id="registro-run" minlength="7" maxlength="9" placeholder="19011022K">
+            <small class="error" id="error-registro-run"></small>
+
+            <label for="registro-nombre">Nombre</label>
+            <input type="text" id="registro-nombre" maxlength="50" autocomplete="given-name">
+            <small class="error" id="error-registro-nombre"></small>
+
+            <label for="registro-apellidos">Apellidos</label>
+            <input type="text" id="registro-apellidos" maxlength="100" autocomplete="family-name">
+            <small class="error" id="error-registro-apellidos"></small>
+
+            <label for="registro-correo">Correo</label>
+            <input type="email" id="registro-correo" maxlength="100" autocomplete="email" placeholder="nombre@duoc.cl">
+            <small class="error" id="error-registro-correo"></small>
+
+            <label for="registro-clave">Contraseña</label>
+            <input type="password" id="registro-clave" minlength="4" maxlength="10" autocomplete="new-password" placeholder="Entre 4 y 10 caracteres">
+            <small class="error" id="error-registro-clave"></small>
+
+            <label for="registro-fecha">Fecha de nacimiento (opcional)</label>
+            <input type="date" id="registro-fecha" autocomplete="bday">
+
+            <label for="registro-region">Región</label>
+            <select id="registro-region"><option value="">Selecciona una región</option></select>
+            <small class="error" id="error-registro-region"></small>
+
+            <label for="registro-comuna">Comuna</label>
+            <select id="registro-comuna" disabled><option value="">Selecciona una comuna</option></select>
+            <small class="error" id="error-registro-comuna"></small>
+
+            <label for="registro-direccion">Dirección</label>
+            <textarea id="registro-direccion" maxlength="300" rows="3"></textarea>
+            <small class="error" id="error-registro-direccion"></small>
+
+            <button class="btn" type="submit">Crear cuenta</button>
+            <p id="resultado-registro" aria-live="polite"></p>
+            <p>¿Ya tienes una cuenta? <a href="login.html">Inicia sesión</a>.</p>
+        </form>
+    </main>
+
+    <footer><p>Clínica Aura | Providencia, Santiago | +56 2 2345 6789</p></footer>
+    <script src="js/auth.js"></script>
+    <script src="js/carrito.js"></script>
+</body>
+</html>
