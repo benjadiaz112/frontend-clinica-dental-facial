@@ -1,5 +1,5 @@
 # Clínica Aura
-
+integrantes: Benjamin Diaz, Javier Hidalgo, Bikenson Fenelus
 Proyecto frontend académico de una clínica dental y de armonización facial, desarrollado con HTML5, CSS y JavaScript.
 
 ## Funcionalidades
