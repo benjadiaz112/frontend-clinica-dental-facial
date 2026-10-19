@@ -33,8 +33,8 @@ describe("PresentacionInicio", function () {
 
     // Comprobar lo que ve el usuario.
     expect(contenedor.querySelector("h1")?.textContent).toBe(datos.nombre);
-    expect(contenedor.querySelectorAll("p")[0].textContent).toBe(datos.descripcion);
-    expect(contenedor.querySelectorAll("p")[1].textContent).toBe(datos.aviso);
+    expect(contenedor.querySelector(".inicio-descripcion")?.textContent).toBe(datos.descripcion);
+    expect(contenedor.querySelector('[role="status"]')?.textContent).toBe(datos.aviso);
   });
 
   it("actualiza la información cuando cambian las propiedades", async function () {
@@ -53,6 +53,6 @@ describe("PresentacionInicio", function () {
     });
 
     expect(contenedor.querySelector("h1")?.textContent).toBe(nuevosDatos.nombre);
-    expect(contenedor.querySelectorAll("p")[1].textContent).toBe(nuevosDatos.aviso);
+    expect(contenedor.querySelector('[role="status"]')?.textContent).toBe(nuevosDatos.aviso);
   });
 });

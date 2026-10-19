@@ -6,7 +6,7 @@ Proyecto frontend académico de una clínica dental y de armonización facial. C
 
 El [alcance y los criterios de aceptación](docs/alcance-parcial-2.md) cruzan la pauta, el ERS actual y los ejemplos recibidos, incluyendo el Anexo 1. Incluyen React, estructura por capas, CRUD, persistencia, vistas públicas y administrativas, API simulada y pruebas con Jasmine y Karma. Por decisión del usuario se utilizará CSS nativo; la pauta menciona Bootstrap y esta elección se registra como una diferencia respecto de ese requisito.
 
-Están completados la definición inicial de alcance, la conexión con GitHub, la revisión y las correcciones del sitio original. Los pasos 4 a 8 prepararon React con Next.js y TypeScript, capas, Jasmine/Karma, CSS nativo y componentes compartidos. El paso 9 configura 21 rutas estáticas públicas y administrativas y una página 404. La migración funcional de las páginas todavía está pendiente.
+Están completados la definición inicial de alcance, la conexión con GitHub, la revisión y las correcciones del sitio original. Los pasos 4 a 9 prepararon React con Next.js, capas, CSS nativo, pruebas, componentes compartidos y 21 rutas estáticas. El paso 10 migra Inicio con presentación, imágenes, tratamientos destacados, carrusel manual y video. La suite actual contiene diez pruebas; las demás páginas todavía están en preparación.
 
 ## Estructura por capas
 
@@ -29,7 +29,7 @@ npm ci
 npm run dev
 ```
 
-Abre `http://localhost:3000`. Inicio conserva la presentación inicial y las otras rutas muestran páginas en preparación. Los archivos HTML originales no se sirven desde Next.js y continúan disponibles mediante XAMPP.
+Abre `http://localhost:3000`. La [guía de Inicio en React](docs/inicio-react.md) explica los componentes, imágenes, carrusel y video de la portada. Las otras veinte rutas muestran páginas en preparación. Los archivos HTML originales continúan disponibles mediante XAMPP.
 
 Para compilar y ejecutar la versión de producción:
 
@@ -56,7 +56,7 @@ npm test
 
 Ejecuta las pruebas una vez en un navegador sin ventana. En Windows se utiliza Edge si está disponible; la configuración permite indicar otro navegador compatible mediante `CHROME_BIN`. No es necesario iniciar el servidor de Next.js.
 
-Para repetir las pruebas al guardar cambios, utiliza `npm run test:watch`. La [guía de pruebas iniciales](docs/pruebas-iniciales.md) explica la configuración y los cinco casos actuales.
+Para repetir las pruebas al guardar cambios, utiliza `npm run test:watch`. La [guía de pruebas iniciales](docs/pruebas-iniciales.md) explica la configuración y los diez casos actuales.
 
 ## Funcionalidades del sitio original
 

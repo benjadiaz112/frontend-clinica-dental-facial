@@ -2,6 +2,6 @@ import type { InformacionClinica } from "@/models/InformacionClinica";
 
 export const informacionClinica: InformacionClinica = {
   nombre: "Clínica Aura",
-  descripcion: "Salud dental y armonización facial.",
-  aviso: "Estamos preparando la nueva versión de nuestro sitio."
+  descripcion: "Cuidamos tu sonrisa con atención cercana, tratamientos personalizados y profesionales especializados.",
+  aviso: "Proyecto académico de una clínica ficticia. Las solicitudes son de demostración."
 };
