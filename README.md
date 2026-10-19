@@ -2,6 +2,12 @@
 integrantes: Benjamin Diaz, Javier Hidalgo, Bikenson Fenelus
 Proyecto frontend académico de una clínica dental y de armonización facial, desarrollado con HTML5, CSS y JavaScript.
 
+## Evaluación Parcial 2: alcance definido
+
+El [alcance y los criterios de aceptación](docs/alcance-parcial-2.md) cruzan la pauta, el ERS actual y los ejemplos recibidos. Incluyen la migración planificada a React con Bootstrap, estructura por capas, API simulada y pruebas con Jasmine y Karma. El documento también registra la vinculación con GitHub conservando el historial.
+
+Esta etapa documenta los pasos 1 y 2; la aplicación descrita a continuación sigue siendo la versión HTML, CSS y JavaScript. La migración todavía no está implementada.
+
 ## Funcionalidades
 
 - Navegación entre Inicio, Nosotros, Tratamientos y Reserva.
