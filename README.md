@@ -4,9 +4,15 @@ Proyecto frontend académico de una clínica dental y de armonización facial. C
 
 ## Evaluación Parcial 2: alcance definido
 
-El [alcance y los criterios de aceptación](docs/alcance-parcial-2.md) cruzan la pauta, el ERS actual y los ejemplos recibidos. Incluyen la migración planificada a React con Bootstrap, estructura por capas, API simulada y pruebas con Jasmine y Karma. El documento también registra la vinculación con GitHub conservando el historial.
+El [alcance y los criterios de aceptación](docs/alcance-parcial-2.md) cruzan la pauta, el ERS actual y los ejemplos recibidos, incluyendo el Anexo 1. Incluyen React, estructura por capas, CRUD, persistencia, vistas públicas y administrativas, API simulada y pruebas con Jasmine y Karma. Por decisión del usuario se utilizará CSS nativo; la pauta menciona Bootstrap y esta elección se registra como una diferencia respecto de ese requisito.
 
-Están completados la definición de alcance, la conexión con GitHub, la revisión y las correcciones del sitio original. El paso 4 incorpora una página inicial de React con Next.js y TypeScript. La migración de las páginas, la organización completa por capas, Bootstrap, la API simulada y Jasmine/Karma corresponden a los siguientes pasos.
+Están completados la definición inicial de alcance, la conexión con GitHub, la revisión y las correcciones del sitio original. El paso 4 incorporó la base de React con Next.js y TypeScript. El paso 5 separa rutas, presentación, modelos, servicios, datos y estilos; reserva las carpetas de hooks, pruebas, API y recursos para los siguientes pasos. La migración de las páginas y las funcionalidades adicionales todavía están pendientes.
+
+## Estructura por capas
+
+La [guía de estructura por capas](docs/estructura-por-capas.md) explica cada carpeta, el flujo actual y las reglas para continuar. La información inicial está en `data/`, se obtiene desde `services/` y se muestra en `components/`; `app/` compone la página. Los estilos nativos están en `styles/`.
+
+Todo permanece dentro de este mismo repositorio de GitHub.
 
 ## Ejecutar la base de React con Next.js
 
