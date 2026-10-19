@@ -33,7 +33,7 @@ Los campos `input`, `select` y `textarea` comparten tipografía, bordes y espaci
 
 ## Aplicación actual
 
-PresentacionInicio utiliza `contenedor panel portada`. Su contenido y funcionamiento siguen siendo los mismos; las demás clases están disponibles para los componentes y formularios de los próximos pasos.
+PresentacionInicio utiliza `contenedor panel portada`. Desde el paso 10, `styles/inicio.css` añade la distribución de la presentación, las imágenes, el carrusel y el video. Las clases comunes siguen disponibles para las demás páginas.
 
 El paso 8 añade estilos de encabezado, menú activo, pie y enlace de salto al contenido. El menú se coloca debajo del nombre de la clínica en pantallas pequeñas. Mensaje aplica las clases comunes al aviso de la portada.
 

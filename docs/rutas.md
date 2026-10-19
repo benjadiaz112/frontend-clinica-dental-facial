@@ -28,7 +28,7 @@ Next.js crea las rutas a partir de las carpetas y los archivos `page.tsx` dentro
 | `/admin/reportes` | Reportes |
 | `/admin/perfil` | Perfil de administración |
 
-Inicio conserva la presentación existente. Las otras veinte páginas muestran su título, descripción, un aviso de disponibilidad futura y un enlace de regreso a Inicio. Sus formularios, datos y operaciones todavía no están implementados.
+Desde el paso 10, Inicio muestra la presentación migrada, tratamientos destacados, un carrusel manual y el video original. Las otras veinte páginas muestran su título, descripción, un aviso de disponibilidad futura y un enlace de regreso a Inicio. Sus formularios, datos y operaciones todavía no están implementados.
 
 El detalle de tratamientos por identificador y el detalle de artículos se añadirán al desarrollar esas funcionalidades. Actualmente una dirección de detalle inexistente también muestra la página 404.
 
@@ -51,4 +51,4 @@ La administración es una estructura de navegación de demostración, accesible 
 
 Cada `page.tsx` define un título de pestaña y muestra PaginaEnPreparacion con propiedades simples. Este componente está en `components/compartidos/`. El diseño usa las clases de CSS nativo existentes.
 
-No se modifican las páginas HTML originales ni se incorpora la lógica de los pasos posteriores. La migración funcional empieza con Inicio en el paso 10.
+No se modifican las páginas HTML originales ni se incorpora la lógica de los pasos posteriores. La migración de Inicio ya está registrada en [inicio-react.md](inicio-react.md).

@@ -14,7 +14,14 @@ if (!process.env.CHROME_BIN && process.platform === "win32") {
 module.exports = function (config) {
   config.set({
     frameworks: ["jasmine"],
-    files: ["tests/configuracion.js", "tests/**/*.spec.tsx"],
+    files: [
+      "tests/configuracion.js",
+      "tests/**/*.spec.tsx",
+      { pattern: "public/imagenes/*.jpg", included: false, watched: false }
+    ],
+    proxies: {
+      "/imagenes/": "/base/public/imagenes/"
+    },
     preprocessors: {
       "tests/**/*.spec.tsx": ["esbuild"]
     },
