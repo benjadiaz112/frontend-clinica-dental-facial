@@ -6,7 +6,7 @@ Proyecto frontend académico de una clínica dental y de armonización facial. C
 
 El [alcance y los criterios de aceptación](docs/alcance-parcial-2.md) cruzan la pauta, el ERS actual y los ejemplos recibidos, incluyendo el Anexo 1. Incluyen React, estructura por capas, CRUD, persistencia, vistas públicas y administrativas, API simulada y pruebas con Jasmine y Karma. Por decisión del usuario se utilizará CSS nativo; la pauta menciona Bootstrap y esta elección se registra como una diferencia respecto de ese requisito.
 
-Están completados la definición inicial de alcance, la conexión con GitHub, la revisión y las correcciones del sitio original. El paso 4 incorporó React con Next.js y TypeScript, el paso 5 separó las capas, el paso 6 configuró Jasmine y Karma y el paso 7 preparó el CSS nativo común. El paso 8 integra encabezado, menú, pie de página y mensajes, deja un botón reutilizable y amplía la suite a cinco pruebas. La migración de las páginas y las funcionalidades adicionales todavía están pendientes.
+Están completados la definición inicial de alcance, la conexión con GitHub, la revisión y las correcciones del sitio original. Los pasos 4 a 8 prepararon React con Next.js y TypeScript, capas, Jasmine/Karma, CSS nativo y componentes compartidos. El paso 9 configura 21 rutas estáticas públicas y administrativas y una página 404. La migración funcional de las páginas todavía está pendiente.
 
 ## Estructura por capas
 
@@ -20,7 +20,7 @@ La [guía de estilos comunes](docs/estilos-comunes.md) explica los colores, cont
 
 ## Ejecutar la base de React con Next.js
 
-El [detalle de los componentes compartidos](docs/componentes-compartidos.md) explica sus propiedades y uso. El menú enlaza a Inicio; las demás rutas se incorporarán en el paso 9.
+El [detalle de los componentes compartidos](docs/componentes-compartidos.md) explica sus propiedades y uso. La [guía de rutas](docs/rutas.md) enumera las páginas disponibles y los enlaces públicos y administrativos.
 
 Requiere Node.js 20.9 o superior y npm, según la [documentación oficial de Next.js](https://nextjs.org/docs/app/getting-started/installation). Ejecuta los comandos desde la raíz del repositorio.
 
@@ -29,7 +29,7 @@ npm ci
 npm run dev
 ```
 
-Abre `http://localhost:3000`. Por ahora muestra una página inicial; los archivos HTML originales no se sirven desde Next.js y continúan disponibles mediante XAMPP.
+Abre `http://localhost:3000`. Inicio conserva la presentación inicial y las otras rutas muestran páginas en preparación. Los archivos HTML originales no se sirven desde Next.js y continúan disponibles mediante XAMPP.
 
 Para compilar y ejecutar la versión de producción:
 

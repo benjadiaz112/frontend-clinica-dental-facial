@@ -47,6 +47,7 @@ body {
 
 .barra-navegacion {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
@@ -96,6 +97,21 @@ body {
 
 .pie-pagina p {
   margin: 0;
+}
+
+.pie-pagina .menu {
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.navegacion-admin .enlace-menu {
+  color: var(--color-oscuro);
+}
+
+.navegacion-admin .enlace-menu:hover,
+.navegacion-admin .enlace-menu[aria-current="page"] {
+  background-color: var(--color-principal);
+  color: white;
 }
 
 .salto-contenido {

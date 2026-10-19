@@ -5,7 +5,7 @@ Los componentes están en `components/compartidos/`. Se usan funciones, propieda
 | Archivo | Responsabilidad |
 | --- | --- |
 | Encabezado.tsx | Muestra el nombre recibido y el menú. El nombre enlaza a Inicio. |
-| Menu.tsx | Recibe una lista de texto y ruta, crea los enlaces y marca la página actual. Usa Link y usePathname de Next.js. |
+| Menu.tsx | Recibe enlaces y una etiqueta accesible, crea la navegación y marca la página actual. Usa Link y usePathname de Next.js. |
 | PiePagina.tsx | Muestra el nombre recibido y la identificación del proyecto académico. |
 | Boton.tsx | Recibe texto, tipo, variante secundaria, estado deshabilitado y una función para el clic. Por defecto es de tipo button para no enviar formularios accidentalmente. |
 | Mensaje.tsx | Recibe texto y tipo: info, error o exito. Un error usa role="alert"; los demás, role="status". Si el texto está vacío, no muestra nada. |
@@ -16,7 +16,7 @@ Los componentes están en `components/compartidos/`. Se usan funciones, propieda
 
 PresentacionInicio utiliza Mensaje para el aviso existente. Boton queda disponible para los próximos formularios; este paso no agrega acciones de negocio ficticias a la portada.
 
-El menú contiene solamente Inicio, la ruta existente. Los enlaces a las demás páginas se incorporarán junto con sus rutas en el paso 9.
+Desde el paso 9, las listas de enlaces están en `data/navegacion.ts`. El encabezado muestra las páginas principales, el pie ofrece enlaces adicionales y la administración comparte su propio menú. Las nuevas páginas usan PaginaEnPreparacion hasta que se migren sus funcionalidades; la [guía de rutas](rutas.md) registra su estado.
 
 ## Ejemplos sencillos
 
