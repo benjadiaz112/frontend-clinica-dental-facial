@@ -6,7 +6,7 @@ Proyecto frontend académico de una clínica dental y de armonización facial. C
 
 El [alcance vigente](docs/alcance-parcial-2.md) se limita a la pauta principal, por indicación del usuario: React, propiedades y estados, navegación, formularios, responsividad, Jasmine/Karma, mocks, cobertura y entregables. Se conserva el caso de Clínica Aura. Por decisión del usuario se utiliza CSS nativo; la pauta exige Bootstrap y esta diferencia sigue pendiente.
 
-Inicio, Nosotros y Contacto informativo están migrados. Tratamientos y Reserva siguen en preparación. El paso 12 define sus modelos y retira las páginas vacías de la ampliación administrativa y comercial. Quedan cinco rutas de la clínica y la página 404. La suite actual contiene diez pruebas iniciales; la cobertura final está pendiente.
+Inicio, Nosotros y Contacto informativo están migrados. Tratamientos y Reserva siguen en preparación. El paso 12 define sus modelos y retira las páginas vacías de la ampliación administrativa y comercial. El paso 13 prepara los [datos de los cinco tratamientos originales](docs/datos-tratamientos.md) y su servicio de consulta. Quedan cinco rutas de la clínica y la página 404. La suite actual contiene diez pruebas iniciales; la cobertura final está pendiente.
 
 ## Estructura por capas
 
