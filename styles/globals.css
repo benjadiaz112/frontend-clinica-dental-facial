@@ -1,3 +1,11 @@
+:root {
+  --color-principal: #007373;
+  --color-oscuro: #005858;
+  --color-texto: #243f3f;
+  --color-borde: #647f7f;
+  --color-error: #b00020;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -5,21 +13,207 @@
 body {
   margin: 0;
   padding: 20px;
-  background-color: darkcyan;
-  color: white;
+  background-color: var(--color-principal);
+  color: var(--color-texto);
   font-family: Arial, sans-serif;
   line-height: 1.5;
 }
 
-main {
-  max-width: 960px;
-  margin: 60px auto;
+.contenedor {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.panel,
+.tarjeta {
   padding: 30px;
   background-color: white;
-  color: darkslategray;
   border-radius: 15px;
+  min-width: 0;
+}
+
+.portada {
+  margin-top: 48px;
+  margin-bottom: 48px;
+}
+
+.rejilla {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.rejilla > * {
+  flex: 1 1 280px;
+  min-width: 0;
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 0;
+  line-height: 1.2;
+  overflow-wrap: break-word;
 }
 
 h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+p {
   margin-top: 0;
+}
+
+a {
+  color: var(--color-principal);
+}
+
+/* Botones y acciones reutilizables. */
+.btn,
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid var(--color-principal);
+  border-radius: 20px;
+  background-color: var(--color-principal);
+  color: white;
+  font: inherit;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:hover,
+button:hover {
+  background-color: var(--color-oscuro);
+}
+
+.btn-secundario {
+  background-color: white;
+  color: var(--color-principal);
+}
+
+.btn-secundario:hover {
+  background-color: #e5f2f2;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Campos y mensajes para los futuros formularios. */
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  min-width: 0;
+  margin-bottom: 12px;
+  padding: 12px;
+  border: 2px solid var(--color-borde);
+  border-radius: 6px;
+  background-color: white;
+  color: var(--color-texto);
+  font: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  width: auto;
+  margin-right: 8px;
+}
+
+[aria-invalid="true"] {
+  border-color: var(--color-error);
+}
+
+.mensaje {
+  padding: 12px;
+  border-radius: 6px;
+  overflow-wrap: break-word;
+}
+
+.error {
+  color: var(--color-error);
+}
+
+.mensaje-error {
+  background-color: #fff0f3;
+  color: var(--color-error);
+}
+
+.mensaje-exito {
+  background-color: #edf8f0;
+  color: #17643a;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #172f45;
+  outline-offset: 3px;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+iframe {
+  max-width: 100%;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 16px;
+  }
+
+  .panel,
+  .tarjeta {
+    padding: 20px;
+  }
+
+  .portada {
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+
+  .rejilla {
+    flex-direction: column;
+  }
+
+  .rejilla > * {
+    flex: auto;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
 }

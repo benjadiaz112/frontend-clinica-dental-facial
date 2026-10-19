@@ -6,7 +6,7 @@ interface Propiedades {
 
 export default function PresentacionInicio({ clinica }: Propiedades) {
   return (
-    <main>
+    <main className="contenedor panel portada">
       <h1>{clinica.nombre}</h1>
       <p>{clinica.descripcion}</p>
       <p>{clinica.aviso}</p>

@@ -6,13 +6,17 @@ Proyecto frontend académico de una clínica dental y de armonización facial. C
 
 El [alcance y los criterios de aceptación](docs/alcance-parcial-2.md) cruzan la pauta, el ERS actual y los ejemplos recibidos, incluyendo el Anexo 1. Incluyen React, estructura por capas, CRUD, persistencia, vistas públicas y administrativas, API simulada y pruebas con Jasmine y Karma. Por decisión del usuario se utilizará CSS nativo; la pauta menciona Bootstrap y esta elección se registra como una diferencia respecto de ese requisito.
 
-Están completados la definición inicial de alcance, la conexión con GitHub, la revisión y las correcciones del sitio original. El paso 4 incorporó la base de React con Next.js y TypeScript. El paso 5 separó las capas y el paso 6 configura Jasmine y Karma con dos pruebas iniciales de React. La migración de las páginas y las funcionalidades adicionales todavía están pendientes.
+Están completados la definición inicial de alcance, la conexión con GitHub, la revisión y las correcciones del sitio original. El paso 4 incorporó la base de React con Next.js y TypeScript, el paso 5 separó las capas y el paso 6 configuró Jasmine y Karma con dos pruebas iniciales. El paso 7 prepara los estilos comunes con CSS nativo. La migración de las páginas y las funcionalidades adicionales todavía están pendientes.
 
 ## Estructura por capas
 
 La [guía de estructura por capas](docs/estructura-por-capas.md) explica cada carpeta, el flujo actual y las reglas para continuar. La información inicial está en `data/`, se obtiene desde `services/` y se muestra en `components/`; `app/` compone la página. Los estilos nativos están en `styles/`.
 
 Todo permanece dentro de este mismo repositorio de GitHub.
+
+## Estilos comunes
+
+La [guía de estilos comunes](docs/estilos-comunes.md) explica los colores, contenedores, tarjetas, botones, campos y mensajes de `styles/globals.css`. Se utilizan clases sencillas, Flexbox y una media query para adaptar la distribución a móviles.
 
 ## Ejecutar la base de React con Next.js
 
