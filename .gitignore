@@ -1,2 +1,14 @@
 
 clinica-aura-entrega.zip
+
+# Archivos generados por Node.js y Next.js
+/node_modules/
+/.next/
+/out/
+*.tsbuildinfo
+next-env.d.ts
+npm-debug.log*
+
+# Configuracion local
+.env*
+!.env.example
