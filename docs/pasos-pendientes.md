@@ -1,8 +1,7 @@
 # Plan acotado a la pauta
 
-El paso 12 define los modelos de Tratamiento y Reserva. Se conserva el caso de Clínica Aura y la estructura por capas. Los anexos y ejemplos ya no amplían el alcance.
+Completados: paso 12, modelos de Tratamiento y Reserva; paso 13, datos de los cinco tratamientos originales y servicio de consulta. Se conserva el caso de Clínica Aura y la estructura por capas. Los anexos y ejemplos ya no amplían el alcance.
 
-13. Preparar los datos de los cinco tratamientos originales, sin inventar precios.
 14. Migrar el catálogo a componentes React con propiedades.
 15. Permitir elegir un tratamiento para evaluación mediante estado de React.
 16. Extraer las validaciones de nombre, RUT, correo y servicio a funciones independientes del DOM.
