@@ -28,7 +28,7 @@ Next.js crea las rutas a partir de las carpetas y los archivos `page.tsx` dentro
 | `/admin/reportes` | Reportes |
 | `/admin/perfil` | Perfil de administración |
 
-Desde el paso 10, Inicio muestra la presentación migrada, tratamientos destacados, un carrusel manual y el video original. Las otras veinte páginas muestran su título, descripción, un aviso de disponibilidad futura y un enlace de regreso a Inicio. Sus formularios, datos y operaciones todavía no están implementados.
+Inicio muestra la presentación migrada, tratamientos destacados, un carrusel manual y el video original. Desde el paso 11, Nosotros presenta la propuesta original de la clínica y Contacto muestra la ubicación y el teléfono de ejemplo, identificados como demostración. Las otras dieciocho páginas siguen en preparación; sus formularios, datos y operaciones todavía no están implementados.
 
 El detalle de tratamientos por identificador y el detalle de artículos se añadirán al desarrollar esas funcionalidades. Actualmente una dirección de detalle inexistente también muestra la página 404.
 
@@ -49,6 +49,6 @@ La administración es una estructura de navegación de demostración, accesible 
 
 ## Archivos y capas
 
-Cada `page.tsx` define un título de pestaña y muestra PaginaEnPreparacion con propiedades simples. Este componente está en `components/compartidos/`. El diseño usa las clases de CSS nativo existentes.
+Cada `page.tsx` define un título de pestaña. Inicio, Nosotros y Contacto componen sus componentes específicos con datos obtenidos desde servicios. Las páginas restantes muestran PaginaEnPreparacion, de `components/compartidos/`. El diseño usa CSS nativo.
 
-No se modifican las páginas HTML originales ni se incorpora la lógica de los pasos posteriores. La migración de Inicio ya está registrada en [inicio-react.md](inicio-react.md).
+Las páginas HTML originales se conservan. Las migraciones están registradas en [inicio-react.md](inicio-react.md) e [informacion-react.md](informacion-react.md). El formulario de `contacto.html` pertenece al flujo de Reserva; su migración a `/reserva` sigue prevista para el paso 22.

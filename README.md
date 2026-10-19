@@ -6,7 +6,7 @@ Proyecto frontend académico de una clínica dental y de armonización facial. C
 
 El [alcance y los criterios de aceptación](docs/alcance-parcial-2.md) cruzan la pauta, el ERS actual y los ejemplos recibidos, incluyendo el Anexo 1. Incluyen React, estructura por capas, CRUD, persistencia, vistas públicas y administrativas, API simulada y pruebas con Jasmine y Karma. Por decisión del usuario se utilizará CSS nativo; la pauta menciona Bootstrap y esta elección se registra como una diferencia respecto de ese requisito.
 
-Están completados la definición inicial de alcance, la conexión con GitHub, la revisión y las correcciones del sitio original. Los pasos 4 a 9 prepararon React con Next.js, capas, CSS nativo, pruebas, componentes compartidos y 21 rutas estáticas. El paso 10 migra Inicio con presentación, imágenes, tratamientos destacados, carrusel manual y video. La suite actual contiene diez pruebas; las demás páginas todavía están en preparación.
+Están completados la definición inicial de alcance, la conexión con GitHub, la revisión y las correcciones del sitio original. Los pasos 4 a 9 prepararon React con Next.js, capas, CSS nativo, pruebas, componentes compartidos y 21 rutas estáticas. El paso 10 migró Inicio con presentación, imágenes, tratamientos destacados, carrusel manual y video. El paso 11 incorpora Nosotros y Contacto informativo. La suite actual contiene diez pruebas; las otras dieciocho páginas todavía están en preparación.
 
 ## Estructura por capas
 
@@ -29,7 +29,7 @@ npm ci
 npm run dev
 ```
 
-Abre `http://localhost:3000`. La [guía de Inicio en React](docs/inicio-react.md) explica los componentes, imágenes, carrusel y video de la portada. Las otras veinte rutas muestran páginas en preparación. Los archivos HTML originales continúan disponibles mediante XAMPP.
+Abre `http://localhost:3000`. La [guía de Inicio en React](docs/inicio-react.md) explica la portada. La [guía de Nosotros y Contacto](docs/informacion-react.md) explica las dos páginas informativas y su separación de Reserva. Los archivos HTML originales continúan disponibles mediante XAMPP. Los [pasos pendientes](docs/pasos-pendientes.md) indican cómo continuar.
 
 Para compilar y ejecutar la versión de producción:
 

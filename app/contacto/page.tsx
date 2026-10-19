@@ -1,12 +1,9 @@
-import PaginaEnPreparacion from "@/components/compartidos/PaginaEnPreparacion";
+import InformacionContacto from "@/components/contacto/InformacionContacto";
+import { obtenerContacto } from "@/services/informacionService";
+import "@/styles/informacion.css";
 
 export const metadata = { title: "Contacto | Clínica Aura" };
 
 export default function Pagina() {
-  return (
-    <PaginaEnPreparacion
-      titulo="Contacto"
-      descripcion="Información de contacto y consultas sobre la clínica."
-    />
-  );
+  return <InformacionContacto informacion={obtenerContacto()} />;
 }

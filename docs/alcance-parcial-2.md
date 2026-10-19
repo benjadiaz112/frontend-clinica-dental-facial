@@ -6,7 +6,7 @@ Fecha: 19 de octubre de 2026.
 
 Migrar el frontend existente de Clínica Aura a React, con diseño responsivo mediante CSS nativo, separación por capas y pruebas con Jasmine y Karma. Adaptar el catálogo y el carrito a tratamientos de la clínica, incorporando los flujos públicos y administrativos del Anexo 1.
 
-Actualización del paso 10: existen React con Next.js, capas, CSS nativo, componentes compartidos y 21 rutas estáticas con página 404. Inicio está migrado con imágenes, destacados, carrusel manual y video; las demás páginas están en preparación. Jasmine/Karma cuenta con diez casos. Las funcionalidades de negocio y la cobertura final siguen pendientes. Las guías de [rutas](rutas.md) e [Inicio](inicio-react.md) detallan el estado actual.
+Actualización del paso 11: existen React con Next.js, capas, CSS nativo, componentes compartidos y 21 rutas estáticas con página 404. Inicio, Nosotros y Contacto informativo están migrados; dieciocho páginas siguen en preparación. El formulario de Reserva se migrará en el paso 22. Jasmine/Karma cuenta con diez casos. Las funcionalidades de negocio y la cobertura final siguen pendientes. Las guías de [rutas](rutas.md), [Inicio](inicio-react.md) e [información](informacion-react.md) detallan el estado actual; la [lista de pasos pendientes](pasos-pendientes.md) mantiene la secuencia.
 
 Decisión del usuario: usar únicamente CSS nativo, sin Bootstrap. Tanto la pauta como el Anexo 1 mencionan Bootstrap; se registra esta diferencia sin afirmar que CSS nativo cumpla ese requisito específico.
 
