@@ -34,7 +34,7 @@ models/InformacionClinica.ts describe los datos usados por esas capas.
 app/layout.tsx carga styles/globals.css.
 ```
 
-La página inicial mantiene separados datos, servicios, presentación y estilos. En el paso 10 se recupera el contenido del HTML original con [componentes de Inicio](inicio-react.md), un carrusel manual y recursos servidos desde public/imagenes.
+La página inicial mantiene separados datos, servicios, presentación y estilos. En el paso 10 se recupera el contenido del HTML original con [componentes de Inicio](inicio-react.md), un carrusel manual y recursos servidos desde public/imagenes. El paso 11 aplica el mismo flujo a [Nosotros y Contacto](informacion-react.md), con datos estáticos en data/informacion.ts, tipos en models/ContenidoInformativo.ts y funciones en services/informacionService.ts.
 
 El paso 7 añade clases reutilizables y adapta la distribución a móviles. La [guía de estilos comunes](estilos-comunes.md) explica su uso.
 
