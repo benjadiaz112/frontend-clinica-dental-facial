@@ -1,9 +1,8 @@
+import PresentacionInicio from "@/components/inicio/PresentacionInicio";
+import { obtenerInformacionClinica } from "@/services/clinicaService";
+
 export default function Inicio() {
-  return (
-    <main>
-      <h1>Clínica Aura</h1>
-      <p>Salud dental y armonización facial.</p>
-      <p>Estamos preparando la nueva versión de nuestro sitio.</p>
-    </main>
-  );
+  const clinica = obtenerInformacionClinica();
+
+  return <PresentacionInicio clinica={clinica} />;
 }

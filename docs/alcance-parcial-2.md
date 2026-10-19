@@ -4,24 +4,27 @@ Fecha: 19 de octubre de 2026.
 
 ## Objetivo y estado
 
-Migrar el frontend existente de Clínica Aura a React, con diseño responsivo mediante Bootstrap, separación por capas y pruebas con Jasmine y Karma. Adaptar el catálogo y el carrito del anexo a una selección de tratamientos para solicitar una evaluación.
+Migrar el frontend existente de Clínica Aura a React, con diseño responsivo mediante CSS nativo, separación por capas y pruebas con Jasmine y Karma. Adaptar el catálogo y el carrito a tratamientos de la clínica, incorporando los flujos públicos y administrativos del Anexo 1.
 
-Este documento completa la definición de alcance y registra la preparación de Git. Las funcionalidades de la nueva entrega descritas abajo están planificadas: este cambio no las implementa ni certifica que sus pruebas estén aprobadas.
+Actualización del paso 5: ya existe la base de React con Next.js y la separación inicial por capas. Las funcionalidades descritas abajo siguen planificadas salvo lo expresamente indicado; este documento no certifica que estén implementadas ni que sus pruebas estén aprobadas.
+
+Decisión del usuario: usar únicamente CSS nativo, sin Bootstrap. Tanto la pauta como el Anexo 1 mencionan Bootstrap; se registra esta diferencia sin afirmar que CSS nativo cumpla ese requisito específico.
 
 ## Fuentes y decisiones
 
 | Fuente revisada | Qué aporta | Decisión para Clínica Aura |
 | --- | --- | --- |
-| Pauta DSY1104, Evaluación Parcial 2, páginas 3–4 y 6–9 | React, propiedades y estados, Bootstrap, Jasmine y Karma, DOM, mocks, resultados y cobertura; ERS e informe de testing | Son requisitos de esta entrega. La rúbrica contempla 10 pruebas para el nivel máximo de ese indicador. |
+| Pauta DSY1104, Evaluación Parcial 2, páginas 3–4 y 6–9 | React, propiedades y estados, Bootstrap, Jasmine y Karma, DOM, mocks, resultados y cobertura; ERS e informe de testing | Seguir los requisitos indicados, con la diferencia de CSS nativo decidida por el usuario. La rúbrica contempla 10 pruebas para el nivel máximo de ese indicador. |
 | ERS.docx del repositorio, versión 1 | RF-01 a RF-08, RNF-01 a RNF-08, cuatro páginas, validaciones y restricciones de la clínica | Mantener la funcionalidad existente y actualizar posteriormente el ERS para reflejar React, la API simulada y las pruebas. |
-| Anexo 3, Base HTML, carpeta Tienda | Navegación, Bootstrap, catálogo, detalle, búsqueda, carrito y otras pantallas de ejemplo | Adaptar la estructura pública al caso de la clínica. Las pantallas de usuarios y administración son ampliaciones fuera de este alcance. |
+| Anexo 1, Instrucciones, páginas 1–12 | Archivo JavaScript con CRUD y persistencia, flujos públicos y administrativos, registro e inicio de sesión, categorías, ofertas, blog, checkout, resultados y pruebas | Ampliar el alcance inicial para contemplar esos flujos adaptados a la clínica. La presentación también menciona integración backend/frontend; debe concretarse si la API simulada basta para esa exigencia. |
+| Anexo 3, Base HTML, carpeta Tienda | Navegación, catálogo, detalle, búsqueda, carrito y pantallas públicas y administrativas | Usar las vistas como referencia junto al Anexo 1, manteniendo CSS nativo según la decisión del usuario. |
 | mi-app.rar | Ejemplo de Next.js con React, componentes, estado, filtros y consumo de datos | Usar como referencia para la migración; verificar compatibilidad de dependencias antes de instalarlas. |
 | api_simulada.rar | Datos de productos y dependencia json-server | Adaptar los datos a tratamientos ficticios y documentar cómo iniciar la API local. |
 | patenteTestTerminado.zip y PagoEstacionamiento (1).zip | Separación entre lógica e interfaz y casos de prueba con QUnit | Reutilizar el enfoque preparar–ejecutar–comprobar; usar Jasmine y Karma según la pauta. |
 
 Los ejemplos contienen ejercicios y funciones incompletas: no se consideran funcionalidades terminadas ni instrucciones para implementar estacionamientos o patentes en la clínica. La pauta se utiliza como criterio académico; el anexo se adapta al caso existente.
 
-## Punto de partida verificado
+## Punto de partida del sitio original
 
 - Páginas actuales: Inicio, Nosotros, Tratamientos y Reserva.
 - HTML, CSS y JavaScript sin framework ni configuración de pruebas.
@@ -38,7 +41,7 @@ Los identificadores ALC complementan los requisitos del ERS; no los reemplazan.
 | ALC-01 | Navegación React: ERS RF-01 y pauta | Inicio, Nosotros, Tratamientos y Reserva se abren mediante rutas; encabezado y pie son compartidos; una ruta inexistente muestra una página adecuada. |
 | ALC-02 | Inicio y Nosotros: ERS RF-04 y anexo | Mantienen información de la clínica, imágenes con texto alternativo y video educativo; el carrusel adaptado permite cambiar de diapositiva. |
 | ALC-03 | Catálogo: ERS RF-02 y RF-03 | Las tarjetas reciben datos mediante propiedades y muestran nombre, categoría, descripción, imagen y precio referencial en pesos chilenos. |
-| ALC-04 | API simulada: ejemplo mi-app y api_simulada | El catálogo carga tratamientos ficticios desde la API mediante un repositorio y muestra estados de carga, error y respuesta vacía. |
+| ALC-04 | API simulada: ejemplo mi-app y api_simulada | El catálogo carga tratamientos ficticios desde la API mediante la capa `data/` y muestra estados de carga, error y respuesta vacía. |
 | ALC-05 | Búsqueda y categorías: anexo y mi-app | El estado de React controla ambos filtros; se combinan correctamente y se informa cuando no hay coincidencias. |
 | ALC-06 | Detalle: anexo | Cada tratamiento tiene una ruta por identificador y una acción para solicitar evaluación; un identificador desconocido se maneja sin bloquear la aplicación. |
 | ALC-07 | Selección de tratamientos: adaptación del carrito | Se puede agregar un tratamiento, quitarlo y vaciar la selección. No se duplican tratamientos: cada uno representa una evaluación solicitada. El resumen calcula la suma de precios referenciales numéricos, sin presentarla como presupuesto definitivo. |
@@ -46,11 +49,16 @@ Los identificadores ALC complementan los requisitos del ERS; no los reemplazan.
 | ALC-09 | Formulario: ERS RF-05 y RF-06 | Nombre, RUT, correo, servicio y comentario son campos controlados. Los campos obligatorios y reglas existentes se validan antes de aceptar la solicitud. El comentario sigue siendo opcional y tiene límite de 500 caracteres. |
 | ALC-10 | Validaciones: ERS RF-06 y ejemplos | RUT por módulo 11, nombre, correo y pertenencia del servicio al catálogo se comprueban mediante funciones independientes del DOM, con casos válidos, inválidos y límites documentados. |
 | ALC-11 | Mensajes y limpieza: ERS RF-07 y RF-08 | Los errores aparecen junto al campo correspondiente; limpiar elimina valores, mensajes e indicadores. La confirmación identifica el flujo como demostración y no afirma un envío real. |
-| ALC-12 | Responsividad y accesibilidad: ERS RNF-01, RNF-04, RNF-05 y RNF-07; pauta | Se utiliza Bootstrap para distribución y adaptación. Menú, tarjetas y formulario funcionan a 375, 768 y 1280 px sin desbordamiento horizontal; existen etiquetas, foco visible y navegación por teclado. |
+| ALC-12 | Responsividad y accesibilidad: ERS RNF-01, RNF-04, RNF-05 y RNF-07 | Por decisión del usuario se utiliza CSS nativo. Menú, tarjetas y formulario funcionan a 375, 768 y 1280 px sin desbordamiento horizontal; existen etiquetas, foco visible y navegación por teclado. Esta elección difiere del requisito de Bootstrap de la pauta. |
+| ALC-13 | CRUD y persistencia: Anexo 1 | Un archivo JavaScript proporciona funciones para crear, leer, actualizar y eliminar datos simulados; los cambios se reflejan en React y se conservan con el mecanismo de persistencia definido. |
+| ALC-14 | Usuarios: Anexo 1 | Registro e inicio de sesión de demostración tienen validaciones, errores y flujos diferenciados de usuario y administrador; no se presentan como autenticación segura de producción. |
+| ALC-15 | Administración: Anexo 1 | Se puede navegar por panel, gestión de tratamientos, categorías y usuarios; solicitudes/órdenes, historial, reportes y perfil adaptados a la clínica. Las operaciones de gestión utilizan la capa de datos. |
+| ALC-16 | Checkout y resultados: Anexo 1 | La selección continúa a un resumen con datos del solicitante y vistas de resultado correcto o error. La adaptación a evaluaciones conserva pasos equivalentes al checkout sin procesar pagos reales. |
+| ALC-17 | Vistas públicas adicionales: Anexo 1 | Existen vistas de categorías, ofertas y blog con detalle, adaptadas al proyecto y conectadas mediante navegación. |
 
 ## Capas y reglas de implementación
 
-Base propuesta: Next.js con React y TypeScript, siguiendo el ejemplo recibido, con Bootstrap para la presentación.
+Base implementada: Next.js con React y TypeScript, siguiendo el ejemplo recibido. Se usará CSS nativo para la presentación. La estructura inicial se detalla en [estructura-por-capas.md](estructura-por-capas.md).
 
 | Carpeta | Responsabilidad |
 | --- | --- |
@@ -59,13 +67,14 @@ Base propuesta: Next.js con React y TypeScript, siguiendo el ejemplo recibido, c
 | hooks/ | Estado, eventos y coordinación de la interfaz. |
 | models/ | Tipos de tratamientos, selección y solicitud. |
 | services/ | Validaciones, filtros y cálculos independientes del DOM. |
-| repositories/ | Acceso a API y almacenamiento local. |
+| data/ | Fuentes de datos, CRUD y acceso a API o almacenamiento local. |
+| styles/ | CSS nativo compartido. |
 | tests/ | Pruebas Jasmine ejecutadas con Karma. |
 | api_simulada/ | Datos ficticios y configuración del servidor local. |
 | public/ | Imágenes y recursos estáticos. |
 | docs/ | Alcance, trazabilidad y documentación de testing. |
 
-Los componentes delegan las reglas en servicios y el acceso a datos en repositorios, coordinados mediante hooks cuando corresponda. No se copiará la manipulación imperativa del DOM del sitio anterior dentro de los componentes React.
+Los componentes delegan las reglas en servicios y el acceso a datos en `data/`, coordinados mediante hooks cuando corresponda. Son carpetas del mismo repositorio de GitHub. No se copiará la manipulación imperativa del DOM del sitio anterior dentro de los componentes React.
 
 ## Testing y criterios de cierre
 
@@ -79,9 +88,9 @@ Para cerrar la entrega deben pasar las pruebas, el análisis estático configura
 
 ## Límites y entregables
 
-Fuera del alcance: autenticación real, registro de pacientes, panel administrativo, pagos, correos, agenda con disponibilidad real y base de datos de producción. Las cuentas y pantallas administrativas del anexo no se incorporan automáticamente como requisitos. Los precios seguirán siendo referenciales y el video requerirá conexión a Internet.
+Fuera del alcance de producción: autenticación real, pagos reales, envío de correos, agenda con disponibilidad real y base de datos con información real de pacientes. El registro y el panel administrativo sí forman parte de los flujos de demostración previstos a partir del Anexo 1. Los precios seguirán siendo referenciales y el video requerirá conexión a Internet.
 
-Entregables finales: repositorio público actualizado, ZIP del frontend sin dependencias ni archivos generados, ERS actualizado y documento de cobertura de testing. La presentación demostrará componentes, propiedades, estados, Bootstrap, ejecución de pruebas, mocks y análisis de resultados.
+Entregables finales: repositorio público actualizado, ZIP del frontend sin dependencias ni archivos generados, ERS actualizado y documento de cobertura de testing. La presentación demostrará componentes, propiedades, estados, diseño responsivo con CSS nativo, ejecución de pruebas, mocks y análisis de resultados. Se mantiene registrada la diferencia con el requisito de Bootstrap.
 
 ## Preparación de Git — paso 2
 
