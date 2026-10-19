@@ -6,7 +6,8 @@ body {
     margin: 0;
     background-color: darkcyan;
     color: white;
-    font-family: Arial;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
 }
 
 header,
@@ -19,6 +20,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 20px;
 }
 
 .menu {
@@ -33,12 +35,15 @@ a {
 
 .btn,
 button {
+    display: inline-block;
     padding: 10px 20px;
     background-color: white;
     color: darkcyan;
     border: none;
     border-radius: 20px;
     cursor: pointer;
+    font: inherit;
+    text-align: center;
 }
 
 main {
@@ -53,10 +58,19 @@ main {
     align-items: center;
 }
 
+.disposicion-contacto > * {
+    flex: 1;
+    min-width: 0;
+}
+
 .rejilla-tarjetas,
 .rejilla-productos {
     display: flex;
     gap: 20px;
+}
+
+.rejilla-productos {
+    flex-wrap: wrap;
 }
 
 article,
@@ -67,6 +81,40 @@ form,
     background-color: white;
     color: darkslategray;
     border-radius: 15px;
+    min-width: 0;
+}
+
+.tarjeta-producto {
+    flex: 1 1 280px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tarjeta-producto img {
+    height: 190px;
+    object-fit: cover;
+}
+
+.contenido-tarjeta {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.contenido-tarjeta .btn {
+    margin-top: auto;
+}
+
+.tarjeta-producto .btn,
+.acciones-form .btn {
+    background-color: darkcyan;
+    color: white;
+}
+
+.acciones-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 img,
@@ -75,12 +123,24 @@ img,
     border-radius: 15px;
 }
 
+.video-dental {
+    height: 260px;
+    border: none;
+}
+
 input,
 select,
 textarea {
     width: 100%;
     padding: 10px;
     margin: 5px 0 10px;
+    border: 2px solid #687d7d;
+    border-radius: 5px;
+    font: inherit;
+}
+
+textarea {
+    resize: vertical;
 }
 
 label {
@@ -94,8 +154,26 @@ label {
 
 .incorrecto,
 .error {
-    color: red;
-    border-color: red;
+    color: #b00020;
+    border-color: #b00020;
+}
+
+.error {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.error:empty {
+    display: none;
+}
+
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 3px solid #e5b900;
+    outline-offset: 3px;
 }
 
 footer {
@@ -110,5 +188,15 @@ footer {
     .rejilla-tarjetas,
     .rejilla-productos {
         flex-direction: column;
+    }
+
+    .disposicion-contacto > * {
+        flex: auto;
+        width: 100%;
+    }
+
+    .tarjeta-producto {
+        flex: auto;
+        width: 100%;
     }
 }
