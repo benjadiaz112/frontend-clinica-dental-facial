@@ -14,7 +14,7 @@ El proyecto usa un solo repositorio de GitHub. Las carpetas siguientes separan r
 | data/ | Fuentes de datos, funciones CRUD y acceso al almacenamiento o a la API. | Datos estáticos de la clínica; CRUD y persistencia pendientes. |
 | styles/ | CSS nativo compartido. | Estilos globales utilizados por el layout. |
 | public/ | Recursos que Next.js puede servir, como imágenes. | Reservada; las imágenes originales todavía no se migran. |
-| tests/ | Pruebas de funciones y componentes. | Reservada; Jasmine y Karma se configuran en el paso 6. |
+| tests/ | Pruebas de funciones y componentes. | Jasmine y Karma configurados en el paso 6; dos casos iniciales de PresentacionInicio. |
 | api_simulada/ | Datos y configuración de la API de demostración. | Reservada; todavía no hay un servidor configurado. |
 | docs/ | Alcance, estructura y documentación de testing. | Alcance y explicación de las capas. |
 
@@ -38,6 +38,7 @@ La página inicial muestra el mismo contenido que antes. Ahora los datos, la fun
 
 ## Reglas para continuar
 
+- Mantener código simple y moderno: funciones cortas, nombres claros y estructuras fáciles de escribir a mano, siguiendo el nivel de los ejemplos recibidos. Agregar dependencias o abstracciones solo cuando sean necesarias para el paso correspondiente.
 - Mantener las páginas de `app/` pequeñas y dedicar los componentes a mostrar la interfaz.
 - Colocar validaciones y cálculos en `services/`, sin `document.getElementById` ni acceso directo al DOM.
 - Centralizar en `data/` las operaciones CRUD y el acceso a datos. El archivo JavaScript de datos solicitado por el Anexo 1 se implementará en los siguientes pasos.
@@ -47,6 +48,6 @@ La página inicial muestra el mismo contenido que antes. Ahora los datos, la fun
 
 ## Qué sigue pendiente
 
-La migración del sitio original, el catálogo, registro e inicio de sesión, el flujo equivalente al checkout, la administración, CRUD, persistencia, API y pruebas se implementarán después. El Anexo 1 amplía el alcance público y administrativo, como queda registrado en el documento de alcance.
+La migración del sitio original, el catálogo, registro e inicio de sesión, el flujo equivalente al checkout, la administración, CRUD, persistencia, API y el resto de las pruebas se implementarán después. El entorno inicial de pruebas está explicado en [pruebas-iniciales.md](pruebas-iniciales.md). El Anexo 1 amplía el alcance público y administrativo, como queda registrado en el documento de alcance.
 
 Los archivos HTML originales, `css/`, `js/` e `imagenes/` permanecen disponibles mediante XAMPP. Sus estilos y scripts no se mezclan todavía con los de la nueva aplicación.

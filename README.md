@@ -6,7 +6,7 @@ Proyecto frontend académico de una clínica dental y de armonización facial. C
 
 El [alcance y los criterios de aceptación](docs/alcance-parcial-2.md) cruzan la pauta, el ERS actual y los ejemplos recibidos, incluyendo el Anexo 1. Incluyen React, estructura por capas, CRUD, persistencia, vistas públicas y administrativas, API simulada y pruebas con Jasmine y Karma. Por decisión del usuario se utilizará CSS nativo; la pauta menciona Bootstrap y esta elección se registra como una diferencia respecto de ese requisito.
 
-Están completados la definición inicial de alcance, la conexión con GitHub, la revisión y las correcciones del sitio original. El paso 4 incorporó la base de React con Next.js y TypeScript. El paso 5 separa rutas, presentación, modelos, servicios, datos y estilos; reserva las carpetas de hooks, pruebas, API y recursos para los siguientes pasos. La migración de las páginas y las funcionalidades adicionales todavía están pendientes.
+Están completados la definición inicial de alcance, la conexión con GitHub, la revisión y las correcciones del sitio original. El paso 4 incorporó la base de React con Next.js y TypeScript. El paso 5 separó las capas y el paso 6 configura Jasmine y Karma con dos pruebas iniciales de React. La migración de las páginas y las funcionalidades adicionales todavía están pendientes.
 
 ## Estructura por capas
 
@@ -41,6 +41,16 @@ npm run typecheck
 ```
 
 `package-lock.json` fija las dependencias para que `npm ci` reproduzca la instalación. Los comandos `dev` y `build` generan los archivos locales de Next.js necesarios; estos archivos y `node_modules` no se publican en Git.
+
+## Pruebas con Jasmine y Karma
+
+```bash
+npm test
+```
+
+Ejecuta las pruebas una vez en un navegador sin ventana. En Windows se utiliza Edge si está disponible; la configuración permite indicar otro navegador compatible mediante `CHROME_BIN`. No es necesario iniciar el servidor de Next.js.
+
+Para repetir las pruebas al guardar cambios, utiliza `npm run test:watch`. La [guía de pruebas iniciales](docs/pruebas-iniciales.md) explica la configuración y cada parte de los dos casos de prueba.
 
 ## Funcionalidades del sitio original
 

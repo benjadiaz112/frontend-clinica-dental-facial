@@ -6,7 +6,7 @@ Fecha: 19 de octubre de 2026.
 
 Migrar el frontend existente de Clínica Aura a React, con diseño responsivo mediante CSS nativo, separación por capas y pruebas con Jasmine y Karma. Adaptar el catálogo y el carrito a tratamientos de la clínica, incorporando los flujos públicos y administrativos del Anexo 1.
 
-Actualización del paso 5: ya existe la base de React con Next.js y la separación inicial por capas. Las funcionalidades descritas abajo siguen planificadas salvo lo expresamente indicado; este documento no certifica que estén implementadas ni que sus pruebas estén aprobadas.
+Actualización del paso 6: ya existe la base de React con Next.js, la separación inicial por capas y el entorno Jasmine/Karma con dos pruebas iniciales. Las funcionalidades descritas abajo siguen planificadas salvo lo expresamente indicado; este documento no certifica que estén implementadas ni que la suite final esté completada.
 
 Decisión del usuario: usar únicamente CSS nativo, sin Bootstrap. Tanto la pauta como el Anexo 1 mencionan Bootstrap; se registra esta diferencia sin afirmar que CSS nativo cumpla ese requisito específico.
 
@@ -79,6 +79,8 @@ Los componentes delegan las reglas en servicios y el acceso a datos en `data/`, 
 ## Testing y criterios de cierre
 
 Antes de migrar las funcionalidades, debe ejecutarse una prueba mínima de React/TSX con Jasmine y Karma para verificar la configuración.
+
+El paso 6 configura ese entorno y dos casos iniciales para renderizado y actualización de propiedades de PresentacionInicio. Su funcionamiento se explica en [pruebas-iniciales.md](pruebas-iniciales.md); las pruebas finales, mocks y cobertura continúan pendientes.
 
 La suite tendrá al menos 10 pruebas significativas, cubriendo lógica y comportamiento de componentes. Debe comprobar RUT válido e inválido, campos obligatorios, búsqueda y filtros, agregar/quitar tratamientos, total, mensajes y limpieza. Se añadirán casos para estados de carga, respuesta vacía y error de API, y recuperación de almacenamiento inválido. No se fijará el número en 10 si quedan comportamientos principales sin verificar.
 
