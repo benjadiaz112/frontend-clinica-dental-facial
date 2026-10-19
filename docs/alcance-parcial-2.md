@@ -29,7 +29,7 @@ Se migra el sitio existente de Clínica Aura a React con Next.js y TypeScript, m
 
 ## Fuera del plan acotado
 
-No se agregan administración, gestión de usuarios, autenticación, ofertas, blog, reportes, pagos ni CRUD general como requisitos de este PDF. Tampoco se exige una API simulada para mostrar los datos estáticos existentes. Se retiran únicamente sus páginas vacías ya creadas.
+No se agregan administración, gestión de usuarios, autenticación, ofertas, blog, reportes, pagos ni CRUD general como requisitos de este PDF. No se exige una API simulada para mostrar datos estáticos; el usuario solicita prepararla en el paso 14 como apoyo al catálogo y al testing. Solo proporciona consulta de los cinco tratamientos, sin operaciones adicionales.
 
 La introducción de la pauta menciona una plantilla de tienda con carrito. No se afirma que este documento apruebe automáticamente sustituir todo el flujo de esa plantilla por una reserva clínica: la aceptación del caso personalizado corresponde al docente.
 
@@ -37,4 +37,4 @@ La introducción de la pauta menciona una plantilla de tienda con carrito. No se
 
 Inicio, Nosotros y Contacto están migrados; Tratamientos y Reserva siguen en preparación. Existen diez pruebas iniciales con Jasmine y Karma, pero faltan pruebas de las funcionalidades pendientes, mocks, cobertura y documentos finales. Los HTML originales permanecen disponibles.
 
-El [plan pendiente](pasos-pendientes.md) se renumera desde el paso 13. La [guía de modelos](modelos.md) y las [rutas](rutas.md) describen el estado del paso 12. Cada avance tendrá un commit descriptivo con el autor solicitado, sin imponer una estrategia de ramas que la pauta no establece.
+Los pasos 13 y 14 preparan los datos originales y la [API local](api-simulada.md). El [plan pendiente](pasos-pendientes.md) continúa desde el paso 15. Cada avance tendrá un commit descriptivo con el autor solicitado, sin imponer una estrategia de ramas que la pauta no establece.

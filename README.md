@@ -48,6 +48,10 @@ npm run typecheck
 
 `package-lock.json` fija las dependencias para que `npm ci` reproduzca la instalación. Los comandos `dev` y `build` generan los archivos locales de Next.js necesarios; estos archivos y `node_modules` no se publican en Git.
 
+## API simulada local
+
+Ejecuta `npm run api` en otra terminal y consulta `http://127.0.0.1:3001/tratamientos`. La [guía de API](docs/api-simulada.md) detalla el servidor de consulta y su fuente única de datos. El catálogo aún no consume HTTP; se conectará en el siguiente paso.
+
 ## Pruebas con Jasmine y Karma
 
 ```bash

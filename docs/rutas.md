@@ -10,4 +10,4 @@
 
 Las direcciones inexistentes muestran `app/not-found.tsx`. El layout comparte encabezado, pie y salto al contenido. Menu marca la página activa con `aria-current`.
 
-En el paso 12 se eliminaron las páginas vacías ajenas al plan acotado y sus enlaces. Los HTML originales se conservan. `contacto.html` contiene la reserva original, que se migrará a `/reserva` en el paso 17 del nuevo plan.
+En el paso 12 se eliminaron las páginas vacías ajenas al plan acotado y sus enlaces. Los HTML originales se conservan. `contacto.html` contiene la reserva original, que se migrará a `/reserva` en el paso 18 del plan actualizado.
