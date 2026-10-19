@@ -6,7 +6,7 @@ Proyecto frontend académico de una clínica dental y de armonización facial. C
 
 El [alcance y los criterios de aceptación](docs/alcance-parcial-2.md) cruzan la pauta, el ERS actual y los ejemplos recibidos, incluyendo el Anexo 1. Incluyen React, estructura por capas, CRUD, persistencia, vistas públicas y administrativas, API simulada y pruebas con Jasmine y Karma. Por decisión del usuario se utilizará CSS nativo; la pauta menciona Bootstrap y esta elección se registra como una diferencia respecto de ese requisito.
 
-Están completados la definición inicial de alcance, la conexión con GitHub, la revisión y las correcciones del sitio original. El paso 4 incorporó la base de React con Next.js y TypeScript, el paso 5 separó las capas y el paso 6 configuró Jasmine y Karma con dos pruebas iniciales. El paso 7 prepara los estilos comunes con CSS nativo. La migración de las páginas y las funcionalidades adicionales todavía están pendientes.
+Están completados la definición inicial de alcance, la conexión con GitHub, la revisión y las correcciones del sitio original. El paso 4 incorporó React con Next.js y TypeScript, el paso 5 separó las capas, el paso 6 configuró Jasmine y Karma y el paso 7 preparó el CSS nativo común. El paso 8 integra encabezado, menú, pie de página y mensajes, deja un botón reutilizable y amplía la suite a cinco pruebas. La migración de las páginas y las funcionalidades adicionales todavía están pendientes.
 
 ## Estructura por capas
 
@@ -19,6 +19,8 @@ Todo permanece dentro de este mismo repositorio de GitHub.
 La [guía de estilos comunes](docs/estilos-comunes.md) explica los colores, contenedores, tarjetas, botones, campos y mensajes de `styles/globals.css`. Se utilizan clases sencillas, Flexbox y una media query para adaptar la distribución a móviles.
 
 ## Ejecutar la base de React con Next.js
+
+El [detalle de los componentes compartidos](docs/componentes-compartidos.md) explica sus propiedades y uso. El menú enlaza a Inicio; las demás rutas se incorporarán en el paso 9.
 
 Requiere Node.js 20.9 o superior y npm, según la [documentación oficial de Next.js](https://nextjs.org/docs/app/getting-started/installation). Ejecuta los comandos desde la raíz del repositorio.
 
@@ -54,7 +56,7 @@ npm test
 
 Ejecuta las pruebas una vez en un navegador sin ventana. En Windows se utiliza Edge si está disponible; la configuración permite indicar otro navegador compatible mediante `CHROME_BIN`. No es necesario iniciar el servidor de Next.js.
 
-Para repetir las pruebas al guardar cambios, utiliza `npm run test:watch`. La [guía de pruebas iniciales](docs/pruebas-iniciales.md) explica la configuración y cada parte de los dos casos de prueba.
+Para repetir las pruebas al guardar cambios, utiliza `npm run test:watch`. La [guía de pruebas iniciales](docs/pruebas-iniciales.md) explica la configuración y los cinco casos actuales.
 
 ## Funcionalidades del sitio original
 

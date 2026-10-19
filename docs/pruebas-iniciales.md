@@ -33,6 +33,7 @@ npm test
 - `karma.conf.js`: indica el framework, archivos, transformación de TSX y navegador.
 - `tests/configuracion.js`: activa el entorno de pruebas de React para usar `act`.
 - `tests/PresentacionInicio.spec.tsx`: contiene dos pruebas del componente real.
+- `tests/ComponentesCompartidos.spec.tsx`: añade tres casos de botón y mensajes en el paso 8.
 
 Jasmine escribe y comprueba los casos; Karma los ejecuta en el navegador. Esbuild transforma TypeScript y JSX para que el navegador pueda ejecutarlos. No se agregan bibliotecas de pruebas de interfaz adicionales.
 
@@ -49,9 +50,11 @@ Se mantiene el enfoque de los ejemplos recibidos: preparar datos, ejecutar y com
 
 Este paso configura el entorno y las pruebas iniciales. Las pruebas de formularios, eventos, lógica de negocio, mocks y cobertura se incorporarán al implementar esas funcionalidades. Todavía no representa la suite final de al menos 10 pruebas ni el documento final de cobertura.
 
+En el paso 8 se añaden tres comportamientos: el botón ejecuta su acción, un botón deshabilitado no la ejecuta y un mensaje de error es accesible y desaparece al limpiar el texto. La suite actual contiene cinco pruebas.
+
 ## Verificación de este paso
 
-- `npm test`: dos pruebas aprobadas en Edge.
+- `npm test`: cinco pruebas aprobadas en Edge tras el paso 8.
 - `npm run build` y `npm run typecheck`: completados correctamente.
 - `npm audit --omit=dev`: cero vulnerabilidades informadas en dependencias de producción durante esta revisión.
 - `npm audit`: cinco alertas de severidad alta en herramientas de desarrollo, derivadas de `braces`, usado por los monitores de archivos de Karma y karma-esbuild. La versión estable consultada, 3.0.3, sigue afectada y npm no ofrece una solución compatible para toda la cadena. Queda pendiente una actualización compatible; no se aplicaron las degradaciones de versiones que propone `--force`.
