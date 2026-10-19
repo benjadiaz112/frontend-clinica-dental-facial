@@ -2,16 +2,18 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import type { EnlaceMenu } from "@/models/EnlaceMenu";
 
 interface Propiedades {
-  enlaces: { texto: string; ruta: string }[];
+  enlaces: EnlaceMenu[];
+  etiqueta?: string;
 }
 
-export default function Menu({ enlaces }: Propiedades) {
+export default function Menu({ enlaces, etiqueta = "Navegación principal" }: Propiedades) {
   const rutaActual = usePathname();
 
   return (
-    <nav aria-label="Navegación principal">
+    <nav aria-label={etiqueta}>
       <ul className="menu">
         {enlaces.map(function (enlace) {
           return (
