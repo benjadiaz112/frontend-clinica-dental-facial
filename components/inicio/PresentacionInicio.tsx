@@ -1,4 +1,5 @@
 import type { InformacionClinica } from "@/models/InformacionClinica";
+import Mensaje from "../compartidos/Mensaje";
 
 interface Propiedades {
   clinica: InformacionClinica;
@@ -6,10 +7,10 @@ interface Propiedades {
 
 export default function PresentacionInicio({ clinica }: Propiedades) {
   return (
-    <main className="contenedor panel portada">
-      <h1>{clinica.nombre}</h1>
+    <section className="contenedor panel portada" aria-labelledby="titulo-inicio">
+      <h1 id="titulo-inicio">{clinica.nombre}</h1>
       <p>{clinica.descripcion}</p>
-      <p>{clinica.aviso}</p>
-    </main>
+      <Mensaje texto={clinica.aviso} />
+    </section>
   );
 }

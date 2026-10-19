@@ -25,6 +25,7 @@ La aplicación usa CSS nativo, sin librerías de estilos ni dependencias adicion
 | acciones | Agrupa botones y permite que pasen a otra fila. |
 | mensaje | Espaciado y bordes de un mensaje. |
 | mensaje-error | Colores de error; se combina con mensaje. |
+| mensaje-info | Colores de un aviso informativo; se combina con mensaje. |
 | mensaje-exito | Colores de éxito; se combina con mensaje. |
 | error | Texto de error asociado a un campo. |
 
@@ -33,5 +34,7 @@ Los campos `input`, `select` y `textarea` comparten tipografía, bordes y espaci
 ## Aplicación actual
 
 PresentacionInicio utiliza `contenedor panel portada`. Su contenido y funcionamiento siguen siendo los mismos; las demás clases están disponibles para los componentes y formularios de los próximos pasos.
+
+El paso 8 añade estilos de encabezado, menú activo, pie y enlace de salto al contenido. El menú se coloca debajo del nombre de la clínica en pantallas pequeñas. Mensaje aplica las clases comunes al aviso de la portada.
 
 El sitio HTML original conserva `css/estilos.css`. No se modifica ni se carga dentro de Next.js.
