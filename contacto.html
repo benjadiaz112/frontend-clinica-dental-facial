@@ -21,36 +21,36 @@
 
     <main>
         <h1>Reserva una evaluación</h1>
-        <p>Completa tus datos y te contactaremos.</p>
+        <p>Formulario de demostración: los datos no se envían ni se reserva una hora real.</p>
         <div class="disposicion-contacto">
             <form id="formulario" novalidate>
                 <label for="nombre">Nombre completo</label>
-                <input type="text" id="nombre" autocomplete="name" placeholder="Ejemplo: Ana Pérez">
+                <input type="text" id="nombre" autocomplete="name" maxlength="80" required aria-describedby="error-nombre" placeholder="Ejemplo: Ana Pérez">
                 <small class="error" id="error-nombre"></small>
 
                 <label for="rut">RUT</label>
-                <input type="text" id="rut" placeholder="12.345.678-5">
+                <input type="text" id="rut" maxlength="12" required aria-describedby="error-rut" placeholder="12.345.678-5">
                 <small class="error" id="error-rut"></small>
 
                 <label for="correo">Correo</label>
-                <input type="email" id="correo" autocomplete="email" placeholder="nombre@correo.cl">
+                <input type="email" id="correo" autocomplete="email" maxlength="254" required aria-describedby="error-correo" placeholder="nombre@correo.cl">
                 <small class="error" id="error-correo"></small>
 
                 <label for="servicio">Servicio</label>
-                <select id="servicio">
+                <select id="servicio" required aria-describedby="error-servicio">
                     <option value="">Selecciona una opción</option>
                     <option>Odontología general</option>
                     <option>Limpieza dental</option>
-                    <option>Blanqueamiento</option>
+                    <option>Blanqueamiento dental</option>
                     <option>Ortodoncia</option>
-                    <option>armonización facial</option>
+                    <option>Armonización facial</option>
                 </select>
                 <small class="error" id="error-servicio"></small>
 
                 <label for="mensaje">Comentario</label>
                 <textarea id="mensaje" rows="4" maxlength="500" placeholder="Escribe tu consulta"></textarea>
                 <div class="acciones-form">
-                    <button class="btn" type="submit">Enviar</button>
+                    <button class="btn" type="submit">Validar datos</button>
                     <button class="btn" type="reset">Limpiar</button>
                 </div>
                 <p id="resultado" aria-live="polite"></p>

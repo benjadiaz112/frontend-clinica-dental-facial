@@ -20,7 +20,7 @@
     </header>
 
     <main class="contenido-servicios">
-        <h1>Tratamientos odontológicos</h1>
+        <h1>Tratamientos dentales y faciales</h1>
         <p>Los valores son referenciales y cada tratamiento requiere una evaluación profesional.</p>
         <section class="rejilla-productos" aria-label="Tratamientos disponibles">
             <article class="tarjeta-producto">
@@ -29,7 +29,7 @@
                     <h2>Limpieza dental</h2>
                     <p>Eliminación de sarro y pulido para cuidar dientes y encías.</p>
                     <p class="precio">Desde $25.000</p>
-                    <a class="btn" href="contacto.html">Reservar evaluación</a>
+                    <a class="btn" href="contacto.html" onclick="seleccionarServicio('Limpieza dental')">Solicitar evaluación</a>
                 </div>
             </article>
             <article class="tarjeta-producto">
@@ -38,7 +38,7 @@
                     <h2>Blanqueamiento dental</h2>
                     <p>Tratamiento estético para aclarar el tono de los dientes.</p>
                     <p class="precio">Desde $80.000</p>
-                    <a class="btn" href="contacto.html">Reservar evaluación</a>
+                    <a class="btn" href="contacto.html" onclick="seleccionarServicio('Blanqueamiento dental')">Solicitar evaluación</a>
                 </div>
             </article>
             <article class="tarjeta-producto">
@@ -47,12 +47,31 @@
                     <h2>Ortodoncia</h2>
                     <p>Evaluación y corrección de la posición dental.</p>
                     <p class="precio">Evaluación desde $20.000</p>
-                    <a class="btn" href="contacto.html">Reservar evaluación</a>
+                    <a class="btn" href="contacto.html" onclick="seleccionarServicio('Ortodoncia')">Solicitar evaluación</a>
+                </div>
+            </article>
+            <article class="tarjeta-producto">
+                <img src="imagenes/consulta-dental.jpg" alt="Consulta de odontología general">
+                <div class="contenido-tarjeta">
+                    <h2>Odontología general</h2>
+                    <p>Evaluación de la salud dental y orientación sobre los cuidados necesarios.</p>
+                    <p class="precio">Valor según evaluación</p>
+                    <a class="btn" href="contacto.html" onclick="seleccionarServicio('Odontología general')">Solicitar evaluación</a>
+                </div>
+            </article>
+            <article class="tarjeta-producto">
+                <img src="imagenes/armonia-facial.jpg" alt="Evaluación de armonización facial">
+                <div class="contenido-tarjeta">
+                    <h2>Armonización facial</h2>
+                    <p>Evaluación profesional para orientar sobre alternativas de cuidado facial.</p>
+                    <p class="precio">Valor según evaluación</p>
+                    <a class="btn" href="contacto.html" onclick="seleccionarServicio('Armonización facial')">Solicitar evaluación</a>
                 </div>
             </article>
         </section>
     </main>
 
     <footer><p>Clínica Aura | Providencia, Santiago | +56 2 2345 6789</p></footer>
+    <script src="js/script.js"></script>
 </body>
 </html>

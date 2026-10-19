@@ -1,8 +1,37 @@
 const formulario = document.getElementById("formulario");
+const serviciosPermitidos = [
+    "Odontología general",
+    "Limpieza dental",
+    "Blanqueamiento dental",
+    "Ortodoncia",
+    "Armonización facial"
+];
 
 if (formulario) {
     formulario.addEventListener("submit", validarFormulario);
     formulario.addEventListener("reset", limpiarMensajes);
+    recuperarServicio();
+}
+
+// Igual que en el carrito del ejemplo, solo se guarda la elección del servicio.
+function seleccionarServicio(servicio) {
+    try {
+        localStorage.setItem("servicioSeleccionado", servicio);
+    } catch (error) {
+        // Si el almacenamiento no está disponible, el enlace sigue funcionando.
+    }
+}
+
+function recuperarServicio() {
+    try {
+        const servicio = localStorage.getItem("servicioSeleccionado");
+        if (serviciosPermitidos.indexOf(servicio) >= 0) {
+            document.getElementById("servicio").value = servicio;
+        }
+        localStorage.removeItem("servicioSeleccionado");
+    } catch (error) {
+        // El usuario también puede elegir el servicio directamente en el formulario.
+    }
 }
 
 function validarFormulario(evento) {
@@ -15,8 +44,8 @@ function validarFormulario(evento) {
     const servicio = document.getElementById("servicio").value;
     let esValido = true;
 
-    if (nombre.length < 3) {
-        mostrarError("nombre", "Escribe tu nombre completo.");
+    if (!validarNombre(nombre)) {
+        mostrarError("nombre", "Escribe tu nombre con letras, espacios, guiones o apóstrofes (mínimo 3 caracteres).");
         esValido = false;
     } else {
         marcarCorrecto("nombre");
@@ -36,7 +65,7 @@ function validarFormulario(evento) {
         marcarCorrecto("correo");
     }
 
-    if (servicio === "") {
+    if (serviciosPermitidos.indexOf(servicio) === -1) {
         mostrarError("servicio", "Selecciona un servicio.");
         esValido = false;
     } else {
@@ -45,21 +74,24 @@ function validarFormulario(evento) {
 
     const resultado = document.getElementById("resultado");
     if (esValido) {
-        resultado.textContent = "Solicitud enviada correctamente.";
+        resultado.textContent = "Datos válidos. Esta es una demostración: no se envió una solicitud ni se reservó una hora.";
         resultado.className = "correcto";
     } else {
         resultado.textContent = "Revisa los datos marcados.";
         resultado.className = "incorrecto";
+        document.querySelector('[aria-invalid="true"]').focus();
     }
 }
 
 function mostrarError(campo, mensaje) {
     document.getElementById("error-" + campo).textContent = mensaje;
     document.getElementById(campo).classList.add("incorrecto");
+    document.getElementById(campo).setAttribute("aria-invalid", "true");
 }
 
 function marcarCorrecto(campo) {
     document.getElementById(campo).classList.add("correcto");
+    document.getElementById(campo).setAttribute("aria-invalid", "false");
 }
 
 function limpiarMensajes() {
@@ -68,15 +100,25 @@ function limpiarMensajes() {
     });
     document.querySelectorAll("form input, form select, form textarea").forEach(function (campo) {
         campo.classList.remove("correcto", "incorrecto");
+        campo.removeAttribute("aria-invalid");
     });
     const resultado = document.getElementById("resultado");
     resultado.textContent = "";
     resultado.className = "";
 }
 
+function validarNombre(nombre) {
+    const patron = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+([ '-][A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+)*$/;
+    return nombre.length >= 3 && nombre.length <= 80 && patron.test(nombre);
+}
+
 function validarRut(rut) {
-    const limpio = rut.replace(/\.|-/g, "").toUpperCase();
-    if (limpio.length < 8) return false;
+    const normalizado = rut.trim().toUpperCase();
+    const sinPuntos = /^[1-9]\d{6,7}-?[\dK]$/;
+    const conPuntos = /^[1-9]\d{0,1}\.\d{3}\.\d{3}-[\dK]$/;
+    if (!sinPuntos.test(normalizado) && !conPuntos.test(normalizado)) return false;
+
+    const limpio = normalizado.replace(/\.|-/g, "");
 
     const cuerpo = limpio.slice(0, -1);
     const digito = limpio.slice(-1);
