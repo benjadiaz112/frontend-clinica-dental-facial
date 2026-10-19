@@ -1,0 +1,16 @@
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import "./globals.css";
+
+export const metadata: Metadata = {
+  title: "Clínica Aura",
+  description: "Clínica dental y de armonización facial. Proyecto académico."
+};
+
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return (
+    <html lang="es">
+      <body>{children}</body>
+    </html>
+  );
+}
