@@ -12,7 +12,7 @@ El proyecto usa un solo repositorio de GitHub. Las carpetas siguientes separan r
 | models/ | Interfaces que describen la estructura de los datos. | InformacionClinica define nombre, descripción y aviso. |
 | services/ | Funciones que coordinan los datos y las reglas del negocio, sin depender de React ni del DOM. | obtenerInformacionClinica obtiene la información de portada. |
 | data/ | Fuentes de datos, funciones CRUD y acceso al almacenamiento o a la API. | Datos estáticos de la clínica; CRUD y persistencia pendientes. |
-| styles/ | CSS nativo compartido. | Estilos globales utilizados por el layout. |
+| styles/ | CSS nativo compartido. | Paso 7: colores, distribución responsiva, tarjetas, botones, campos, mensajes y foco visible. |
 | public/ | Recursos que Next.js puede servir, como imágenes. | Reservada; las imágenes originales todavía no se migran. |
 | tests/ | Pruebas de funciones y componentes. | Jasmine y Karma configurados en el paso 6; dos casos iniciales de PresentacionInicio. |
 | api_simulada/ | Datos y configuración de la API de demostración. | Reservada; todavía no hay un servidor configurado. |
@@ -35,6 +35,8 @@ app/layout.tsx carga styles/globals.css.
 ```
 
 La página inicial muestra el mismo contenido que antes. Ahora los datos, la función que los obtiene, la presentación y los estilos están en archivos separados.
+
+El paso 7 añade clases reutilizables y adapta la distribución a móviles. La [guía de estilos comunes](estilos-comunes.md) explica su uso.
 
 ## Reglas para continuar
 
