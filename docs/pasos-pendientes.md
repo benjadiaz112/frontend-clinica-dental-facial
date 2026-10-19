@@ -1,29 +1,21 @@
-# Pasos pendientes después del paso 11
+# Plan acotado a la pauta
 
-Se mantiene un solo repositorio, CSS nativo y código simple por capas. Inicio, Nosotros y Contacto informativo están migrados; Reserva y las operaciones de negocio siguen pendientes.
+El paso 12 define los modelos de Tratamiento y Reserva. Se conserva el caso de Clínica Aura y la estructura por capas. Los anexos y ejemplos ya no amplían el alcance.
 
-12. Definir modelos de tratamientos, categorías, usuarios, selección y solicitudes.
-13. Crear las funciones JavaScript de datos: consultar, crear, editar y eliminar, con persistencia.
-14. Preparar los datos ficticios y el servidor de la API simulada.
-15. Conectar los servicios y mostrar carga, errores y respuestas vacías.
-16. Construir el catálogo de tratamientos con imágenes y precios referenciales.
-17. Agregar búsqueda y filtros por categoría.
-18. Crear el detalle de cada tratamiento y manejar identificadores inexistentes.
-19. Implementar la selección de tratamientos: agregar, quitar y vaciar.
-20. Calcular totales referenciales y conservar la selección al recargar.
-21. Implementar registro, inicio de sesión y roles de demostración.
-22. Migrar el formulario de Reserva a React, con validaciones, errores y limpieza.
-23. Crear el resumen de solicitud y las pantallas de resultado correcto o error.
-24. Desarrollar ofertas, blog y detalle de artículos.
-25. Implementar el panel administrativo y su acceso por rol.
-26. Implementar la gestión de tratamientos y categorías.
-27. Implementar la gestión de usuarios.
-28. Implementar solicitudes e historial.
-29. Completar reportes y perfil administrativo.
-30. Revisar diseño responsivo, accesibilidad y navegación del sistema completo.
-31. Ampliar las pruebas de lógica: validaciones, filtros, selección y totales.
-32. Ampliar las pruebas de componentes e interacciones.
-33. Agregar mocks y medir cobertura real.
-34. Verificar los flujos completos y la ejecución desde una copia limpia.
-35. Actualizar ERS versión 2 e informe de testing con resultados y evidencias.
-36. Preparar la entrega y la demostración del proyecto.
+13. Preparar los datos de los cinco tratamientos originales, sin inventar precios.
+14. Migrar el catálogo a componentes React con propiedades.
+15. Permitir elegir un tratamiento para evaluación mediante estado de React.
+16. Extraer las validaciones de nombre, RUT, correo y servicio a funciones independientes del DOM.
+17. Migrar Reserva con campos controlados, errores asociados, confirmación de demostración y limpieza.
+18. Completar la navegación y revisar la página 404.
+19. Revisar responsividad y accesibilidad. Resolver la diferencia de Bootstrap: la pauta lo exige y el usuario mantiene CSS nativo.
+20. Ampliar pruebas Jasmine/Karma de lógica con casos válidos, inválidos y límites.
+21. Ampliar pruebas de componentes y DOM: selección, errores, confirmación y limpieza.
+22. Usar mocks o spies donde corresponda y analizar los resultados.
+23. Medir cobertura real, corregir fallos y guardar evidencia.
+24. Actualizar el ERS con la propuesta terminada.
+25. Preparar el documento de cobertura de testing.
+26. Verificar una copia limpia y preparar GitHub público y ZIP.
+27. Preparar la presentación individual de React, propiedades, estados, responsividad y pruebas.
+
+Se retiraron las páginas vacías de administración, usuarios, categorías, ofertas, blog, carrito, checkout y resultados separados. No tenían operaciones implementadas. La pauta menciona una plantilla con carrito, pero no detalla esos módulos para la adaptación a una clínica; la aceptación de esa adaptación corresponde al docente.

@@ -2,7 +2,7 @@
 
 `/nosotros` conserva el texto y la imagen de `nosotros.html`, con un enlace a Tratamientos. `/contacto` recupera la ubicación y el teléfono del pie original, indicando que son datos de demostración. No se agregan correos, horarios ni direcciones no proporcionadas.
 
-El archivo original `contacto.html` es un formulario de reserva. En React se mantienen separadas las rutas: Contacto informa y enlaza a `/reserva`; el formulario controlado y sus validaciones se implementarán en el paso 22. El enlace no registra una solicitud. El HTML y el JavaScript originales siguen disponibles.
+El archivo original `contacto.html` es un formulario de reserva. En React se mantienen separadas las rutas: Contacto informa y enlaza a `/reserva`; el formulario controlado y sus validaciones se implementarán en el paso 17 del plan acotado. El enlace no registra una solicitud. El HTML y el JavaScript originales siguen disponibles.
 
 ## Archivos y responsabilidades
 

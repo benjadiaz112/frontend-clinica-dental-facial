@@ -1,5 +1,7 @@
 # Componentes compartidos — paso 8
 
+Actualización del paso 12: la navegación se limita a Inicio, Nosotros, Tratamientos, Reserva y Contacto. Se retiraron los enlaces administrativos y comerciales de la ampliación anterior. El [alcance vigente](alcance-parcial-2.md) prevalece sobre las referencias históricas de esta guía.
+
 Los componentes están en `components/compartidos/`. Se usan funciones, propiedades, condiciones, `map` y eventos sencillos, con CSS nativo y sin dependencias nuevas.
 
 | Archivo | Responsabilidad |

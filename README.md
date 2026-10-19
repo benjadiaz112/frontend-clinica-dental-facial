@@ -4,9 +4,9 @@ Proyecto frontend académico de una clínica dental y de armonización facial. C
 
 ## Evaluación Parcial 2: alcance definido
 
-El [alcance y los criterios de aceptación](docs/alcance-parcial-2.md) cruzan la pauta, el ERS actual y los ejemplos recibidos, incluyendo el Anexo 1. Incluyen React, estructura por capas, CRUD, persistencia, vistas públicas y administrativas, API simulada y pruebas con Jasmine y Karma. Por decisión del usuario se utilizará CSS nativo; la pauta menciona Bootstrap y esta elección se registra como una diferencia respecto de ese requisito.
+El [alcance vigente](docs/alcance-parcial-2.md) se limita a la pauta principal, por indicación del usuario: React, propiedades y estados, navegación, formularios, responsividad, Jasmine/Karma, mocks, cobertura y entregables. Se conserva el caso de Clínica Aura. Por decisión del usuario se utiliza CSS nativo; la pauta exige Bootstrap y esta diferencia sigue pendiente.
 
-Están completados la definición inicial de alcance, la conexión con GitHub, la revisión y las correcciones del sitio original. Los pasos 4 a 9 prepararon React con Next.js, capas, CSS nativo, pruebas, componentes compartidos y 21 rutas estáticas. El paso 10 migró Inicio con presentación, imágenes, tratamientos destacados, carrusel manual y video. El paso 11 incorpora Nosotros y Contacto informativo. La suite actual contiene diez pruebas; las otras dieciocho páginas todavía están en preparación.
+Inicio, Nosotros y Contacto informativo están migrados. Tratamientos y Reserva siguen en preparación. El paso 12 define sus modelos y retira las páginas vacías de la ampliación administrativa y comercial. Quedan cinco rutas de la clínica y la página 404. La suite actual contiene diez pruebas iniciales; la cobertura final está pendiente.
 
 ## Estructura por capas
 
