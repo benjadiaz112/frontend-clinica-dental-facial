@@ -20,6 +20,21 @@
   font-weight: bold;
 }
 
+.tarjeta-tratamiento button {
+  width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.tarjeta-tratamiento button[aria-pressed="true"] {
+  background-color: var(--color-oscuro);
+  outline: 2px solid var(--color-oscuro);
+  outline-offset: 2px;
+}
+
+.seleccion-tratamiento {
+  margin-top: 24px;
+}
+
 @media (max-width: 768px) {
   .catalogo-tratamientos > * {
     flex: auto;
