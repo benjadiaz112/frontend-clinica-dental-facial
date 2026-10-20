@@ -8,8 +8,4 @@ export const enlacesPrincipales: EnlaceMenu[] = [
   { texto: "Contacto", ruta: "/contacto" }
 ];
 
-export const enlacesAdicionales: EnlaceMenu[] = [
-  { texto: "Tratamientos", ruta: "/tratamientos" },
-  { texto: "Reserva", ruta: "/reserva" },
-  { texto: "Contacto", ruta: "/contacto" }
-];
+export const enlacesAdicionales: EnlaceMenu[] = enlacesPrincipales;
