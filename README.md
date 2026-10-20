@@ -6,7 +6,7 @@ Proyecto frontend académico de una clínica dental y de armonización facial. C
 
 El [alcance vigente](docs/alcance-parcial-2.md) se limita a la pauta principal, por indicación del usuario: React, propiedades y estados, navegación, formularios, responsividad, Jasmine/Karma, mocks, cobertura y entregables. Se conserva el caso de Clínica Aura. Por decisión del usuario se utiliza CSS nativo; la pauta exige Bootstrap y esta diferencia sigue pendiente.
 
-Inicio, Nosotros, Contacto y Tratamientos están migrados. El [catálogo](docs/catalogo-react.md) consulta la API y permite [seleccionar un tratamiento](docs/seleccion-tratamiento.md). Reserva muestra la elección; su formulario sigue pendiente. El [paso 17](docs/validaciones-reserva.md) prepara las validaciones de nombre, RUT, correo y servicio. Se conservan cinco rutas y la página 404. La suite contiene treinta pruebas; la cobertura final está pendiente.
+Inicio, Nosotros, Contacto, Tratamientos y Reserva están migrados. El [catálogo](docs/catalogo-react.md) consulta la API y permite [seleccionar un tratamiento](docs/seleccion-tratamiento.md). El [formulario React](docs/formulario-reserva.md) valida nombre, RUT, correo y servicio, muestra errores y permite limpiar. La confirmación es solo de demostración. Se conservan cinco rutas y la página 404. La suite contiene 38 pruebas; la cobertura final está pendiente.
 
 ## Estructura por capas
 
@@ -60,7 +60,7 @@ npm test
 
 Ejecuta las pruebas una vez en un navegador sin ventana. En Windows se utiliza Edge si está disponible; la configuración permite indicar otro navegador compatible mediante `CHROME_BIN`. No es necesario iniciar el servidor de Next.js.
 
-Para repetir las pruebas al guardar cambios, utiliza `npm run test:watch`. La suite incluye diez casos iniciales, seis del catálogo con mocks, dos de selección y doce de validaciones. No es necesario iniciar la API para ejecutar las pruebas.
+Para repetir las pruebas al guardar cambios, utiliza `npm run test:watch`. La suite incluye diez casos iniciales, seis del catálogo con mocks, dos de selección, doce de validaciones y ocho del formulario. No es necesario iniciar la API para ejecutar las pruebas.
 
 ## Funcionalidades del sitio original
 

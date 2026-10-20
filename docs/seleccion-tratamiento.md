@@ -6,13 +6,13 @@ El enlace Continuar a Reserva solo aparece después de elegir un tratamiento y l
 
 Reserva lee el identificador con URLSearchParams y consulta los tratamientos mediante el hook y servicios existentes. Muestra el nombre y precio del tratamiento encontrado. Al recargar Reserva se conserva la referencia en la URL; al volver al catálogo comienza una selección nueva. Un identificador desconocido muestra un error, y si falla la API se informa sin mostrar una selección válida. Sin parámetro se ofrece el enlace al catálogo.
 
-El formulario de Reserva sigue pendiente para el paso 18. La selección no envía solicitudes ni reserva horas. No se agrega carrito, totales, administración ni dependencias.
+Desde el paso 18, el formulario React integra esta elección y permite cambiar el servicio, validar y limpiar. La selección no envía solicitudes ni reserva horas. No se agrega carrito, totales, administración ni dependencias.
 
 ## Archivos
 
 - components/tratamientos/CatalogoTratamientos.tsx: estado, mensaje, cambio, limpieza y enlace a Reserva.
 - components/tratamientos/TarjetaTratamiento.tsx: botón con evento y estado recibido por propiedades.
-- components/reserva/SeleccionReserva.tsx: lectura del identificador, consulta y resumen.
+- Desde el paso 18, hooks/useReserva.ts y components/reserva/FormularioReserva.tsx integran la lectura del identificador, consulta y resumen. Se retira SeleccionReserva.tsx.
 - app/reserva/page.tsx: título, aviso de demostración y selección recibida.
 - styles/tratamientos.css: botones y separación del resumen con CSS nativo.
 - tests/CatalogoTratamientos.spec.tsx: dos casos nuevos para cambiar y quitar la elección.
