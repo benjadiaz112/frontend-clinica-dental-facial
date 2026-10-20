@@ -2,7 +2,10 @@
 
 Completados: paso 12, modelos; paso 13, datos originales; paso 14, API local; paso 15, catálogo conectado; paso 16, selección única y paso del identificador a Reserva. Se conserva el caso de Clínica Aura y la estructura por capas. La API es una decisión de implementación, no una exigencia explícita de la pauta.
 
-17. Extraer las validaciones de nombre, RUT, correo y servicio a funciones independientes del DOM.
+Paso 17 completado: validaciones de nombre, RUT, correo y servicio independientes del DOM, con doce casos nuevos de prueba. La suite cuenta con treinta casos.
+
+## Pendientes
+
 18. Migrar Reserva con campos controlados, errores asociados, confirmación de demostración y limpieza.
 19. Completar la navegación y revisar la página 404.
 20. Revisar responsividad y accesibilidad. Resolver la diferencia de Bootstrap: la pauta lo exige y el usuario mantiene CSS nativo.
