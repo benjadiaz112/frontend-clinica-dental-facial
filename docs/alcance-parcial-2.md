@@ -35,6 +35,6 @@ La introducción de la pauta menciona una plantilla de tienda con carrito. No se
 
 ## Estado y cierre
 
-Inicio, Nosotros y Contacto están migrados; Tratamientos y Reserva siguen en preparación. Existen diez pruebas iniciales con Jasmine y Karma, pero faltan pruebas de las funcionalidades pendientes, mocks, cobertura y documentos finales. Los HTML originales permanecen disponibles.
+Inicio, Nosotros, Contacto y Tratamientos están migrados; Reserva sigue en preparación. El catálogo consulta la API con estados de carga, error y lista vacía. Existen dieciséis pruebas con Jasmine y Karma, incluyendo seis casos del catálogo con mocks de fetch. Faltan pruebas de las funcionalidades pendientes, cobertura y documentos finales. Los HTML originales permanecen disponibles.
 
-Los pasos 13 y 14 preparan los datos originales y la [API local](api-simulada.md). El [plan pendiente](pasos-pendientes.md) continúa desde el paso 15. Cada avance tendrá un commit descriptivo con el autor solicitado, sin imponer una estrategia de ramas que la pauta no establece.
+Los pasos 13 y 14 preparan los datos originales y la [API local](api-simulada.md). El paso 15 conecta el [catálogo React](catalogo-react.md). El [plan pendiente](pasos-pendientes.md) continúa desde el paso 16. Cada avance tendrá un commit descriptivo con el autor solicitado, sin imponer una estrategia de ramas que la pauta no establece.

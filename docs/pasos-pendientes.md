@@ -1,8 +1,7 @@
 # Plan acotado a la pauta
 
-Completados: paso 12, modelos de Tratamiento y Reserva; paso 13, datos de los cinco tratamientos originales; paso 14, API local de consulta solicitada por el usuario. Se conserva el caso de Clínica Aura y la estructura por capas. La API es una decisión de implementación, no una exigencia explícita de la pauta.
+Completados: paso 12, modelos; paso 13, datos originales; paso 14, API local; paso 15, catálogo React conectado con carga, error y lista vacía. Se conserva el caso de Clínica Aura y la estructura por capas. La API es una decisión de implementación, no una exigencia explícita de la pauta.
 
-15. Migrar el catálogo a componentes React y consultar la API mostrando carga y errores.
 16. Permitir elegir un tratamiento para evaluación mediante estado de React.
 17. Extraer las validaciones de nombre, RUT, correo y servicio a funciones independientes del DOM.
 18. Migrar Reserva con campos controlados, errores asociados, confirmación de demostración y limpieza.
