@@ -21,7 +21,7 @@ Sin la API se muestra un error; después de iniciarla se puede recargar la pági
 - styles/tratamientos.css: Flexbox, tarjetas y adaptación móvil con CSS nativo.
 - tests/CatalogoTratamientos.spec.tsx: seis casos con fetch simulado, sin depender de la API real.
 
-Se mantienen los cinco tratamientos originales y los precios según evaluación. No se añade selección, carrito ni formulario en este paso; la selección corresponde al paso 16. No se instalan dependencias.
+Se mantienen los cinco tratamientos originales y los precios según evaluación. El paso 16 añade la [selección única](seleccion-tratamiento.md), su limpieza y el enlace a Reserva. El formulario sigue pendiente. No se instalan dependencias.
 
 ## Verificación
 

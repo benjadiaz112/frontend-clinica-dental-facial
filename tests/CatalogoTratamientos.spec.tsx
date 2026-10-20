@@ -44,7 +44,7 @@ describe("Catálogo conectado a la API", function () {
     expect(precios[2].textContent).toBe("Evaluación desde $20.000");
     expect(precios[3].textContent).toBe("Valor según evaluación");
     expect(precios[4].textContent).toBe("Valor según evaluación");
-    expect(contenedor.querySelector('[role="status"]')).toBeNull();
+    expect(contenedor.querySelector('[role="status"]')?.textContent).toContain("Selecciona un tratamiento");
   });
 
   it("informa cuando la API devuelve una lista vacía", async function () {
@@ -70,5 +70,33 @@ describe("Catálogo conectado a la API", function () {
     spyOn(window, "fetch").and.resolveTo(respuestaJson({}));
     await mostrar();
     expect(contenedor.querySelector('[role="alert"]')).not.toBeNull();
+  });
+
+  it("selecciona un solo tratamiento y actualiza el enlace a Reserva al cambiarlo", async function () {
+    spyOn(window, "fetch").and.resolveTo(respuestaJson(datos.tratamientos));
+    await mostrar();
+    expect(contenedor.querySelector('a[href^="/reserva"]')).toBeNull();
+
+    const botones = contenedor.querySelectorAll<HTMLButtonElement>("article button");
+    await act(async function () { botones[0].click(); });
+    expect(botones[0].getAttribute("aria-pressed")).toBe("true");
+    expect(contenedor.querySelector('[role="status"]')?.textContent).toContain("Limpieza dental");
+    expect(contenedor.querySelector("a")?.getAttribute("href")).toBe("/reserva?tratamiento=1");
+
+    await act(async function () { botones[4].click(); });
+    expect(botones[0].getAttribute("aria-pressed")).toBe("false");
+    expect(contenedor.querySelectorAll('[aria-pressed="true"]').length).toBe(1);
+    expect(contenedor.querySelector("a")?.getAttribute("href")).toBe("/reserva?tratamiento=5");
+    expect(contenedor.querySelector('[role="status"]')?.textContent).toContain("Armonización facial");
+  });
+
+  it("permite quitar la selección y oculta el enlace a Reserva", async function () {
+    spyOn(window, "fetch").and.resolveTo(respuestaJson(datos.tratamientos));
+    await mostrar();
+    await act(async function () { contenedor.querySelector<HTMLButtonElement>("article button")?.click(); });
+    await act(async function () { contenedor.querySelector<HTMLButtonElement>(".seleccion-tratamiento button")?.click(); });
+    expect(contenedor.querySelector("a")).toBeNull();
+    expect(contenedor.querySelectorAll('[aria-pressed="true"]').length).toBe(0);
+    expect(contenedor.querySelector('[role="status"]')?.textContent).toContain("Selecciona un tratamiento");
   });
 });

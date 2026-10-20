@@ -6,7 +6,7 @@
 | `/nosotros` | Información original de la clínica migrada. |
 | `/contacto` | Información de demostración y enlace a Reserva. |
 | `/tratamientos` | Catálogo conectado a la API local, con carga, error y lista vacía. |
-| `/reserva` | Pendiente de migrar el formulario original. |
+| `/reserva` | Recibe el tratamiento seleccionado mediante el parámetro tratamiento y lo consulta en la API. Formulario pendiente. |
 
 Las direcciones inexistentes muestran `app/not-found.tsx`. El layout comparte encabezado, pie y salto al contenido. Menu marca la página activa con `aria-current`.
 
