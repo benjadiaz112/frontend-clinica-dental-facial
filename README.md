@@ -6,7 +6,7 @@ Proyecto frontend académico de una clínica dental y de armonización facial. C
 
 El [alcance vigente](docs/alcance-parcial-2.md) se limita a la pauta principal, por indicación del usuario: React, propiedades y estados, navegación, formularios, responsividad, Jasmine/Karma, mocks, cobertura y entregables. Se conserva el caso de Clínica Aura. Por decisión del usuario se utiliza CSS nativo; la pauta exige Bootstrap y esta diferencia sigue pendiente.
 
-Inicio, Nosotros, Contacto y Tratamientos están migrados. El [catálogo](docs/catalogo-react.md) consulta la API y muestra carga, error o lista vacía. El [paso 16](docs/seleccion-tratamiento.md) permite seleccionar, cambiar y quitar un tratamiento, y continuar a Reserva con su identificador. Reserva muestra el tratamiento elegido; su formulario sigue pendiente. Se conservan cinco rutas y la página 404. La suite contiene dieciocho pruebas; la cobertura final está pendiente.
+Inicio, Nosotros, Contacto y Tratamientos están migrados. El [catálogo](docs/catalogo-react.md) consulta la API y permite [seleccionar un tratamiento](docs/seleccion-tratamiento.md). Reserva muestra la elección; su formulario sigue pendiente. El [paso 17](docs/validaciones-reserva.md) prepara las validaciones de nombre, RUT, correo y servicio. Se conservan cinco rutas y la página 404. La suite contiene treinta pruebas; la cobertura final está pendiente.
 
 ## Estructura por capas
 
@@ -60,7 +60,7 @@ npm test
 
 Ejecuta las pruebas una vez en un navegador sin ventana. En Windows se utiliza Edge si está disponible; la configuración permite indicar otro navegador compatible mediante `CHROME_BIN`. No es necesario iniciar el servidor de Next.js.
 
-Para repetir las pruebas al guardar cambios, utiliza `npm run test:watch`. La [guía de pruebas iniciales](docs/pruebas-iniciales.md) explica los diez casos iniciales; el catálogo añade seis casos con mocks de fetch y la selección añade otros dos. No es necesario iniciar la API para ejecutar las pruebas.
+Para repetir las pruebas al guardar cambios, utiliza `npm run test:watch`. La suite incluye diez casos iniciales, seis del catálogo con mocks, dos de selección y doce de validaciones. No es necesario iniciar la API para ejecutar las pruebas.
 
 ## Funcionalidades del sitio original
 
