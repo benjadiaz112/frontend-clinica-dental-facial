@@ -1,6 +1,6 @@
 # Datos de tratamientos — paso 13
 
-Desde el paso 14, `api_simulada/db.json` contiene los cinco objetos originales y `data/tratamientos.ts` los importa con la interfaz Tratamiento. Se mantienen el orden, nombres, descripciones, textos alternativos y precios de `servicios.html`. Solo se añade un identificador numérico y se adapta la ruta de las imágenes a `/imagenes/`, servida por Next.js.
+`api_simulada/db.json` contiene los cinco objetos originales. Desde el paso 15, `data/tratamientos.ts` los consulta por HTTP desde la API local. Se mantienen el orden, nombres, descripciones, textos alternativos y precios de `servicios.html`. Solo se añade un identificador numérico y se adapta la ruta de las imágenes a `/imagenes/`, servida por Next.js.
 
 | Tratamiento | precioDesde | textoPrecio |
 | --- | --- | --- |
@@ -12,4 +12,4 @@ Desde el paso 14, `api_simulada/db.json` contiene los cinco objetos originales y
 
 Los importes son referenciales en pesos chilenos. Ortodoncia conserva el valor de la evaluación, sin presentarlo como precio del tratamiento completo. `null` indica que no existe un precio informado; no significa cero ni atención gratuita.
 
-`services/tratamientosService.ts` expone obtenerTratamientos, siguiendo las funciones sencillas de los servicios existentes. Devuelve los datos locales; el paso 14 prepara la API sin conectar aún la interfaz. No se agrega CRUD, almacenamiento ni dependencias. La página del catálogo todavía está en preparación.
+`services/tratamientosService.ts` expone obtenerTratamientos y delega el fetch a data/. El catálogo utiliza useTratamientos para gestionar la consulta y sus estados. No se agrega CRUD, almacenamiento ni dependencias.

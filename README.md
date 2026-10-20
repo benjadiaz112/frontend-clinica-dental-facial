@@ -6,7 +6,7 @@ Proyecto frontend académico de una clínica dental y de armonización facial. C
 
 El [alcance vigente](docs/alcance-parcial-2.md) se limita a la pauta principal, por indicación del usuario: React, propiedades y estados, navegación, formularios, responsividad, Jasmine/Karma, mocks, cobertura y entregables. Se conserva el caso de Clínica Aura. Por decisión del usuario se utiliza CSS nativo; la pauta exige Bootstrap y esta diferencia sigue pendiente.
 
-Inicio, Nosotros y Contacto informativo están migrados. Tratamientos y Reserva siguen en preparación. El paso 12 define sus modelos y retira las páginas vacías de la ampliación administrativa y comercial. El paso 13 prepara los [datos de los cinco tratamientos originales](docs/datos-tratamientos.md) y su servicio de consulta. Quedan cinco rutas de la clínica y la página 404. La suite actual contiene diez pruebas iniciales; la cobertura final está pendiente.
+Inicio, Nosotros, Contacto y Tratamientos están migrados. El [catálogo del paso 15](docs/catalogo-react.md) consulta la API y muestra carga, error o lista vacía. Reserva sigue en preparación. Se conservan cinco rutas de la clínica y la página 404. La suite contiene dieciséis pruebas; la cobertura final está pendiente.
 
 ## Estructura por capas
 
@@ -50,7 +50,7 @@ npm run typecheck
 
 ## API simulada local
 
-Ejecuta `npm run api` en otra terminal y consulta `http://127.0.0.1:3001/tratamientos`. La [guía de API](docs/api-simulada.md) detalla el servidor de consulta y su fuente única de datos. El catálogo aún no consume HTTP; se conectará en el siguiente paso.
+Ejecuta `npm run api` en otra terminal. El catálogo consulta `http://127.0.0.1:3001/tratamientos` desde el navegador; si la API no está disponible muestra un error. La [guía de API](docs/api-simulada.md) detalla el servidor local. Esta dirección está preparada para ejecución en el mismo equipo.
 
 ## Pruebas con Jasmine y Karma
 
@@ -60,7 +60,7 @@ npm test
 
 Ejecuta las pruebas una vez en un navegador sin ventana. En Windows se utiliza Edge si está disponible; la configuración permite indicar otro navegador compatible mediante `CHROME_BIN`. No es necesario iniciar el servidor de Next.js.
 
-Para repetir las pruebas al guardar cambios, utiliza `npm run test:watch`. La [guía de pruebas iniciales](docs/pruebas-iniciales.md) explica la configuración y los diez casos actuales.
+Para repetir las pruebas al guardar cambios, utiliza `npm run test:watch`. La [guía de pruebas iniciales](docs/pruebas-iniciales.md) explica la configuración y los diez casos iniciales; el [catálogo](docs/catalogo-react.md) añade seis casos con mocks de fetch. No es necesario iniciar la API para ejecutar las pruebas.
 
 ## Funcionalidades del sitio original
 

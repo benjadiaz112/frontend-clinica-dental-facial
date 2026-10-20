@@ -12,13 +12,13 @@ npm run api
 
 Consultar `http://127.0.0.1:3001/tratamientos`. Detener con Ctrl+C. La API solo escucha en el equipo local. Si el puerto 3001 está ocupado, liberar ese puerto antes de iniciarla.
 
-En otra terminal se puede ejecutar `npm run dev` para Next.js, en el puerto 3000. La conexión del catálogo mediante fetch queda pendiente; `obtenerTratamientos()` todavía devuelve los datos locales.
+En otra terminal ejecutar `npm run dev` para Next.js, en el puerto 3000. Desde el paso 15, `/tratamientos` consulta esta API mediante fetch a través de las capas data/ y services/. Sin API disponible se muestra un error; iniciarla y recargar permite volver a consultar.
 
 ## Archivos
 
 - `api_simulada/db.json`: única fuente de los cinco tratamientos originales. Conserva nombres, descripciones, imágenes, textos alternativos, precios y valores null.
 - `api_simulada/servidor.js`: servidor pequeño escrito en JavaScript con el módulo http incluido en Node.js, sin instalar dependencias.
-- `data/tratamientos.ts`: importa el mismo JSON y comprueba su estructura con el modelo Tratamiento; evita duplicar los datos.
+- `data/tratamientos.ts`: consulta la API y comprueba el estado HTTP y que la respuesta sea una lista. db.json sigue siendo la fuente de datos del servidor.
 - `package.json`: agrega el comando api.
 
 ## Respuestas

@@ -5,7 +5,7 @@
 | `/` | Inicio migrado con presentación, imágenes, destacados, carrusel y video. |
 | `/nosotros` | Información original de la clínica migrada. |
 | `/contacto` | Información de demostración y enlace a Reserva. |
-| `/tratamientos` | Pendiente de migrar el catálogo original. |
+| `/tratamientos` | Catálogo conectado a la API local, con carga, error y lista vacía. |
 | `/reserva` | Pendiente de migrar el formulario original. |
 
 Las direcciones inexistentes muestran `app/not-found.tsx`. El layout comparte encabezado, pie y salto al contenido. Menu marca la página activa con `aria-current`.

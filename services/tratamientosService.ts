@@ -1,5 +1,5 @@
-import { tratamientos } from "@/data/tratamientos";
+import { consultarTratamientos } from "@/data/tratamientos";
 
-export function obtenerTratamientos() {
-  return tratamientos;
+export function obtenerTratamientos(signal: AbortSignal) {
+  return consultarTratamientos(signal);
 }
