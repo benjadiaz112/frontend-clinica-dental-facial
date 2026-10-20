@@ -11,7 +11,7 @@ export default function PiePagina({ nombre, enlaces }: Propiedades) {
     <footer className="pie-pagina">
       <div className="contenedor">
         <p>{nombre} | Proyecto académico</p>
-        <Menu enlaces={enlaces} etiqueta="Enlaces adicionales" />
+        <Menu enlaces={enlaces} etiqueta="Navegación del pie" />
       </div>
     </footer>
   );

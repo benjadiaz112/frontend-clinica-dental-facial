@@ -6,7 +6,8 @@ Pasos 17 y 18 completados: validaciones independientes del DOM y formulario Reac
 
 ## Pendientes
 
-19. Completar la navegación y revisar la página 404.
+Paso 19 completado: navegación de las cinco páginas verificada, pie completo y página 404 con enlaces de regreso. Se comprobaron teclado, historial y respuestas HTTP.
+
 20. Revisar responsividad y accesibilidad. Resolver la diferencia de Bootstrap: la pauta lo exige y el usuario mantiene CSS nativo.
 21. Ampliar pruebas Jasmine/Karma de lógica con casos válidos, inválidos y límites.
 22. Ampliar pruebas de componentes y DOM: selección, errores, confirmación y limpieza.

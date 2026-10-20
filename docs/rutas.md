@@ -10,4 +10,6 @@
 
 Las direcciones inexistentes muestran `app/not-found.tsx`. El layout comparte encabezado, pie y salto al contenido. Menu marca la página activa con `aria-current`.
 
+Desde el paso 19, encabezado y pie reutilizan los cinco enlaces principales. La 404 ofrece volver a Inicio o abrir Tratamientos. La [verificación de navegación](navegacion-verificada.md) registra respuestas HTTP, enlaces, historial y teclado.
+
 En el paso 12 se eliminaron las páginas vacías ajenas al plan acotado y sus enlaces. Los HTML originales se conservan. El paso 18 migra el formulario de `contacto.html` a `/reserva`; consultar y validar no registra una reserva real.
