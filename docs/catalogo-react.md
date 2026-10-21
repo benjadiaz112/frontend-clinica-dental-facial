@@ -25,4 +25,4 @@ Se mantienen los cinco tratamientos originales y los precios según evaluación.
 
 ## Verificación
 
-Pasaron dieciséis pruebas, TypeScript y compilación. En Edge se comprobó la conexión con la API real, cinco tarjetas e imágenes cargadas y ausencia de desbordamiento a 1280, 768, 375 y 320 píxeles. Se comprobaron los estados de carga, vacío y error con respuestas simuladas, y la recuperación al recargar con la API disponible. Se revisaron capturas de escritorio y móvil. La medición de cobertura queda pendiente.
+Las pruebas representativas del catálogo, TypeScript y compilación se ejecutan correctamente. En Edge se comprobó la conexión con la API real, cinco tarjetas e imágenes cargadas y ausencia de desbordamiento a 1280, 768, 375 y 320 píxeles. Se comprobaron los estados de carga, vacío y error con respuestas simuladas, y la recuperación al recargar con la API disponible. Se revisaron capturas de escritorio y móvil. La medición de cobertura queda pendiente.

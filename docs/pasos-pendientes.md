@@ -2,7 +2,7 @@
 
 Completados: paso 12, modelos; paso 13, datos originales; paso 14, API local; paso 15, catálogo conectado; paso 16, selección única y paso del identificador a Reserva. Se conserva el caso de Clínica Aura y la estructura por capas. La API es una decisión de implementación, no una exigencia explícita de la pauta.
 
-Pasos 17 y 18 completados: validaciones independientes del DOM y formulario React con campos controlados, errores, foco y limpieza. La suite cuenta con 38 casos. La confirmación no envía datos ni reserva horas.
+Pasos 17 y 18 completados: validaciones independientes del DOM y formulario React con campos controlados, errores, foco y limpieza. La suite reducida cuenta con diez casos representativos. La confirmación no envía datos ni reserva horas.
 
 ## Pendientes
 
