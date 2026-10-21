@@ -32,4 +32,8 @@
   .reserva-disposicion > img {
     width: 100%;
   }
+
+  .reserva-disposicion > img {
+    order: 2;
+  }
 }
