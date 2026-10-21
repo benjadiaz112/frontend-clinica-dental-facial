@@ -1,6 +1,19 @@
 const http = require("node:http");
 const datos = require("./db.json");
 
+function esTratamiento(valor) {
+  if (typeof valor !== "object" || valor === null) return false;
+
+  return Number.isInteger(valor.id)
+    && typeof valor.nombre === "string"
+    && valor.nombre.trim() !== ""
+    && typeof valor.descripcion === "string"
+    && typeof valor.imagen === "string"
+    && typeof valor.textoAlternativo === "string"
+    && (typeof valor.precioDesde === "number" || valor.precioDesde === null)
+    && typeof valor.textoPrecio === "string";
+}
+
 const servidor = http.createServer(function (solicitud, respuesta) {
   respuesta.setHeader("Content-Type", "application/json; charset=utf-8");
   respuesta.setHeader("Access-Control-Allow-Origin", "*");
@@ -15,6 +28,12 @@ const servidor = http.createServer(function (solicitud, respuesta) {
     respuesta.setHeader("Allow", "GET");
     respuesta.writeHead(405);
     respuesta.end(JSON.stringify({ mensaje: "Solo se permite consultar tratamientos." }));
+    return;
+  }
+
+  if (!Array.isArray(datos.tratamientos) || !datos.tratamientos.every(esTratamiento)) {
+    respuesta.writeHead(500);
+    respuesta.end(JSON.stringify({ mensaje: "Los tratamientos configurados son inválidos." }));
     return;
   }
 
