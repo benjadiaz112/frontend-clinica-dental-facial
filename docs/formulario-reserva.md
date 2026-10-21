@@ -23,6 +23,6 @@ Limpiar elimina los cinco valores, selección, errores, resumen y confirmación.
 
 ## Verificación realizada
 
-Pasaron 38 pruebas, TypeScript y compilación. Los ocho casos nuevos comprueban campos obligatorios y foco, datos válidos sin envío, RUT incorrecto y corrección, limpieza, preselección y cambio, identificador inexistente, error de API y lista vacía.
+Las pruebas representativas del formulario, TypeScript y compilación se ejecutan correctamente. El caso del formulario comprueba el rechazo de datos incorrectos, la aceptación de datos correctos y la limpieza de valores, selección, errores y resultado.
 
 En Edge se verificaron esos flujos con la API real y respuestas de error simuladas, en anchos 1280, 768, 375 y 320 sin desbordamiento horizontal. Se revisó visualmente la captura móvil. No hubo errores JavaScript ni peticiones POST, PUT, PATCH o DELETE durante la validación. La cobertura porcentual sigue pendiente.

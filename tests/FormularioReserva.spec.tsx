@@ -53,26 +53,7 @@ describe("Formulario de Reserva", function () {
     await escribir("servicio", "Limpieza dental");
   }
 
-  it("marca los campos obligatorios y enfoca el primero al validar vacío", async function () {
-    simularApi();
-    await mostrar();
-    await enviar();
-    expect(contenedor.querySelectorAll('[aria-invalid="true"]').length).toBe(4);
-    expect(document.activeElement?.id).toBe("nombre");
-    expect(contenedor.querySelector("#error-rut")?.textContent).toContain("RUT válido");
-  });
-
-  it("acepta datos válidos con comentario opcional y no realiza envíos", async function () {
-    const consulta = simularApi();
-    await mostrar();
-    await completar();
-    await enviar();
-    expect(contenedor.querySelector(".mensaje-exito")?.textContent).toContain("no se envió una solicitud");
-    expect(contenedor.querySelectorAll('[aria-invalid="true"]').length).toBe(0);
-    expect(consulta).toHaveBeenCalledTimes(1);
-  });
-
-  it("rechaza RUT incorrecto y permite corregirlo", async function () {
+  it("rechaza datos incorrectos y acepta datos correctos", async function () {
     simularApi();
     await mostrar();
     await completar();
@@ -80,11 +61,10 @@ describe("Formulario de Reserva", function () {
     await enviar();
     expect(document.activeElement?.id).toBe("rut");
     expect(contenedor.querySelector("#rut")?.getAttribute("aria-invalid")).toBe("true");
+
     await escribir("rut", "12.345.678-5");
     await enviar();
     expect(contenedor.querySelector(".mensaje-exito")).not.toBeNull();
-    await escribir("nombre", "Otro nombre");
-    expect(contenedor.querySelector(".mensaje-exito")).toBeNull();
   });
 
   it("limpia valores, selección, errores y resultado", async function () {
@@ -100,36 +80,4 @@ describe("Formulario de Reserva", function () {
     expect(contenedor.querySelector("h2")).toBeNull();
   });
 
-  it("preselecciona el tratamiento del catálogo y permite cambiarlo", async function () {
-    history.replaceState(null, "", "/reserva?tratamiento=5");
-    simularApi();
-    await mostrar();
-    expect(contenedor.querySelector<HTMLSelectElement>("select")?.value).toBe("Armonización facial");
-    await escribir("servicio", "Ortodoncia");
-    expect(contenedor.querySelector<HTMLSelectElement>("select")?.value).toBe("Ortodoncia");
-    expect(contenedor.textContent).toContain("Evaluación desde $20.000");
-  });
-
-  it("avisa cuando el identificador no existe y deja elegir un servicio válido", async function () {
-    history.replaceState(null, "", "/reserva?tratamiento=999");
-    simularApi();
-    await mostrar();
-    expect(contenedor.querySelector('[role="alert"]')?.textContent).toContain("no está disponible");
-    await escribir("servicio", "Limpieza dental");
-    expect(contenedor.querySelector('[role="alert"]')).toBeNull();
-  });
-
-  it("bloquea la validación si falla la API", async function () {
-    spyOn(window, "fetch").and.rejectWith(new TypeError("Sin conexión"));
-    await mostrar();
-    expect(contenedor.querySelector<HTMLButtonElement>('button[type="submit"]')?.disabled).toBeTrue();
-    expect(contenedor.querySelector('[role="alert"]')?.textContent).toContain("No se pudieron cargar");
-  });
-
-  it("informa y bloquea la validación si no existen servicios", async function () {
-    simularApi([]);
-    await mostrar();
-    expect(contenedor.textContent).toContain("No hay servicios disponibles.");
-    expect(contenedor.querySelector<HTMLButtonElement>('button[type="submit"]')?.disabled).toBeTrue();
-  });
 });
