@@ -71,10 +71,12 @@ body {
 
 .enlace-menu {
   display: block;
+  min-height: 44px;
   padding: 8px 16px;
   border-radius: 20px;
   color: white;
   text-decoration: none;
+  line-height: 28px;
 }
 
 .enlace-menu:hover,
@@ -102,6 +104,16 @@ body {
 .pie-pagina .menu {
   justify-content: center;
   margin-top: 12px;
+}
+
+.pie-pagina a {
+  color: white;
+}
+
+.pie-pagina a:focus-visible {
+  outline-color: white;
+  background-color: white;
+  color: var(--color-oscuro);
 }
 
 .salto-contenido {
@@ -308,5 +320,37 @@ iframe {
 
   h1 {
     font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  .panel,
+  .tarjeta {
+    padding: 16px;
+    border-radius: 10px;
+  }
+
+  .menu {
+    width: 100%;
+    gap: 6px;
+  }
+
+  .menu li,
+  .enlace-menu {
+    width: 100%;
+    text-align: center;
+  }
+
+  .acciones {
+    flex-direction: column;
+  }
+
+  .acciones .btn,
+  .acciones button {
+    width: 100%;
   }
 }

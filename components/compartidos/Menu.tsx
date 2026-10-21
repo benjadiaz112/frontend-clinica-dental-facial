@@ -14,7 +14,7 @@ export default function Menu({ enlaces, etiqueta = "Navegación principal" }: Pr
 
   return (
     <nav aria-label={etiqueta}>
-      <ul className="menu">
+      <ul className="menu" role="list">
         {enlaces.map(function (enlace) {
           return (
             <li key={enlace.ruta}>
