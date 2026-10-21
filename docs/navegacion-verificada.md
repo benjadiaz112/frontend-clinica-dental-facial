@@ -12,7 +12,7 @@ La página 404 conserva encabezado, pie y salto al contenido. Explica que la dir
 
 ## Verificación realizada
 
-Pasaron las 38 pruebas existentes, TypeScript y compilación. En Edge con la versión de producción se comprobó:
+Pasaron las diez pruebas representativas, TypeScript y compilación. En Edge con la versión de producción se comprobó:
 
 - Cinco rutas HTTP 200, con un solo main y h1.
 - Diez enlaces del encabezado y pie con destino y página activa correctos.

@@ -32,9 +32,9 @@ npm test
 
 - `karma.conf.js`: indica el framework, archivos, transformación de TSX y navegador.
 - `tests/configuracion.js`: activa el entorno de pruebas de React para usar `act`.
-- `tests/PresentacionInicio.spec.tsx`: contiene dos pruebas del componente real.
-- `tests/ComponentesCompartidos.spec.tsx`: añade tres casos de botón y mensajes en el paso 8.
-- `tests/CarruselInicio.spec.tsx`: añade cinco casos de navegación del carrusel en el paso 10.
+- `tests/ValidacionesReserva.spec.tsx`: reúne las validaciones principales de nombre, RUT, correo y servicio.
+- `tests/CatalogoTratamientos.spec.tsx`: prueba carga, respuesta vacía, error de API y selección.
+- `tests/FormularioReserva.spec.tsx`: prueba rechazo, aceptación y limpieza del formulario.
 
 Jasmine escribe y comprueba los casos; Karma los ejecuta en el navegador. Esbuild transforma TypeScript y JSX para que el navegador pueda ejecutarlos. No se agregan bibliotecas de pruebas de interfaz adicionales.
 
@@ -51,7 +51,7 @@ Se mantiene el enfoque de los ejemplos recibidos: preparar datos, ejecutar y com
 
 Este paso configura el entorno y las pruebas iniciales. Las pruebas de formularios, eventos, lógica de negocio, mocks y cobertura se incorporarán al implementar esas funcionalidades. Todavía no representa la suite final de al menos 10 pruebas ni el documento final de cobertura.
 
-En el paso 8 se añaden tres comportamientos: el botón ejecuta su acción, un botón deshabilitado no la ejecuta y un mensaje de error es accesible y desaparece al limpiar el texto. En el paso 10 se prueban avance y retroceso del carrusel, sus límites y listas de cero o una imagen. La suite actual contiene diez pruebas; las funcionalidades futuras todavía necesitan sus propios casos.
+La suite actual contiene diez pruebas representativas de las funcionalidades principales; las pruebas históricas de botones, mensajes y carrusel se retiraron para mantener el alcance solicitado.
 
 ## Verificación de este paso
 

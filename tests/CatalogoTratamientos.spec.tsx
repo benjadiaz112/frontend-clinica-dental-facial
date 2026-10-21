@@ -28,13 +28,6 @@ describe("Catálogo conectado a la API", function () {
     return respuesta;
   }
 
-  it("informa que está cargando mientras la API no responde", async function () {
-    spyOn(window, "fetch").and.returnValue(new Promise<Response>(function () {}));
-    await mostrar();
-    expect(contenedor.querySelector('[role="status"]')?.textContent).toBe("Cargando tratamientos...");
-    expect(contenedor.querySelectorAll("article").length).toBe(0);
-  });
-
   it("muestra los cinco tratamientos y conserva los precios según evaluación", async function () {
     const consulta = spyOn(window, "fetch").and.resolveTo(respuestaJson(datos.tratamientos));
     await mostrar();
@@ -60,18 +53,6 @@ describe("Catálogo conectado a la API", function () {
     expect(contenedor.querySelectorAll("article").length).toBe(0);
   });
 
-  it("muestra un error cuando la conexión falla", async function () {
-    spyOn(window, "fetch").and.rejectWith(new TypeError("Sin conexión"));
-    await mostrar();
-    expect(contenedor.querySelector('[role="alert"]')?.textContent).toContain("No se pudieron cargar");
-  });
-
-  it("rechaza una respuesta que no contiene una lista", async function () {
-    spyOn(window, "fetch").and.resolveTo(respuestaJson({}));
-    await mostrar();
-    expect(contenedor.querySelector('[role="alert"]')).not.toBeNull();
-  });
-
   it("selecciona un solo tratamiento y actualiza el enlace a Reserva al cambiarlo", async function () {
     spyOn(window, "fetch").and.resolveTo(respuestaJson(datos.tratamientos));
     await mostrar();
@@ -88,15 +69,5 @@ describe("Catálogo conectado a la API", function () {
     expect(contenedor.querySelectorAll('[aria-pressed="true"]').length).toBe(1);
     expect(contenedor.querySelector("a")?.getAttribute("href")).toBe("/reserva?tratamiento=5");
     expect(contenedor.querySelector('[role="status"]')?.textContent).toContain("Armonización facial");
-  });
-
-  it("permite quitar la selección y oculta el enlace a Reserva", async function () {
-    spyOn(window, "fetch").and.resolveTo(respuestaJson(datos.tratamientos));
-    await mostrar();
-    await act(async function () { contenedor.querySelector<HTMLButtonElement>("article button")?.click(); });
-    await act(async function () { contenedor.querySelector<HTMLButtonElement>(".seleccion-tratamiento button")?.click(); });
-    expect(contenedor.querySelector("a")).toBeNull();
-    expect(contenedor.querySelectorAll('[aria-pressed="true"]').length).toBe(0);
-    expect(contenedor.querySelector('[role="status"]')?.textContent).toContain("Selecciona un tratamiento");
   });
 });

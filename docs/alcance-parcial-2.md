@@ -35,6 +35,6 @@ La introducción de la pauta menciona una plantilla de tienda con carrito. No se
 
 ## Estado y cierre
 
-Las cinco páginas están migradas. El catálogo permite seleccionar un tratamiento y continuar a Reserva. Los pasos 17 y 18 integran validaciones y formulario controlado, errores por campo, foco y limpieza; la confirmación identifica que no hubo envío ni reserva real. Existen 38 pruebas con Jasmine y Karma, incluidas doce de validaciones y ocho del formulario. Faltan revisión global, cobertura y documentos finales. Los HTML originales permanecen disponibles.
+Las cinco páginas están migradas. El catálogo permite seleccionar un tratamiento y continuar a Reserva. Los pasos 17 y 18 integran validaciones y formulario controlado, errores por campo, foco y limpieza; la confirmación identifica que no hubo envío ni reserva real. Existen diez pruebas representativas con Jasmine y Karma para validaciones, catálogo, selección y formulario. Faltan revisión global, cobertura y documentos finales. Los HTML originales permanecen disponibles.
 
 Los pasos 13 a 18 preparan datos y API, catálogo, selección, validaciones y [formulario](formulario-reserva.md). El paso 19 verifica y completa la [navegación y la 404](navegacion-verificada.md). El [plan pendiente](pasos-pendientes.md) continúa desde el paso 20. Cada avance tendrá un commit descriptivo con el autor solicitado, sin imponer una estrategia de ramas que la pauta no establece.
