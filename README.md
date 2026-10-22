@@ -12,7 +12,7 @@ Inicio, Nosotros, Contacto, Tratamientos y Reserva están migrados. El [catálog
 
 El [paso 19](docs/navegacion-verificada.md) completa la navegación del pie y verifica los enlaces, historial, teclado y la página 404.
 
-La [guía de estructura por capas](docs/estructura-por-capas.md) explica cada carpeta, el flujo actual y las reglas para continuar. La información inicial está en `data/`, se obtiene desde `services/` y se muestra en `components/`; `app/` compone la página. Los estilos nativos están en `styles/`.
+La información de las páginas está en `data/` y se muestra en `components/`; `app/` compone cada ruta. La lógica reutilizable del formulario está en `hooks/` y sus validaciones en `services/`. Los estilos nativos están en `styles/`.
 
 Todo permanece dentro de este mismo repositorio de GitHub.
 
