@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { obtenerTratamientos } from "@/services/tratamientosService";
+import { consultarTratamientos } from "@/data/tratamientos";
 import type { Tratamiento } from "@/models/Tratamiento";
 
 export function useTratamientos() {
@@ -14,7 +14,7 @@ export function useTratamientos() {
 
     async function cargar() {
       try {
-        const datos = await obtenerTratamientos(controlador.signal);
+        const datos = await consultarTratamientos(controlador.signal);
         if (!controlador.signal.aborted) setTratamientos(datos);
       } catch {
         if (!controlador.signal.aborted) {

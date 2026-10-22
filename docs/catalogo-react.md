@@ -16,7 +16,7 @@ Sin la API se muestra un error; después de iniciarla se puede recargar la pági
 - components/tratamientos/CatalogoTratamientos.tsx: estados y lista de tarjetas.
 - components/tratamientos/TarjetaTratamiento.tsx: presentación por propiedades.
 - hooks/useTratamientos.ts: estado y ciclo de la consulta.
-- services/tratamientosService.ts: delega la consulta a la capa de datos.
+- data/tratamientos.ts: consulta la API simulada.
 - data/tratamientos.ts: fetch y comprobación de respuesta HTTP y lista.
 - styles/tratamientos.css: Flexbox, tarjetas y adaptación móvil con CSS nativo.
 - tests/CatalogoTratamientos.spec.tsx: seis casos con fetch simulado, sin depender de la API real.

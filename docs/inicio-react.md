@@ -11,7 +11,7 @@ La ruta `/` recupera el contenido útil del `index.html` original y añade un ca
 | CarruselInicio.tsx | Muestra una imagen a la vez y permite avanzar o retroceder con botones. |
 | ConsejoDental.tsx | Conserva el texto y el video educativo del HTML original, con enlace para abrirlo en YouTube. |
 
-`app/page.tsx` reúne los componentes. Los datos están en `data/inicio.ts`, sus tipos en `models/ContenidoInicio.ts` y las funciones que los obtienen en `services/inicioService.ts`. Son datos de presentación estáticos; no reemplazan el futuro modelo de tratamientos ni el CRUD.
+`app/page.tsx` reúne los componentes. Los datos están en `data/inicio.ts` y sus tipos en `models/ContenidoInicio.ts`. Son datos de presentación estáticos; no reemplazan el futuro modelo de tratamientos ni el CRUD.
 
 Los estilos específicos están en `styles/inicio.css`, usando Flexbox y una media query. Se mantienen los colores y clases compartidos, sin librerías de diseño ni nuevas dependencias.
 

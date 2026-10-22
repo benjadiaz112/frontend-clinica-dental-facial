@@ -2,19 +2,17 @@ import PresentacionInicio from "@/components/inicio/PresentacionInicio";
 import TratamientosDestacados from "@/components/inicio/TratamientosDestacados";
 import CarruselInicio from "@/components/inicio/CarruselInicio";
 import ConsejoDental from "@/components/inicio/ConsejoDental";
-import { obtenerInformacionClinica } from "@/services/clinicaService";
-import { obtenerTratamientosDestacados, obtenerDiapositivasInicio, obtenerConsejoInicio } from "@/services/inicioService";
+import { informacionClinica } from "@/data/clinica";
+import { tratamientosDestacados, diapositivasInicio, consejoInicio } from "@/data/inicio";
 import "@/styles/inicio.css";
 
 export default function Inicio() {
-  const clinica = obtenerInformacionClinica();
-
-  return (
+    return (
     <>
-      <PresentacionInicio clinica={clinica} />
-      <TratamientosDestacados tratamientos={obtenerTratamientosDestacados()} />
-      <CarruselInicio diapositivas={obtenerDiapositivasInicio()} />
-      <ConsejoDental consejo={obtenerConsejoInicio()} />
+        <PresentacionInicio clinica={informacionClinica} />
+        <TratamientosDestacados tratamientos={tratamientosDestacados} />
+        <CarruselInicio diapositivas={diapositivasInicio} />
+        <ConsejoDental consejo={consejoInicio} />
     </>
   );
 }

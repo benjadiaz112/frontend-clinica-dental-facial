@@ -12,7 +12,7 @@ npm run api
 
 Consultar `http://127.0.0.1:3001/tratamientos`. Detener con Ctrl+C. La API solo escucha en el equipo local. Si el puerto 3001 está ocupado, liberar ese puerto antes de iniciarla.
 
-En otra terminal ejecutar `npm run dev` para Next.js, en el puerto 3000. Desde el paso 15, `/tratamientos` consulta esta API mediante fetch a través de las capas data/ y services/. Sin API disponible se muestra un error; iniciarla y recargar permite volver a consultar.
+En otra terminal ejecutar `npm run dev` para Next.js, en el puerto 3000. `/tratamientos` consulta esta API mediante `fetch` desde `data/tratamientos.ts`. Sin API disponible se muestra un error; iniciarla y recargar permite volver a consultar.
 
 ## Archivos
 

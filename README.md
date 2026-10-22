@@ -8,11 +8,11 @@ El [alcance vigente](docs/alcance-parcial-2.md) se limita a la pauta principal, 
 
 Inicio, Nosotros, Contacto, Tratamientos y Reserva están migrados. El [catálogo](docs/catalogo-react.md) consulta la API y permite [seleccionar un tratamiento](docs/seleccion-tratamiento.md). El [formulario React](docs/formulario-reserva.md) valida nombre, RUT, correo y servicio, muestra errores y permite limpiar. La confirmación es solo de demostración. Se conservan cinco rutas y la página 404. La suite contiene diez pruebas representativas; la cobertura final está pendiente.
 
-## Estructura por capas
+## Estructura simple por modulos
 
 El [paso 19](docs/navegacion-verificada.md) completa la navegación del pie y verifica los enlaces, historial, teclado y la página 404.
 
-La [guía de estructura por capas](docs/estructura-por-capas.md) explica cada carpeta, el flujo actual y las reglas para continuar. La información inicial está en `data/`, se obtiene desde `services/` y se muestra en `components/`; `app/` compone la página. Los estilos nativos están en `styles/`.
+La información de las páginas está en `data/` y se muestra en `components/`; `app/` compone cada ruta. La lógica reutilizable del formulario está en `hooks/` y sus validaciones en `services/`. Los estilos nativos están en `styles/`.
 
 Todo permanece dentro de este mismo repositorio de GitHub.
 
