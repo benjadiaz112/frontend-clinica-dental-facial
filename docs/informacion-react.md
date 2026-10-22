@@ -13,7 +13,7 @@ El archivo original `contacto.html` es un formulario de reserva. En React se man
 | components/contacto/InformacionContacto.tsx | Presenta ubicación, teléfono, aviso de demostración y enlace a Reserva. |
 | models/ContenidoInformativo.ts | Define las propiedades de los datos informativos. |
 | data/informacion.ts | Centraliza los textos originales y datos de ejemplo. |
-| services/informacionService.ts | Obtiene la información para las páginas. |
+| data/informacion.ts | Contiene la información de las páginas. |
 | styles/informacion.css | Distribuye texto e imagen con Flexbox y los apila en móvil. |
 
 Se reutilizan los componentes compartidos del layout y Mensaje. No se agregan dependencias ni estado a páginas estáticas. Las imágenes se sirven desde `public/imagenes/` con texto alternativo y sus dimensiones originales.
