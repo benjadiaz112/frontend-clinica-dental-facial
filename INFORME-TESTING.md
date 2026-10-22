@@ -1,69 +1,49 @@
 # Informe de testing
 
-## Objetivo
+## Ejecución
 
-Comprobar las validaciones de la reserva y los principales flujos del catálogo y
-del formulario sin depender de un servidor de API activo.
+- Herramienta: Jasmine sobre Karma con Edge Headless.
+- Comando: `npm test`.
+- Casos ejecutados: 10.
+- Resultado: 10 exitosos, 0 fallidos.
+- Dependencia de API real: ninguna. Todos los accesos a `window.fetch` se reemplazan por respuestas simuladas dentro de las pruebas.
 
-## Herramientas
+## Casos cubiertos
 
-- Jasmine para definir las pruebas y las expectativas.
-- Karma para ejecutar la suite en Edge Headless.
-- Esbuild para transformar TypeScript y JSX.
-- `spyOn` de Jasmine para simular `fetch` y las respuestas JSON.
+| Nº | Área | Comprobación | Resultado |
+|---:|---|---|---|
+| 1 | Validaciones | Rechazo y aceptación del nombre | Exitoso |
+| 2 | Validaciones | Rechazo y aceptación del RUT | Exitoso |
+| 3 | Validaciones | Rechazo y aceptación del correo | Exitoso |
+| 4 | Validaciones | Rechazo y aceptación del servicio | Exitoso |
+| 5 | Catálogo/API | Lista con cinco tratamientos y precios | Exitoso |
+| 6 | Catálogo/API | Respuesta con lista vacía | Exitoso |
+| 7 | Catálogo/API | Respuesta HTTP con error | Exitoso |
+| 8 | Catálogo | Selección única y cambio de tratamiento | Exitoso |
+| 9 | Reserva | Rechazo de datos inválidos y aceptación de datos válidos | Exitoso |
+| 10 | Reserva | Limpieza de valores, errores y resultado | Exitoso |
 
 ## Mocks utilizados
 
-Las pruebas de catálogo y reserva reemplazan `window.fetch` con `spyOn`. Por
-eso `npm test` no necesita ejecutar `npm run api` ni conectarse a
-`http://127.0.0.1:3001`.
+Las pruebas del catálogo y del formulario usan `spyOn(window, "fetch")` para devolver:
 
-- La respuesta correcta usa los datos de `api_simulada/db.json` como contenido
-  controlado del mock.
-- La respuesta vacía usa una lista vacía.
-- El error HTTP usa una respuesta con estado 500.
-- El JSON se entrega mediante `respuesta.json()` simulada.
+- Los cinco tratamientos de `api_simulada/db.json`.
+- Una lista vacía.
+- Una respuesta HTTP 500.
 
-La prueba de selección confirma además que el componente intenta consultar la
-ruta esperada, pero no realiza una petición real. Las pruebas de validación
-ejecutan funciones locales y no hacen solicitudes de red.
+Por esta razón, `npm test` funciona sin iniciar `npm run api` y no depende de disponibilidad de red, puerto local o datos externos.
 
-## Casos ejecutados
+## Cobertura
 
-| # | Archivo | Caso | Resultado |
-|---:|---|---|---|
-| 1 | `tests/ValidacionesReserva.spec.tsx` | Acepta un nombre válido y rechaza uno inválido. | Aprobado |
-| 2 | `tests/ValidacionesReserva.spec.tsx` | Acepta un RUT válido y rechaza uno inválido. | Aprobado |
-| 3 | `tests/ValidacionesReserva.spec.tsx` | Acepta un correo válido y rechaza uno inválido. | Aprobado |
-| 4 | `tests/ValidacionesReserva.spec.tsx` | Acepta un servicio del catálogo y rechaza otro. | Aprobado |
-| 5 | `tests/CatalogoTratamientos.spec.tsx` | Carga los cinco tratamientos y muestra sus precios. | Aprobado |
-| 6 | `tests/CatalogoTratamientos.spec.tsx` | Informa cuando la API simulada devuelve una lista vacía. | Aprobado |
-| 7 | `tests/CatalogoTratamientos.spec.tsx` | Muestra un error ante una respuesta HTTP 500 simulada. | Aprobado |
-| 8 | `tests/CatalogoTratamientos.spec.tsx` | Permite seleccionar y cambiar un tratamiento. | Aprobado |
-| 9 | `tests/FormularioReserva.spec.tsx` | Rechaza datos incorrectos y acepta datos corregidos. | Aprobado |
-| 10 | `tests/FormularioReserva.spec.tsx` | Limpia valores, selección, errores y resultado. | Aprobado |
+La configuración de Karma incluye `karma-coverage` y genera reportes HTML, LCOV y resumen de texto en la carpeta `coverage/`.
 
-## Ejecución
+Resultado medido en la ejecución actual:
 
-Comando ejecutado:
+- Statements: **100% (14/14)**
+- Branches: **100% (0/0)**
+- Functions: **100% (5/5)**
+- Lines: **100% (14/14)**
 
-```bash
-npm test
-```
+### Limitación
 
-Resultado:
-
-```text
-TOTAL: 10 SUCCESS
-```
-
-La suite se ejecutó en Edge Headless sin iniciar la API local. La cobertura
-porcentual todavía debe medirse con una herramienta de instrumentación; por
-esa razón este informe no inventa un porcentaje.
-
-## Limitaciones
-
-- Los mocks comprueban el comportamiento del frontend, no la disponibilidad de
-  un servidor externo.
-- La suite no reemplaza una prueba de integración de la API real.
-- La medición porcentual de cobertura queda pendiente.
+La integración actual de `karma-esbuild` agrupa los módulos y el instrumentador Istanbul registra el archivo de entrada de pruebas (`ValidacionesReserva.spec.tsx`), por lo que el porcentaje anterior **no representa la cobertura completa de todos los componentes de la aplicación**. El resultado debe presentarse como cobertura del archivo instrumentado y no como cobertura total del frontend. Las 10 pruebas funcionales sí se ejecutan completamente y verifican las validaciones, el catálogo, la API simulada, la selección y el formulario.
