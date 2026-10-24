@@ -31,6 +31,11 @@
   outline-offset: 2px;
 }
 
+.tarjeta-tratamiento button[aria-pressed="true"]:focus-visible {
+  outline: 3px solid #172f45;
+  outline-offset: 4px;
+}
+
 .seleccion-tratamiento {
   margin-top: 24px;
 }
