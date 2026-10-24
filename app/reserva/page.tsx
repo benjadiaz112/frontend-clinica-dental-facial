@@ -1,4 +1,3 @@
-import Mensaje from "@/components/compartidos/Mensaje";
 import FormularioReserva from "@/components/reserva/FormularioReserva";
 import "@/styles/reserva.css";
 
@@ -9,7 +8,6 @@ export default function Pagina() {
     <section className="contenedor panel portada" aria-labelledby="titulo-reserva">
       <h1 id="titulo-reserva">Reserva una evaluación</h1>
       <p>Solicitud de una evaluación dental o facial.</p>
-      <Mensaje texto="Formulario de demostración: los datos no se envían ni se reserva una hora real." />
       <FormularioReserva />
     </section>
   );
