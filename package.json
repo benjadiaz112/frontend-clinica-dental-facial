@@ -25,7 +25,7 @@
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "esbuild": "0.28.2",
-    "esbuild-plugin-istanbul": "^0.3.0",
+    "istanbul-lib-instrument": "5.2.1",
     "jasmine-core": "4.6.1",
     "karma": "6.4.4",
     "karma-chrome-launcher": "3.2.0",

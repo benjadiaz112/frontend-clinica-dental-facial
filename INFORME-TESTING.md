@@ -35,15 +35,25 @@ Por esta razón, `npm test` funciona sin iniciar `npm run api` y no depende de d
 
 ## Cobertura
 
-La configuración de Karma incluye `karma-coverage` y genera reportes HTML, LCOV y resumen de texto en la carpeta `coverage/`.
+Medición del 24 de octubre de 2026 con `npm test -- --reporters=dots,coverage`: diez pruebas exitosas y cero fallidas. TypeScript y compilación también finalizaron correctamente.
+
+Karma utiliza `istanbul-lib-instrument` para instrumentar los archivos originales TypeScript/TSX antes de que esbuild los agrupe. `tests/cobertura.js` limita la medición a `app/`, `components/`, `hooks/`, `data/` y `services/`. Los archivos de pruebas no se instrumentan.
+
+Se incluyen los 29 archivos de esas carpetas, incluso los no importados por las pruebas: sus contadores empiezan en cero. En esta ejecución, veinte archivos no tuvieron ejecución. Esto evita presentar como cobertura total únicamente lo que las pruebas alcanzaron a importar.
 
 Resultado medido en la ejecución actual:
 
-- Statements: **100% (14/14)**
-- Branches: **100% (0/0)**
-- Functions: **100% (5/5)**
-- Lines: **100% (14/14)**
+- Sentencias: **68,42% (117/171)**.
+- Ramas: **71,69% (76/106)**.
+- Funciones: **59,64% (34/57)**.
+- Líneas: **69,65% (101/145)**.
+
+Los reportes de esta configuración se generan en `coverage/aplicacion/`: `index.html`, `lcov.info`, `coverage-final.json` y `coverage-summary.json`. `coverage/inicial.js` es la base temporal de contadores. Los reportes anteriores guardados en carpetas con nombres de navegador corresponden a la configuración antigua y no deben utilizarse para esta medición.
+
+Se conserva una evidencia de los resultados y del resumen por archivo en [docs/evidencia-cobertura.json](docs/evidencia-cobertura.json). El resultado anterior del 100% medía un archivo de pruebas; queda reemplazado por esta medición de la aplicación.
 
 ### Limitación
 
-La integración actual de `karma-esbuild` agrupa los módulos y el instrumentador Istanbul registra el archivo de entrada de pruebas (`ValidacionesReserva.spec.tsx`), por lo que el porcentaje anterior **no representa la cobertura completa de todos los componentes de la aplicación**. El resultado debe presentarse como cobertura del archivo instrumentado y no como cobertura total del frontend. Las 10 pruebas funcionales sí se ejecutan completamente y verifican las validaciones, el catálogo, la API simulada, la selección y el formulario.
+Los porcentajes corresponden exclusivamente al TypeScript/TSX de las cinco carpetas indicadas. No miden CSS, imágenes, archivos de configuración, librerías, tipos de `models/`, el sitio HTML/JavaScript original ni `api_simulada/servidor.js`, que se ejecuta en otro proceso Node.js. Las páginas y componentes no ejecutados por estas diez pruebas permanecen con cero cobertura; no se ejecutan artificialmente para aumentar el resultado.
+
+El informe no acredita accesibilidad completa, aspecto visual, ejecución real del backend ni aprobación académica. Las diez pruebas se mantienen sin añadir casos. Para regenerar una medición completa después de agregar o eliminar fuentes, ejecutar de nuevo `npm test`; no utilizar como evidencia final una sesión previa de `test:watch`.

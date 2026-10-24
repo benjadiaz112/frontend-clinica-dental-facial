@@ -8,14 +8,14 @@ Pasos 17 y 18 completados: validaciones independientes del DOM y formulario Reac
 
 Paso 19 completado: navegación de las cinco páginas verificada, pie completo y página 404 con enlaces de regreso. Se comprobaron teclado, historial y respuestas HTTP.
 
-20. Revisar responsividad y accesibilidad. Resolver la diferencia de Bootstrap: la pauta lo exige y el usuario mantiene CSS nativo.
-21. Ampliar pruebas Jasmine/Karma de lógica con casos válidos, inválidos y límites.
-22. Ampliar pruebas de componentes y DOM: selección, errores, confirmación y limpieza.
-23. Usar mocks o spies donde corresponda y analizar los resultados.
-24. Medir cobertura real, corregir fallos y guardar evidencia.
-25. Actualizar el ERS con la propuesta terminada.
-26. Preparar el documento de cobertura de testing.
-27. Verificar una copia limpia y preparar GitHub público y ZIP.
-28. Preparar la presentación individual de React, propiedades, estados, responsividad y pruebas.
+Paso 20 completado: cobertura corregida para medir 29 archivos de aplicación, excluyendo pruebas e incluyendo los módulos no ejecutados. Se mantienen diez pruebas exitosas. Resultados y limitaciones en INFORME-TESTING.md y evidencia en docs/evidencia-cobertura.json.
+
+Paso 21 completado: ERS versión 2 corregido sin caracteres dañados, con títulos, viñetas y tablas revisados. Se contrastaron requisitos, reserva de demostración, diez pruebas y cobertura con el código y la evidencia actuales. Se revisaron visualmente sus tres páginas exportadas desde Word.
+
+22. Revisar las diez pruebas, manteniendo su cantidad y centrándolas en funcionalidad.
+23. Cerrar responsividad y accesibilidad: móvil, tablet, escritorio, teclado y contraste del foco.
+24. Actualizar y armonizar README, guías, plan e informe de testing.
+25. Resolver la diferencia de Bootstrap antes de cambiar estilos: la pauta lo exige y actualmente se utiliza CSS nativo.
+26. Verificación final y entrega: pruebas, TypeScript, compilación, copia limpia, ZIP y presentación.
 
 Se retiraron las páginas vacías de administración, usuarios, categorías, ofertas, blog, carrito, checkout y resultados separados. No tenían operaciones implementadas. La pauta menciona una plantilla con carrito, pero no detalla esos módulos para la adaptación a una clínica; la aceptación de esa adaptación corresponde al docente.
