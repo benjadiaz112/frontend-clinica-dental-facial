@@ -23,4 +23,4 @@ Pasaron las diez pruebas representativas, TypeScript y compilación. En Edge con
 - La 404 no marca una página activa, permite regresar a Inicio y al catálogo y no desborda a 1280, 375 y 320 píxeles.
 - Sin errores JavaScript registrados.
 
-La revisión global de accesibilidad y responsividad corresponde al paso 20. Estos resultados no sustituyen la medición de cobertura pendiente.
+La revisión global de accesibilidad y responsividad se completó en el [paso 23](responsividad-accesibilidad.md). La cobertura se corrigió en el paso 20 y se detalla en el [informe de testing](../INFORME-TESTING.md).

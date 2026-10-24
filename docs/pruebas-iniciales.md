@@ -47,17 +47,18 @@ Jasmine escribe y comprueba los casos; Karma los ejecuta en el navegador. Esbuil
 - `expect(...).toBe(...)` compara el resultado obtenido con el esperado.
 - `afterEach` desmonta el componente y elimina el contenedor para no mezclar los casos.
 
-Se mantiene el enfoque de los ejemplos recibidos: preparar datos, ejecutar y comprobar. El primer caso muestra nombre, descripción y aviso proporcionados por propiedades. El segundo vuelve a renderizar con otras propiedades y verifica que la información cambie.
+Se mantiene el enfoque de los ejemplos recibidos: preparar datos, ejecutar y comprobar. La suite actual contiene exactamente diez pruebas funcionales: cuatro de validaciones, cuatro de catálogo y dos de formulario. Las pruebas históricas de botones, presentación y carrusel se retiraron para conservar ese alcance.
 
-Este paso configura el entorno y las pruebas iniciales. Las pruebas de formularios, eventos, lógica de negocio, mocks y cobertura se incorporarán al implementar esas funcionalidades. Todavía no representa la suite final de al menos 10 pruebas ni el documento final de cobertura.
+## Cobertura y resultados
 
-La suite actual contiene diez pruebas representativas de las funcionalidades principales; las pruebas históricas de botones, mensajes y carrusel se retiraron para mantener el alcance solicitado.
+`tests/cobertura.js` instrumenta 29 archivos de aplicación en app, components, hooks, data y services, incluidos los no ejecutados. Excluye pruebas, CSS, modelos y el servidor Node de la API. Los resultados y límites están en el [informe de testing](../INFORME-TESTING.md).
 
-## Verificación de este paso
+Para regenerar los reportes:
 
-- `npm test`: diez pruebas aprobadas en Edge tras el paso 10.
-- `npm run build` y `npm run typecheck`: completados correctamente.
-- `npm audit --omit=dev`: cero vulnerabilidades informadas en dependencias de producción durante esta revisión.
-- `npm audit`: cinco alertas de severidad alta en herramientas de desarrollo, derivadas de `braces`, usado por los monitores de archivos de Karma y karma-esbuild. La versión estable consultada, 3.0.3, sigue afectada y npm no ofrece una solución compatible para toda la cadena. Queda pendiente una actualización compatible; no se aplicaron las degradaciones de versiones que propone `--force`.
+```bash
+npm test -- --reporters=dots,coverage
+```
 
-Referencias: [configuración de Karma](https://karma-runner.github.io/latest/config/configuration-file.html), [primera suite de Jasmine](https://jasmine.github.io/tutorials/your_first_suite) y [act en React](https://react.dev/reference/react/act).
+Abre `coverage/aplicacion/index.html`. Los reportes se generan localmente y no se incluyen en Git; la evidencia conservada está en `docs/evidencia-cobertura.json`.
+
+La última verificación del paso 23 completó las diez pruebas, TypeScript y compilación. Esta guía no presenta auditorías antiguas de dependencias como un diagnóstico actual de seguridad.

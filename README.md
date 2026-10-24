@@ -1,6 +1,7 @@
 # Clínica Aura
-integrantes: Benjamin Diaz, Javier Hidalgo, Bikenson Fenelus
-Proyecto frontend académico de una clínica dental y de armonización facial. Conserva el sitio original en HTML, CSS y JavaScript e incorpora la base de su nueva versión con React y Next.js.
+Integrantes actuales: Benjamin Diaz y Bikenson Fenelus.
+
+Proyecto frontend académico de una clínica dental y de armonización facial. Las cinco páginas están implementadas con React, Next.js y TypeScript. Conserva el sitio original en HTML, CSS y JavaScript como referencia.
 
 ## Evaluación Parcial 2: alcance definido
 
@@ -18,16 +19,27 @@ Todo permanece dentro de este mismo repositorio de GitHub.
 
 ## Estilos comunes
 
-La [guía de estilos comunes](docs/estilos-comunes.md) explica los colores, contenedores, tarjetas, botones, campos y mensajes de `styles/globals.css`. Se utilizan clases sencillas, Flexbox y una media query para adaptar la distribución a móviles.
+La [guía de estilos comunes](docs/estilos-comunes.md) explica los colores, contenedores, tarjetas, botones, campos y mensajes de `styles/globals.css`. Se utilizan clases sencillas, Flexbox y media queries para adaptar la distribución a móviles.
 
 ## Ejecutar la base de React con Next.js
 
-El [detalle de los componentes compartidos](docs/componentes-compartidos.md) explica sus propiedades y uso. La [guía de rutas](docs/rutas.md) enumera las páginas disponibles y los enlaces públicos y administrativos.
+El [detalle de los componentes compartidos](docs/componentes-compartidos.md) explica su uso. La [guía de rutas](docs/rutas.md) enumera las cinco páginas disponibles y la página 404.
 
-Requiere Node.js 20.9 o superior y npm, según la [documentación oficial de Next.js](https://nextjs.org/docs/app/getting-started/installation). Ejecuta los comandos desde la raíz del repositorio.
+Requiere Node.js 20.9 o superior y npm, según `package.json`. Ejecuta los comandos desde la raíz del repositorio. Instala las dependencias:
 
 ```bash
 npm ci
+```
+
+En una terminal, inicia la API para el catálogo y los servicios de Reserva:
+
+```bash
+npm run api
+```
+
+En otra terminal, inicia el frontend:
+
+```bash
 npm run dev
 ```
 
@@ -63,6 +75,12 @@ npm test
 Ejecuta las pruebas una vez en un navegador sin ventana. En Windows se utiliza Edge si está disponible; la configuración permite indicar otro navegador compatible mediante `CHROME_BIN`. No es necesario iniciar el servidor de Next.js.
 
 Para repetir las pruebas al guardar cambios, utiliza `npm run test:watch`. La suite contiene diez casos representativos de validaciones, catálogo, selección y formulario, con mocks de API. No es necesario iniciar la API para ejecutar las pruebas.
+
+La [revisión manual de responsividad y accesibilidad](docs/responsividad-accesibilidad.md) registra los cinco recorridos a cuatro anchos y sus límites. Estas comprobaciones complementan las pruebas funcionales.
+
+## Estado de la entrega
+
+Los pasos 20 a 24 están completados: cobertura, ERS, revisión de las diez pruebas, responsividad y documentación. Quedan resolver el requisito de Bootstrap (paso 25) y la verificación, integración en `main`, ZIP y presentación (paso 26). Los avances se guardan en ramas por funcionalidad dentro de un único repositorio; los últimos cambios todavía deben integrarse para la entrega.
 
 ## Funcionalidades del sitio original
 

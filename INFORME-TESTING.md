@@ -53,7 +53,7 @@ Karma utiliza `istanbul-lib-instrument` para instrumentar los archivos originale
 
 Se incluyen los 29 archivos de esas carpetas, incluso los no importados por las pruebas: sus contadores empiezan en cero. En esta ejecución, veinte archivos no tuvieron ejecución. Esto evita presentar como cobertura total únicamente lo que las pruebas alcanzaron a importar.
 
-Resultado medido en la ejecución actual:
+Resultado de la medición registrada del 24 de octubre de 2026 (repetida sin cambios en el paso 23):
 
 - Sentencias: **68,42% (117/171)**.
 - Ramas: **71,69% (76/106)**.
@@ -64,7 +64,11 @@ Los reportes de esta configuración se generan en `coverage/aplicacion/`: `index
 
 Se conserva una evidencia de los resultados y del resumen por archivo en [docs/evidencia-cobertura.json](docs/evidencia-cobertura.json). El resultado anterior del 100% medía un archivo de pruebas; queda reemplazado por esta medición de la aplicación.
 
-### Limitación
+## Revisión manual complementaria
+
+El [informe del paso 23](docs/responsividad-accesibilidad.md) registra las cinco páginas en cuatro anchos, el salto al contenido, las etiquetas y el foco de teclado. Esta revisión es independiente de las diez pruebas automatizadas y no aumenta sus porcentajes de cobertura. El paso 24 solo actualiza documentación; no cambia la suite ni genera una medición nueva.
+
+### Límites de la medición
 
 Los porcentajes corresponden exclusivamente al TypeScript/TSX de las cinco carpetas indicadas. No miden CSS, imágenes, archivos de configuración, librerías, tipos de `models/`, el sitio HTML/JavaScript original ni `api_simulada/servidor.js`, que se ejecuta en otro proceso Node.js. Las páginas y componentes no ejecutados por estas diez pruebas permanecen con cero cobertura; no se ejecutan artificialmente para aumentar el resultado.
 

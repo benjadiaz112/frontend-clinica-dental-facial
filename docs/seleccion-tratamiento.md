@@ -15,10 +15,10 @@ Desde el paso 18, el formulario React integra esta elección y permite cambiar e
 - Desde el paso 18, hooks/useReserva.ts y components/reserva/FormularioReserva.tsx integran la lectura del identificador, consulta y resumen. Se retira SeleccionReserva.tsx.
 - app/reserva/page.tsx: título, aviso de demostración y selección recibida.
 - styles/tratamientos.css: botones y separación del resumen con CSS nativo.
-- tests/CatalogoTratamientos.spec.tsx: dos casos nuevos para cambiar y quitar la elección.
+- tests/CatalogoTratamientos.spec.tsx: cuatro casos de catálogo; uno comprueba selección única, cambio y limpieza.
 
-Se mantiene la estructura por capas y los datos del catálogo provienen de la API. Los cambios del formulario, validaciones y envío de demostración corresponden a pasos posteriores.
+Se mantiene la estructura por capas y los datos del catálogo provienen de la API. El formulario y las validaciones ya están integrados; la confirmación es solo de demostración.
 
 ## Verificación
 
-Pasaron las dieciocho pruebas, TypeScript y compilación. En Edge se verificó selección por teclado, cambio, enlace y recarga en Reserva a 1280, 768, 375 y 320 píxeles sin desbordamiento. También se comprobó quitar selección, entrar sin identificador, consultar un identificador inexistente y manejar la API desconectada. No se registraron errores JavaScript.
+La suite actual tiene diez pruebas exitosas; TypeScript y compilación también pasaron en el paso 23. En Edge se verificó selección por teclado, cambio, enlace y recarga en Reserva a 1280, 768, 375 y 320 píxeles sin desbordamiento. También se comprobó quitar selección, entrar sin identificador, consultar un identificador inexistente y manejar la API desconectada. No se registraron errores JavaScript.

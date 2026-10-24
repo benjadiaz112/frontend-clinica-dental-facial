@@ -9,7 +9,7 @@ Reserva recupera los cinco campos del HTML original: nombre, RUT, correo, servic
 - `hooks/useReserva.ts`: valores, mensajes, selección inicial, validación y limpieza. Utiliza useTratamientos para obtener los servicios de la API.
 - `services/validacionesReserva.ts`: reglas independientes de nombre, RUT, correo y servicio. El comentario es opcional y el hook impide aceptar más de 500 caracteres.
 - `styles/reserva.css`: distribución con Flexbox y adaptación móvil mediante CSS nativo.
-- `tests/FormularioReserva.spec.tsx`: ocho casos con fetch simulado.
+- `tests/FormularioReserva.spec.tsx`: dos casos con fetch simulado, dentro de las diez pruebas actuales.
 
 La lógica de selección de SeleccionReserva.tsx se integra en useReserva; se retira el componente anterior para evitar dos consultas a la API y estados duplicados.
 
@@ -25,4 +25,4 @@ Limpiar elimina los cinco valores, selección, errores, resumen y confirmación.
 
 Las pruebas representativas del formulario, TypeScript y compilación se ejecutan correctamente. El caso del formulario comprueba el rechazo de datos incorrectos, la aceptación de datos correctos y la limpieza de valores, selección, errores y resultado.
 
-En Edge se verificaron esos flujos con la API real y respuestas de error simuladas, en anchos 1280, 768, 375 y 320 sin desbordamiento horizontal. Se revisó visualmente la captura móvil. No hubo errores JavaScript ni peticiones POST, PUT, PATCH o DELETE durante la validación. La cobertura porcentual sigue pendiente.
+En Edge se verificaron esos flujos con la API real y respuestas de error simuladas, en anchos 1280, 768, 375 y 320 sin desbordamiento horizontal. Se revisó visualmente la captura móvil. No hubo errores JavaScript ni peticiones POST, PUT, PATCH o DELETE durante la validación. La cobertura actual y sus exclusiones están en el [informe de testing](../INFORME-TESTING.md).
