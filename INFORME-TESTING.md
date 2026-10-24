@@ -21,7 +21,7 @@
 | 7 | Catálogo/API | Respuesta HTTP con error y respuesta sin lista | Exitoso |
 | 8 | Catálogo | Selección única, cambio, limpieza y nueva selección | Exitoso |
 | 9 | Reserva | Rechazo de datos inválidos y aceptación de datos válidos | Exitoso |
-| 10 | Reserva | Limpieza de valores, errores y resultado | Exitoso |
+| 10 | Reserva | Limpieza, recuperación de URL inválida y bloqueo sin servicios | Exitoso |
 
 ## Mocks utilizados
 
@@ -55,10 +55,10 @@ Se incluyen los 29 archivos de esas carpetas, incluso los no importados por las 
 
 Resultado de la nueva medición del 24 de octubre de 2026, después de ampliar los comportamientos comprobados en los mismos diez casos:
 
-- Sentencias: **76,02% (130/171)**.
-- Ramas: **82,07% (87/106)**.
+- Sentencias: **76,60% (131/171)**.
+- Ramas: **85,84% (91/106)**.
 - Funciones: **64,91% (37/57)**.
-- Líneas: **73,10% (106/145)**.
+- Líneas: **73,79% (107/145)**.
 
 Los reportes de esta configuración se generan en `coverage/aplicacion/`: `index.html`, `lcov.info`, `coverage-final.json` y `coverage-summary.json`. `coverage/inicial.js` es la base temporal de contadores. Los reportes anteriores guardados en carpetas con nombres de navegador corresponden a la configuración antigua y no deben utilizarse para esta medición.
 
@@ -78,4 +78,10 @@ El informe no acredita accesibilidad completa, aspecto visual, ejecución real d
 
 Se conserva la distribución 4 + 4 + 2, sin nuevas dependencias ni cambios en el código de aplicación. Se comprueban límites de nombre y correo; RUT sin puntos, con espacios, K y cero; servicios vacíos o fuera del catálogo; transición de carga a resultados; respuesta exitosa sin lista; quitar y volver a seleccionar; errores en campos vacíos y foco en el primero; corrección del error al editar; eliminación de confirmación al cambiar datos; y preselección desde la URL con limpieza posterior. Las comprobaciones se agrupan en el caso de la funcionalidad correspondiente. No se afirma cobertura exhaustiva.
 
-La nueva ejecución completó 10/10 pruebas y TypeScript. El ERS conserva los porcentajes de su verificación anterior, identificados como tales; la medición más reciente corresponde a este informe y a docs/evidencia-cobertura.json.
+La nueva ejecución completó 10/10 pruebas y TypeScript. La medición más reciente corresponde a este informe y a docs/evidencia-cobertura.json; el ERS debe reflejar estos mismos resultados.
+
+### Revisión de huecos funcionales en Reserva
+
+Los mismos dos casos de formulario ahora verifican el bloqueo del selector y de Validar durante la carga, su habilitación al recibir servicios y la disponibilidad de Limpiar. También verifican la recuperación de un identificador inexistente eligiendo un servicio válido y el bloqueo ante lista vacía o rechazo de red, manteniendo la limpieza disponible. Los remontajes representan entradas nuevas al formulario con distintas respuestas simuladas. Se mantienen diez casos en total y no se cambia el código de aplicación.
+
+Persisten huecos: las páginas informativas, navegación y carrusel no tienen casos automatizados en esta suite. Tampoco se prueban todas las combinaciones de cancelación de peticiones o JSON malformado. No se declara cobertura total.

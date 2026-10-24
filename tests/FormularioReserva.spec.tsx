@@ -7,9 +7,11 @@ describe("Formulario de Reserva", function () {
   let contenedor: HTMLDivElement;
   let raiz: Root;
   let direccionOriginal: string;
+  let version: number;
 
   beforeEach(function () {
     direccionOriginal = window.location.href;
+    version = 0;
     history.replaceState(null, "", "/reserva");
     contenedor = document.createElement("div");
     document.body.appendChild(contenedor);
@@ -29,7 +31,8 @@ describe("Formulario de Reserva", function () {
   }
 
   async function mostrar() {
-    await act(async function () { raiz.render(<FormularioReserva />); });
+    version += 1;
+    await act(async function () { raiz.render(<FormularioReserva key={version} />); });
   }
 
   function formulario() {
@@ -65,6 +68,12 @@ describe("Formulario de Reserva", function () {
     await act(async function () { formulario().querySelector<HTMLButtonElement>('button[type="reset"]')?.click(); });
   }
 
+  function comprobarBloqueo() {
+    expect((campo("servicio") as HTMLSelectElement).disabled).toBeTrue();
+    expect(formulario().querySelector<HTMLButtonElement>('button[type="submit"]')?.disabled).toBeTrue();
+    expect(formulario().querySelector<HTMLButtonElement>('button[type="reset"]')?.disabled).toBeFalse();
+  }
+
   function comprobarLimpieza() {
     ["nombre", "rut", "correo", "servicio", "comentario"].forEach(function (nombre) { expect(campo(nombre).value).toBe(""); });
     expect(formulario().querySelector('[role="status"]')).toBeNull();
@@ -78,8 +87,17 @@ describe("Formulario de Reserva", function () {
 
   it("rechaza datos incorrectos y acepta datos correctos", async function () {
     // 1. Preparar la API y los datos con un RUT incorrecto.
-    const consulta = simularApi();
+    let terminarConsulta!: (respuesta: Response) => void;
+    const pendiente = new Promise<Response>(function (resolver) { terminarConsulta = resolver; });
+    const consulta = spyOn(window, "fetch").and.returnValue(pendiente);
     await mostrar();
+    comprobarBloqueo();
+    expect(contenedor.querySelector('[role="status"]')?.textContent?.trim()).toBeTruthy();
+    const respuesta = new Response();
+    spyOn(respuesta, "json").and.resolveTo(datos.tratamientos);
+    await act(async function () { terminarConsulta(respuesta); });
+    expect((campo("servicio") as HTMLSelectElement).disabled).toBeFalse();
+    expect(formulario().querySelector<HTMLButtonElement>('button[type="submit"]')?.disabled).toBeFalse();
     await enviar();
     expect(document.activeElement).toBe(campo("nombre"));
     expect(formulario().querySelectorAll('[aria-invalid="true"]').length).toBe(4);
@@ -120,10 +138,10 @@ describe("Formulario de Reserva", function () {
     expect(consulta).toHaveBeenCalledTimes(1);
   });
 
-  it("limpia valores, selección, errores y resultado", async function () {
+  it("limpia el formulario y permite recuperarse de una selección inválida o servicios no disponibles", async function () {
     // 1. Preparar un formulario con datos y una confirmación.
     history.replaceState(null, "", "/reserva?tratamiento=5");
-    simularApi();
+    const consulta = simularApi();
     await mostrar();
     expect(campo("servicio").value).toBe("Armonización facial");
     expect(contenedor.textContent).toContain("Valor según evaluación");
@@ -150,6 +168,33 @@ describe("Formulario de Reserva", function () {
     await limpiar();
 
     // 3. Comprobar que también se borraron los errores.
+    comprobarLimpieza();
+
+    // Una URL desconocida avisa y permite elegir un servicio existente.
+    history.replaceState(null, "", "/reserva?tratamiento=999");
+    await mostrar();
+    expect(campo("servicio").value).toBe("");
+    expect(contenedor.querySelector('[role="alert"]')?.textContent?.trim()).toBeTruthy();
+    await completar();
+    expect(contenedor.querySelector('[role="alert"]')).toBeNull();
+    await enviar();
+    expect(formulario().querySelector('[role="status"]')).not.toBeNull();
+
+    // Sin servicios o con error de red, no se puede validar una reserva.
+    const vacia = new Response();
+    spyOn(vacia, "json").and.resolveTo([]);
+    consulta.and.resolveTo(vacia);
+    await mostrar();
+    comprobarBloqueo();
+    expect(contenedor.querySelector('[role="status"]')?.textContent?.trim()).toBeTruthy();
+    await limpiar();
+    comprobarLimpieza();
+
+    consulta.and.rejectWith(new Error("API desconectada"));
+    await mostrar();
+    comprobarBloqueo();
+    expect(contenedor.querySelector('[role="alert"]')?.textContent?.trim()).toBeTruthy();
+    await limpiar();
     comprobarLimpieza();
   });
 
