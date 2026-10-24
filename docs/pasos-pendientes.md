@@ -10,7 +10,8 @@ Paso 19 completado: navegación de las cinco páginas verificada, pie completo y
 
 Paso 20 completado: cobertura corregida para medir 29 archivos de aplicación, excluyendo pruebas e incluyendo los módulos no ejecutados. Se mantienen diez pruebas exitosas. Resultados y limitaciones en INFORME-TESTING.md y evidencia en docs/evidencia-cobertura.json.
 
-21. Corregir los caracteres dañados del ERS versión 2 y revisar su contenido.
+Paso 21 completado: ERS versión 2 corregido sin caracteres dañados, con títulos, viñetas y tablas revisados. Se contrastaron requisitos, reserva de demostración, diez pruebas y cobertura con el código y la evidencia actuales. Se revisaron visualmente sus tres páginas exportadas desde Word.
+
 22. Revisar las diez pruebas, manteniendo su cantidad y centrándolas en funcionalidad.
 23. Cerrar responsividad y accesibilidad: móvil, tablet, escritorio, teclado y contraste del foco.
 24. Actualizar y armonizar README, guías, plan e informe de testing.
