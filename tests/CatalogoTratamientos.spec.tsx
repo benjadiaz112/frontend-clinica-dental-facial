@@ -41,10 +41,16 @@ describe("Catálogo conectado a la API", function () {
   it("muestra los cinco tratamientos y conserva los precios según evaluación", async function () {
     // 1. Preparar los datos y simular la API.
     const tratamientos = datos.tratamientos;
-    const consulta = spyOn(window, "fetch").and.resolveTo(respuestaJson(tratamientos));
+    let terminarConsulta!: (respuesta: Response) => void;
+    const pendiente = new Promise<Response>(function (resolver) { terminarConsulta = resolver; });
+    const consulta = spyOn(window, "fetch").and.returnValue(pendiente);
 
     // 2. Mostrar el catálogo y obtener el resultado.
     await mostrar();
+    expect(contenedor.querySelector('[role="status"]')?.textContent?.trim()).toBeTruthy();
+    expect(contenedor.querySelectorAll("article").length).toBe(0);
+    expect(enlaceReserva()).toBeNull();
+    await act(async function () { terminarConsulta(respuestaJson(tratamientos)); });
     const tarjetas = Array.from(contenedor.querySelectorAll("article"));
 
     // 3. Comprobar la consulta, los tratamientos y sus precios.
@@ -53,6 +59,7 @@ describe("Catálogo conectado a la API", function () {
     tratamientos.forEach(function (tratamiento) {
       const tarjeta = tarjetas.find(function (item) { return item.textContent?.includes(tratamiento.nombre); });
       expect(tarjeta?.textContent).toContain(tratamiento.textoPrecio);
+      expect(tarjeta?.querySelector("img")?.getAttribute("alt")).toBe(tratamiento.textoAlternativo);
     });
     expect(enlaceReserva()).toBeNull();
   });
@@ -72,10 +79,10 @@ describe("Catálogo conectado a la API", function () {
     expect(enlaceReserva()).toBeNull();
   });
 
-  it("muestra un error cuando la API devuelve un error HTTP", async function () {
+  it("rechaza errores HTTP y respuestas que no contienen una lista", async function () {
     // 1. Preparar una respuesta con error.
     const respuesta = new Response("{}", { status: 500 });
-    spyOn(window, "fetch").and.resolveTo(respuesta);
+    const consulta = spyOn(window, "fetch").and.resolveTo(respuesta);
 
     // 2. Mostrar el catálogo y obtener el error.
     await mostrar();
@@ -84,6 +91,14 @@ describe("Catálogo conectado a la API", function () {
     // 3. Comprobar que se informa el error y no se muestran tarjetas.
     expect(mensaje?.textContent?.trim()).toBeTruthy();
     expect(contenedor.querySelectorAll("article").length).toBe(0);
+    expect(enlaceReserva()).toBeNull();
+
+    // Una respuesta HTTP exitosa tampoco es válida si no contiene una lista.
+    consulta.and.resolveTo(respuestaJson({ mensaje: "Datos incorrectos" }));
+    await act(async function () { raiz.render(<CatalogoTratamientos key="respuesta-invalida" />); });
+    expect(contenedor.querySelector('[role="alert"]')?.textContent?.trim()).toBeTruthy();
+    expect(contenedor.querySelectorAll("article").length).toBe(0);
+    expect(enlaceReserva()).toBeNull();
   });
 
   it("selecciona un solo tratamiento y actualiza el enlace a Reserva al cambiarlo", async function () {
@@ -112,5 +127,17 @@ describe("Catálogo conectado a la API", function () {
     expect(contenedor.querySelectorAll('[aria-pressed="true"]').length).toBe(1);
     expect(enlaceReserva()?.getAttribute("href")).toBe("/reserva?tratamiento=5");
     expect(contenedor.querySelector('[role="status"]')?.textContent).toContain("Armonización facial");
+
+    // Quitar la selección elimina también la posibilidad de continuar con ese id.
+    const quitar = Array.from(contenedor.querySelectorAll("button")).find(function (boton) {
+      return boton.textContent === "Quitar selección";
+    }) as HTMLButtonElement;
+    await act(async function () { quitar.click(); });
+    expect(contenedor.querySelectorAll('[aria-pressed="true"]').length).toBe(0);
+    expect(enlaceReserva()).toBeNull();
+    expect(quitar.isConnected).toBeFalse();
+
+    await act(async function () { limpieza.click(); });
+    expect(enlaceReserva()?.getAttribute("href")).toBe("/reserva?tratamiento=1");
   });
 });

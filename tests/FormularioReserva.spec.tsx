@@ -80,6 +80,9 @@ describe("Formulario de Reserva", function () {
     // 1. Preparar la API y los datos con un RUT incorrecto.
     const consulta = simularApi();
     await mostrar();
+    await enviar();
+    expect(document.activeElement).toBe(campo("nombre"));
+    expect(formulario().querySelectorAll('[aria-invalid="true"]').length).toBe(4);
     await completar();
     await escribir("rut", "12.345.678-9");
 
@@ -96,6 +99,9 @@ describe("Formulario de Reserva", function () {
 
     // 1. Corregir el dato de prueba.
     await escribir("rut", "12.345.678-5");
+    expect(campo("rut").getAttribute("aria-invalid")).toBe("false");
+    expect(document.getElementById(idError || "")?.textContent).toBe("");
+    expect(formulario().querySelector('[role="alert"]')).toBeNull();
 
     // 2. Volver a validar.
     await enviar();
@@ -105,12 +111,22 @@ describe("Formulario de Reserva", function () {
     expect(formulario().querySelector('[role="status"]')?.textContent).toContain("no se envió una solicitud");
     expect(formulario().querySelector('[role="alert"]')).toBeNull();
     expect(consulta).toHaveBeenCalledTimes(1);
+
+    // Editar datos invalida la confirmación anterior hasta volver a validar.
+    await escribir("correo", "otro@ejemplo.cl");
+    expect(formulario().querySelector('[role="status"]')).toBeNull();
+    await enviar();
+    expect(formulario().querySelector('[role="status"]')).not.toBeNull();
+    expect(consulta).toHaveBeenCalledTimes(1);
   });
 
   it("limpia valores, selección, errores y resultado", async function () {
     // 1. Preparar un formulario con datos y una confirmación.
+    history.replaceState(null, "", "/reserva?tratamiento=5");
     simularApi();
     await mostrar();
+    expect(campo("servicio").value).toBe("Armonización facial");
+    expect(contenedor.textContent).toContain("Valor según evaluación");
     await completar();
     await escribir("comentario", "Consulta de prueba");
     await enviar();
@@ -121,6 +137,8 @@ describe("Formulario de Reserva", function () {
 
     // 3. Comprobar que se borraron los valores y los mensajes.
     comprobarLimpieza();
+    expect(window.location.search).toBe("?tratamiento=5");
+    expect(contenedor.textContent).not.toContain("Tratamiento seleccionado");
 
     // 1. Preparar ahora un formulario con un error.
     await completar();

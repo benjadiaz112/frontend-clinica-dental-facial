@@ -18,8 +18,8 @@
 | 4 | Validaciones | Rechazo y aceptación del servicio | Exitoso |
 | 5 | Catálogo/API | Lista con cinco tratamientos y precios | Exitoso |
 | 6 | Catálogo/API | Respuesta con lista vacía | Exitoso |
-| 7 | Catálogo/API | Respuesta HTTP con error | Exitoso |
-| 8 | Catálogo | Selección única y cambio de tratamiento | Exitoso |
+| 7 | Catálogo/API | Respuesta HTTP con error y respuesta sin lista | Exitoso |
+| 8 | Catálogo | Selección única, cambio, limpieza y nueva selección | Exitoso |
 | 9 | Reserva | Rechazo de datos inválidos y aceptación de datos válidos | Exitoso |
 | 10 | Reserva | Limpieza de valores, errores y resultado | Exitoso |
 
@@ -53,12 +53,12 @@ Karma utiliza `istanbul-lib-instrument` para instrumentar los archivos originale
 
 Se incluyen los 29 archivos de esas carpetas, incluso los no importados por las pruebas: sus contadores empiezan en cero. En esta ejecución, veinte archivos no tuvieron ejecución. Esto evita presentar como cobertura total únicamente lo que las pruebas alcanzaron a importar.
 
-Resultado de la medición registrada del 24 de octubre de 2026 (repetida sin cambios en el paso 23):
+Resultado de la nueva medición del 24 de octubre de 2026, después de ampliar los comportamientos comprobados en los mismos diez casos:
 
-- Sentencias: **68,42% (117/171)**.
-- Ramas: **71,69% (76/106)**.
-- Funciones: **59,64% (34/57)**.
-- Líneas: **69,65% (101/145)**.
+- Sentencias: **76,02% (130/171)**.
+- Ramas: **82,07% (87/106)**.
+- Funciones: **64,91% (37/57)**.
+- Líneas: **73,10% (106/145)**.
 
 Los reportes de esta configuración se generan en `coverage/aplicacion/`: `index.html`, `lcov.info`, `coverage-final.json` y `coverage-summary.json`. `coverage/inicial.js` es la base temporal de contadores. Los reportes anteriores guardados en carpetas con nombres de navegador corresponden a la configuración antigua y no deben utilizarse para esta medición.
 
@@ -73,3 +73,9 @@ El [informe del paso 23](docs/responsividad-accesibilidad.md) registra las cinco
 Los porcentajes corresponden exclusivamente al TypeScript/TSX de las cinco carpetas indicadas. No miden CSS, imágenes, archivos de configuración, librerías, tipos de `models/`, el sitio HTML/JavaScript original ni `api_simulada/servidor.js`, que se ejecuta en otro proceso Node.js. Las páginas y componentes no ejecutados por estas diez pruebas permanecen con cero cobertura; no se ejecutan artificialmente para aumentar el resultado.
 
 El informe no acredita accesibilidad completa, aspecto visual, ejecución real del backend ni aprobación académica. Las diez pruebas se mantienen sin añadir casos. Para regenerar una medición completa después de agregar o eliminar fuentes, ejecutar de nuevo `npm test`; no utilizar como evidencia final una sesión previa de `test:watch`.
+
+## Ampliación funcional de los diez casos
+
+Se conserva la distribución 4 + 4 + 2, sin nuevas dependencias ni cambios en el código de aplicación. Se comprueban límites de nombre y correo; RUT sin puntos, con espacios, K y cero; servicios vacíos o fuera del catálogo; transición de carga a resultados; respuesta exitosa sin lista; quitar y volver a seleccionar; errores en campos vacíos y foco en el primero; corrección del error al editar; eliminación de confirmación al cambiar datos; y preselección desde la URL con limpieza posterior. Las comprobaciones se agrupan en el caso de la funcionalidad correspondiente. No se afirma cobertura exhaustiva.
+
+La nueva ejecución completó 10/10 pruebas y TypeScript. El ERS conserva los porcentajes de su verificación anterior, identificados como tales; la medición más reciente corresponde a este informe y a docs/evidencia-cobertura.json.

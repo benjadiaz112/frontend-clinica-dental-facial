@@ -9,27 +9,27 @@
   "total": {
     "lines": {
       "total": 145,
-      "covered": 101,
+      "covered": 106,
       "skipped": 0,
-      "pct": 69.65
+      "pct": 73.1
     },
     "statements": {
       "total": 171,
-      "covered": 117,
+      "covered": 130,
       "skipped": 0,
-      "pct": 68.42
+      "pct": 76.02
     },
     "functions": {
       "total": 57,
-      "covered": 34,
+      "covered": 37,
       "skipped": 0,
-      "pct": 59.64
+      "pct": 64.91
     },
     "branches": {
       "total": 106,
-      "covered": 76,
+      "covered": 87,
       "skipped": 0,
-      "pct": 71.69
+      "pct": 82.07
     },
     "branchesTrue": {
       "total": 0,
@@ -536,21 +536,21 @@
     "components/tratamientos/CatalogoTratamientos.tsx": {
       "lines": {
         "total": 9,
-        "covered": 8,
+        "covered": 9,
         "skipped": 0,
-        "pct": 88.88
+        "pct": 100
       },
       "functions": {
         "total": 4,
-        "covered": 3,
+        "covered": 4,
         "skipped": 0,
-        "pct": 75
+        "pct": 100
       },
       "statements": {
         "total": 12,
-        "covered": 11,
+        "covered": 12,
         "skipped": 0,
-        "pct": 91.66
+        "pct": 100
       },
       "branches": {
         "total": 10,
@@ -692,9 +692,9 @@
     "data/tratamientos.ts": {
       "lines": {
         "total": 7,
-        "covered": 6,
+        "covered": 7,
         "skipped": 0,
-        "pct": 85.71
+        "pct": 100
       },
       "functions": {
         "total": 1,
@@ -704,41 +704,41 @@
       },
       "statements": {
         "total": 7,
-        "covered": 6,
+        "covered": 7,
         "skipped": 0,
-        "pct": 85.71
+        "pct": 100
       },
       "branches": {
         "total": 4,
-        "covered": 3,
+        "covered": 4,
         "skipped": 0,
-        "pct": 75
+        "pct": 100
       }
     },
     "hooks/useReserva.ts": {
       "lines": {
         "total": 34,
-        "covered": 30,
+        "covered": 33,
         "skipped": 0,
-        "pct": 88.23
+        "pct": 97.05
       },
       "functions": {
         "total": 11,
-        "covered": 9,
+        "covered": 11,
         "skipped": 0,
-        "pct": 81.81
+        "pct": 100
       },
       "statements": {
         "total": 47,
-        "covered": 37,
+        "covered": 45,
         "skipped": 0,
-        "pct": 78.72
+        "pct": 95.74
       },
       "branches": {
         "total": 24,
-        "covered": 15,
+        "covered": 22,
         "skipped": 0,
-        "pct": 62.5
+        "pct": 91.66
       }
     },
     "hooks/useTratamientos.ts": {
@@ -782,15 +782,15 @@
       },
       "statements": {
         "total": 27,
-        "covered": 24,
+        "covered": 27,
         "skipped": 0,
-        "pct": 88.88
+        "pct": 100
       },
       "branches": {
         "total": 17,
-        "covered": 14,
+        "covered": 17,
         "skipped": 0,
-        "pct": 82.35
+        "pct": 100
       }
     }
   }

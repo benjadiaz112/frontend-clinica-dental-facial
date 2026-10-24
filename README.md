@@ -7,7 +7,7 @@ Proyecto frontend académico de una clínica dental y de armonización facial. L
 
 El [alcance vigente](docs/alcance-parcial-2.md) se limita a la pauta principal, por indicación del usuario: React, propiedades y estados, navegación, formularios, responsividad, Jasmine/Karma, mocks, cobertura y entregables. Se conserva el caso de Clínica Aura. Por decisión del usuario se utiliza CSS nativo; la pauta exige Bootstrap y esta diferencia sigue pendiente.
 
-Inicio, Nosotros, Contacto, Tratamientos y Reserva están migrados. El [catálogo](docs/catalogo-react.md) consulta la API y permite [seleccionar un tratamiento](docs/seleccion-tratamiento.md). El [formulario React](docs/formulario-reserva.md) valida nombre, RUT, correo y servicio, muestra errores y permite limpiar. La confirmación es solo de demostración. Se conservan cinco rutas y la página 404. La suite contiene diez pruebas representativas; la cobertura de líneas medida es 69,65% sobre 29 archivos de aplicación, incluidos los no ejecutados. El [informe de testing](INFORME-TESTING.md) detalla el alcance y las exclusiones.
+Inicio, Nosotros, Contacto, Tratamientos y Reserva están migrados. El [catálogo](docs/catalogo-react.md) consulta la API y permite [seleccionar un tratamiento](docs/seleccion-tratamiento.md). El [formulario React](docs/formulario-reserva.md) valida nombre, RUT, correo y servicio, muestra errores y permite limpiar. La confirmación es solo de demostración. Se conservan cinco rutas y la página 404. La suite contiene diez pruebas representativas; la cobertura de líneas medida es 73,10% sobre 29 archivos de aplicación, incluidos los no ejecutados. El [informe de testing](INFORME-TESTING.md) detalla el alcance y las exclusiones.
 
 ## Estructura simple por modulos
 
