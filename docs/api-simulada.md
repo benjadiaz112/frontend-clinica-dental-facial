@@ -28,6 +28,7 @@ En otra terminal ejecutar `npm run dev` para Next.js, en el puerto 3000. `/trata
 | GET /tratamientos | 200 y un arreglo con cinco tratamientos. |
 | Otra ruta | 404 con mensaje JSON. |
 | Otro método en /tratamientos | 405 con mensaje JSON y cabecera Allow: GET. |
+| Datos de tratamientos con estructura inválida | 500 con mensaje JSON. |
 
 Se permite lectura desde el navegador mediante Access-Control-Allow-Origin. No hay creación, edición, eliminación, autenticación ni datos personales. Las imágenes siguen sirviéndose desde Next.js en `/imagenes/`; la API entrega sus rutas, no los archivos.
 

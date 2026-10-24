@@ -8,7 +8,7 @@ La aplicación usa CSS nativo, sin librerías de estilos ni dependencias adicion
 - El turquesa principal es `#007373`, más oscuro que el anterior para mejorar el contraste con el blanco.
 - Los colores se definen en `:root` y se reutilizan con `var(...)`.
 - Arial del sistema, sin descargar fuentes.
-- Flexbox, tamaños flexibles y una media query a 768 px.
+- Flexbox, tamaños flexibles y media queries a 768 y 480 px en los estilos globales.
 - Foco visible para enlaces, botones y campos al usar el teclado.
 
 ## Clases reutilizables
@@ -18,7 +18,7 @@ La aplicación usa CSS nativo, sin librerías de estilos ni dependencias adicion
 | contenedor | Centra el contenido y limita su ancho a 1000 px. |
 | panel | Fondo blanco, espacio interior y bordes redondeados. |
 | portada | Separación superior e inferior de la presentación inicial. |
-| tarjeta | Bloque visual para los futuros listados. |
+| tarjeta | Bloque visual reutilizable para tarjetas. |
 | rejilla | Distribuye bloques en columnas; en móvil se apilan. |
 | btn | Aspecto común para enlaces que realizan una acción. Los botones también reciben estos estilos. |
 | btn-secundario | Variante blanca con borde turquesa; se combina con btn. |
