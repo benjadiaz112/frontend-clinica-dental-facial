@@ -39,12 +39,18 @@ describe("Catálogo conectado a la API", function () {
   }
 
   it("muestra los cinco tratamientos y conserva los precios según evaluación", async function () {
-    const consulta = spyOn(window, "fetch").and.resolveTo(respuestaJson(datos.tratamientos));
+    // 1. Preparar los datos y simular la API.
+    const tratamientos = datos.tratamientos;
+    const consulta = spyOn(window, "fetch").and.resolveTo(respuestaJson(tratamientos));
+
+    // 2. Mostrar el catálogo y obtener el resultado.
     await mostrar();
-    expect(consulta).toHaveBeenCalledTimes(1);
     const tarjetas = Array.from(contenedor.querySelectorAll("article"));
-    expect(tarjetas.length).toBe(datos.tratamientos.length);
-    datos.tratamientos.forEach(function (tratamiento) {
+
+    // 3. Comprobar la consulta, los tratamientos y sus precios.
+    expect(consulta).toHaveBeenCalledTimes(1);
+    expect(tarjetas.length).toBe(tratamientos.length);
+    tratamientos.forEach(function (tratamiento) {
       const tarjeta = tarjetas.find(function (item) { return item.textContent?.includes(tratamiento.nombre); });
       expect(tarjeta?.textContent).toContain(tratamiento.textoPrecio);
     });
@@ -52,33 +58,55 @@ describe("Catálogo conectado a la API", function () {
   });
 
   it("informa cuando la API devuelve una lista vacía", async function () {
-    spyOn(window, "fetch").and.resolveTo(respuestaJson([]));
+    // 1. Preparar una respuesta sin tratamientos.
+    const respuesta = respuestaJson([]);
+    spyOn(window, "fetch").and.resolveTo(respuesta);
+
+    // 2. Mostrar el catálogo y obtener el mensaje.
     await mostrar();
-    expect(contenedor.querySelector('[role="status"]')?.textContent?.trim()).toBeTruthy();
+    const mensaje = contenedor.querySelector('[role="status"]');
+
+    // 3. Comprobar que se informa la lista vacía.
+    expect(mensaje?.textContent?.trim()).toBeTruthy();
     expect(contenedor.querySelectorAll("article").length).toBe(0);
     expect(enlaceReserva()).toBeNull();
   });
 
   it("muestra un error cuando la API devuelve un error HTTP", async function () {
-    spyOn(window, "fetch").and.resolveTo(new Response("{}", { status: 500 }));
+    // 1. Preparar una respuesta con error.
+    const respuesta = new Response("{}", { status: 500 });
+    spyOn(window, "fetch").and.resolveTo(respuesta);
+
+    // 2. Mostrar el catálogo y obtener el error.
     await mostrar();
-    expect(contenedor.querySelector('[role="alert"]')?.textContent?.trim()).toBeTruthy();
+    const mensaje = contenedor.querySelector('[role="alert"]');
+
+    // 3. Comprobar que se informa el error y no se muestran tarjetas.
+    expect(mensaje?.textContent?.trim()).toBeTruthy();
     expect(contenedor.querySelectorAll("article").length).toBe(0);
   });
 
   it("selecciona un solo tratamiento y actualiza el enlace a Reserva al cambiarlo", async function () {
-    spyOn(window, "fetch").and.resolveTo(respuestaJson(datos.tratamientos.slice().reverse()));
+    // 1. Preparar el catálogo en otro orden y los botones.
+    const tratamientos = datos.tratamientos.slice().reverse();
+    spyOn(window, "fetch").and.resolveTo(respuestaJson(tratamientos));
     await mostrar();
     expect(enlaceReserva()).toBeNull();
-
     const limpieza = botonTratamiento("Limpieza dental");
     const armonizacion = botonTratamiento("Armonización facial");
+
+    // 2. Seleccionar el primer tratamiento.
     await act(async function () { limpieza.click(); });
+
+    // 3. Comprobar la selección y el enlace a Reserva.
     expect(limpieza.getAttribute("aria-pressed")).toBe("true");
     expect(contenedor.querySelector('[role="status"]')?.textContent).toContain("Limpieza dental");
     expect(enlaceReserva()?.getAttribute("href")).toBe("/reserva?tratamiento=1");
 
+    // 2. Cambiar el tratamiento elegido.
     await act(async function () { armonizacion.click(); });
+
+    // 3. Comprobar que solo queda seleccionado el nuevo tratamiento.
     expect(limpieza.getAttribute("aria-pressed")).toBe("false");
     expect(armonizacion.getAttribute("aria-pressed")).toBe("true");
     expect(contenedor.querySelectorAll('[aria-pressed="true"]').length).toBe(1);

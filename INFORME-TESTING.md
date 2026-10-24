@@ -35,6 +35,8 @@ Por esta razón, `npm test` funciona sin iniciar `npm run api` y no depende de d
 
 ## Revisión de las diez pruebas
 
+Las diez pruebas siguen el estilo sencillo del ejemplo de patentes: preparar los datos, ejecutar una función o acción y comprobar el resultado. Se utilizan `describe`, `it` y `expect` de Jasmine. QUnit sirve como referencia de estilo, pero no se instala ni se combina con el entorno de Jasmine y Karma.
+
 En el paso 22 se conservan cuatro pruebas de validaciones, cuatro de catálogo y dos de formulario. No se agregan dependencias ni se cambia la interfaz.
 
 Se eliminan los selectores `.precio-tratamiento` y `.mensaje-exito`, las posiciones fijas de tarjetas y la dependencia del nivel de un título para comprobar la limpieza. Las pruebas buscan los tratamientos por nombre, verifican sus precios y el identificador enviado a Reserva, y consultan campos del formulario mediante `name` y mensajes mediante `role`, `aria-invalid` y `aria-describedby`.
