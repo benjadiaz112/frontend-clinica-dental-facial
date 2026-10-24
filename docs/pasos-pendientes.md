@@ -12,7 +12,8 @@ Paso 20 completado: cobertura corregida para medir 29 archivos de aplicación, e
 
 Paso 21 completado: ERS versión 2 corregido sin caracteres dañados, con títulos, viñetas y tablas revisados. Se contrastaron requisitos, reserva de demostración, diez pruebas y cobertura con el código y la evidencia actuales. Se revisaron visualmente sus tres páginas exportadas desde Word.
 
-22. Revisar las diez pruebas, manteniendo su cantidad y centrándolas en funcionalidad.
+Paso 22 completado: se mantienen diez pruebas funcionales, sin selectores de clases CSS ni posiciones fijas de tarjetas. Se revisan errores accesibles, campos por nombre, selección y limpieza después de éxito y error. Se conserva la interfaz y no se agregan dependencias.
+
 23. Cerrar responsividad y accesibilidad: móvil, tablet, escritorio, teclado y contraste del foco.
 24. Actualizar y armonizar README, guías, plan e informe de testing.
 25. Resolver la diferencia de Bootstrap antes de cambiar estilos: la pauta lo exige y actualmente se utiliza CSS nativo.
