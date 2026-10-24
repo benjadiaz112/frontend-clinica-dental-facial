@@ -2,7 +2,6 @@ const fs = require("fs");
 const path = require("path");
 const prepararCobertura = require("./tests/cobertura");
 
-// En Windows también podemos usar Edge, que está basado en Chromium.
 if (!process.env.CHROME_BIN && process.platform === "win32") {
   const carpetaProgramas = process.env["PROGRAMFILES(X86)"] || "C:\\Program Files (x86)";
   const rutaEdge = path.join(carpetaProgramas, "Microsoft", "Edge", "Application", "msedge.exe");

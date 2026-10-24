@@ -13,12 +13,10 @@ if (formulario) {
     recuperarServicio();
 }
 
-// Igual que en el carrito del ejemplo, solo se guarda la elección del servicio.
 function seleccionarServicio(servicio) {
     try {
         localStorage.setItem("servicioSeleccionado", servicio);
     } catch (error) {
-        // Si el almacenamiento no está disponible, el enlace sigue funcionando.
     }
 }
 
@@ -30,7 +28,6 @@ function recuperarServicio() {
         }
         localStorage.removeItem("servicioSeleccionado");
     } catch (error) {
-        // El usuario también puede elegir el servicio directamente en el formulario.
     }
 }
 

@@ -33,7 +33,6 @@ module.exports = function prepararCobertura() {
     }
   }
 
-  // Incluye también los archivos que ninguna de las diez pruebas importa.
   for (const carpeta of ["app", "components", "hooks", "data", "services"]) {
     recorrer(path.join(raiz, carpeta));
   }
