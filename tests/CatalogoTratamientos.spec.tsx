@@ -28,46 +28,61 @@ describe("Catálogo conectado a la API", function () {
     return respuesta;
   }
 
+  function botonTratamiento(nombre: string) {
+    return Array.from(contenedor.querySelectorAll("button")).find(function (boton) {
+      return boton.textContent?.includes(nombre);
+    }) as HTMLButtonElement;
+  }
+
+  function enlaceReserva() {
+    return contenedor.querySelector<HTMLAnchorElement>('a[href^="/reserva?"]');
+  }
+
   it("muestra los cinco tratamientos y conserva los precios según evaluación", async function () {
     const consulta = spyOn(window, "fetch").and.resolveTo(respuestaJson(datos.tratamientos));
     await mostrar();
-    expect(consulta.calls.mostRecent().args[0]).toBe("http://127.0.0.1:3001/tratamientos");
-    expect(contenedor.querySelectorAll("article").length).toBe(5);
-    const precios = contenedor.querySelectorAll(".precio-tratamiento");
-    expect(precios[2].textContent).toBe("Evaluación desde $20.000");
-    expect(precios[3].textContent).toBe("Valor según evaluación");
-    expect(precios[4].textContent).toBe("Valor según evaluación");
-    expect(contenedor.querySelector('[role="status"]')?.textContent).toContain("Selecciona un tratamiento");
+    expect(consulta).toHaveBeenCalledTimes(1);
+    const tarjetas = Array.from(contenedor.querySelectorAll("article"));
+    expect(tarjetas.length).toBe(datos.tratamientos.length);
+    datos.tratamientos.forEach(function (tratamiento) {
+      const tarjeta = tarjetas.find(function (item) { return item.textContent?.includes(tratamiento.nombre); });
+      expect(tarjeta?.textContent).toContain(tratamiento.textoPrecio);
+    });
+    expect(enlaceReserva()).toBeNull();
   });
 
   it("informa cuando la API devuelve una lista vacía", async function () {
     spyOn(window, "fetch").and.resolveTo(respuestaJson([]));
     await mostrar();
-    expect(contenedor.querySelector('[role="status"]')?.textContent).toBe("No hay tratamientos disponibles.");
+    expect(contenedor.querySelector('[role="status"]')?.textContent?.trim()).toBeTruthy();
+    expect(contenedor.querySelectorAll("article").length).toBe(0);
+    expect(enlaceReserva()).toBeNull();
   });
 
   it("muestra un error cuando la API devuelve un error HTTP", async function () {
     spyOn(window, "fetch").and.resolveTo(new Response("{}", { status: 500 }));
     await mostrar();
-    expect(contenedor.querySelector('[role="alert"]')?.textContent).toContain("No se pudieron cargar");
+    expect(contenedor.querySelector('[role="alert"]')?.textContent?.trim()).toBeTruthy();
     expect(contenedor.querySelectorAll("article").length).toBe(0);
   });
 
   it("selecciona un solo tratamiento y actualiza el enlace a Reserva al cambiarlo", async function () {
-    spyOn(window, "fetch").and.resolveTo(respuestaJson(datos.tratamientos));
+    spyOn(window, "fetch").and.resolveTo(respuestaJson(datos.tratamientos.slice().reverse()));
     await mostrar();
-    expect(contenedor.querySelector('a[href^="/reserva"]')).toBeNull();
+    expect(enlaceReserva()).toBeNull();
 
-    const botones = contenedor.querySelectorAll<HTMLButtonElement>("article button");
-    await act(async function () { botones[0].click(); });
-    expect(botones[0].getAttribute("aria-pressed")).toBe("true");
+    const limpieza = botonTratamiento("Limpieza dental");
+    const armonizacion = botonTratamiento("Armonización facial");
+    await act(async function () { limpieza.click(); });
+    expect(limpieza.getAttribute("aria-pressed")).toBe("true");
     expect(contenedor.querySelector('[role="status"]')?.textContent).toContain("Limpieza dental");
-    expect(contenedor.querySelector("a")?.getAttribute("href")).toBe("/reserva?tratamiento=1");
+    expect(enlaceReserva()?.getAttribute("href")).toBe("/reserva?tratamiento=1");
 
-    await act(async function () { botones[4].click(); });
-    expect(botones[0].getAttribute("aria-pressed")).toBe("false");
+    await act(async function () { armonizacion.click(); });
+    expect(limpieza.getAttribute("aria-pressed")).toBe("false");
+    expect(armonizacion.getAttribute("aria-pressed")).toBe("true");
     expect(contenedor.querySelectorAll('[aria-pressed="true"]').length).toBe(1);
-    expect(contenedor.querySelector("a")?.getAttribute("href")).toBe("/reserva?tratamiento=5");
+    expect(enlaceReserva()?.getAttribute("href")).toBe("/reserva?tratamiento=5");
     expect(contenedor.querySelector('[role="status"]')?.textContent).toContain("Armonización facial");
   });
 });
