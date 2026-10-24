@@ -33,6 +33,16 @@ Las pruebas del catálogo y del formulario usan `spyOn(window, "fetch")` para de
 
 Por esta razón, `npm test` funciona sin iniciar `npm run api` y no depende de disponibilidad de red, puerto local o datos externos.
 
+## Revisión de las diez pruebas
+
+En el paso 22 se conservan cuatro pruebas de validaciones, cuatro de catálogo y dos de formulario. No se agregan dependencias ni se cambia la interfaz.
+
+Se eliminan los selectores `.precio-tratamiento` y `.mensaje-exito`, las posiciones fijas de tarjetas y la dependencia del nivel de un título para comprobar la limpieza. Las pruebas buscan los tratamientos por nombre, verifican sus precios y el identificador enviado a Reserva, y consultan campos del formulario mediante `name` y mensajes mediante `role`, `aria-invalid` y `aria-describedby`.
+
+La selección se prueba con la lista simulada en orden inverso. Limpiar se comprueba después de un resultado válido y después de un error, dentro del mismo caso. Se mantiene la comprobación del aviso de que no se envió una solicitud, porque es una condición funcional de esta demostración. Los textos decorativos de carga, lista vacía y error no se comparan literalmente.
+
+Estos cambios toleran modificaciones de clases, colores y orden de tarjetas. Un cambio en nombres de campos, roles accesibles o rutas puede requerir actualizar las pruebas, porque forman parte del comportamiento comprobado.
+
 ## Cobertura
 
 Medición del 24 de octubre de 2026 con `npm test -- --reporters=dots,coverage`: diez pruebas exitosas y cero fallidas. TypeScript y compilación también finalizaron correctamente.

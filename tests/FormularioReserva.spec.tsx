@@ -32,18 +32,26 @@ describe("Formulario de Reserva", function () {
     await act(async function () { raiz.render(<FormularioReserva />); });
   }
 
-  async function escribir(id: string, valor: string) {
-    const campo = contenedor.querySelector("#" + id) as HTMLInputElement;
-    const prototipo = Object.getPrototypeOf(campo);
+  function formulario() {
+    return contenedor.querySelector("form") as HTMLFormElement;
+  }
+
+  function campo(nombre: string) {
+    return formulario().elements.namedItem(nombre) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+  }
+
+  async function escribir(nombre: string, valor: string) {
+    const control = campo(nombre);
+    const prototipo = Object.getPrototypeOf(control);
     const asignar = Object.getOwnPropertyDescriptor(prototipo, "value")?.set;
     await act(async function () {
-      asignar?.call(campo, valor);
-      campo.dispatchEvent(new Event(campo.tagName === "SELECT" ? "change" : "input", { bubbles: true }));
+      asignar?.call(control, valor);
+      control.dispatchEvent(new Event(control.tagName === "SELECT" ? "change" : "input", { bubbles: true }));
     });
   }
 
   async function enviar() {
-    await act(async function () { contenedor.querySelector('form')?.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true })); });
+    await act(async function () { formulario().dispatchEvent(new Event("submit", { bubbles: true, cancelable: true })); });
   }
 
   async function completar() {
@@ -53,18 +61,37 @@ describe("Formulario de Reserva", function () {
     await escribir("servicio", "Limpieza dental");
   }
 
+  async function limpiarYComprobar() {
+    await act(async function () { formulario().querySelector<HTMLButtonElement>('button[type="reset"]')?.click(); });
+    ["nombre", "rut", "correo", "servicio", "comentario"].forEach(function (nombre) { expect(campo(nombre).value).toBe(""); });
+    expect(formulario().querySelector('[role="status"]')).toBeNull();
+    expect(formulario().querySelector('[role="alert"]')).toBeNull();
+    expect(formulario().querySelectorAll('[aria-invalid="true"]').length).toBe(0);
+    formulario().querySelectorAll('[aria-describedby]').forEach(function (control) {
+      const id = control.getAttribute("aria-describedby") || "";
+      expect(document.getElementById(id)?.textContent).toBe("");
+    });
+  }
+
   it("rechaza datos incorrectos y acepta datos correctos", async function () {
-    simularApi();
+    const consulta = simularApi();
     await mostrar();
     await completar();
     await escribir("rut", "12.345.678-9");
     await enviar();
-    expect(document.activeElement?.id).toBe("rut");
-    expect(contenedor.querySelector("#rut")?.getAttribute("aria-invalid")).toBe("true");
+    expect(document.activeElement).toBe(campo("rut"));
+    expect(campo("rut").getAttribute("aria-invalid")).toBe("true");
+    const idError = campo("rut").getAttribute("aria-describedby");
+    expect(document.getElementById(idError || "")?.textContent?.trim()).toBeTruthy();
+    expect(formulario().querySelector('[role="alert"]')).not.toBeNull();
+    expect(formulario().querySelector('[role="status"]')).toBeNull();
 
     await escribir("rut", "12.345.678-5");
     await enviar();
-    expect(contenedor.querySelector(".mensaje-exito")).not.toBeNull();
+    expect(campo("rut").getAttribute("aria-invalid")).toBe("false");
+    expect(formulario().querySelector('[role="status"]')?.textContent).toContain("no se envió una solicitud");
+    expect(formulario().querySelector('[role="alert"]')).toBeNull();
+    expect(consulta).toHaveBeenCalledTimes(1);
   });
 
   it("limpia valores, selección, errores y resultado", async function () {
@@ -73,11 +100,14 @@ describe("Formulario de Reserva", function () {
     await completar();
     await escribir("comentario", "Consulta de prueba");
     await enviar();
-    await act(async function () { contenedor.querySelector<HTMLButtonElement>('button[type="reset"]')?.click(); });
-    contenedor.querySelectorAll<HTMLInputElement>("input, select, textarea").forEach(function (campo) { expect(campo.value).toBe(""); });
-    expect(contenedor.querySelector(".mensaje-exito")).toBeNull();
-    expect(contenedor.querySelectorAll('[aria-invalid="true"]').length).toBe(0);
-    expect(contenedor.querySelector("h2")).toBeNull();
+    expect(formulario().querySelector('[role="status"]')).not.toBeNull();
+    await limpiarYComprobar();
+
+    await completar();
+    await escribir("rut", "12.345.678-9");
+    await enviar();
+    expect(formulario().querySelector('[role="alert"]')).not.toBeNull();
+    await limpiarYComprobar();
   });
 
 });
