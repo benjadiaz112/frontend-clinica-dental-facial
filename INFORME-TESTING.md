@@ -78,7 +78,7 @@ El informe no acredita accesibilidad completa, aspecto visual, ejecución real d
 
 Se conserva la distribución 4 + 4 + 2, sin nuevas dependencias ni cambios en el código de aplicación. Se comprueban límites de nombre y correo; RUT sin puntos, con espacios, K y cero; servicios vacíos o fuera del catálogo; transición de carga a resultados; respuesta exitosa sin lista; quitar y volver a seleccionar; errores en campos vacíos y foco en el primero; corrección del error al editar; eliminación de confirmación al cambiar datos; y preselección desde la URL con limpieza posterior. Las comprobaciones se agrupan en el caso de la funcionalidad correspondiente. No se afirma cobertura exhaustiva.
 
-La nueva ejecución completó 10/10 pruebas y TypeScript. La medición más reciente corresponde a este informe y a docs/evidencia-cobertura.json; el ERS debe reflejar estos mismos resultados.
+La nueva ejecución completó 10/10 pruebas y TypeScript. La medición más reciente corresponde a este informe y a docs/evidencia-cobertura.json; el ERS ya refleja estos mismos resultados.
 
 ### Revisión de huecos funcionales en Reserva
 
