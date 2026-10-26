@@ -2,7 +2,7 @@
 
 ## Ejecución
 
-- Herramienta: Jasmine sobre Karma con Edge Headless.
+- Herramienta: Jasmine sobre Karma con navegador Chromium sin ventana. La última comprobación se realizó con Brave/ChromeHeadless en Linux; las mediciones anteriores utilizaron Edge Headless en Windows.
 - Comando: `npm test`.
 - Casos ejecutados: 10.
 - Resultado: 10 exitosos, 0 fallidos.
@@ -85,3 +85,13 @@ La nueva ejecución completó 10/10 pruebas y TypeScript. La medición más reci
 Los mismos dos casos de formulario ahora verifican el bloqueo del selector y de Validar durante la carga, su habilitación al recibir servicios y la disponibilidad de Limpiar. También verifican la recuperación de un identificador inexistente eligiendo un servicio válido y el bloqueo ante lista vacía o rechazo de red, manteniendo la limpieza disponible. Los remontajes representan entradas nuevas al formulario con distintas respuestas simuladas. Se mantienen diez casos en total y no se cambia el código de aplicación.
 
 Persisten huecos: las páginas informativas, navegación y carrusel no tienen casos automatizados en esta suite. Tampoco se prueban todas las combinaciones de cancelación de peticiones o JSON malformado. No se declara cobertura total.
+
+## Simplificación de las pruebas — 26 de octubre de 2026
+
+Se conservan los diez casos y los datos comprobados. Las validaciones agrupan entradas válidas e inválidas en listas. Las respuestas de API utilizan un objeto `Response` con estado HTTP real y método `json` simulado directamente, sin crear otro espía. La carga se comprueba antes de devolver la respuesta del mock, sin promesas pendientes resueltas manualmente. Los componentes se desmontan y montan para representar nuevas consultas, sin claves ni contadores de versión.
+
+Las acciones de clic y escritura se reúnen en `tests/ayudas.ts`, con comentarios sobre `act` y los campos controlados de React. El formulario se envía pulsando su botón y conserva las comprobaciones de foco, errores asociados a campos, resultado, limpieza y bloqueo. Se mantienen las pruebas de selección con el catálogo en orden inverso. No se modifica el código de la aplicación ni se agregan dependencias.
+
+La ejecución con `node node_modules/karma/bin/karma start --single-run` completó **10 pruebas exitosas y 0 fallidas**. Se indicó el navegador con `CHROME_BIN` y el binario compatible de esbuild con `ESBUILD_BINARY_PATH`, porque las dependencias incluidas originalmente son de Windows. La revisión de TypeScript con `tsc --noEmit --incremental false` también terminó sin errores.
+
+La cobertura se conserva: **73,79% de líneas (107/145)**, **76,60% de sentencias (131/171)**, **85,84% de ramas (91/106)** y **64,91% de funciones (37/57)**. Estos resultados coinciden con la evidencia del 24 de octubre conservada en `docs/evidencia-cobertura.json`. Esta simplificación no amplía las funcionalidades cubiertas por la suite. Los reportes de esta comprobación se guardaron fuera de la carpeta del proyecto, por preferencia del usuario. En la configuración actual, `npm test` no genera `coverage/`; para crear los reportes se utiliza `npm run test:coverage`.

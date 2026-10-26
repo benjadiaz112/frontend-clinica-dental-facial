@@ -35,6 +35,7 @@ npm test
 - `tests/ValidacionesReserva.spec.tsx`: reúne las validaciones principales de nombre, RUT, correo y servicio.
 - `tests/CatalogoTratamientos.spec.tsx`: prueba carga, respuesta vacía, error de API y selección.
 - `tests/FormularioReserva.spec.tsx`: prueba rechazo, aceptación y limpieza del formulario.
+- `tests/ayudas.ts`: reúne las acciones de escribir y hacer clic, y las respuestas simuladas de la API.
 
 Jasmine escribe y comprueba los casos; Karma los ejecuta en el navegador. Esbuild transforma TypeScript y JSX para que el navegador pueda ejecutarlos. No se agregan bibliotecas de pruebas de interfaz adicionales.
 
@@ -48,6 +49,14 @@ Jasmine escribe y comprueba los casos; Karma los ejecuta en el navegador. Esbuil
 - `afterEach` desmonta el componente y elimina el contenedor para no mezclar los casos.
 
 Se mantiene el enfoque de los ejemplos recibidos: preparar datos, ejecutar y comprobar. La suite actual contiene exactamente diez pruebas funcionales: cuatro de validaciones, cuatro de catálogo y dos de formulario. Las pruebas históricas de botones, presentación y carrusel se retiraron para conservar ese alcance.
+
+## Lectura de la versión simplificada
+
+Las validaciones separan los datos válidos e inválidos en listas y usan `for...of` para comprobarlos. En catálogo y formulario se prepara la respuesta de `fetch`, se ejecuta la acción y se revisa el resultado. Los comentarios del formulario explican cada recorrido.
+
+`respuestaJson` simula el estado HTTP y el método `json`, sin un segundo `spyOn` sobre la respuesta. Las comprobaciones de carga ocurren dentro del mock de `fetch`, antes de devolver los datos; ya no necesitan crear una promesa pendiente ni guardar su función de resolución. Para repetir una consulta, `mostrar` desmonta el componente y lo vuelve a montar, sin contadores ni claves artificiales.
+
+`hacerClic` y `escribirCampo` esperan las actualizaciones con `act`. Para los campos de texto se conserva el setter nativo del navegador: React necesita detectar un valor diferente del que tiene registrado. Esa preparación está comentada en el archivo de ayudas; los casos de prueba llaman a `escribir` y comprueban el resultado. No se agregaron dependencias.
 
 ## Cobertura y resultados
 

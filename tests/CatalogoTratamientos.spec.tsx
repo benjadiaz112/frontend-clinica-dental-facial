@@ -2,15 +2,20 @@ import { act } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import CatalogoTratamientos from "../components/tratamientos/CatalogoTratamientos";
 import datos from "../api_simulada/db.json";
+import { hacerClic, respuestaJson } from "./ayudas";
 
 describe("Catálogo conectado a la API", function () {
   let contenedor: HTMLDivElement;
   let raiz: Root;
+  let consulta: jasmine.Spy;
 
   beforeEach(function () {
     contenedor = document.createElement("div");
     document.body.appendChild(contenedor);
     raiz = createRoot(contenedor);
+    consulta = spyOn(window, "fetch").and.callFake(async function () {
+      return respuestaJson(datos.tratamientos);
+    });
   });
 
   afterEach(async function () {
@@ -19,109 +24,101 @@ describe("Catálogo conectado a la API", function () {
   });
 
   async function mostrar() {
-    await act(async function () { raiz.render(<CatalogoTratamientos />); });
+    // Cada llamada abre el catálogo desde cero con la respuesta preparada.
+    await act(async function () {
+      raiz.unmount();
+      raiz = createRoot(contenedor);
+      raiz.render(<CatalogoTratamientos />);
+    });
   }
 
-  function respuestaJson(contenido: unknown) {
-    const respuesta = new Response();
-    spyOn(respuesta, "json").and.resolveTo(contenido);
-    return respuesta;
-  }
-
-  function botonTratamiento(nombre: string) {
-    return Array.from(contenedor.querySelectorAll("button")).find(function (boton) {
-      return boton.textContent?.includes(nombre);
-    }) as HTMLButtonElement;
+  function buscarBoton(texto: string) {
+    for (const boton of contenedor.querySelectorAll("button")) {
+      if (boton.textContent?.includes(texto)) return boton;
+    }
+    throw new Error("No se encontró el botón: " + texto);
   }
 
   function enlaceReserva() {
-    return contenedor.querySelector<HTMLAnchorElement>('a[href^="/reserva?"]');
+    return contenedor.querySelector('a[href^="/reserva?"]');
   }
 
-  it("muestra los cinco tratamientos y conserva los precios según evaluación", async function () {
-    const tratamientos = datos.tratamientos;
-    let terminarConsulta!: (respuesta: Response) => void;
-    const pendiente = new Promise<Response>(function (resolver) { terminarConsulta = resolver; });
-    const consulta = spyOn(window, "fetch").and.returnValue(pendiente);
+  it("muestra la carga y luego los cinco tratamientos con sus precios", async function () {
+    consulta.and.callFake(async function () {
+      // Mientras fetch está trabajando, React debe mostrar la carga.
+      expect(contenedor.querySelector('[role="status"]')?.textContent?.trim()).toBeTruthy();
+      expect(contenedor.querySelectorAll("article").length).toBe(0);
+      expect(enlaceReserva()).toBeNull();
+      return respuestaJson(datos.tratamientos);
+    });
 
     await mostrar();
+
+    const tarjetas = contenedor.querySelectorAll("article");
+    expect(consulta).toHaveBeenCalledTimes(1);
+    expect(tarjetas.length).toBe(datos.tratamientos.length);
+    for (const tratamiento of datos.tratamientos) {
+      const tarjeta = buscarBoton(tratamiento.nombre).closest("article");
+      expect(tarjeta?.textContent).toContain(tratamiento.textoPrecio);
+      expect(tarjeta?.querySelector("img")?.alt).toBe(tratamiento.textoAlternativo);
+    }
+    expect(enlaceReserva()).toBeNull();
+  });
+
+  it("informa cuando no hay tratamientos", async function () {
+    consulta.and.resolveTo(respuestaJson([]));
+
+    await mostrar();
+
     expect(contenedor.querySelector('[role="status"]')?.textContent?.trim()).toBeTruthy();
     expect(contenedor.querySelectorAll("article").length).toBe(0);
     expect(enlaceReserva()).toBeNull();
-    await act(async function () { terminarConsulta(respuestaJson(tratamientos)); });
-    const tarjetas = Array.from(contenedor.querySelectorAll("article"));
-
-    expect(consulta).toHaveBeenCalledTimes(1);
-    expect(tarjetas.length).toBe(tratamientos.length);
-    tratamientos.forEach(function (tratamiento) {
-      const tarjeta = tarjetas.find(function (item) { return item.textContent?.includes(tratamiento.nombre); });
-      expect(tarjeta?.textContent).toContain(tratamiento.textoPrecio);
-      expect(tarjeta?.querySelector("img")?.getAttribute("alt")).toBe(tratamiento.textoAlternativo);
-    });
-    expect(enlaceReserva()).toBeNull();
   });
 
-  it("informa cuando la API devuelve una lista vacía", async function () {
-    const respuesta = respuestaJson([]);
-    spyOn(window, "fetch").and.resolveTo(respuesta);
+  it("muestra un error si la API falla o no entrega una lista", async function () {
+    const respuestas = [respuestaJson({}, 500), respuestaJson({ mensaje: "Datos incorrectos" })];
 
-    await mostrar();
-    const mensaje = contenedor.querySelector('[role="status"]');
+    for (const respuesta of respuestas) {
+      consulta.and.resolveTo(respuesta);
 
-    expect(mensaje?.textContent?.trim()).toBeTruthy();
-    expect(contenedor.querySelectorAll("article").length).toBe(0);
-    expect(enlaceReserva()).toBeNull();
+      await mostrar();
+
+      expect(contenedor.querySelector('[role="alert"]')?.textContent?.trim()).toBeTruthy();
+      expect(contenedor.querySelectorAll("article").length).toBe(0);
+      expect(enlaceReserva()).toBeNull();
+    }
   });
 
-  it("rechaza errores HTTP y respuestas que no contienen una lista", async function () {
-    const respuesta = new Response("{}", { status: 500 });
-    const consulta = spyOn(window, "fetch").and.resolveTo(respuesta);
-
+  it("permite seleccionar, cambiar, quitar y volver a seleccionar", async function () {
+    consulta.and.resolveTo(respuestaJson(datos.tratamientos.slice().reverse()));
     await mostrar();
-    const mensaje = contenedor.querySelector('[role="alert"]');
-
-    expect(mensaje?.textContent?.trim()).toBeTruthy();
-    expect(contenedor.querySelectorAll("article").length).toBe(0);
+    const limpieza = buscarBoton("Limpieza dental");
+    const armonizacion = buscarBoton("Armonización facial");
     expect(enlaceReserva()).toBeNull();
 
-    consulta.and.resolveTo(respuestaJson({ mensaje: "Datos incorrectos" }));
-    await act(async function () { raiz.render(<CatalogoTratamientos key="respuesta-invalida" />); });
-    expect(contenedor.querySelector('[role="alert"]')?.textContent?.trim()).toBeTruthy();
-    expect(contenedor.querySelectorAll("article").length).toBe(0);
-    expect(enlaceReserva()).toBeNull();
-  });
-
-  it("selecciona un solo tratamiento y actualiza el enlace a Reserva al cambiarlo", async function () {
-    const tratamientos = datos.tratamientos.slice().reverse();
-    spyOn(window, "fetch").and.resolveTo(respuestaJson(tratamientos));
-    await mostrar();
-    expect(enlaceReserva()).toBeNull();
-    const limpieza = botonTratamiento("Limpieza dental");
-    const armonizacion = botonTratamiento("Armonización facial");
-
-    await act(async function () { limpieza.click(); });
+    await hacerClic(limpieza);
 
     expect(limpieza.getAttribute("aria-pressed")).toBe("true");
     expect(contenedor.querySelector('[role="status"]')?.textContent).toContain("Limpieza dental");
     expect(enlaceReserva()?.getAttribute("href")).toBe("/reserva?tratamiento=1");
 
-    await act(async function () { armonizacion.click(); });
+    await hacerClic(armonizacion);
 
     expect(limpieza.getAttribute("aria-pressed")).toBe("false");
     expect(armonizacion.getAttribute("aria-pressed")).toBe("true");
     expect(contenedor.querySelectorAll('[aria-pressed="true"]').length).toBe(1);
-    expect(enlaceReserva()?.getAttribute("href")).toBe("/reserva?tratamiento=5");
     expect(contenedor.querySelector('[role="status"]')?.textContent).toContain("Armonización facial");
+    expect(enlaceReserva()?.getAttribute("href")).toBe("/reserva?tratamiento=5");
 
-    const quitar = Array.from(contenedor.querySelectorAll("button")).find(function (boton) {
-      return boton.textContent === "Quitar selección";
-    }) as HTMLButtonElement;
-    await act(async function () { quitar.click(); });
+    const quitar = buscarBoton("Quitar selección");
+    await hacerClic(quitar);
+
     expect(contenedor.querySelectorAll('[aria-pressed="true"]').length).toBe(0);
     expect(enlaceReserva()).toBeNull();
     expect(quitar.isConnected).toBeFalse();
 
-    await act(async function () { limpieza.click(); });
+    await hacerClic(limpieza);
+
     expect(enlaceReserva()?.getAttribute("href")).toBe("/reserva?tratamiento=1");
   });
 });

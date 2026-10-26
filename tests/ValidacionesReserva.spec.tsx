@@ -1,70 +1,50 @@
 import { validarNombre, validarRut, validarCorreo, validarServicio } from "../services/validacionesReserva";
 
 describe("Validaciones de Reserva", function () {
-  it("acepta un nombre válido y rechaza uno inválido", function () {
-    let nombreValido = "Ana Pérez";
-    let nombreInvalido = "Ana123";
+  it("acepta nombres válidos y rechaza nombres inválidos", function () {
+    const validos = ["Ana Pérez", "  Ana Pérez  ", "Ana-María O'Neil", "Ana", "A".repeat(80)];
+    const invalidos = ["Ana123", "An", "A".repeat(81), ""];
 
-    let resultadoValido = validarNombre(nombreValido);
-    let resultadoInvalido = validarNombre(nombreInvalido);
-
-    expect(resultadoValido).toBeTrue();
-    expect(resultadoInvalido).toBeFalse();
-    expect(validarNombre("  Ana Pérez  ")).toBeTrue();
-    expect(validarNombre("Ana-María O'Neil")).toBeTrue();
-    expect(validarNombre("An")).toBeFalse();
-    expect(validarNombre("Ana")).toBeTrue();
-    expect(validarNombre("A".repeat(80))).toBeTrue();
-    expect(validarNombre("A".repeat(81))).toBeFalse();
-    expect(validarNombre("")).toBeFalse();
+    for (const nombre of validos) {
+      expect(validarNombre(nombre)).toBeTrue();
+    }
+    for (const nombre of invalidos) {
+      expect(validarNombre(nombre)).toBeFalse();
+    }
   });
 
-  it("acepta un RUT válido y rechaza un RUT inválido", function () {
-    let rutValido = "12.345.678-5";
-    let rutInvalido = "12.345.678-9";
+  it("acepta RUT válidos y rechaza RUT inválidos", function () {
+    const validos = ["12.345.678-5", "123456785", " 12.345.678-5 ", "6.000.000-k", "10.000.004-0"];
+    const invalidos = ["12.345.678-9", "12.34.5678-5", ""];
 
-    let resultadoValido = validarRut(rutValido);
-    let resultadoInvalido = validarRut(rutInvalido);
-
-    expect(resultadoValido).toBeTrue();
-    expect(resultadoInvalido).toBeFalse();
-    expect(validarRut("123456785")).toBeTrue();
-    expect(validarRut(" 12.345.678-5 ")).toBeTrue();
-    expect(validarRut("6.000.000-k")).toBeTrue();
-    expect(validarRut("10.000.004-0")).toBeTrue();
-    expect(validarRut("12.34.5678-5")).toBeFalse();
-    expect(validarRut("")).toBeFalse();
+    for (const rut of validos) {
+      expect(validarRut(rut)).toBeTrue();
+    }
+    for (const rut of invalidos) {
+      expect(validarRut(rut)).toBeFalse();
+    }
   });
 
-  it("acepta un correo válido y rechaza uno inválido", function () {
-    let correoValido = "ana@ejemplo.cl";
-    let correoInvalido = "ana@ejemplo";
+  it("acepta correos válidos y rechaza correos inválidos", function () {
+    const validos = ["ana@ejemplo.cl", " ana@ejemplo.cl ", "a".repeat(249) + "@b.cl"];
+    const invalidos = ["ana@ejemplo", "ana perez@ejemplo.cl", "ana@@ejemplo.cl", "a".repeat(250) + "@b.cl", ""];
 
-    let resultadoValido = validarCorreo(correoValido);
-    let resultadoInvalido = validarCorreo(correoInvalido);
-
-    expect(resultadoValido).toBeTrue();
-    expect(resultadoInvalido).toBeFalse();
-    expect(validarCorreo(" ana@ejemplo.cl ")).toBeTrue();
-    expect(validarCorreo("ana perez@ejemplo.cl")).toBeFalse();
-    expect(validarCorreo("ana@@ejemplo.cl")).toBeFalse();
-    expect(validarCorreo("a".repeat(249) + "@b.cl")).toBeTrue();
-    expect(validarCorreo("a".repeat(250) + "@b.cl")).toBeFalse();
-    expect(validarCorreo("")).toBeFalse();
+    for (const correo of validos) {
+      expect(validarCorreo(correo)).toBeTrue();
+    }
+    for (const correo of invalidos) {
+      expect(validarCorreo(correo)).toBeFalse();
+    }
   });
 
-  it("acepta un servicio perteneciente al catálogo y rechaza otro", function () {
-    let servicios = ["Limpieza dental", "Ortodoncia"];
-    let servicioValido = "Limpieza dental";
-    let servicioInvalido = "Otro servicio";
+  it("acepta un servicio del catálogo y rechaza los demás", function () {
+    const servicios = ["Limpieza dental", "Ortodoncia"];
+    const invalidos = ["Otro servicio", "", "limpieza dental"];
 
-    let resultadoValido = validarServicio(servicioValido, servicios);
-    let resultadoInvalido = validarServicio(servicioInvalido, servicios);
-
-    expect(resultadoValido).toBeTrue();
-    expect(resultadoInvalido).toBeFalse();
-    expect(validarServicio("", servicios)).toBeFalse();
+    expect(validarServicio("Limpieza dental", servicios)).toBeTrue();
+    for (const servicio of invalidos) {
+      expect(validarServicio(servicio, servicios)).toBeFalse();
+    }
     expect(validarServicio("Limpieza dental", [])).toBeFalse();
-    expect(validarServicio("limpieza dental", servicios)).toBeFalse();
   });
 });
