@@ -21,7 +21,7 @@ Todo permanece dentro de este mismo repositorio de GitHub.
 
 La [guía de estilos comunes](docs/estilos-comunes.md) explica los colores, contenedores, tarjetas, botones, campos y mensajes de `styles/globals.css`. Se utilizan clases sencillas, Flexbox y media queries para adaptar la distribución a móviles.
 
-## Ejecutar la base de React con Next.js
+## Ejecutar el proyecto con comandos
 
 El [detalle de los componentes compartidos](docs/componentes-compartidos.md) explica su uso. La [guía de rutas](docs/rutas.md) enumera las cinco páginas disponibles y la página 404.
 
@@ -43,7 +43,7 @@ En otra terminal, inicia el frontend:
 npm run dev
 ```
 
-Abre `http://localhost:3000`. La [guía de Inicio en React](docs/inicio-react.md) explica la portada. La [guía de Nosotros y Contacto](docs/informacion-react.md) explica las dos páginas informativas y su separación de Reserva. Los archivos HTML originales continúan disponibles mediante XAMPP. Los [pasos pendientes](docs/pasos-pendientes.md) indican cómo continuar.
+Abre `http://localhost:3000`. Mantén ambas terminales abiertas mientras utilizas la aplicación; para detener cada servidor, presiona `Ctrl+C` en su terminal. La [guía de Inicio en React](docs/inicio-react.md) explica la portada. La [guía de Nosotros y Contacto](docs/informacion-react.md) explica las dos páginas informativas y su separación de Reserva. Los HTML originales se conservan únicamente como referencia. Los [pasos pendientes](docs/pasos-pendientes.md) indican cómo continuar.
 
 Para compilar y ejecutar la versión de producción:
 
@@ -52,7 +52,7 @@ npm run build
 npm start
 ```
 
-Detén el servidor de desarrollo antes de iniciar el de producción si ambos usan el puerto 3000.
+Mantén la API encendida en otra terminal. Detén el servidor de desarrollo antes de iniciar el de producción si ambos usan el puerto 3000.
 
 Para revisar los tipos de TypeScript:
 
@@ -94,11 +94,6 @@ Los pasos 20 a 24 están completados: cobertura, ERS, revisión de las diez prue
 - Mensajes e indicadores visuales para campos correctos e incorrectos.
 - Video educativo y diseño responsivo mediante CSS externo.
 
-## Ejecutar el sitio original con XAMPP
-
-1. Copia la carpeta `clinica-dental-frontend` dentro de `C:\xampp\htdocs`.
-2. Inicia Apache desde XAMPP.
-3. Abre `http://localhost/clinica-dental-frontend/`.
 ## Pruebas rápidas
 
 - Revisa que todos los enlaces del menú abran la página correcta.
@@ -114,5 +109,4 @@ Los pasos 20 a 24 están completados: cobertura, ERS, revisión de las diez prue
 - React y Next.js para la nueva versión
 - TypeScript
 - Node.js y npm
-- XAMPP
 - Git y GitHub
