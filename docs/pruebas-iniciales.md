@@ -56,9 +56,11 @@ Se mantiene el enfoque de los ejemplos recibidos: preparar datos, ejecutar y com
 Para regenerar los reportes:
 
 ```bash
-npm test -- --reporters=dots,coverage
+npm run test:coverage
 ```
 
 Abre `coverage/aplicacion/index.html`. Los reportes se generan localmente y no se incluyen en Git; la evidencia conservada está en `docs/evidencia-cobertura.json`.
+
+La ejecución normal con `npm test` o `npm run test:watch` no instrumenta el código ni genera reportes de cobertura. Los reportes de ejecuciones anteriores permanecen hasta que se eliminen.
 
 La última verificación del paso 23 completó las diez pruebas, TypeScript y compilación. Esta guía no presenta auditorías antiguas de dependencias como un diagnóstico actual de seguridad.

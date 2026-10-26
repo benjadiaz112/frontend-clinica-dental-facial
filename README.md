@@ -76,6 +76,8 @@ Ejecuta las pruebas una vez en un navegador sin ventana. En Windows se utiliza E
 
 Para repetir las pruebas al guardar cambios, utiliza `npm run test:watch`. La suite contiene diez casos representativos de validaciones, catálogo, selección y formulario, con mocks de API. No es necesario iniciar la API para ejecutar las pruebas.
 
+`npm test` y `npm run test:watch` no generan la carpeta `coverage`. Para medir cobertura y generar el informe en `coverage/aplicacion/index.html`, ejecuta `npm run test:coverage`.
+
 La [revisión manual de responsividad y accesibilidad](docs/responsividad-accesibilidad.md) registra los cinco recorridos a cuatro anchos y sus límites. Estas comprobaciones complementan las pruebas funcionales.
 
 ## Estado de la entrega

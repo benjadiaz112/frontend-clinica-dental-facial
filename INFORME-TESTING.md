@@ -72,7 +72,7 @@ El [informe del paso 23](docs/responsividad-accesibilidad.md) registra las cinco
 
 Los porcentajes corresponden exclusivamente al TypeScript/TSX de las cinco carpetas indicadas. No miden CSS, imágenes, archivos de configuración, librerías, tipos de `models/`, el sitio HTML/JavaScript original ni `api_simulada/servidor.js`, que se ejecuta en otro proceso Node.js. Las páginas y componentes no ejecutados por estas diez pruebas permanecen con cero cobertura; no se ejecutan artificialmente para aumentar el resultado.
 
-El informe no acredita accesibilidad completa, aspecto visual, ejecución real del backend ni aprobación académica. Las diez pruebas se mantienen sin añadir casos. Para regenerar una medición completa después de agregar o eliminar fuentes, ejecutar de nuevo `npm test`; no utilizar como evidencia final una sesión previa de `test:watch`.
+El informe no acredita accesibilidad completa, aspecto visual, ejecución real del backend ni aprobación académica. Las diez pruebas se mantienen sin añadir casos. Para regenerar una medición completa después de agregar o eliminar fuentes, ejecutar de nuevo `npm run test:coverage`; no utilizar como evidencia final una sesión previa de `test:watch`.
 
 ## Ampliación funcional de los diez casos
 
