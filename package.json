@@ -7,8 +7,8 @@
     "api": "node api_simulada/servidor.js",
     "build": "next build",
     "start": "next start",
-    "test": "vitest run",
-    "test:watch": "vitest"
+    "test": "qunit \"tests/*.test.js\"",
+    "test:watch": "qunit --watch \"tests/*.test.js\""
   },
   "engines": {
     "node": "^22.12.0 || ^24.0.0 || >=26.0.0"
@@ -19,6 +19,6 @@
     "react-dom": "19.3.1"
   },
   "devDependencies": {
-    "vitest": "5.0.5"
+    "qunit": "3.0.0"
   }
 }

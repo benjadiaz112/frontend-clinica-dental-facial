@@ -5,7 +5,6 @@ clinica-aura-entrega.zip
 /node_modules/
 /.next/
 /out/
-/.vitest/
 npm-debug.log*
 
 # Configuracion local
