@@ -1,7 +1,18 @@
 export function validarNombre(nombre) {
   const limpio = nombre.trim();
-  const patron = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+([ '-][A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+)*$/;
-  return limpio.length >= 3 && limpio.length <= 80 && patron.test(limpio);
+  if (limpio.length < 3 || limpio.length > 80) return false;
+
+  const letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚÜÑabcdefghijklmnopqrstuvwxyzáéíóúüñ";
+  for (let i = 0; i < limpio.length; i++) {
+    const caracter = limpio[i];
+    if (letras.includes(caracter)) continue;
+
+    // Solo se permite un espacio, guion o apóstrofe entre letras.
+    if (caracter !== " " && caracter !== "-" && caracter !== "'") return false;
+    if (i === 0 || i === limpio.length - 1) return false;
+    if (!letras.includes(limpio[i - 1]) || !letras.includes(limpio[i + 1])) return false;
+  }
+  return true;
 }
 export function validarRut(rut) {
   const normalizado = rut.trim().toUpperCase();
