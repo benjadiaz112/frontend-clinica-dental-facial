@@ -17,4 +17,4 @@ El formulario no guarda solicitudes ni confirma horas. La API permite consultar 
 
 El documento externo `instrucciones_fullstack.md` describe una tienda con Vite, Bootstrap, búsqueda, carrito y json-server, y menciona dos pruebas. Esos requisitos no describen por completo esta versión: el proyecto actual conserva Next.js, la clínica, su API propia y cinco pruebas de validación. La documentación refleja el código existente y no afirma que esas diferencias estén resueltas.
 
-`ERS.docx` es una versión anterior y debe actualizarse antes de entregarlo como documento vigente. Los pendientes están en [pasos-pendientes.md](pasos-pendientes.md).
+`ERS.docx` está actualizado al 27 de octubre de 2026 y describe esta versión del proyecto. Los pendientes están en [pasos-pendientes.md](pasos-pendientes.md).
