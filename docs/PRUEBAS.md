@@ -1,14 +1,24 @@
-# Cinco pruebas unitarias con Vitest
+# Cinco pruebas unitarias con QUnit
 
 ## Entorno y ejecución
 
-La aplicación tiene cinco pruebas en cuatro archivos `.test.js`. Importan funciones de `services/validacionesReserva.js` y se ejecutan en Node.js, sin navegador ni API.
+La aplicación tiene cinco pruebas en cuatro archivos `.test.js`. Importan funciones de `services/validacionesReserva.js` y se ejecutan en Node.js o en el navegador, sin consultar la API.
 
 ```bash
 npm test
 ```
 
-`package.json` ejecuta `vitest run`. Para repetir al guardar se utiliza `npm run test:watch`; se detiene con `Ctrl+C`.
+`package.json` ejecuta `qunit "tests/*.test.js"`. Para repetir al guardar se utiliza `npm run test:watch`; se detiene con `Ctrl+C`.
+
+Para ver los resultados en el navegador:
+
+```bash
+npm run test:web
+```
+
+Abrir [http://127.0.0.1:4000/tests/index.html](http://127.0.0.1:4000/tests/index.html). `tests/index.html` carga QUnit instalado en el proyecto y los mismos cuatro archivos de pruebas. `tests/servidor.cjs` sirve esos archivos y las validaciones en el puerto 4000; no inicia la aplicación ni la API. No depende de un CDN. Recargar la página después de modificar el código.
+
+Los archivos `package.json` de `tests/` y `services/` indican a Node.js que esas carpetas usan módulos con `import` y `export`. La API conserva su formato con `require`.
 
 ## Casos actuales
 
@@ -24,17 +34,19 @@ Las listas y textos son entradas de funciones puras. Los tests no reemplazan `fe
 
 ## Resultado verificado
 
-Última ejecución registrada: 26 de octubre de 2026, con Node.js 24.22.1 y Vitest 5.0.5, después de convertir el código a JavaScript y JSX.
+Última ejecución registrada: 26 de octubre de 2026, con Node.js 24.22.1 y QUnit 3.0.0, después de migrar las cinco pruebas a QUnit.
 
 ```text
-Test Files  4 passed (4)
-     Tests  5 passed (5)
+# pass 5
+# skip 0
+# todo 0
+# fail 0
 ```
 
-El comando terminó con código de salida 0. La compilación con `npm run build` también terminó correctamente.
+El comando terminó con código de salida 0. En el navegador también se verificaron las cinco pruebas: 21 comprobaciones correctas y cero fallidas. La compilación con `npm run build` también terminó correctamente.
 
 ## Comprobación complementaria de la aplicación
 
 Con la API real se revisaron las cinco páginas en móvil y escritorio, carrusel, selección, validación, foco, limpieza y página 404. Con la API apagada se comprobaron los mensajes y el bloqueo de Validar, manteniendo disponible Limpiar.
 
-Esta revisión es independiente de los cinco casos de Vitest. Los tests no prueban el DOM, las rutas, el carrusel, el formulario completo ni la integración con el servidor. No se presenta un porcentaje de código ejecutado como resultado de esta suite.
+Esta revisión es independiente de los cinco casos de QUnit. Los tests no prueban el DOM, las rutas, el carrusel, el formulario completo ni la integración con el servidor. No se presenta un porcentaje de código ejecutado como resultado de esta suite.
