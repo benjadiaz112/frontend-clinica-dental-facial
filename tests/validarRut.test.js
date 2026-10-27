@@ -1,6 +1,6 @@
 // Comprueba la validación del RUT sin usar React, navegador ni API.
 import { test, expect } from "vitest";
-import { validarRut } from "../services/validacionesReserva";
+import { validarRut } from "../services/validacionesReserva.js";
 
 // Debe aceptar un dígito verificador correcto y rechazar datos incorrectos.
 test("valida un RUT correcto y rechaza un RUT incorrecto o vacío", function () {

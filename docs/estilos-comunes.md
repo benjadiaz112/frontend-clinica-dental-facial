@@ -1,6 +1,6 @@
 # Estilos comunes — paso 7
 
-La aplicación usa CSS nativo, sin librerías de estilos ni dependencias adicionales. `styles/globals.css` se importa una vez desde `app/layout.tsx`.
+La aplicación usa CSS nativo, sin librerías de estilos ni dependencias adicionales. `styles/globals.css` se importa una vez desde `app/layout.jsx`.
 
 ## Base visual
 

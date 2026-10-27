@@ -10,10 +10,10 @@ Desde el paso 18, el formulario React integra esta elección y permite cambiar e
 
 ## Archivos
 
-- components/tratamientos/CatalogoTratamientos.tsx: estado, mensaje, cambio, limpieza y enlace a Reserva.
-- components/tratamientos/TarjetaTratamiento.tsx: botón con evento y estado recibido por propiedades.
-- components/reserva/FormularioReserva.tsx: lectura del identificador, consulta, estado y resumen.
-- app/reserva/page.tsx: título, aviso de demostración y selección recibida.
+- components/tratamientos/CatalogoTratamientos.jsx: estado, mensaje, cambio, limpieza y enlace a Reserva.
+- components/tratamientos/TarjetaTratamiento.jsx: botón con evento y estado recibido por propiedades.
+- components/reserva/FormularioReserva.jsx: lectura del identificador, consulta, estado y resumen.
+- app/reserva/page.jsx: título, aviso de demostración y selección recibida.
 - styles/tratamientos.css: botones y separación del resumen con CSS nativo.
 - tests/validarServicio.test.js: validación del servicio mediante una función pura.
 

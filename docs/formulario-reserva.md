@@ -1,6 +1,6 @@
 # Formulario de reserva
 
-`components/reserva/FormularioReserva.tsx` contiene sus estados, la consulta de servicios y las acciones de cambiar, validar y limpiar. Utiliza `useState` y un `useEffect` para la carga inicial. Las reglas independientes de React permanecen en `services/validacionesReserva.ts`.
+`components/reserva/FormularioReserva.jsx` contiene sus estados, la consulta de servicios y las acciones de cambiar, validar y limpiar. Utiliza `useState` y un `useEffect` para la carga inicial. Las reglas independientes de React permanecen en `services/validacionesReserva.js`.
 
 ## Comportamiento
 

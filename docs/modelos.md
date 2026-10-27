@@ -1,6 +1,9 @@
-# Modelos — paso 12
+# Datos utilizados por los componentes
 
-- `models/Tratamiento.ts` define identificador, nombre, descripción, imagen, texto alternativo y precio referencial. `precioDesde` admite `null` cuando el original dice «Valor según evaluación»; no se inventa un precio ni se interpreta como cero. `textoPrecio` conserva expresiones como «Evaluación desde $20.000».
-- `models/Reserva.ts` define nombre, RUT, correo, servicio y comentario, como en el formulario original. El comentario puede ser una cadena vacía y el RUT es texto para conservar su formato y el dígito K.
+Los datos se representan con objetos y listas normales de JavaScript.
 
-Son interfaces simples de TypeScript utilizadas por Tratamientos y Reserva. No validan, envían ni guardan datos; las validaciones se implementan en los servicios y el formulario solo demuestra el resultado. No se crean modelos administrativos ni datos reales de pacientes.
+- Los tratamientos provienen de `api_simulada/db.json`. Incluyen identificador, nombre, descripción, imagen, texto alternativo y precio referencial. `precioDesde` admite `null` cuando el precio depende de evaluación; no significa un valor de cero.
+- El formulario mantiene nombre, RUT, correo, servicio y comentario en su estado. El RUT se conserva como texto para admitir puntos, guion y K.
+- `data/clinica.js`, `data/inicio.js`, `data/informacion.js` y `data/navegacion.js` contienen los textos y enlaces que reciben los componentes mediante propiedades.
+
+Las reglas de nombre, RUT, correo y servicio están en `services/validacionesReserva.js`. Los objetos de datos no validan ni guardan una reserva por sí solos.

@@ -6,8 +6,6 @@ clinica-aura-entrega.zip
 /.next/
 /out/
 /.vitest/
-*.tsbuildinfo
-next-env.d.ts
 npm-debug.log*
 
 # Configuracion local

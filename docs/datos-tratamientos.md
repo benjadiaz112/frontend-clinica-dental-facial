@@ -1,6 +1,6 @@
 # Datos de tratamientos — paso 13
 
-`api_simulada/db.json` contiene los cinco objetos originales. Desde el paso 15, `data/tratamientos.ts` los consulta por HTTP desde la API local. Se mantienen el orden, nombres, descripciones, textos alternativos y precios de `servicios.html`. Solo se añade un identificador numérico y se adapta la ruta de las imágenes a `/imagenes/`, servida por Next.js.
+`api_simulada/db.json` contiene los cinco objetos originales. Desde el paso 15, `data/tratamientos.js` los consulta por HTTP desde la API local. Se mantienen el orden, nombres, descripciones, textos alternativos y precios de `servicios.html`. Solo se añade un identificador numérico y se adapta la ruta de las imágenes a `/imagenes/`, servida por Next.js.
 
 | Tratamiento | precioDesde | textoPrecio |
 | --- | --- | --- |
@@ -12,4 +12,4 @@
 
 Los importes son referenciales en pesos chilenos. Ortodoncia conserva el valor de la evaluación, sin presentarlo como precio del tratamiento completo. `null` indica que no existe un precio informado; no significa cero ni atención gratuita.
 
-`data/tratamientos.ts` expone consultarTratamientos y el catálogo gestiona la consulta y sus estados directamente en CatalogoTratamientos. No se agrega CRUD, almacenamiento ni dependencias.
+`data/tratamientos.js` expone consultarTratamientos y el catálogo gestiona la consulta y sus estados directamente en CatalogoTratamientos. No se agrega CRUD, almacenamiento ni dependencias.

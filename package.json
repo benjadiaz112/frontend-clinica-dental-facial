@@ -7,7 +7,6 @@
     "api": "node api_simulada/servidor.js",
     "build": "next build",
     "start": "next start",
-    "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest"
   },
@@ -20,10 +19,6 @@
     "react-dom": "19.3.1"
   },
   "devDependencies": {
-    "@types/node": "24.19.2",
-    "@types/react": "19.3.0",
-    "@types/react-dom": "19.3.0",
-    "typescript": "5.9.3",
     "vitest": "5.0.5"
   }
 }

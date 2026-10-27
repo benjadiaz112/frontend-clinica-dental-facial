@@ -6,12 +6,12 @@ La ruta `/` recupera el contenido útil del `index.html` original y añade un ca
 
 | Archivo | Función |
 | --- | --- |
-| PresentacionInicio.tsx | Nombre, presentación de la clínica, imagen principal y enlace a Reserva. Identifica el proyecto como una clínica ficticia. |
-| TratamientosDestacados.tsx | Muestra las tres tarjetas del inicio original con imágenes y un enlace al catálogo. |
-| CarruselInicio.tsx | Muestra una imagen a la vez y permite avanzar o retroceder con botones. |
-| ConsejoDental.tsx | Conserva el texto y el video educativo del HTML original, con enlace para abrirlo en YouTube. |
+| PresentacionInicio.jsx | Nombre, presentación de la clínica, imagen principal y enlace a Reserva. Identifica el proyecto como una clínica ficticia. |
+| TratamientosDestacados.jsx | Muestra las tres tarjetas del inicio original con imágenes y un enlace al catálogo. |
+| CarruselInicio.jsx | Muestra una imagen a la vez y permite avanzar o retroceder con botones. |
+| ConsejoDental.jsx | Conserva el texto y el video educativo del HTML original, con enlace para abrirlo en YouTube. |
 
-`app/page.tsx` reúne los componentes. Los datos están en `data/inicio.ts` y sus tipos en `models/ContenidoInicio.ts`. Son datos de presentación estáticos; el catálogo consulta por separado la API simulada. No hay CRUD.
+`app/page.jsx` reúne los componentes. Los datos son objetos y listas de JavaScript en `data/inicio.js`. Son datos de presentación estáticos; el catálogo consulta por separado la API simulada. No hay CRUD.
 
 Los estilos específicos están en `styles/inicio.css`, usando Flexbox y una media query. Se mantienen los colores y clases compartidos, sin librerías de diseño ni nuevas dependencias.
 

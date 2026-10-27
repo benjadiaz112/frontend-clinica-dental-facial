@@ -1,6 +1,6 @@
 # Validaciones de Reserva — paso 17
 
-`services/validacionesReserva.ts` extrae las reglas del formulario original a cuatro funciones que reciben valores y devuelven true o false. No dependen de React, del DOM, de almacenamiento ni de la API.
+`services/validacionesReserva.js` extrae las reglas del formulario original a cuatro funciones que reciben valores y devuelven true o false. No dependen de React, del DOM, de almacenamiento ni de la API.
 
 | Función | Regla |
 | --- | --- |

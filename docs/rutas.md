@@ -8,7 +8,7 @@
 | `/tratamientos` | Catálogo conectado a la API local, con carga, error y lista vacía. |
 | `/reserva` | Formulario controlado con validaciones, errores y limpieza. Preselecciona desde el parámetro tratamiento y la API. |
 
-Las direcciones inexistentes muestran `app/not-found.tsx`. El layout comparte encabezado, pie y salto al contenido. Menu marca la página activa con `aria-current`.
+Las direcciones inexistentes muestran `app/not-found.jsx`. El layout comparte encabezado, pie y salto al contenido. Menu marca la página activa con `aria-current`.
 
 Desde el paso 19, encabezado y pie reutilizan los cinco enlaces principales. La 404 ofrece volver a Inicio o abrir Tratamientos. La [verificación de navegación](navegacion-verificada.md) registra respuestas HTTP, enlaces, historial y teclado.
 

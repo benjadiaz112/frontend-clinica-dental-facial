@@ -2,7 +2,7 @@
 
 ## Entorno
 
-Vitest, ejecutado en Node.js mediante `npm test` (`vitest run`). Las pruebas importan directamente funciones de `services/validacionesReserva.ts`. No requieren navegador, componentes montados ni servidor de API.
+Vitest, ejecutado en Node.js mediante `npm test` (`vitest run`). Las pruebas importan directamente funciones de `services/validacionesReserva.js`. No requieren navegador, componentes montados ni servidor de API.
 
 ## Casos: exactamente cinco
 
@@ -31,10 +31,16 @@ La ejecución terminó correctamente con código de salida 0.
 
 ## Comprobación complementaria
 
-`npm run typecheck` y `npm run build` terminaron correctamente. Con la aplicación compilada y la API real se comprobó el catálogo de cinco tratamientos, la selección y preselección por URL, los errores del formulario, el foco en el primer campo incorrecto, la validación correcta, la limpieza y la recuperación desde un identificador inexistente. No se registraron errores de JavaScript en ese recorrido.
+`npm run build` terminó correctamente. Con la aplicación compilada y la API real se comprobó el catálogo de cinco tratamientos, la selección y preselección por URL, los errores del formulario, el foco en el primer campo incorrecto, la validación correcta, la limpieza y la recuperación desde un identificador inexistente. No se registraron errores de JavaScript en ese recorrido.
 
 Al apagar la API se comprobó que catálogo y reserva muestran el error y que el formulario bloquea la validación, manteniendo disponible Limpiar. Esta revisión del navegador es independiente de las cinco pruebas unitarias de Vitest.
 
 ## Límites
 
 Estas cinco pruebas no comprueban el DOM, la navegación, el carrusel, el formulario completo ni la integración con la API. La conexión y la reserva se revisan por separado en el navegador con la API local encendida.
+
+## Conversión a JavaScript y JSX
+
+Se convirtieron los 21 componentes y páginas a `.jsx`, y los cinco archivos de datos y el servicio de validaciones a `.js`. Los alias se configuran en `jsconfig.json`; la configuración de Next.js está en `next.config.mjs`. Se retiraron las interfaces y el comando de comprobación de tipos.
+
+Después de la conversión volvieron a pasar las cinco pruebas y la compilación. Se revisaron las cinco páginas a 375 y 1280 píxeles sin desbordamiento horizontal, el carrusel, la selección hacia Reserva, los errores y el foco del formulario, su validación y limpieza, y la respuesta 404. El recorrido no registró errores de JavaScript.

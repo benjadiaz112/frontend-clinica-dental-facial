@@ -2,7 +2,7 @@
 
 Integrantes: Benjamin Diaz y Bikenson Fenelus.
 
-Frontend académico de una clínica dental y facial. Usa React, Next.js y TypeScript. Muestra información de la clínica, un catálogo de cinco tratamientos y un formulario de reserva de demostración.
+Frontend académico de una clínica dental y facial. Usa React y Next.js con JavaScript y JSX. Muestra información de la clínica, un catálogo de cinco tratamientos y un formulario de reserva de demostración.
 
 ## Ejecutar
 
@@ -46,7 +46,6 @@ npm run test:watch
 - `components/`: componentes reutilizables; catálogo y formulario guardan sus propios estados con `useState` y consultan la API con `useEffect`.
 - `data/`: información de la clínica y función de consulta HTTP.
 - `services/`: validaciones independientes de React.
-- `models/`: tipos de TypeScript.
 - `styles/`: CSS propio y reglas responsivas.
 - `api_simulada/`: servidor local y datos de los tratamientos.
 - `tests/`: las cinco pruebas con Vitest.
@@ -54,7 +53,6 @@ npm run test:watch
 ## Otras comprobaciones
 
 ```bash
-npm run typecheck
 npm run build
 ```
 
@@ -64,4 +62,4 @@ Para producción local, mantener la API encendida y ejecutar `npm start` despué
 
 El formulario valida datos y permite limpiar; no guarda reservas ni envía correos. La API es local y solo permite consultar los tratamientos. Los archivos HTML originales se conservan como referencia.
 
-El cambio actual simplifica las pruebas y reúne la lógica de estado en los componentes. Quedan pendientes, si el equipo decide aplicar el documento de tienda completo, la migración a Vite y JavaScript, Bootstrap, búsqueda, carrito y json-server. No se declara cumplimiento de ese alcance con este cambio. `ERS.docx` corresponde a la versión anterior y requiere actualización antes de presentarlo como documento vigente.
+Los componentes usan archivos `.jsx`; los datos y las validaciones usan `.js`. Los alias de importación se configuran en `jsconfig.json` y Next.js en `next.config.mjs`. La lógica de estado permanece en los componentes. Quedan pendientes, si el equipo decide aplicar el documento de tienda completo, la migración a Vite, Bootstrap, búsqueda, carrito y json-server. No se declara cumplimiento de ese alcance con este cambio. `ERS.docx` corresponde a la versión anterior y requiere actualización antes de presentarlo como documento vigente.

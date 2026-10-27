@@ -1,6 +1,6 @@
 // Comprueba que el servicio elegido pertenezca a la lista recibida.
 import { test, expect } from "vitest";
-import { validarServicio } from "../services/validacionesReserva";
+import { validarServicio } from "../services/validacionesReserva.js";
 
 // Los servicios son datos de entrada de la función; no se consulta la API.
 test("acepta un servicio disponible y rechaza uno desconocido o vacío", function () {

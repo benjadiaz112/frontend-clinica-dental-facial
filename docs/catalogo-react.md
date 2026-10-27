@@ -1,6 +1,6 @@
 # Catálogo de tratamientos
 
-`app/tratamientos/page.tsx` compone la página. `CatalogoTratamientos` guarda tratamientos, carga, error y selección mediante `useState`. Un `useEffect` llama a `consultarTratamientos` de `data/tratamientos.ts` y cancela la petición al desmontarse.
+`app/tratamientos/page.jsx` compone la página. `CatalogoTratamientos` guarda tratamientos, carga, error y selección mediante `useState`. Un `useEffect` llama a `consultarTratamientos` de `data/tratamientos.js` y cancela la petición al desmontarse.
 
 La página muestra carga, error, lista vacía o las tarjetas de los cinco tratamientos. `TarjetaTratamiento` recibe el tratamiento, su estado de selección y la función de clic mediante propiedades.
 

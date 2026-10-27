@@ -15,7 +15,7 @@ npm test
 - `tests/validarRut.test.js`: dos pruebas de dígito verificador y formatos.
 - `tests/validarCorreo.test.js`: una prueba de formato del correo.
 - `tests/validarServicio.test.js`: una prueba de pertenencia del servicio a la lista.
-- `services/validacionesReserva.ts`: funciones usadas tanto por la aplicación como por los tests.
+- `services/validacionesReserva.js`: funciones usadas tanto por la aplicación como por los tests.
 
 ## Cómo leerlas
 

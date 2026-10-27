@@ -12,13 +12,13 @@ npm run api
 
 Consultar `http://127.0.0.1:3001/tratamientos`. Detener con Ctrl+C. La API solo escucha en el equipo local. Si el puerto 3001 está ocupado, liberar ese puerto antes de iniciarla.
 
-En otra terminal ejecutar `npm run dev` para Next.js, en el puerto 3000. `/tratamientos` consulta esta API mediante `fetch` desde `data/tratamientos.ts`. Sin API disponible se muestra un error; iniciarla y recargar permite volver a consultar.
+En otra terminal ejecutar `npm run dev` para Next.js, en el puerto 3000. `/tratamientos` consulta esta API mediante `fetch` desde `data/tratamientos.js`. Sin API disponible se muestra un error; iniciarla y recargar permite volver a consultar.
 
 ## Archivos
 
 - `api_simulada/db.json`: única fuente de los cinco tratamientos originales. Conserva nombres, descripciones, imágenes, textos alternativos, precios y valores null.
 - `api_simulada/servidor.js`: servidor pequeño escrito en JavaScript con el módulo http incluido en Node.js, sin instalar dependencias.
-- `data/tratamientos.ts`: consulta la API y comprueba el estado HTTP y que la respuesta sea una lista. db.json sigue siendo la fuente de datos del servidor.
+- `data/tratamientos.js`: consulta la API y comprueba el estado HTTP y que la respuesta sea una lista. db.json sigue siendo la fuente de datos del servidor.
 - `package.json`: agrega el comando api.
 
 ## Respuestas
@@ -36,4 +36,4 @@ Los datos se cargan al iniciar el servidor: después de editar db.json hay que r
 
 ## Verificación realizada
 
-Compilación y TypeScript correctos. Se verificó por HTTP: GET devuelve los cinco tratamientos idénticos al HTML original, JSON UTF-8 y cabecera CORS; ruta inexistente devuelve 404; POST, PUT, PATCH y DELETE devuelven 405 con Allow: GET. El archivo de datos permaneció intacto. El servidor usado para la comprobación se detuvo al terminar.
+Compilación correcta. Se verificó por HTTP: GET devuelve los cinco tratamientos idénticos al HTML original, JSON UTF-8 y cabecera CORS; ruta inexistente devuelve 404; POST, PUT, PATCH y DELETE devuelven 405 con Allow: GET. El archivo de datos permaneció intacto. El servidor usado para la comprobación se detuvo al terminar.

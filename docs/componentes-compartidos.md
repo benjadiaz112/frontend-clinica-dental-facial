@@ -4,10 +4,10 @@
 
 | Archivo | Responsabilidad |
 | --- | --- |
-| `Encabezado.tsx` | Muestra el nombre de la clinica y el menu. |
-| `Menu.tsx` | Crea los enlaces y marca la pagina actual. |
-| `PiePagina.tsx` | Muestra el pie y sus enlaces. |
-| `Boton.tsx` | Boton reutilizable para formularios y acciones. |
-| `Mensaje.tsx` | Muestra mensajes informativos, errores o exitos. |
+| `Encabezado.jsx` | Muestra el nombre de la clinica y el menu. |
+| `Menu.jsx` | Crea los enlaces y marca la pagina actual. |
+| `PiePagina.jsx` | Muestra el pie y sus enlaces. |
+| `Boton.jsx` | Boton reutilizable para formularios y acciones. |
+| `Mensaje.jsx` | Muestra mensajes informativos, errores o exitos. |
 
 Los modulos de `components/inicio`, `components/tratamientos` y `components/reserva` contienen solo los componentes de sus propias funcionalidades. No se crean componentes para funcionalidades fuera del alcance.
