@@ -20,6 +20,6 @@ Validar datos revisa los campos, presenta sus mensajes y enfoca el primero incor
 
 Mientras se consultan servicios, si ocurre un error o la lista está vacía, el selector y Validar quedan deshabilitados. Limpiar sigue disponible. Un identificador desconocido de la URL permite recuperarse eligiendo otro servicio.
 
-Los mensajes de error están asociados a los controles mediante `aria-describedby` y `aria-invalid`. Un resultado correcto indica que es una demostración: no se envió una solicitud ni se reservó una hora.
+Los mensajes de error están asociados a los controles mediante `aria-describedby` y `aria-invalid`. Un resultado correcto muestra «Datos válidos. Clínica ficticia.». No se envía una solicitud ni se reserva una hora.
 
-Las cinco pruebas de Vitest revisan funciones de validación. La interfaz completa se comprueba aparte en el navegador con la API real.
+Las cinco pruebas de QUnit revisan funciones de validación. La interfaz completa se comprueba aparte en el navegador con la API real.

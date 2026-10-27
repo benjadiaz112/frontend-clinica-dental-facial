@@ -8,7 +8,7 @@
 | `services/` | Funciones puras de validación en JavaScript. |
 | `styles/` | CSS de las páginas y estilos comunes. |
 | `api_simulada/` | Servidor Node y datos de los tratamientos. |
-| `tests/` | Cinco pruebas de Vitest en cuatro archivos `.test.js`. |
+| `tests/` | Cinco pruebas de QUnit en cuatro archivos `.test.js`. |
 | `public/imagenes/` | Imágenes servidas desde `/imagenes/`. |
 | `docs/` | Explicaciones y resultados de verificación. |
 | `jsconfig.json` | Alias de importación `@/` hacia la raíz. |

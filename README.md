@@ -11,7 +11,7 @@ Proyecto académico de Benjamin Diaz y Bikenson Fenelus. Presenta una clínica d
 | JavaScript y JSX | Datos y funciones en `.js`; componentes y páginas en `.jsx`. |
 | CSS propio | Estilos y adaptación a móvil mediante Flexbox y media queries. |
 | Node.js | Ejecución de las herramientas y de la API simulada. |
-| Vitest 5.0.5 | Cinco pruebas de funciones de validación. |
+| QUnit 3.0.0 | Cinco pruebas de funciones de validación. |
 
 Las versiones instaladas están fijadas en `package-lock.json`. Se recomienda Node.js 24 LTS; las versiones compatibles se indican en `package.json`.
 
@@ -49,12 +49,23 @@ Si en Linux instalaste Node con nvm y una terminal anterior no reconoce `npm`, c
 | --- | --- |
 | `npm run api` | Inicia el servidor local de tratamientos. |
 | `npm run dev` | Inicia Next.js en desarrollo. |
-| `npm test` | Ejecuta las cinco pruebas de Vitest y termina. |
+| `npm test` | Ejecuta las cinco pruebas de QUnit y termina. |
 | `npm run test:watch` | Repite las pruebas al guardar archivos. |
+| `npm run test:web` | Inicia la página de resultados de QUnit en el puerto 4000. |
 | `npm run build` | Genera la versión de producción en `.next/`. |
 | `npm start` | Sirve la versión ya compilada. |
 
 Para producción local, ejecutar primero `npm run build`, mantener la API encendida y usar `npm start`. Detener antes el servidor de desarrollo si ocupa el puerto 3000.
+
+## Ver los tests en el navegador
+
+Desde la carpeta de `package.json`, ejecutar:
+
+```bash
+npm run test:web
+```
+
+Abrir [Pruebas QUnit](http://127.0.0.1:4000/tests/index.html). Se muestran las mismas cinco pruebas que ejecuta `npm test`, con sus resultados y comprobaciones. Después de editar una prueba, recargar la página. No hace falta iniciar Next.js ni la API. Detener el servidor con `Ctrl+C`.
 
 ## Funcionalidades
 

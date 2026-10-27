@@ -14,4 +14,4 @@ En ese recorrido no se registraron errores de JavaScript. Esta revisión no cons
 
 ## Revisión manual recomendada
 
-Comprobar también navegación con Tab y Enter, visibilidad del foco, enlace de salto al contenido, etiquetas y mensajes después de cambiar la interfaz. Las cinco pruebas de Vitest descritas en [PRUEBAS.md](PRUEBAS.md) solo comprueban funciones de validación.
+Comprobar también navegación con Tab y Enter, visibilidad del foco, enlace de salto al contenido, etiquetas y mensajes después de cambiar la interfaz. Las cinco pruebas de QUnit descritas en [PRUEBAS.md](PRUEBAS.md) solo comprueban funciones de validación.

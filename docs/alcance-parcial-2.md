@@ -9,7 +9,7 @@
 - Selección de tratamiento y formulario de demostración con validación y limpieza.
 - Estado dentro de los componentes mediante `useState` y carga inicial con `useEffect`.
 - CSS propio responsivo.
-- Cinco pruebas unitarias con Vitest, por decisión del equipo.
+- Cinco pruebas unitarias con QUnit, por decisión del equipo.
 
 ## Límites
 

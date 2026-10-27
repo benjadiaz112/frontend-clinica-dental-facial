@@ -6,7 +6,7 @@
 - Páginas, componentes compartidos y configuración de Next.js.
 - API local de tratamientos y consulta con `fetch`.
 - Selección y formulario de demostración con validación y limpieza.
-- Cinco pruebas con Vitest y documento de resultados.
+- Cinco pruebas con QUnit y documento de resultados.
 - Compilación y revisión del recorrido principal en el navegador.
 - Guías Markdown alineadas con los archivos y comandos actuales.
 

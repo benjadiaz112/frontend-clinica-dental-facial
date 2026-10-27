@@ -12,4 +12,4 @@ Seleccionar una tarjeta muestra el enlace a Reserva con su identificador. Se pue
 
 Encender `npm run api` y `npm run dev`, abrir `/tratamientos`, comprobar las cinco tarjetas y sus precios, seleccionar un tratamiento y continuar a Reserva. Con la API apagada, recargar debe mostrar el mensaje de error.
 
-Las cinco pruebas de Vitest comprueban validaciones; no montan ni comprueban este componente.
+Las cinco pruebas de QUnit comprueban validaciones; no montan ni comprueban este componente.

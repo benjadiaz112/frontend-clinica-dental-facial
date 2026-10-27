@@ -13,4 +13,4 @@ La comprobación del RUT no acredita identidad. El formato del correo no comprue
 
 `FormularioReserva.jsx` llama a estas funciones y añade el mensaje correspondiente al campo. El límite del comentario se comprueba dentro de ese componente.
 
-Vitest tiene cinco casos: nombre, dígito de RUT, formatos de RUT, correo y servicio. Los archivos y resultados se describen en [PRUEBAS.md](PRUEBAS.md).
+QUnit tiene cinco casos: nombre, dígito de RUT, formatos de RUT, correo y servicio. Los archivos y resultados se describen en [PRUEBAS.md](PRUEBAS.md).
