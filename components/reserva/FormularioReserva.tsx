@@ -1,12 +1,89 @@
 "use client";
 
-import type { FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import Boton from "@/components/compartidos/Boton";
 import Mensaje from "@/components/compartidos/Mensaje";
-import { useReserva } from "@/hooks/useReserva";
+import type { Reserva } from "@/models/Reserva";
+import type { Tratamiento } from "@/models/Tratamiento";
+import { consultarTratamientos } from "@/data/tratamientos";
+import { validarNombre, validarRut, validarCorreo, validarServicio } from "@/services/validacionesReserva";
+
+const datosVacios: Reserva = { nombre: "", rut: "", correo: "", servicio: "", comentario: "" };
 
 export default function FormularioReserva() {
-  const { datos, errores, resultado, aviso, tratamientos, cargando, error, cambiar, validar, limpiar } = useReserva();
+  const [datos, setDatos] = useState<Reserva>(datosVacios);
+  const [errores, setErrores] = useState<Reserva>(datosVacios);
+  const [resultado, setResultado] = useState("");
+  const [aviso, setAviso] = useState("");
+  const [tratamientos, setTratamientos] = useState<Tratamiento[]>([]);
+  const [cargando, setCargando] = useState(true);
+  const [error, setError] = useState("");
+
+  // Cargar los servicios y recuperar la selección que viene del catálogo.
+  useEffect(function () {
+    const controlador = new AbortController();
+
+    async function cargarServicios() {
+      try {
+        const lista = await consultarTratamientos(controlador.signal);
+        if (controlador.signal.aborted) return;
+        setTratamientos(lista);
+
+        const id = new URLSearchParams(window.location.search).get("tratamiento");
+        if (id) {
+          const seleccionado = lista.find(function (item) { return String(item.id) === id; });
+          if (seleccionado) {
+            setDatos(function (anteriores) { return { ...anteriores, servicio: seleccionado.nombre }; });
+          } else {
+            setAviso("El tratamiento seleccionado no está disponible. Elige un servicio de la lista.");
+          }
+        }
+      } catch {
+        if (!controlador.signal.aborted) {
+          setError("No se pudieron cargar los tratamientos. Comprueba que la API esté disponible e intenta recargar la página.");
+        }
+      } finally {
+        if (!controlador.signal.aborted) setCargando(false);
+      }
+    }
+
+    cargarServicios();
+    return function () { controlador.abort(); };
+  }, []);
+
+  // Actualizar el campo y quitar su error mientras el usuario lo corrige.
+  function cambiar(campo: keyof Reserva, valor: string) {
+    setDatos(function (anteriores) { return { ...anteriores, [campo]: valor }; });
+    setErrores(function (anteriores) { return { ...anteriores, [campo]: "" }; });
+    setResultado("");
+    if (campo === "servicio") setAviso("");
+  }
+
+  // Revisar los datos y devolver el nombre del primer campo incorrecto.
+  function validar() {
+    const nuevosErrores = { ...datosVacios };
+    if (!validarNombre(datos.nombre)) nuevosErrores.nombre = "Escribe un nombre válido de 3 a 80 caracteres, con letras, espacios, guiones o apóstrofes.";
+    if (!validarRut(datos.rut)) nuevosErrores.rut = "Escribe un RUT válido. Ejemplo: 12.345.678-5.";
+    if (!validarCorreo(datos.correo)) nuevosErrores.correo = "Escribe un correo válido.";
+    const servicios = tratamientos.map(function (item) { return item.nombre; });
+    if (cargando || error || !validarServicio(datos.servicio, servicios)) nuevosErrores.servicio = "Selecciona un servicio disponible.";
+    if (datos.comentario.length > 500) nuevosErrores.comentario = "El comentario puede tener hasta 500 caracteres.";
+
+    setErrores(nuevosErrores);
+    const campos = Object.keys(nuevosErrores) as (keyof Reserva)[];
+    const primero = campos.find(function (campo) { return nuevosErrores[campo] !== ""; });
+    setResultado(primero ? "Revisa los datos marcados." : "Datos válidos. Esta es una demostración: no se envió una solicitud ni se reservó una hora.");
+    return primero;
+  }
+
+  // Dejar el formulario vacío, sin errores ni resultado anterior.
+  function limpiar() {
+    setDatos({ ...datosVacios });
+    setErrores({ ...datosVacios });
+    setResultado("");
+    setAviso("");
+  }
+
   const hayErrores = Object.values(errores).some(function (texto) { return texto !== ""; });
   const elegido = tratamientos.find(function (item) { return item.nombre === datos.servicio; });
 

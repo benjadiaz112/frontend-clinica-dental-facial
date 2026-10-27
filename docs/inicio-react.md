@@ -31,6 +31,4 @@ El video conserva la dirección original de YouTube. Su reproducción depende de
 
 ## Pruebas
 
-La suite actual contiene diez pruebas funcionales: cuatro de validaciones, cuatro de catálogo y dos de formulario. Los antiguos casos de presentación y carrusel se retiraron al reducir la suite; no se afirma que esos componentes tengan pruebas automatizadas actuales. El alcance y la cobertura se detallan en el [informe de testing](../INFORME-TESTING.md).
-
-Karma sirve las imágenes locales mediante una regla sencilla, para que las pruebas del componente real no soliciten recursos inexistentes.
+La suite actual contiene dos pruebas de funciones puras: RUT y servicio. Inicio y el carrusel se comprueban manualmente; estas dos pruebas no verifican sus componentes. El alcance está en [PRUEBAS.md](PRUEBAS.md).

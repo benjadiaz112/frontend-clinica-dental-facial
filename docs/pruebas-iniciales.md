@@ -1,75 +1,22 @@
-# Pruebas iniciales — paso 6
+# Ejecutar y leer las dos pruebas
 
-## Ejecutar
-
-Desde la raíz del proyecto:
+Desde la carpeta de `package.json`:
 
 ```bash
-npm ci
+npm install
 npm test
 ```
 
-Karma abre un navegador sin ventana, ejecuta Jasmine y termina. No es necesario iniciar Next.js ni la API. Si alguna prueba falla, el comando devuelve un código de error.
-
-Para repetir las pruebas al guardar cambios:
-
-```bash
-npm run test:watch
-```
-
-Detén ese modo con `Ctrl+C`.
-
-## Navegador
-
-En Windows, la configuración usa Edge si está instalado en su ubicación habitual y no se definió `CHROME_BIN`. En otros casos, el lanzador busca Chrome. También se puede indicar la ruta del navegador manualmente; por ejemplo, en PowerShell:
-
-```powershell
-$env:CHROME_BIN = 'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe'
-npm test
-```
+`npm test` ejecuta `vitest run` y termina. Para repetir al guardar se usa `npm run test:watch`.
 
 ## Archivos
 
-- `karma.conf.js`: indica el framework, archivos, transformación de TSX y navegador.
-- `tests/configuracion.js`: activa el entorno de pruebas de React para usar `act`.
-- `tests/ValidacionesReserva.spec.tsx`: reúne las validaciones principales de nombre, RUT, correo y servicio.
-- `tests/CatalogoTratamientos.spec.tsx`: prueba carga, respuesta vacía, error de API y selección.
-- `tests/FormularioReserva.spec.tsx`: prueba rechazo, aceptación y limpieza del formulario.
-- `tests/ayudas.ts`: reúne las acciones de escribir y hacer clic, y las respuestas simuladas de la API.
+- `tests/validarRut.test.js`: una prueba de RUT correcto, incorrecto y vacío.
+- `tests/validarServicio.test.js`: una prueba de pertenencia del servicio a la lista.
+- `services/validacionesReserva.ts`: funciones usadas tanto por la aplicación como por los tests.
 
-Jasmine escribe y comprueba los casos; Karma los ejecuta en el navegador. Esbuild transforma TypeScript y JSX para que el navegador pueda ejecutarlos. No se agregan bibliotecas de pruebas de interfaz adicionales.
+## Cómo leerlas
 
-## Cómo leer una prueba
+`test` nombra el comportamiento. Dentro se preparan datos, se llama a una función y se compara con `expect(...).toBe(true)` o `toBe(false)`. Los dos archivos tienen comentarios en español.
 
-- `describe` agrupa casos relacionados.
-- `it` describe un comportamiento que se quiere comprobar.
-- `beforeEach` prepara un contenedor vacío para cada caso.
-- `act` espera las actualizaciones de React antes de comprobar el DOM.
-- `expect(...).toBe(...)` compara el resultado obtenido con el esperado.
-- `afterEach` desmonta el componente y elimina el contenedor para no mezclar los casos.
-
-Se mantiene el enfoque de los ejemplos recibidos: preparar datos, ejecutar y comprobar. La suite actual contiene exactamente diez pruebas funcionales: cuatro de validaciones, cuatro de catálogo y dos de formulario. Las pruebas históricas de botones, presentación y carrusel se retiraron para conservar ese alcance.
-
-## Lectura de la versión simplificada
-
-Las validaciones separan los datos válidos e inválidos en listas y usan `for...of` para comprobarlos. En catálogo y formulario se prepara la respuesta de `fetch`, se ejecuta la acción y se revisa el resultado. Los comentarios del formulario explican cada recorrido.
-
-`respuestaJson` simula el estado HTTP y el método `json`, sin un segundo `spyOn` sobre la respuesta. Las comprobaciones de carga ocurren dentro del mock de `fetch`, antes de devolver los datos; ya no necesitan crear una promesa pendiente ni guardar su función de resolución. Para repetir una consulta, `mostrar` desmonta el componente y lo vuelve a montar, sin contadores ni claves artificiales.
-
-`hacerClic` y `escribirCampo` esperan las actualizaciones con `act`. Para los campos de texto se conserva el setter nativo del navegador: React necesita detectar un valor diferente del que tiene registrado. Esa preparación está comentada en el archivo de ayudas; los casos de prueba llaman a `escribir` y comprueban el resultado. No se agregaron dependencias.
-
-## Cobertura y resultados
-
-`tests/cobertura.js` instrumenta 29 archivos de aplicación en app, components, hooks, data y services, incluidos los no ejecutados. Excluye pruebas, CSS, modelos y el servidor Node de la API. Los resultados y límites están en el [informe de testing](../INFORME-TESTING.md).
-
-Para regenerar los reportes:
-
-```bash
-npm run test:coverage
-```
-
-Abre `coverage/aplicacion/index.html`. Los reportes se generan localmente y no se incluyen en Git; la evidencia conservada está en `docs/evidencia-cobertura.json`.
-
-La ejecución normal con `npm test` o `npm run test:watch` no instrumenta el código ni genera reportes de cobertura. Los reportes de ejecuciones anteriores permanecen hasta que se eliminen.
-
-La última verificación del paso 23 completó las diez pruebas, TypeScript y compilación. Esta guía no presenta auditorías antiguas de dependencias como un diagnóstico actual de seguridad.
+No hace falta iniciar la API para ejecutar estos tests. El resultado real está en [PRUEBAS.md](PRUEBAS.md).

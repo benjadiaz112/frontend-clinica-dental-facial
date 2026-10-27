@@ -1,112 +1,67 @@
 # Clínica Aura
-Integrantes actuales: Benjamin Diaz y Bikenson Fenelus.
 
-Proyecto frontend académico de una clínica dental y de armonización facial. Las cinco páginas están implementadas con React, Next.js y TypeScript. Conserva el sitio original en HTML, CSS y JavaScript como referencia.
+Integrantes: Benjamin Diaz y Bikenson Fenelus.
 
-## Evaluación Parcial 2: alcance definido
+Frontend académico de una clínica dental y facial. Usa React, Next.js y TypeScript. Muestra información de la clínica, un catálogo de cinco tratamientos y un formulario de reserva de demostración.
 
-El [alcance vigente](docs/alcance-parcial-2.md) se limita a la pauta principal, por indicación del usuario: React, propiedades y estados, navegación, formularios, responsividad, Jasmine/Karma, mocks, cobertura y entregables. Se conserva el caso de Clínica Aura. Por decisión del usuario se utiliza CSS nativo; la pauta exige Bootstrap y esta diferencia sigue pendiente.
+## Ejecutar
 
-Inicio, Nosotros, Contacto, Tratamientos y Reserva están migrados. El [catálogo](docs/catalogo-react.md) consulta la API y permite [seleccionar un tratamiento](docs/seleccion-tratamiento.md). El [formulario React](docs/formulario-reserva.md) valida nombre, RUT, correo y servicio, muestra errores y permite limpiar. La confirmación es solo de demostración. Se conservan cinco rutas y la página 404. La suite contiene diez pruebas representativas; la cobertura de líneas medida es 73,79% sobre 29 archivos de aplicación, incluidos los no ejecutados. El [informe de testing](INFORME-TESTING.md) detalla el alcance y las exclusiones.
-
-## Estructura simple por modulos
-
-El [paso 19](docs/navegacion-verificada.md) completa la navegación del pie y verifica los enlaces, historial, teclado y la página 404.
-
-La información de las páginas está en `data/` y se muestra en `components/`; `app/` compone cada ruta. La lógica reutilizable del formulario está en `hooks/` y sus validaciones en `services/`. Los estilos nativos están en `styles/`.
-
-Todo permanece dentro de este mismo repositorio de GitHub.
-
-## Estilos comunes
-
-La [guía de estilos comunes](docs/estilos-comunes.md) explica los colores, contenedores, tarjetas, botones, campos y mensajes de `styles/globals.css`. Se utilizan clases sencillas, Flexbox y media queries para adaptar la distribución a móviles.
-
-## Ejecutar el proyecto con comandos
-
-El [detalle de los componentes compartidos](docs/componentes-compartidos.md) explica su uso. La [guía de rutas](docs/rutas.md) enumera las cinco páginas disponibles y la página 404.
-
-Requiere Node.js 20.9 o superior y npm, según `package.json`. Ejecuta los comandos desde la raíz del repositorio. Instala las dependencias:
+Requiere Node.js 24 LTS (o una versión compatible indicada en `package.json`). Desde la carpeta que contiene este archivo:
 
 ```bash
-npm ci
+npm install
 ```
 
-En una terminal, inicia la API para el catálogo y los servicios de Reserva:
+En una terminal, iniciar los datos del catálogo:
 
 ```bash
 npm run api
 ```
 
-En otra terminal, inicia el frontend:
+En otra terminal, iniciar la página:
 
 ```bash
 npm run dev
 ```
 
-Abre `http://localhost:3000`. Mantén ambas terminales abiertas mientras utilizas la aplicación; para detener cada servidor, presiona `Ctrl+C` en su terminal. La [guía de Inicio en React](docs/inicio-react.md) explica la portada. La [guía de Nosotros y Contacto](docs/informacion-react.md) explica las dos páginas informativas y su separación de Reserva. Los HTML originales se conservan únicamente como referencia. Los [pasos pendientes](docs/pasos-pendientes.md) indican cómo continuar.
+Abrir `http://localhost:3000`. Mantener ambas terminales abiertas. La API entrega los tratamientos en `http://127.0.0.1:3001/tratamientos`.
 
-Para compilar y ejecutar la versión de producción:
-
-```bash
-npm run build
-npm start
-```
-
-Mantén la API encendida en otra terminal. Detén el servidor de desarrollo antes de iniciar el de producción si ambos usan el puerto 3000.
-
-Para revisar los tipos de TypeScript:
-
-```bash
-npm run typecheck
-```
-
-`package-lock.json` fija las dependencias para que `npm ci` reproduzca la instalación. Los comandos `dev` y `build` generan los archivos locales de Next.js necesarios; estos archivos y `node_modules` no se publican en Git.
-
-## API simulada local
-
-Ejecuta `npm run api` en otra terminal. El catálogo consulta `http://127.0.0.1:3001/tratamientos` desde el navegador; si la API no está disponible muestra un error. La [guía de API](docs/api-simulada.md) detalla el servidor local. Esta dirección está preparada para ejecución en el mismo equipo.
-
-## Pruebas con Jasmine y Karma
+## Dos pruebas unitarias
 
 ```bash
 npm test
 ```
 
-Ejecuta las pruebas una vez en un navegador sin ventana. En Windows se utiliza Edge si está disponible; la configuración permite indicar otro navegador compatible mediante `CHROME_BIN`. No es necesario iniciar el servidor de Next.js.
+Vitest ejecuta dos pruebas de funciones puras: validación de RUT y validación de servicio. No necesita navegador ni API. El alcance y los resultados reales están en [docs/PRUEBAS.md](docs/PRUEBAS.md).
 
-Para repetir las pruebas al guardar cambios, utiliza `npm run test:watch`. La suite contiene diez casos representativos de validaciones, catálogo, selección y formulario, con mocks de API. No es necesario iniciar la API para ejecutar las pruebas.
+Para repetir las pruebas al guardar:
 
-`npm test` y `npm run test:watch` no generan la carpeta `coverage`. Para medir cobertura y generar el informe en `coverage/aplicacion/index.html`, ejecuta `npm run test:coverage`.
+```bash
+npm run test:watch
+```
 
-La [revisión manual de responsividad y accesibilidad](docs/responsividad-accesibilidad.md) registra los cinco recorridos a cuatro anchos y sus límites. Estas comprobaciones complementan las pruebas funcionales.
+## Organización
 
-## Estado de la entrega
+- `app/`: las cinco páginas y la página 404.
+- `components/`: componentes reutilizables; catálogo y formulario guardan sus propios estados con `useState` y consultan la API con `useEffect`.
+- `data/`: información de la clínica y función de consulta HTTP.
+- `services/`: validaciones independientes de React.
+- `models/`: tipos de TypeScript.
+- `styles/`: CSS propio y reglas responsivas.
+- `api_simulada/`: servidor local y datos de los tratamientos.
+- `tests/`: las dos pruebas con Vitest.
 
-Los pasos 20 a 24 están completados: cobertura, ERS, revisión de las diez pruebas, responsividad y documentación. Quedan resolver el requisito de Bootstrap (paso 25) y la verificación, integración en `main`, ZIP y presentación (paso 26). Los avances se guardan en ramas por funcionalidad dentro de un único repositorio; los últimos cambios todavía deben integrarse para la entrega.
+## Otras comprobaciones
 
-## Funcionalidades del sitio original
+```bash
+npm run typecheck
+npm run build
+```
 
-- Navegación entre Inicio, Nosotros, Tratamientos y Reserva.
-- Página informativa de tratamientos.
-- Imágenes y precios referenciales de tratamientos.
-- Formulario de reserva con validación de nombre, RUT, correo y servicio.
-- Validación de RUT mediante módulo 11 y validación de correo.
-- Mensajes e indicadores visuales para campos correctos e incorrectos.
-- Video educativo y diseño responsivo mediante CSS externo.
+Para producción local, mantener la API encendida y ejecutar `npm start` después de compilar. Detener antes el servidor de desarrollo si utiliza el mismo puerto.
 
-## Pruebas rápidas
+## Alcance actual
 
-- Revisa que todos los enlaces del menú abran la página correcta.
-- Comprueba que las imágenes y el video se muestren correctamente.
-- En Reserva, envía campos vacíos y revisa los mensajes.
-- RUT válido de prueba: `12.345.678-5`.
+El formulario valida datos y permite limpiar; no guarda reservas ni envía correos. La API es local y solo permite consultar los tratamientos. Los archivos HTML originales se conservan como referencia.
 
-## Tecnologías
-
-- HTML5
-- CSS3
-- JavaScript
-- React y Next.js para la nueva versión
-- TypeScript
-- Node.js y npm
-- Git y GitHub
+El cambio actual simplifica las pruebas y reúne la lógica de estado en los componentes. Quedan pendientes, si el equipo decide aplicar el documento de tienda completo, la migración a Vite y JavaScript, Bootstrap, búsqueda, carrito y json-server. No se declara cumplimiento de ese alcance con este cambio. `ERS.docx` corresponde a la versión anterior y requiere actualización antes de presentarlo como documento vigente.

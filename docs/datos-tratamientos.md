@@ -12,4 +12,4 @@
 
 Los importes son referenciales en pesos chilenos. Ortodoncia conserva el valor de la evaluación, sin presentarlo como precio del tratamiento completo. `null` indica que no existe un precio informado; no significa cero ni atención gratuita.
 
-`data/tratamientos.ts` expone consultarTratamientos y el catálogo utiliza useTratamientos para gestionar la consulta y sus estados. No se agrega CRUD, almacenamiento ni dependencias.
+`data/tratamientos.ts` expone consultarTratamientos y el catálogo gestiona la consulta y sus estados directamente en CatalogoTratamientos. No se agrega CRUD, almacenamiento ni dependencias.

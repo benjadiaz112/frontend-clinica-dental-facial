@@ -12,7 +12,7 @@ La página 404 conserva encabezado, pie y salto al contenido. Explica que la dir
 
 ## Verificación realizada
 
-Pasaron las diez pruebas representativas, TypeScript y compilación. En Edge con la versión de producción se comprobó:
+Registro manual previo: en Edge con la versión de producción se comprobó:
 
 - Cinco rutas HTTP 200, con un solo main y h1.
 - Diez enlaces del encabezado y pie con destino y página activa correctos.
@@ -23,4 +23,4 @@ Pasaron las diez pruebas representativas, TypeScript y compilación. En Edge con
 - La 404 no marca una página activa, permite regresar a Inicio y al catálogo y no desborda a 1280, 375 y 320 píxeles.
 - Sin errores JavaScript registrados.
 
-La revisión global de accesibilidad y responsividad se completó en el [paso 23](responsividad-accesibilidad.md). La cobertura se corrigió en el paso 20 y se detalla en el [informe de testing](../INFORME-TESTING.md).
+La revisión global de accesibilidad y responsividad se completó en el [paso 23](responsividad-accesibilidad.md). Las dos pruebas automatizadas actuales y sus límites están en [PRUEBAS.md](PRUEBAS.md).

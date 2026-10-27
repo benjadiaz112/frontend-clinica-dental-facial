@@ -1,6 +1,6 @@
 # API simulada — paso 14
 
-Se prepara una API local de consulta para los cinco tratamientos, solicitada por el usuario. Es un apoyo para el catálogo y futuras pruebas con mocks; no se presenta como una exigencia explícita de la pauta ni incorpora administración.
+Se prepara una API local de consulta para los cinco tratamientos, solicitada por el usuario. Entrega datos al catálogo y al formulario; no incorpora administración.
 
 ## Ejecutar
 

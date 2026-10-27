@@ -1,15 +1,39 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Mensaje from "@/components/compartidos/Mensaje";
 import Boton from "@/components/compartidos/Boton";
 import type { Tratamiento } from "@/models/Tratamiento";
-import { useTratamientos } from "@/hooks/useTratamientos";
+import { consultarTratamientos } from "@/data/tratamientos";
 import TarjetaTratamiento from "./TarjetaTratamiento";
 
 export default function CatalogoTratamientos() {
-  const { tratamientos, cargando, error } = useTratamientos();
+  const [tratamientos, setTratamientos] = useState<Tratamiento[]>([]);
+  const [cargando, setCargando] = useState(true);
+  const [error, setError] = useState("");
   const [seleccionado, setSeleccionado] = useState<Tratamiento | null>(null);
+
+  // Consultar los tratamientos al abrir el catálogo.
+  useEffect(function () {
+    const controlador = new AbortController();
+
+    async function cargar() {
+      try {
+        const lista = await consultarTratamientos(controlador.signal);
+        if (!controlador.signal.aborted) setTratamientos(lista);
+      } catch {
+        if (!controlador.signal.aborted) {
+          setError("No se pudieron cargar los tratamientos. Comprueba que la API esté disponible e intenta recargar la página.");
+        }
+      } finally {
+        if (!controlador.signal.aborted) setCargando(false);
+      }
+    }
+
+    cargar();
+    // Cancelar la consulta si se sale de la página antes de recibir los datos.
+    return function () { controlador.abort(); };
+  }, []);
 
   if (cargando) return <Mensaje texto="Cargando tratamientos..." />;
   if (error) return <Mensaje texto={error} tipo="error" />;

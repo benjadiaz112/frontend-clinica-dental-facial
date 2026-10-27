@@ -5,7 +5,7 @@ clinica-aura-entrega.zip
 /node_modules/
 /.next/
 /out/
-/coverage/
+/.vitest/
 *.tsbuildinfo
 next-env.d.ts
 npm-debug.log*

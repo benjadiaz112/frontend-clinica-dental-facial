@@ -1,26 +1,16 @@
-# Estructura simple por modulos
-
-El proyecto se divide por funcionalidades, como pequenos paquetes de codigo. Cada carpeta contiene solo lo necesario para esa parte del sitio.
+# Estructura del proyecto
 
 | Carpeta | Responsabilidad |
 | --- | --- |
-| `app/` | Rutas de Inicio, Nosotros, Tratamientos, Reserva, Contacto y 404. |
-| `components/compartidos/` | Menu, encabezado, pie, botones y mensajes reutilizables. |
-| `components/inicio/` | Componentes de la pagina principal. |
-| `components/tratamientos/` | Catalogo y tarjetas de tratamientos. |
-| `components/reserva/` | Formulario de reserva. |
-| `components/nosotros/` y `components/contacto/` | Informacion de cada pagina. |
-| `data/` | Informacion estatica y consulta de la API simulada. |
-| `models/` | Tipos de datos. |
-| `hooks/` | Estado y efectos del catalogo y formulario. |
-| `services/` | Validaciones independientes del DOM. |
-| `styles/` | CSS nativo compartido y especifico. |
-| `tests/` | Diez pruebas Jasmine ejecutadas con Karma. |
+| `app/` | Páginas de Inicio, Nosotros, Tratamientos, Reserva, Contacto y 404. |
+| `components/` | Interfaz, propiedades, eventos y estado de los componentes. |
+| `data/` | Información estática y consulta de tratamientos con `fetch`. |
+| `models/` | Tipos de datos de TypeScript. |
+| `services/` | Funciones puras de validación. |
+| `styles/` | Estilos compartidos y reglas responsivas. |
+| `api_simulada/` | Datos y servidor local de consulta. |
+| `tests/` | Dos pruebas sencillas con Vitest. |
 
-Cada pagina obtiene datos simples desde `data/` y los entrega a sus componentes mediante propiedades. No se usan clases, dependencias nuevas ni capas que solo repitan funciones.
+El catálogo y el formulario guardan sus estados con `useState`. Cada uno tiene un `useEffect` para cargar sus servicios al abrirse. La consulta HTTP se mantiene en `data/tratamientos.ts`; las validaciones están en `services/validacionesReserva.ts`.
 
-`api_simulada/` contiene `db.json` y un servidor JavaScript. `data/tratamientos.ts` consulta esa API y `hooks/useTratamientos.ts` gestiona carga, datos y errores. No se agrega CRUD administrativo.
-
-La carpeta `services/` se mantiene solo para las reglas de validacion de la reserva, porque esas funciones no dependen de React ni del DOM.
-
-Los archivos HTML, CSS y JavaScript originales permanecen disponibles. CSS nativo sigue siendo una diferencia respecto del requisito explicito de Bootstrap.
+Los componentes reciben propiedades y funciones para responder a los eventos. No se agregan capas intermedias para compartir el estado del catálogo y el formulario. Los HTML originales se mantienen como referencia.

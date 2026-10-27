@@ -11,6 +11,6 @@
 
 La validación del RUT comprueba formato y dígito; no acredita identidad ni existencia de una persona. No se añaden restricciones nuevas sobre nombres o servicios.
 
-`tests/ValidacionesReserva.spec.tsx` contiene cuatro casos Jasmine: aceptación y rechazo de nombre, RUT, correo y servicio. Son pruebas representativas, no exhaustivas de todos los límites y formatos posibles. Los datos son ejemplos de prueba y no se consultan servicios externos.
+`tests/validarRut.test.js` y `tests/validarServicio.test.js` contienen las dos pruebas de Vitest. Comprueban RUT y pertenencia del servicio a la lista recibida, sin consultar servicios externos. Nombre y correo se mantienen en la aplicación, pero no tienen casos automatizados en esta suite reducida.
 
-El HTML y js/script.js originales se conservan. Desde el paso 18, useReserva conecta estas funciones al formulario React. No se envían datos ni se registran reservas reales.
+El HTML y js/script.js originales se conservan. FormularioReserva utiliza directamente estas funciones y mantiene sus propios estados. No se envían datos ni se registran reservas reales.
