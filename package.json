@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "test": "qunit \"tests/*.test.js\"",
-    "test:watch": "qunit --watch \"tests/*.test.js\""
+    "test:watch": "qunit --watch \"tests/*.test.js\"",
+    "test:web": "node tests/servidor.cjs"
   },
   "engines": {
     "node": "^22.12.0 || ^24.0.0 || >=26.0.0"

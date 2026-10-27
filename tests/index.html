@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pruebas de Clínica Aura - QUnit</title>
+  <link rel="stylesheet" href="/qunit/qunit.css">
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="/qunit/qunit.js"></script>
+  <script>QUnit.config.autostart = false;</script>
+  <script type="module">
+    import "/tests/validarNombre.test.js";
+    import "/tests/validarRut.test.js";
+    import "/tests/validarCorreo.test.js";
+    import "/tests/validarServicio.test.js";
+
+    QUnit.start();
+  </script>
+</body>
+</html>
