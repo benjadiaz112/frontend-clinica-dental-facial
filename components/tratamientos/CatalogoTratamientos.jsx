@@ -9,7 +9,6 @@ export default function CatalogoTratamientos() {
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState("");
   const [seleccionado, setSeleccionado] = useState(null);
-  // Consultar los tratamientos al abrir el catálogo.
   useEffect(function () {
     const controlador = new AbortController();
     async function cargar() {
@@ -27,7 +26,6 @@ export default function CatalogoTratamientos() {
       }
     }
     cargar();
-    // Cancelar la consulta si se sale de la página antes de recibir los datos.
     return function () {
       controlador.abort();
     };
