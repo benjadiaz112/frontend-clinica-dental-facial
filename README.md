@@ -94,3 +94,4 @@ La validación correcta del formulario muestra un resultado de demostración: no
 ## Entrega
 
 Repositorio: [frontend-clinica-dental-facial](https://github.com/benjadiaz112/frontend-clinica-dental-facial). `ERS.docx` describe el alcance actual y fue actualizado el 27 de octubre de 2026. El ZIP final se prepara después de cerrar el alcance y verificar la entrega.
+SE UTILIZO LA HERRAMIENTA GITHUB COPILOT PARA LAS REDACCIONES DE TEXTO.
