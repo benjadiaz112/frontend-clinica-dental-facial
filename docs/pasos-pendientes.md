@@ -9,10 +9,10 @@
 - Cinco pruebas con QUnit y documento de resultados.
 - Compilación y revisión del recorrido principal en el navegador.
 - Guías Markdown alineadas con los archivos y comandos actuales.
+- `ERS.docx` actualizado al 27 de octubre de 2026 con el alcance real, QUnit y sus límites.
 
 ## Pendiente de entrega
 
-- Actualizar `ERS.docx`, que corresponde a una versión anterior.
 - Preparar el ZIP final con el código y documentos vigentes.
 - Preparar la presentación y explicar componentes, propiedades, estados, API y pruebas.
 
