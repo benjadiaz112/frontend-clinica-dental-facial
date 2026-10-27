@@ -24,7 +24,6 @@ export default function FormularioReserva() {
   const [tratamientos, setTratamientos] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState("");
-  // Cargar los servicios y recuperar la selección que viene del catálogo.
   useEffect(function () {
     const controlador = new AbortController();
     async function cargarServicios() {
@@ -64,7 +63,6 @@ export default function FormularioReserva() {
       controlador.abort();
     };
   }, []);
-  // Actualizar el campo y quitar su error mientras el usuario lo corrige.
   function cambiar(campo, valor) {
     setDatos(function (anteriores) {
       return { ...anteriores, [campo]: valor };
@@ -75,7 +73,6 @@ export default function FormularioReserva() {
     setResultado("");
     if (campo === "servicio") setAviso("");
   }
-  // Revisar los datos y devolver el nombre del primer campo incorrecto.
   function validar() {
     const nuevosErrores = { ...datosVacios };
     if (!validarNombre(datos.nombre))
@@ -105,7 +102,6 @@ export default function FormularioReserva() {
     );
     return primero;
   }
-  // Dejar el formulario vacío, sin errores ni resultado anterior.
   function limpiar() {
     setDatos({ ...datosVacios });
     setErrores({ ...datosVacios });

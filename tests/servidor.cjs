@@ -1,4 +1,3 @@
-// Sirve solo la página de pruebas, QUnit y los archivos que necesitan los tests.
 const http = require("node:http");
 const { readFile } = require("node:fs/promises");
 const path = require("node:path");

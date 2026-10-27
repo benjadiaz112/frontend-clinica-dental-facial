@@ -7,7 +7,6 @@ export function validarNombre(nombre) {
     const caracter = limpio[i];
     if (letras.includes(caracter)) continue;
 
-    // Solo se permite un espacio, guion o apóstrofe entre letras.
     if (caracter !== " " && caracter !== "-" && caracter !== "'") return false;
     if (i === 0 || i === limpio.length - 1) return false;
     if (!letras.includes(limpio[i - 1]) || !letras.includes(limpio[i + 1])) return false;
