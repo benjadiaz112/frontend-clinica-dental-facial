@@ -19,6 +19,6 @@ En `styles/tratamientos.css`, el botón seleccionado ahora tiene un contorno de 
 
 ## Validación y límites
 
-Este registro conserva la revisión visual realizada anteriormente. El alcance automatizado vigente se limita a las dos pruebas de Vitest descritas en [PRUEBAS.md](PRUEBAS.md).
+Este registro conserva la revisión visual realizada anteriormente. El alcance automatizado vigente se limita a las cinco pruebas de Vitest descritas en [PRUEBAS.md](PRUEBAS.md).
 
 Esta revisión cubre los tamaños y comprobaciones indicados; no constituye una certificación WCAG ni una prueba con lectores de pantalla o todos los dispositivos. La decisión pendiente sobre Bootstrap se mantiene en el paso 25.

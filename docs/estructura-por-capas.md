@@ -9,7 +9,7 @@
 | `services/` | Funciones puras de validación. |
 | `styles/` | Estilos compartidos y reglas responsivas. |
 | `api_simulada/` | Datos y servidor local de consulta. |
-| `tests/` | Dos pruebas sencillas con Vitest. |
+| `tests/` | Cinco pruebas sencillas con Vitest. |
 
 El catálogo y el formulario guardan sus estados con `useState`. Cada uno tiene un `useEffect` para cargar sus servicios al abrirse. La consulta HTTP se mantiene en `data/tratamientos.ts`; las validaciones están en `services/validacionesReserva.ts`.
 

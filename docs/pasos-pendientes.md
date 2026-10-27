@@ -6,7 +6,7 @@
 - Catálogo desde la API y selección de un tratamiento.
 - Formulario de demostración con validación y limpieza.
 - Estado del catálogo y del formulario dentro de sus componentes.
-- Dos pruebas de funciones puras con Vitest: RUT y servicio.
+- Cinco pruebas de funciones puras con Vitest: nombre, RUT, formatos de RUT, correo y servicio.
 - Guía de ejecución y documento de pruebas actualizados.
 
 ## Pendiente

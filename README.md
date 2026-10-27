@@ -26,13 +26,13 @@ npm run dev
 
 Abrir `http://localhost:3000`. Mantener ambas terminales abiertas. La API entrega los tratamientos en `http://127.0.0.1:3001/tratamientos`.
 
-## Dos pruebas unitarias
+## Cinco pruebas unitarias
 
 ```bash
 npm test
 ```
 
-Vitest ejecuta dos pruebas de funciones puras: validación de RUT y validación de servicio. No necesita navegador ni API. El alcance y los resultados reales están en [docs/PRUEBAS.md](docs/PRUEBAS.md).
+Vitest ejecuta cinco pruebas de funciones puras: nombre, RUT, formatos de RUT, correo y servicio. No necesita navegador ni API. El alcance y los resultados reales están en [docs/PRUEBAS.md](docs/PRUEBAS.md).
 
 Para repetir las pruebas al guardar:
 
@@ -49,7 +49,7 @@ npm run test:watch
 - `models/`: tipos de TypeScript.
 - `styles/`: CSS propio y reglas responsivas.
 - `api_simulada/`: servidor local y datos de los tratamientos.
-- `tests/`: las dos pruebas con Vitest.
+- `tests/`: las cinco pruebas con Vitest.
 
 ## Otras comprobaciones
 

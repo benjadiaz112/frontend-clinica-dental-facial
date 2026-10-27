@@ -12,4 +12,4 @@ Un resultado válido indica que es una demostración: no se guardó una reserva 
 
 ## Verificación
 
-Las dos pruebas actuales de Vitest comprueban únicamente RUT y servicio. Para comprobar el formulario completo se inicia la API real y se revisan datos vacíos, datos correctos, un RUT incorrecto, corrección, limpieza y selección desde el catálogo.
+Las cinco pruebas actuales de Vitest comprueban nombre, RUT, formatos de RUT, correo y servicio. Para comprobar el formulario completo se inicia la API real y se revisan datos vacíos, datos correctos, un RUT incorrecto, corrección, limpieza y selección desde el catálogo.

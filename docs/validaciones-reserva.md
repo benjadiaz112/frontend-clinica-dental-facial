@@ -11,6 +11,6 @@
 
 La validación del RUT comprueba formato y dígito; no acredita identidad ni existencia de una persona. No se añaden restricciones nuevas sobre nombres o servicios.
 
-`tests/validarRut.test.js` y `tests/validarServicio.test.js` contienen las dos pruebas de Vitest. Comprueban RUT y pertenencia del servicio a la lista recibida, sin consultar servicios externos. Nombre y correo se mantienen en la aplicación, pero no tienen casos automatizados en esta suite reducida.
+Los cuatro archivos de `tests/` contienen cinco pruebas de Vitest: nombre, dígito verificador del RUT, formatos de RUT, correo y servicio. Se comprueban entradas válidas e inválidas sin consultar servicios externos. El detalle está en [PRUEBAS.md](PRUEBAS.md).
 
 El HTML y js/script.js originales se conservan. FormularioReserva utiliza directamente estas funciones y mantiene sus propios estados. No se envían datos ni se registran reservas reales.

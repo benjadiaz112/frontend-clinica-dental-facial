@@ -23,4 +23,4 @@ Registro manual previo: en Edge con la versión de producción se comprobó:
 - La 404 no marca una página activa, permite regresar a Inicio y al catálogo y no desborda a 1280, 375 y 320 píxeles.
 - Sin errores JavaScript registrados.
 
-La revisión global de accesibilidad y responsividad se completó en el [paso 23](responsividad-accesibilidad.md). Las dos pruebas automatizadas actuales y sus límites están en [PRUEBAS.md](PRUEBAS.md).
+La revisión global de accesibilidad y responsividad se completó en el [paso 23](responsividad-accesibilidad.md). Las cinco pruebas automatizadas actuales y sus límites están en [PRUEBAS.md](PRUEBAS.md).

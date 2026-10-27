@@ -10,4 +10,4 @@ Al seleccionar un tratamiento aparece el enlace `/reserva?tratamiento=<id>`. Se 
 
 Iniciar `npm run api` y `npm run dev`. Abrir `/tratamientos`, comprobar los cinco nombres y precios, seleccionar una tarjeta, cambiarla, quitar la selección y continuar a Reserva. Detener la API y recargar para revisar el mensaje de error.
 
-Las dos pruebas automatizadas actuales son de funciones de validación; no prueban este componente.
+Las cinco pruebas automatizadas actuales son de funciones de validación; no prueban este componente.

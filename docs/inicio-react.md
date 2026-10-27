@@ -31,4 +31,4 @@ El video conserva la dirección original de YouTube. Su reproducción depende de
 
 ## Pruebas
 
-La suite actual contiene dos pruebas de funciones puras: RUT y servicio. Inicio y el carrusel se comprueban manualmente; estas dos pruebas no verifican sus componentes. El alcance está en [PRUEBAS.md](PRUEBAS.md).
+La suite actual contiene cinco pruebas de funciones puras: nombre, RUT, formatos de RUT, correo y servicio. Inicio y el carrusel se comprueban manualmente; estas cinco pruebas no verifican sus componentes. El alcance está en [PRUEBAS.md](PRUEBAS.md).
