@@ -10,5 +10,5 @@ export const contacto = {
   ubicacion: "Providencia, Santiago",
   telefono: "+56 2 2345 6789",
   aviso:
-    "Proyecto académico de una clínica ficticia. La ubicación y el teléfono son datos de demostración; no corresponden a canales de atención del proyecto.",
+    "Clínica ficticia.",
 };

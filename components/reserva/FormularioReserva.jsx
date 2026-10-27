@@ -101,7 +101,7 @@ export default function FormularioReserva() {
     setResultado(
       primero
         ? "Revisa los datos marcados."
-        : "Datos válidos. Esta es una demostración: no se envió una solicitud ni se reservó una hora.",
+        : "Datos válidos. Clínica ficticia.",
     );
     return primero;
   }

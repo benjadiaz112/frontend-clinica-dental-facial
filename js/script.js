@@ -71,7 +71,7 @@ function validarFormulario(evento) {
 
     const resultado = document.getElementById("resultado");
     if (esValido) {
-        resultado.textContent = "Datos válidos. Esta es una demostración: no se envió una solicitud ni se reservó una hora.";
+        resultado.textContent = "Datos válidos. Clínica ficticia.";
         resultado.className = "correcto";
     } else {
         resultado.textContent = "Revisa los datos marcados.";

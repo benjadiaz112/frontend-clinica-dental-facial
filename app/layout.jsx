@@ -5,7 +5,7 @@ import { enlacesPrincipales, enlacesAdicionales } from "@/data/navegacion";
 import "@/styles/globals.css";
 export const metadata = {
   title: "Clínica Aura",
-  description: "Clínica dental y de armonización facial. Proyecto académico.",
+  description: "Clínica dental y de armonización facial. Clínica ficticia.",
 };
 export default function RootLayout({ children }) {
   return (
