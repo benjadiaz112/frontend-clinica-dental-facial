@@ -1,17 +1,21 @@
-# Estado y pendientes
+# Estado actual y pendientes
 
-## Implementado
+## Completado
 
-- Cinco páginas y 404 con componentes React en JSX.
-- Datos, validaciones y configuración escritos en JavaScript.
-- Catálogo desde la API y selección de un tratamiento.
-- Formulario de demostración con validación y limpieza.
-- Estado del catálogo y del formulario dentro de sus componentes.
-- Cinco pruebas de funciones puras con Vitest: nombre, RUT, formatos de RUT, correo y servicio.
-- Guía de ejecución y documento de pruebas actualizados.
+- Código propio de la aplicación en JavaScript y JSX.
+- Páginas, componentes compartidos y configuración de Next.js.
+- API local de tratamientos y consulta con `fetch`.
+- Selección y formulario de demostración con validación y limpieza.
+- Cinco pruebas con Vitest y documento de resultados.
+- Compilación y revisión del recorrido principal en el navegador.
+- Guías Markdown alineadas con los archivos y comandos actuales.
 
-## Pendiente
+## Pendiente de entrega
 
-- Actualizar el ERS anterior antes de presentarlo como documento vigente.
-- Preparar el comprimido final y la presentación cuando el alcance esté definido.
-- Si se adopta completo el documento de tienda, acordar y realizar la migración a Vite y los cambios de interfaz, API, búsqueda y carrito. Esos cambios no forman parte de la reducción de pruebas solicitada ahora.
+- Actualizar `ERS.docx`, que corresponde a una versión anterior.
+- Preparar el ZIP final con el código y documentos vigentes.
+- Preparar la presentación y explicar componentes, propiedades, estados, API y pruebas.
+
+## Si se adopta el documento de tienda completo
+
+Queda acordar y realizar la migración de Next.js a Vite, la incorporación de Bootstrap, búsqueda y carrito, y el uso de json-server. También debe confirmarse con el docente el número de pruebas y la aceptación del caso clínico. Esas tareas requieren cambios de aplicación; actualizar estas guías no las implementa.

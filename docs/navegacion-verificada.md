@@ -1,26 +1,19 @@
-# Navegación y página 404 — paso 19
+# Navegación y página 404
 
-El encabezado y el pie permiten abrir Inicio, Nosotros, Tratamientos, Reserva y Contacto. Ambos utilizan la misma lista de data/navegacion.js, evitando mantener direcciones duplicadas. Menu marca la dirección actual mediante aria-current. El logo lleva a Inicio.
+`data/navegacion.js` contiene Inicio, Nosotros, Tratamientos, Reserva y Contacto. El encabezado y el pie reutilizan esa lista. `Menu.jsx` usa `Link` y `usePathname` de Next.js para navegar y marcar la página actual con `aria-current`.
 
-La página 404 conserva encabezado, pie y salto al contenido. Explica que la dirección no existe y ofrece Volver al inicio y Ver tratamientos. No se incorporan rutas o librerías adicionales.
+`app/not-found.jsx` muestra una explicación y enlaces de regreso. Se integra con el mismo layout que las páginas existentes.
 
-## Archivos modificados
+## Verificación registrada
 
-- data/navegacion.js: el pie reutiliza los cinco enlaces principales.
-- components/compartidos/PiePagina.jsx: etiqueta accesible «Navegación del pie».
-- app/not-found.jsx: título asociado a la sección, explicación y enlace al catálogo.
+En la última revisión de JSX, las cinco rutas principales respondieron HTTP 200 y una dirección inexistente respondió HTTP 404. Cada página principal mostró un `main` y un `h1`. El recorrido de selección abrió Reserva con el tratamiento elegido.
 
-## Verificación realizada
+## Para volver a comprobar
 
-Registro manual previo: en Edge con la versión de producción se comprobó:
+- Recorrer los enlaces del encabezado y el pie.
+- Abrir los enlaces del contenido y comprobar sus destinos.
+- Usar Atrás y Adelante del navegador.
+- Comprobar con teclado el salto al contenido y los enlaces de regreso de la 404.
+- Abrir una dirección inexistente y confirmar la página personalizada.
 
-- Cinco rutas HTTP 200, con un solo main y h1.
-- Diez enlaces del encabezado y pie con destino y página activa correctos.
-- Enlaces internos del contenido dirigidos a rutas existentes.
-- Atrás y adelante del navegador; /nosotros/ redirige a /nosotros.
-- El primer Tab muestra el salto al contenido y Enter enfoca main.
-- Dos direcciones inexistentes, incluida una anidada, devuelven HTTP 404 y muestran la página personalizada.
-- La 404 no marca una página activa, permite regresar a Inicio y al catálogo y no desborda a 1280, 375 y 320 píxeles.
-- Sin errores JavaScript registrados.
-
-La revisión global de accesibilidad y responsividad se completó en el [paso 23](responsividad-accesibilidad.md). Las cinco pruebas automatizadas actuales y sus límites están en [PRUEBAS.md](PRUEBAS.md).
+Las cinco pruebas unitarias vigentes no automatizan estos recorridos. El alcance está en [PRUEBAS.md](PRUEBAS.md).

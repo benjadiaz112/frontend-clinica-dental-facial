@@ -1,4 +1,4 @@
-# Ejecutar y leer las cinco pruebas
+# Cómo leer y ejecutar los tests
 
 Desde la carpeta de `package.json`:
 
@@ -7,18 +7,15 @@ npm install
 npm test
 ```
 
-`npm test` ejecuta `vitest run` y termina. Para repetir al guardar se usa `npm run test:watch`.
+Vitest busca los cuatro archivos `.test.js` de `tests/` y ejecuta sus cinco bloques `test(...)`. `validarRut.test.js` contiene dos casos; los archivos de nombre, correo y servicio contienen uno cada uno.
 
-## Archivos
+## Estructura de un caso
 
-- `tests/validarNombre.test.js`: una prueba de nombre válido e inválido.
-- `tests/validarRut.test.js`: dos pruebas de dígito verificador y formatos.
-- `tests/validarCorreo.test.js`: una prueba de formato del correo.
-- `tests/validarServicio.test.js`: una prueba de pertenencia del servicio a la lista.
-- `services/validacionesReserva.js`: funciones usadas tanto por la aplicación como por los tests.
+1. Importar `test` y `expect` de Vitest y la función que se va a comprobar.
+2. Preparar los datos necesarios.
+3. Llamar a la función dentro de `expect(...)`.
+4. Comparar con `toBe(true)` o `toBe(false)`.
 
-## Cómo leerlas
+Cada archivo tiene comentarios en español. Son pruebas de funciones JavaScript: no hace falta iniciar la página ni la API.
 
-`test` nombra el comportamiento. Dentro se preparan datos, se llama a una función y se compara con `expect(...).toBe(true)` o `toBe(false)`. Los cuatro archivos tienen comentarios en español.
-
-No hace falta iniciar la API para ejecutar estos tests. El resultado real está en [PRUEBAS.md](PRUEBAS.md).
+`npm run test:watch` repite la ejecución al guardar; se detiene con `Ctrl+C`. Los nombres de los casos y el último resultado real están en [PRUEBAS.md](PRUEBAS.md).

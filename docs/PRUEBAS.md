@@ -1,46 +1,40 @@
-# Pruebas unitarias de Clínica Aura
+# Cinco pruebas unitarias con Vitest
 
-## Entorno
+## Entorno y ejecución
 
-Vitest, ejecutado en Node.js mediante `npm test` (`vitest run`). Las pruebas importan directamente funciones de `services/validacionesReserva.js`. No requieren navegador, componentes montados ni servidor de API.
+La aplicación tiene cinco pruebas en cuatro archivos `.test.js`. Importan funciones de `services/validacionesReserva.js` y se ejecutan en Node.js, sin navegador ni API.
 
-## Casos: exactamente cinco
+```bash
+npm test
+```
 
-| Archivo | Función | Qué comprueba |
+`package.json` ejecuta `vitest run`. Para repetir al guardar se utiliza `npm run test:watch`; se detiene con `Ctrl+C`.
+
+## Casos actuales
+
+| Archivo | Caso | Qué comprueba |
 | --- | --- | --- |
-| `tests/validarNombre.test.js` | `validarNombre` | Nombre correcto, espacios exteriores y rechazo de números, longitud insuficiente o vacío. |
-| `tests/validarRut.test.js` (caso 1) | `validarRut` | RUT con dígito correcto, incorrecto o vacío. |
-| `tests/validarRut.test.js` (caso 2) | `validarRut` | Formato sin puntos, dígitos K y cero, y rechazo de puntos mal ubicados. |
-| `tests/validarCorreo.test.js` | `validarCorreo` | Correo correcto, espacios exteriores y rechazo de formatos incompletos o vacíos. |
-| `tests/validarServicio.test.js` | `validarServicio` | Servicio de la lista, desconocido, vacío y lista sin servicios. |
+| `tests/validarNombre.test.js` | Nombre | Texto válido, espacios exteriores y rechazo de números, largo insuficiente y vacío. |
+| `tests/validarRut.test.js` | Dígito verificador | RUT correcto, incorrecto y vacío. |
+| `tests/validarRut.test.js` | Formatos | RUT sin puntos, K y cero; rechazo de puntos mal ubicados. |
+| `tests/validarCorreo.test.js` | Correo | Formato correcto, espacios exteriores y rechazo de formatos incorrectos y vacío. |
+| `tests/validarServicio.test.js` | Servicio | Servicio disponible, desconocido, vacío y lista sin servicios. |
 
-Las listas y los textos de los tests son entradas de funciones puras. No se reemplaza `fetch` ni se simulan respuestas del servidor.
+Las listas y textos son entradas de funciones puras. Los tests no reemplazan `fetch` ni crean respuestas simuladas de la API.
 
-## Resultado real
+## Resultado verificado
 
-Ejecución del 26 de octubre de 2026 con Node.js 24.22.1 y Vitest 5.0.5. Comando: `npm test`.
-
-Resumen copiado de la salida del comando:
+Última ejecución registrada: 26 de octubre de 2026, con Node.js 24.22.1 y Vitest 5.0.5, después de convertir el código a JavaScript y JSX.
 
 ```text
 Test Files  4 passed (4)
      Tests  5 passed (5)
 ```
 
-La ejecución terminó correctamente con código de salida 0.
+El comando terminó con código de salida 0. La compilación con `npm run build` también terminó correctamente.
 
-## Comprobación complementaria
+## Comprobación complementaria de la aplicación
 
-`npm run build` terminó correctamente. Con la aplicación compilada y la API real se comprobó el catálogo de cinco tratamientos, la selección y preselección por URL, los errores del formulario, el foco en el primer campo incorrecto, la validación correcta, la limpieza y la recuperación desde un identificador inexistente. No se registraron errores de JavaScript en ese recorrido.
+Con la API real se revisaron las cinco páginas en móvil y escritorio, carrusel, selección, validación, foco, limpieza y página 404. Con la API apagada se comprobaron los mensajes y el bloqueo de Validar, manteniendo disponible Limpiar.
 
-Al apagar la API se comprobó que catálogo y reserva muestran el error y que el formulario bloquea la validación, manteniendo disponible Limpiar. Esta revisión del navegador es independiente de las cinco pruebas unitarias de Vitest.
-
-## Límites
-
-Estas cinco pruebas no comprueban el DOM, la navegación, el carrusel, el formulario completo ni la integración con la API. La conexión y la reserva se revisan por separado en el navegador con la API local encendida.
-
-## Conversión a JavaScript y JSX
-
-Se convirtieron los 21 componentes y páginas a `.jsx`, y los cinco archivos de datos y el servicio de validaciones a `.js`. Los alias se configuran en `jsconfig.json`; la configuración de Next.js está en `next.config.mjs`. Se retiraron las interfaces y el comando de comprobación de tipos.
-
-Después de la conversión volvieron a pasar las cinco pruebas y la compilación. Se revisaron las cinco páginas a 375 y 1280 píxeles sin desbordamiento horizontal, el carrusel, la selección hacia Reserva, los errores y el foco del formulario, su validación y limpieza, y la respuesta 404. El recorrido no registró errores de JavaScript.
+Esta revisión es independiente de los cinco casos de Vitest. Los tests no prueban el DOM, las rutas, el carrusel, el formulario completo ni la integración con el servidor. No se presenta un porcentaje de código ejecutado como resultado de esta suite.

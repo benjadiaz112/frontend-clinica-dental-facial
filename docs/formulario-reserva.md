@@ -1,15 +1,25 @@
-# Formulario de reserva
+# Formulario de reserva de demostración
 
-`components/reserva/FormularioReserva.jsx` contiene sus estados, la consulta de servicios y las acciones de cambiar, validar y limpiar. Utiliza `useState` y un `useEffect` para la carga inicial. Las reglas independientes de React permanecen en `services/validacionesReserva.js`.
+`app/reserva/page.jsx` compone `components/reserva/FormularioReserva.jsx`. El formulario guarda sus valores, errores, resultado, aviso y estado de la API con `useState`. Un `useEffect` carga los servicios y recupera la selección de la URL.
 
-## Comportamiento
+## Campos
 
-El formulario conserva nombre, RUT, correo, servicio y comentario opcional. El parámetro `tratamiento` de la URL preselecciona un servicio al recibir la lista. Un identificador inexistente muestra un aviso y permite elegir otro servicio.
+| Campo | Comportamiento |
+| --- | --- |
+| Nombre | Obligatorio, entre 3 y 80 caracteres según el patrón admitido. |
+| RUT | Obligatorio, formato admitido y dígito verificador por módulo 11. |
+| Correo | Obligatorio, formato básico y máximo de 254 caracteres. |
+| Servicio | Obligatorio y perteneciente al catálogo recibido. |
+| Comentario | Opcional, máximo de 500 caracteres. |
 
-Validar revisa los campos y enfoca el primero incorrecto. Corregir un campo elimina su error y el resultado anterior. Limpiar borra los datos, errores, selección y resultado. Durante la carga, ante un error o sin servicios, el selector y el botón Validar quedan bloqueados; Limpiar sigue disponible.
+Los campos son controlados: muestran el valor del estado y lo actualizan al escribir. Las reglas puras están en `services/validacionesReserva.js`.
 
-Un resultado válido indica que es una demostración: no se guardó una reserva ni se envió una solicitud.
+## Acciones
 
-## Verificación
+Validar datos revisa los campos, presenta sus mensajes y enfoca el primero incorrecto. Editar elimina el error de ese campo y el resultado anterior. Limpiar borra valores, errores, selección y resultado.
 
-Las cinco pruebas actuales de Vitest comprueban nombre, RUT, formatos de RUT, correo y servicio. Para comprobar el formulario completo se inicia la API real y se revisan datos vacíos, datos correctos, un RUT incorrecto, corrección, limpieza y selección desde el catálogo.
+Mientras se consultan servicios, si ocurre un error o la lista está vacía, el selector y Validar quedan deshabilitados. Limpiar sigue disponible. Un identificador desconocido de la URL permite recuperarse eligiendo otro servicio.
+
+Los mensajes de error están asociados a los controles mediante `aria-describedby` y `aria-invalid`. Un resultado correcto indica que es una demostración: no se envió una solicitud ni se reservó una hora.
+
+Las cinco pruebas de Vitest revisan funciones de validación. La interfaz completa se comprueba aparte en el navegador con la API real.

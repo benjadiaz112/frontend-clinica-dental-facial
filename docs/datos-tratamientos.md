@@ -1,8 +1,8 @@
-# Datos de tratamientos — paso 13
+# Datos de los tratamientos
 
-`api_simulada/db.json` contiene los cinco objetos originales. Desde el paso 15, `data/tratamientos.js` los consulta por HTTP desde la API local. Se mantienen el orden, nombres, descripciones, textos alternativos y precios de `servicios.html`. Solo se añade un identificador numérico y se adapta la ruta de las imágenes a `/imagenes/`, servida por Next.js.
+`api_simulada/db.json` contiene la lista `tratamientos`. `data/tratamientos.js` la obtiene mediante HTTP; el catálogo y el formulario utilizan esa respuesta.
 
-| Tratamiento | precioDesde | textoPrecio |
+| Tratamiento | `precioDesde` | `textoPrecio` |
 | --- | --- | --- |
 | Limpieza dental | 25000 | Desde $25.000 |
 | Blanqueamiento dental | 80000 | Desde $80.000 |
@@ -10,6 +10,6 @@
 | Odontología general | null | Valor según evaluación |
 | Armonización facial | null | Valor según evaluación |
 
-Los importes son referenciales en pesos chilenos. Ortodoncia conserva el valor de la evaluación, sin presentarlo como precio del tratamiento completo. `null` indica que no existe un precio informado; no significa cero ni atención gratuita.
+Cada objeto también tiene `id`, `nombre`, `descripcion`, `imagen` y `textoAlternativo`. Los importes son referenciales y están expresados en pesos chilenos. `null` indica que el valor depende de una evaluación; no equivale a cero ni a un tratamiento gratis.
 
-`data/tratamientos.js` expone consultarTratamientos y el catálogo gestiona la consulta y sus estados directamente en CatalogoTratamientos. No se agrega CRUD, almacenamiento ni dependencias.
+Las imágenes usan rutas como `/imagenes/limpieza.jpg`, correspondientes a archivos de `public/imagenes/`. Para cambiar la lista hay que editar el JSON y reiniciar la API.

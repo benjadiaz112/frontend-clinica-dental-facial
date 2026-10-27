@@ -1,19 +1,20 @@
-# Alcance vigente de Clínica Aura
+# Alcance actual de Clínica Aura
 
-## Cambio solicitado
+## Implementado
 
-Los componentes se convierten a JSX y las validaciones y datos a JavaScript. Se retiran las interfaces de tipos y la configuración anterior. Los alias se conservan mediante `jsconfig.json`.
+- React con Next.js y componentes JSX.
+- Datos y validaciones en JavaScript; alias de importación en `jsconfig.json`.
+- Cinco páginas y 404, con encabezado y pie compartidos.
+- Catálogo desde una API local mediante `fetch`.
+- Selección de tratamiento y formulario de demostración con validación y limpieza.
+- Estado dentro de los componentes mediante `useState` y carga inicial con `useEffect`.
+- CSS propio responsivo.
+- Cinco pruebas unitarias con Vitest, por decisión del equipo.
 
-La suite se reduce a cinco pruebas de lógica pura con Vitest: nombre, RUT, formatos de RUT, correo y servicio disponible. El catálogo y el formulario contienen sus propios estados y la consulta inicial de la API. Se conservan las funciones de validación, las páginas y el flujo de selección y reserva de demostración.
+## Límites
 
-## Tecnología que permanece
+El formulario no guarda solicitudes ni confirma horas. La API permite consultar tratamientos y está preparada para uso en el mismo equipo. Los datos de la clínica son ficticios.
 
-React con Next.js y JavaScript/JSX, CSS propio y API simulada local de tratamientos. `useState` mantiene los datos y `useEffect` realiza la consulta al abrir catálogo o reserva.
+El documento externo `instrucciones_fullstack.md` describe una tienda con Vite, Bootstrap, búsqueda, carrito y json-server, y menciona dos pruebas. Esos requisitos no describen por completo esta versión: el proyecto actual conserva Next.js, la clínica, su API propia y cinco pruebas de validación. La documentación refleja el código existente y no afirma que esas diferencias estén resueltas.
 
-## Diferencias pendientes respecto de instrucciones_fullstack.md
-
-El documento describe una tienda de videojuegos con React/Vite, JavaScript, Bootstrap, búsqueda y carrito. Esta versión usa JavaScript/JSX y cinco pruebas de validación, con el estado dentro de los componentes. Se conserva Next.js; la migración a Vite y las funciones de búsqueda y carrito requieren otro cambio de alcance. Por eso las cinco pruebas son sobre funciones reales de la clínica, en lugar de filtro y total de una tienda.
-
-## Documentos
-
-[PRUEBAS.md](PRUEBAS.md) explica los cinco casos y sus resultados. `ERS.docx` corresponde a la versión anterior y debe actualizarse si se presenta como documento vigente. Los HTML originales se conservan como referencia.
+`ERS.docx` es una versión anterior y debe actualizarse antes de entregarlo como documento vigente. Los pendientes están en [pasos-pendientes.md](pasos-pendientes.md).

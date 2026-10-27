@@ -1,16 +1,16 @@
-# Validaciones de Reserva — paso 17
+# Validaciones del formulario
 
-`services/validacionesReserva.js` extrae las reglas del formulario original a cuatro funciones que reciben valores y devuelven true o false. No dependen de React, del DOM, de almacenamiento ni de la API.
+`services/validacionesReserva.js` exporta cuatro funciones de JavaScript que reciben valores y devuelven `true` o `false`. No necesitan React, DOM ni API.
 
-| Función | Regla |
+| Función | Qué revisa |
 | --- | --- |
-| validarNombre | Recorta espacios exteriores, exige entre 3 y 80 caracteres y permite las letras, tildes, ñ, espacios simples, guiones y apóstrofes del patrón original. |
-| validarRut | Conserva los formatos originales y verifica el dígito mediante módulo 11. Acepta K o k y recorta espacios exteriores. |
-| validarCorreo | Conserva la comprobación sencilla del original, recorta espacios exteriores y aplica el máximo de 254 caracteres del campo HTML. No verifica la existencia del correo ni implementa todas las reglas posibles de correo electrónico. |
-| validarServicio | Comprueba que el nombre no esté vacío y aparezca exactamente en la lista recibida del catálogo. No mantiene una segunda lista fija. |
+| `validarNombre(nombre)` | Espacios exteriores, largo de 3 a 80 caracteres y patrón de letras, tildes, ñ, espacios, guiones y apóstrofes. |
+| `validarRut(rut)` | Formatos admitidos y dígito verificador mediante módulo 11; admite K minúscula y espacios exteriores. |
+| `validarCorreo(correo)` | Patrón básico de correo y máximo de 254 caracteres después de recortar espacios. |
+| `validarServicio(servicio, serviciosPermitidos)` | Valor no vacío presente en la lista recibida. |
 
-La validación del RUT comprueba formato y dígito; no acredita identidad ni existencia de una persona. No se añaden restricciones nuevas sobre nombres o servicios.
+La comprobación del RUT no acredita identidad. El formato del correo no comprueba que esa dirección exista. La lista de servicios viene del catálogo al utilizar el formulario.
 
-Los cuatro archivos de `tests/` contienen cinco pruebas de Vitest: nombre, dígito verificador del RUT, formatos de RUT, correo y servicio. Se comprueban entradas válidas e inválidas sin consultar servicios externos. El detalle está en [PRUEBAS.md](PRUEBAS.md).
+`FormularioReserva.jsx` llama a estas funciones y añade el mensaje correspondiente al campo. El límite del comentario se comprueba dentro de ese componente.
 
-El HTML y js/script.js originales se conservan. FormularioReserva utiliza directamente estas funciones y mantiene sus propios estados. No se envían datos ni se registran reservas reales.
+Vitest tiene cinco casos: nombre, dígito de RUT, formatos de RUT, correo y servicio. Los archivos y resultados se describen en [PRUEBAS.md](PRUEBAS.md).

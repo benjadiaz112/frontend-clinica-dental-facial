@@ -1,40 +1,25 @@
-# Estilos comunes — paso 7
+# Estilos actuales
 
-La aplicación usa CSS nativo, sin librerías de estilos ni dependencias adicionales. `styles/globals.css` se importa una vez desde `app/layout.jsx`.
+La aplicación utiliza CSS propio. `app/layout.jsx` importa `styles/globals.css`, que define colores, tamaños comunes, botones, campos, mensajes y navegación.
 
-## Base visual
+## Base
 
-- Turquesa, blanco y texto oscuro, manteniendo la identidad de Clínica Aura.
-- El turquesa principal es `#007373`, más oscuro que el anterior para mejorar el contraste con el blanco.
-- Los colores se definen en `:root` y se reutilizan con `var(...)`.
-- Arial del sistema, sin descargar fuentes.
-- Flexbox, tamaños flexibles y media queries a 768 y 480 px en los estilos globales.
-- Foco visible para enlaces, botones y campos al usar el teclado.
-
-## Clases reutilizables
+- Colores turquesa, blanco y texto oscuro; las variables están en `:root`.
+- Fuente Arial del sistema.
+- Contenedores de ancho flexible y máximo de 1000 píxeles.
+- Flexbox, `flex-wrap` y media queries de 768 y 480 píxeles en los estilos globales.
+- Imágenes limitadas al ancho disponible y reglas de foco visible.
 
 | Clase | Uso |
 | --- | --- |
-| contenedor | Centra el contenido y limita su ancho a 1000 px. |
-| panel | Fondo blanco, espacio interior y bordes redondeados. |
-| portada | Separación superior e inferior de la presentación inicial. |
-| tarjeta | Bloque visual reutilizable para tarjetas. |
-| rejilla | Distribuye bloques en columnas; en móvil se apilan. |
-| btn | Aspecto común para enlaces que realizan una acción. Los botones también reciben estos estilos. |
-| btn-secundario | Variante blanca con borde turquesa; se combina con btn. |
-| acciones | Agrupa botones y permite que pasen a otra fila. |
-| mensaje | Espaciado y bordes de un mensaje. |
-| mensaje-error | Colores de error; se combina con mensaje. |
-| mensaje-info | Colores de un aviso informativo; se combina con mensaje. |
-| mensaje-exito | Colores de éxito; se combina con mensaje. |
-| error | Texto de error asociado a un campo. |
+| `contenedor` | Centrar y limitar el ancho. |
+| `panel`, `tarjeta` | Bloques blancos con espacio interior y bordes redondeados. |
+| `rejilla` | Distribuir tarjetas y apilarlas en móvil. |
+| `btn`, `btn-secundario` | Botones y enlaces de acción. |
+| `acciones` | Agrupar controles y permitir que se acomoden a otra fila. |
+| `mensaje-info`, `mensaje-error`, `mensaje-exito` | Colores según el tipo de aviso. |
+| `error` | Texto del error de un campo. |
 
-Los campos `input`, `select` y `textarea` comparten tipografía, bordes y espaciado. Un campo con `aria-invalid="true"` recibe borde de error. Los botones deshabilitados se distinguen visualmente.
+Las clases `btn` son del proyecto; no corresponden a una instalación de Bootstrap. Los controles con `aria-invalid="true"` reciben un borde de error.
 
-## Aplicación actual
-
-PresentacionInicio utiliza `contenedor panel portada`. Desde el paso 10, `styles/inicio.css` añade la distribución de la presentación, las imágenes, el carrusel y el video. El paso 11 agrega `styles/informacion.css` para Nosotros y Contacto: texto e imagen en columnas, apilados hasta 768 px. Ambas páginas reutilizan las clases comunes.
-
-El paso 8 añade estilos de encabezado, menú activo, pie y enlace de salto al contenido. El menú se coloca debajo del nombre de la clínica en pantallas pequeñas. Mensaje aplica las clases comunes al aviso de la portada.
-
-El sitio HTML original conserva `css/estilos.css`. No se modifica ni se carga dentro de Next.js.
+`inicio.css`, `informacion.css`, `tratamientos.css` y `reserva.css` añaden los estilos de cada sección. El sitio original conserva `css/estilos.css`, que no se importa en la aplicación actual.

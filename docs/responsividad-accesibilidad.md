@@ -1,24 +1,17 @@
-# Revisión de responsividad y accesibilidad — paso 23
+# Responsividad y accesibilidad
 
-## Alcance
+## Implementación
 
-Se revisaron Inicio, Nosotros, Tratamientos, Reserva y Contacto en el navegador, con anchos de 320, 375, 768 y 1280 píxeles (20 combinaciones), usando la aplicación compilada y la API local.
+Las páginas JSX usan CSS propio con contenedores flexibles, Flexbox y media queries. La navegación, tarjetas, imágenes y formulario se apilan o acomodan al ancho disponible.
 
-## Resultados
+El layout declara español y tiene un contenido principal con enlace para saltar a él. Las imágenes tienen texto alternativo; el video tiene título; los campos tienen etiquetas y referencias a sus errores. Los controles muestran foco visible y los botones del catálogo comunican la selección con `aria-pressed`.
 
-- No se detectó desbordamiento horizontal en las 20 combinaciones.
-- Cada página tiene un único contenido principal y un título principal. El documento declara español.
-- Las imágenes del contenido tienen texto alternativo y el video tiene título.
-- Los campos del formulario tienen etiquetas asociadas. Las referencias accesibles a descripciones y errores apuntan a elementos existentes.
-- Se comprobó con teclado el enlace «Ir al contenido»: aparece al recibir foco y permite saltar al contenido principal.
-- Se comprobó la selección del catálogo con ratón y el regreso mediante Tab y Shift+Tab. El botón mantiene su estado accesible de selección.
+## Última revisión de la versión JSX
 
-## Corrección realizada
+El 26 de octubre de 2026 se revisaron las cinco páginas a 375 y 1280 píxeles: diez combinaciones sin desbordamiento horizontal, con un título principal y un contenido principal por página. Se comprobaron el carrusel y el recorrido de selección, validación y limpieza del formulario. El envío inválido enfocó el primer campo incorrecto.
 
-En `styles/tratamientos.css`, el botón seleccionado ahora tiene un contorno de foco de teclado diferente del contorno permanente de selección: color oscuro, grosor de 3 px y separación de 4 px. Se verificó en el navegador después de compilar. Se conserva el diseño con CSS nativo.
+En ese recorrido no se registraron errores de JavaScript. Esta revisión no constituye una certificación de accesibilidad ni una prueba con lectores de pantalla o con todos los dispositivos.
 
-## Validación y límites
+## Revisión manual recomendada
 
-Este registro conserva la revisión visual realizada anteriormente. El alcance automatizado vigente se limita a las cinco pruebas de Vitest descritas en [PRUEBAS.md](PRUEBAS.md).
-
-Esta revisión cubre los tamaños y comprobaciones indicados; no constituye una certificación WCAG ni una prueba con lectores de pantalla o todos los dispositivos. La decisión pendiente sobre Bootstrap se mantiene en el paso 25.
+Comprobar también navegación con Tab y Enter, visibilidad del foco, enlace de salto al contenido, etiquetas y mensajes después de cambiar la interfaz. Las cinco pruebas de Vitest descritas en [PRUEBAS.md](PRUEBAS.md) solo comprueban funciones de validación.

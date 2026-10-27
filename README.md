@@ -1,65 +1,85 @@
 # Clínica Aura
 
-Integrantes: Benjamin Diaz y Bikenson Fenelus.
+Proyecto académico de Benjamin Diaz y Bikenson Fenelus. Presenta una clínica dental y facial ficticia, un catálogo de tratamientos y un formulario de reserva de demostración.
 
-Frontend académico de una clínica dental y facial. Usa React y Next.js con JavaScript y JSX. Muestra información de la clínica, un catálogo de cinco tratamientos y un formulario de reserva de demostración.
+## Tecnologías actuales
 
-## Ejecutar
+| Herramienta | Uso |
+| --- | --- |
+| React 19.3.1 | Componentes, propiedades, eventos y estados. |
+| Next.js 16.4.2 | Rutas, servidor de desarrollo y compilación. |
+| JavaScript y JSX | Datos y funciones en `.js`; componentes y páginas en `.jsx`. |
+| CSS propio | Estilos y adaptación a móvil mediante Flexbox y media queries. |
+| Node.js | Ejecución de las herramientas y de la API simulada. |
+| Vitest 5.0.5 | Cinco pruebas de funciones de validación. |
 
-Requiere Node.js 24 LTS (o una versión compatible indicada en `package.json`). Desde la carpeta que contiene este archivo:
+Las versiones instaladas están fijadas en `package-lock.json`. Se recomienda Node.js 24 LTS; las versiones compatibles se indican en `package.json`.
+
+## Instalar e iniciar
+
+Abrir una terminal en la carpeta que contiene `package.json`. Si el proyecto descargado tiene otra carpeta con el mismo nombre dentro, entrar a esa carpeta primero.
+
+Instalar dependencias:
 
 ```bash
 npm install
 ```
 
-En una terminal, iniciar los datos del catálogo:
+En una terminal, encender la API:
 
 ```bash
 npm run api
 ```
 
-En otra terminal, iniciar la página:
+En otra terminal, encender la página:
 
 ```bash
 npm run dev
 ```
 
-Abrir `http://localhost:3000`. Mantener ambas terminales abiertas. La API entrega los tratamientos en `http://127.0.0.1:3001/tratamientos`.
+Abrir [http://localhost:3000](http://localhost:3000). Mantener ambas terminales abiertas y detener cada servidor con `Ctrl+C`.
 
-## Cinco pruebas unitarias
+La página usa el puerto 3000. La API entrega los cinco tratamientos en [http://127.0.0.1:3001/tratamientos](http://127.0.0.1:3001/tratamientos). `npm run dev` inicia la página; la API se inicia por separado.
 
-```bash
-npm test
-```
+Si en Linux instalaste Node con nvm y una terminal anterior no reconoce `npm`, cargarlo con `source ~/.nvm/nvm.sh` o abrir una terminal nueva. En la terminal de VS Code en Linux se puede pegar con `Ctrl+Shift+V`.
 
-Vitest ejecuta cinco pruebas de funciones puras: nombre, RUT, formatos de RUT, correo y servicio. No necesita navegador ni API. El alcance y los resultados reales están en [docs/PRUEBAS.md](docs/PRUEBAS.md).
+## Comandos disponibles
 
-Para repetir las pruebas al guardar:
+| Comando | Acción |
+| --- | --- |
+| `npm run api` | Inicia el servidor local de tratamientos. |
+| `npm run dev` | Inicia Next.js en desarrollo. |
+| `npm test` | Ejecuta las cinco pruebas de Vitest y termina. |
+| `npm run test:watch` | Repite las pruebas al guardar archivos. |
+| `npm run build` | Genera la versión de producción en `.next/`. |
+| `npm start` | Sirve la versión ya compilada. |
 
-```bash
-npm run test:watch
-```
+Para producción local, ejecutar primero `npm run build`, mantener la API encendida y usar `npm start`. Detener antes el servidor de desarrollo si ocupa el puerto 3000.
 
-## Organización
+## Funcionalidades
 
-- `app/`: las cinco páginas y la página 404.
-- `components/`: componentes reutilizables; catálogo y formulario guardan sus propios estados con `useState` y consultan la API con `useEffect`.
-- `data/`: información de la clínica y función de consulta HTTP.
-- `services/`: validaciones independientes de React.
-- `styles/`: CSS propio y reglas responsivas.
-- `api_simulada/`: servidor local y datos de los tratamientos.
-- `tests/`: las cinco pruebas con Vitest.
+- Inicio con presentación, tratamientos destacados, carrusel manual y video.
+- Nosotros y Contacto con información ficticia de referencia.
+- Catálogo desde la API, con carga, lista vacía y error.
+- Selección de un tratamiento y paso de su identificador a Reserva.
+- Formulario con nombre, RUT, correo, servicio y comentario opcional; validación, foco en el primer error y limpieza.
+- Página 404 para direcciones inexistentes.
 
-## Otras comprobaciones
+La validación correcta del formulario muestra un resultado de demostración: no guarda reservas ni envía correos.
 
-```bash
-npm run build
-```
+## Organización y documentación
 
-Para producción local, mantener la API encendida y ejecutar `npm start` después de compilar. Detener antes el servidor de desarrollo si utiliza el mismo puerto.
+- [Estructura y archivos](docs/estructura-por-capas.md).
+- [Rutas](docs/rutas.md) y [navegación](docs/navegacion-verificada.md).
+- [API simulada](docs/api-simulada.md), [datos](docs/datos-tratamientos.md) y [forma de los objetos](docs/modelos.md).
+- [Inicio](docs/inicio-react.md), [Nosotros y Contacto](docs/informacion-react.md) y [componentes compartidos](docs/componentes-compartidos.md).
+- [Catálogo](docs/catalogo-react.md), [selección](docs/seleccion-tratamiento.md), [formulario](docs/formulario-reserva.md) y [validaciones](docs/validaciones-reserva.md).
+- [Estilos](docs/estilos-comunes.md) y [responsividad y accesibilidad](docs/responsividad-accesibilidad.md).
+- [Cómo leer y ejecutar los tests](docs/pruebas-iniciales.md), [casos y resultados](docs/PRUEBAS.md) e [informe de testing](INFORME-TESTING.md).
+- [Alcance actual](docs/alcance-parcial-2.md) y [pendientes](docs/pasos-pendientes.md).
 
-## Alcance actual
+`jsconfig.json` define el alias `@/` para importar desde la raíz del proyecto; `next.config.mjs` contiene la configuración de Next.js. `.next/` y `node_modules/` son carpetas generadas y no se editan como código de la aplicación. Los HTML, CSS y JavaScript originales se conservan como referencia.
 
-El formulario valida datos y permite limpiar; no guarda reservas ni envía correos. La API es local y solo permite consultar los tratamientos. Los archivos HTML originales se conservan como referencia.
+## Entrega
 
-Los componentes usan archivos `.jsx`; los datos y las validaciones usan `.js`. Los alias de importación se configuran en `jsconfig.json` y Next.js en `next.config.mjs`. La lógica de estado permanece en los componentes. Quedan pendientes, si el equipo decide aplicar el documento de tienda completo, la migración a Vite, Bootstrap, búsqueda, carrito y json-server. No se declara cumplimiento de ese alcance con este cambio. `ERS.docx` corresponde a la versión anterior y requiere actualización antes de presentarlo como documento vigente.
+Repositorio: [frontend-clinica-dental-facial](https://github.com/benjadiaz112/frontend-clinica-dental-facial). `ERS.docx` corresponde a una versión anterior y requiere actualización antes de presentarlo como documento vigente. El ZIP final se prepara después de cerrar el alcance y verificar la entrega.

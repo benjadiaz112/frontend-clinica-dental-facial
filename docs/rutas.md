@@ -1,15 +1,14 @@
-# Rutas de Clínica Aura
+# Rutas y páginas
 
-| Ruta | Estado |
-| --- | --- |
-| `/` | Inicio migrado con presentación, imágenes, destacados, carrusel y video. |
-| `/nosotros` | Información original de la clínica migrada. |
-| `/contacto` | Información de demostración y enlace a Reserva. |
-| `/tratamientos` | Catálogo conectado a la API local, con carga, error y lista vacía. |
-| `/reserva` | Formulario controlado con validaciones, errores y limpieza. Preselecciona desde el parámetro tratamiento y la API. |
+| Dirección | Archivo | Contenido |
+| --- | --- | --- |
+| `/` | `app/page.jsx` | Inicio, destacados, carrusel y video. |
+| `/nosotros` | `app/nosotros/page.jsx` | Presentación de la clínica ficticia. |
+| `/contacto` | `app/contacto/page.jsx` | Datos ficticios de referencia y enlace a Reserva. |
+| `/tratamientos` | `app/tratamientos/page.jsx` | Catálogo consultado desde la API. |
+| `/reserva` | `app/reserva/page.jsx` | Formulario de demostración. |
+| Dirección inexistente | `app/not-found.jsx` | Página 404 con enlaces de regreso. |
 
-Las direcciones inexistentes muestran `app/not-found.jsx`. El layout comparte encabezado, pie y salto al contenido. Menu marca la página activa con `aria-current`.
+`app/layout.jsx` comparte encabezado, pie, estilos globales y el enlace para saltar al contenido. `data/navegacion.js` contiene las cinco direcciones del menú.
 
-Desde el paso 19, encabezado y pie reutilizan los cinco enlaces principales. La 404 ofrece volver a Inicio o abrir Tratamientos. La [verificación de navegación](navegacion-verificada.md) registra respuestas HTTP, enlaces, historial y teclado.
-
-En el paso 12 se eliminaron las páginas vacías ajenas al plan acotado y sus enlaces. Los HTML originales se conservan. El paso 18 migra el formulario de `contacto.html` a `/reserva`; consultar y validar no registra una reserva real.
+La selección del catálogo abre `/reserva?tratamiento=<id>`. El parámetro sirve para preseleccionar un servicio; no es una ruta dinámica independiente ni una reserva guardada. Los archivos HTML originales no forman parte de las rutas actuales de Next.js.

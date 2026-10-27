@@ -1,13 +1,15 @@
 # Catálogo de tratamientos
 
-`app/tratamientos/page.jsx` compone la página. `CatalogoTratamientos` guarda tratamientos, carga, error y selección mediante `useState`. Un `useEffect` llama a `consultarTratamientos` de `data/tratamientos.js` y cancela la petición al desmontarse.
+`app/tratamientos/page.jsx` muestra el título y compone `components/tratamientos/CatalogoTratamientos.jsx`.
 
-La página muestra carga, error, lista vacía o las tarjetas de los cinco tratamientos. `TarjetaTratamiento` recibe el tratamiento, su estado de selección y la función de clic mediante propiedades.
+El catálogo mantiene con `useState` la lista de tratamientos, el estado de carga, el error y el tratamiento seleccionado. Un `useEffect` llama a `consultarTratamientos` de `data/tratamientos.js` al abrirse. `AbortController` permite cancelar la consulta al salir.
 
-Al seleccionar un tratamiento aparece el enlace `/reserva?tratamiento=<id>`. Se puede cambiar la elección o quitarla. Los precios conservan los textos originales y su carácter referencial.
+Según la respuesta muestra carga, error, lista vacía o tarjetas. `TarjetaTratamiento.jsx` recibe el objeto del tratamiento, si está seleccionado y la función que responde al clic. Muestra nombre, descripción, imagen y texto de precio.
 
-## Comprobar manualmente
+Seleccionar una tarjeta muestra el enlace a Reserva con su identificador. Se puede cambiar o quitar la selección. El detalle del recorrido está en [seleccion-tratamiento.md](seleccion-tratamiento.md).
 
-Iniciar `npm run api` y `npm run dev`. Abrir `/tratamientos`, comprobar los cinco nombres y precios, seleccionar una tarjeta, cambiarla, quitar la selección y continuar a Reserva. Detener la API y recargar para revisar el mensaje de error.
+## Revisarlo
 
-Las cinco pruebas automatizadas actuales son de funciones de validación; no prueban este componente.
+Encender `npm run api` y `npm run dev`, abrir `/tratamientos`, comprobar las cinco tarjetas y sus precios, seleccionar un tratamiento y continuar a Reserva. Con la API apagada, recargar debe mostrar el mensaje de error.
+
+Las cinco pruebas de Vitest comprueban validaciones; no montan ni comprueban este componente.

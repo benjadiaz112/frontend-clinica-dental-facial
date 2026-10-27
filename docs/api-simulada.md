@@ -1,39 +1,30 @@
-# API simulada — paso 14
+# API simulada local
 
-Se prepara una API local de consulta para los cinco tratamientos, solicitada por el usuario. Entrega datos al catálogo y al formulario; no incorpora administración.
+La API es un servidor pequeño de Node.js. `api_simulada/servidor.js` utiliza `node:http`, carga `api_simulada/db.json` y escucha en `127.0.0.1:3001`.
 
-## Ejecutar
+## Encenderla
 
-Desde la raíz del repositorio, en una terminal:
+Desde la carpeta de `package.json`:
 
 ```bash
 npm run api
 ```
 
-Consultar `http://127.0.0.1:3001/tratamientos`. Detener con Ctrl+C. La API solo escucha en el equipo local. Si el puerto 3001 está ocupado, liberar ese puerto antes de iniciarla.
+Ese script ejecuta `node api_simulada/servidor.js`. El mensaje de la terminal indica cuándo está lista. Se detiene con `Ctrl+C`.
 
-En otra terminal ejecutar `npm run dev` para Next.js, en el puerto 3000. `/tratamientos` consulta esta API mediante `fetch` desde `data/tratamientos.js`. Sin API disponible se muestra un error; iniciarla y recargar permite volver a consultar.
+La página se inicia por separado con `npm run dev`, en otra terminal. La API entrega datos; Next.js sirve la interfaz en el puerto 3000.
 
-## Archivos
+## Consulta y respuestas
 
-- `api_simulada/db.json`: única fuente de los cinco tratamientos originales. Conserva nombres, descripciones, imágenes, textos alternativos, precios y valores null.
-- `api_simulada/servidor.js`: servidor pequeño escrito en JavaScript con el módulo http incluido en Node.js, sin instalar dependencias.
-- `data/tratamientos.js`: consulta la API y comprueba el estado HTTP y que la respuesta sea una lista. db.json sigue siendo la fuente de datos del servidor.
-- `package.json`: agrega el comando api.
+`data/tratamientos.js` hace `fetch("http://127.0.0.1:3001/tratamientos")`. Comprueba el estado HTTP y que el JSON sea una lista.
 
-## Respuestas
-
-| Petición | Resultado |
+| Solicitud | Respuesta del servidor |
 | --- | --- |
-| GET /tratamientos | 200 y un arreglo con cinco tratamientos. |
+| `GET /tratamientos` | 200 con los cinco tratamientos en JSON. |
 | Otra ruta | 404 con mensaje JSON. |
-| Otro método en /tratamientos | 405 con mensaje JSON y cabecera Allow: GET. |
-| Datos de tratamientos con estructura inválida | 500 con mensaje JSON. |
+| Otro método en `/tratamientos` | 405 y cabecera `Allow: GET`. |
+| Datos configurados inválidos | 500 con mensaje JSON. |
 
-Se permite lectura desde el navegador mediante Access-Control-Allow-Origin. No hay creación, edición, eliminación, autenticación ni datos personales. Las imágenes siguen sirviéndose desde Next.js en `/imagenes/`; la API entrega sus rutas, no los archivos.
+El servidor comprueba los campos de cada tratamiento antes de devolver la lista. Las cabeceras indican JSON con UTF-8 y permiten la consulta desde el navegador. Las imágenes se sirven desde `public/imagenes/` por Next.js; la API solo entrega sus rutas.
 
-Los datos se cargan al iniciar el servidor: después de editar db.json hay que reiniciarlo. El servidor no modifica ese archivo.
-
-## Verificación realizada
-
-Compilación correcta. Se verificó por HTTP: GET devuelve los cinco tratamientos idénticos al HTML original, JSON UTF-8 y cabecera CORS; ruta inexistente devuelve 404; POST, PUT, PATCH y DELETE devuelven 405 con Allow: GET. El archivo de datos permaneció intacto. El servidor usado para la comprobación se detuvo al terminar.
+Los datos se leen al iniciar el proceso. Después de editar `db.json` hay que reiniciar la API. Esta implementación local no crea, modifica ni guarda reservas. Las cinco pruebas unitarias actuales no necesitan encenderla.

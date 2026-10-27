@@ -1,13 +1,19 @@
-# Componentes comunes
+# Componentes compartidos
 
-`components/compartidos/` es el modulo comun del proyecto. Reune elementos pequenos que se usan en varias paginas y evita copiar el mismo codigo.
+Los archivos de `components/compartidos/` son componentes React escritos en JSX.
 
-| Archivo | Responsabilidad |
-| --- | --- |
-| `Encabezado.jsx` | Muestra el nombre de la clinica y el menu. |
-| `Menu.jsx` | Crea los enlaces y marca la pagina actual. |
-| `PiePagina.jsx` | Muestra el pie y sus enlaces. |
-| `Boton.jsx` | Boton reutilizable para formularios y acciones. |
-| `Mensaje.jsx` | Muestra mensajes informativos, errores o exitos. |
+| Archivo | Propiedades principales | Responsabilidad |
+| --- | --- | --- |
+| `Encabezado.jsx` | `nombre`, `enlaces` | Logo enlazado al inicio y menú principal. |
+| `Menu.jsx` | `enlaces`, `etiqueta` | Lista de enlaces y marca de la página activa. |
+| `PiePagina.jsx` | `nombre`, `enlaces` | Pie académico y navegación secundaria. |
+| `Boton.jsx` | `texto`, `tipo`, `secundario`, `deshabilitado`, `alHacerClic` | Botón reutilizable con apariencia y acción recibidas. |
+| `Mensaje.jsx` | `texto`, `tipo` | Aviso informativo, error o resultado correcto. |
 
-Los modulos de `components/inicio`, `components/tratamientos` y `components/reserva` contienen solo los componentes de sus propias funcionalidades. No se crean componentes para funcionalidades fuera del alcance.
+`Menu` usa `usePathname` de Next.js para reconocer la dirección actual y aplicar `aria-current`. El texto vacío de `Mensaje` no crea un párrafo; los errores usan `role="alert"` y los demás mensajes `role="status"`.
+
+## Cómo leer las importaciones
+
+`import Link from "next/link"` trae el componente de Next.js utilizado para los enlaces. `import Menu from "./Menu"` trae `Menu.jsx` de la misma carpeta. `@/components/...` usa el alias a la raíz definido en `jsconfig.json`.
+
+Importar permite usar esos componentes en el JSX. Para mostrarlos se escriben elementos como `<Link href="/">Inicio</Link>` o `<Menu enlaces={enlaces} />` dentro del componente.
