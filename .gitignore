@@ -10,3 +10,8 @@ npm-debug.log*
 # Configuracion local
 .env*
 !.env.example
+
+**/target/
+**/.next/
+**/node_modules/
+/frontend/clinica-aura-entrega.zip
