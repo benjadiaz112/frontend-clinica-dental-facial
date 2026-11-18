@@ -5,6 +5,7 @@ services:
       - "127.0.0.1:3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Define MYSQL_ROOT_PASSWORD}
+      MYSQL_AURA_PASSWORD: ${MYSQL_AURA_PASSWORD:?Define MYSQL_AURA_PASSWORD}
     volumes:
       - mysql-aura:/var/lib/mysql
       - ./mysql/iniciar.sh:/docker-entrypoint-initdb.d/iniciar.sh:ro
