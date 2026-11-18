@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS usuario (
+    correo VARCHAR(254) PRIMARY KEY,
+    clave VARCHAR(100) NOT NULL,
+    rol VARCHAR(12) NOT NULL
+);
