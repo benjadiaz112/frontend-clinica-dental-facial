@@ -1,6 +1,6 @@
 # Frontend de Clínica Aura
 
-Sitio Next.js y React para consultar tratamientos y solicitar una evaluación. Se conecta a los microservicios Spring Boot mediante el Gateway. La [guía de arranque completa](../backend/README.md) describe MySQL, cuentas y los seis procesos Java.
+Sitio Next.js 16.4.6 y React para consultar tratamientos y solicitar una evaluación. Se conecta a los microservicios Spring Boot mediante el Gateway. La [guía de arranque completa](../backend/README.md) describe MySQL, cuentas y los seis procesos Java.
 
 ```bash
 npm ci
