@@ -3,3 +3,9 @@ CREATE TABLE IF NOT EXISTS usuario (
     clave VARCHAR(100) NOT NULL,
     rol VARCHAR(12) NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS sesion (
+    huella CHAR(64) PRIMARY KEY,
+    correo VARCHAR(254) NOT NULL REFERENCES usuario(correo),
+    vence TIMESTAMP(6) NOT NULL
+);
