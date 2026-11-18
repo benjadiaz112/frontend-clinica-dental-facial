@@ -13,6 +13,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.jwt.*;
+import org.springframework.security.oauth2.core.DelegatingOAuth2TokenValidator;
+import java.time.Duration;
 import org.springframework.security.oauth2.server.resource.authentication.*;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -31,7 +33,8 @@ public class Seguridad {
     @Bean
     JwtDecoder verificador(SecretKey clave) {
         var decoder = NimbusJwtDecoder.withSecretKey(clave).build();
-        decoder.setJwtValidator(JwtValidators.createDefaultWithIssuer(EMISOR));
+        decoder.setJwtValidator(new DelegatingOAuth2TokenValidator<>(
+            new JwtTimestampValidator(Duration.ZERO), new JwtIssuerValidator(EMISOR)));
         return decoder;
     }
 
