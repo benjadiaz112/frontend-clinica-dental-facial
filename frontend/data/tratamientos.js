@@ -1,5 +1,5 @@
 export async function consultarTratamientos(signal) {
-  const respuesta = await fetch("http://127.0.0.1:3001/tratamientos", {
+  const respuesta = await fetch("/api/tratamientos", {
     signal,
   });
   if (!respuesta.ok) {
