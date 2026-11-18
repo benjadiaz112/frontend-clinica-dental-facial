@@ -3,6 +3,7 @@ export const enlacesPrincipales = [
   { texto: "Nosotros", ruta: "/nosotros" },
   { texto: "Tratamientos", ruta: "/tratamientos" },
   { texto: "Reserva", ruta: "/reserva" },
+  { texto: "Mi sesión", ruta: "/cuenta" },
   { texto: "Contacto", ruta: "/contacto" },
 ];
 export const enlacesAdicionales = enlacesPrincipales;

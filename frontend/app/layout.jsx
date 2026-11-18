@@ -1,3 +1,4 @@
+import { Sesion } from "@/components/compartidos/Sesion";
 import Encabezado from "@/components/compartidos/Encabezado";
 import PiePagina from "@/components/compartidos/PiePagina";
 import { informacionClinica } from "@/data/clinica";
@@ -19,7 +20,7 @@ export default function RootLayout({ children }) {
           enlaces={enlacesPrincipales}
         />
         <main id="contenido" tabIndex={-1}>
-          {children}
+          <Sesion>{children}</Sesion>
         </main>
         <PiePagina
           nombre={informacionClinica.nombre}
