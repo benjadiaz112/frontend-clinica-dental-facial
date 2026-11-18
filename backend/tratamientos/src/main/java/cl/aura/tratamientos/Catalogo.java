@@ -1,8 +1,6 @@
 package cl.aura.tratamientos;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import java.util.List;
 import org.springframework.boot.ApplicationRunner;
@@ -14,11 +12,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.transaction.support.TransactionTemplate;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-@RestController
-@RequestMapping("/api/tratamientos")
+@Service
 public class Catalogo {
     public record Datos(@NotBlank @Size(max=100) String nombre, @NotBlank @Size(max=500) String descripcion,
                         @NotBlank @Size(max=200) @Pattern(regexp="/imagenes/[a-zA-Z0-9_-]+[.](jpg|jpeg|png|webp)") String imagen,
@@ -34,19 +31,14 @@ public class Catalogo {
 
     Catalogo(JdbcTemplate db) { this.db = db; }
 
-    @GetMapping
     public List<Tratamiento> listar() { return db.query("SELECT * FROM tratamiento ORDER BY id", FILA); }
 
-    @GetMapping("/{id}")
-    public Tratamiento buscar(@PathVariable long id) {
+    public Tratamiento buscar(long id) {
         return db.query("SELECT * FROM tratamiento WHERE id=?", FILA, id).stream().findFirst()
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Tratamiento no encontrado"));
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    @SecurityRequirement(name="jwt")
-    public Tratamiento crear(@Valid @RequestBody Datos datos) {
+    public Tratamiento crear(Datos datos) {
         var clave = new GeneratedKeyHolder();
         try {
             db.update(con -> {
@@ -61,9 +53,7 @@ public class Catalogo {
         return buscar(clave.getKey().longValue());
     }
 
-    @PutMapping("/{id}")
-    @SecurityRequirement(name="jwt")
-    public Tratamiento actualizar(@PathVariable long id, @Valid @RequestBody Datos d) {
+    public Tratamiento actualizar(long id, Datos d) {
         try {
             db.update("UPDATE tratamiento SET nombre=?, descripcion=?, imagen=?, texto_alternativo=?, precio_desde=?, texto_precio=? WHERE id=?",
                 d.nombre().strip(), d.descripcion(), d.imagen(), d.textoAlternativo(), d.precioDesde(), d.textoPrecio(), id);
@@ -71,10 +61,7 @@ public class Catalogo {
         return buscar(id);
     }
 
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @SecurityRequirement(name="jwt")
-    public void eliminar(@PathVariable long id) {
+    public void eliminar(long id) {
         if (db.update("DELETE FROM tratamiento WHERE id=?", id) == 0) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Tratamiento no encontrado");
         }

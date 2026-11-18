@@ -1,45 +1,52 @@
 package cl.aura.reservas;
 
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.transaction.support.TransactionTemplate;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-@RestController
-@RequestMapping("/api/reservas")
-@SecurityRequirement(name="jwt")
+@Service
 public class Reservas {
     public record Solicitud(@NotNull UUID id, @Positive long tratamientoId, @Positive long profesionalId, @Positive long bloqueId) {}
     private final JdbcTemplate db;
     private final ServiciosClinica clinica;
 
-    Reservas(JdbcTemplate db, ServiciosClinica clinica) {
+    private final TransactionTemplate tx;
+
+    Reservas(JdbcTemplate db, ServiciosClinica clinica, TransactionTemplate tx) {
         this.db = db;
         this.clinica = clinica;
+        this.tx = tx;
     }
 
-    @GetMapping
-    public List<Reserva> listar(@AuthenticationPrincipal Jwt usuario) {
+    public List<Reserva> listar(Jwt usuario) {
         return db.query("SELECT * FROM reserva WHERE correo=? ORDER BY inicio DESC", Reserva.FILA, usuario.getSubject());
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    @Transactional
-    public Reserva crear(@Valid @RequestBody Solicitud datos, @AuthenticationPrincipal Jwt usuario) {
+    public Reserva crear(Solicitud datos, Jwt usuario) {
         String id = datos.id().toString();
-        db.update("""
+        tx.executeWithoutResult(estado -> db.update("""
             INSERT INTO reserva (id, correo, tratamiento_id, profesional_id, bloque_id, estado)
             VALUES (?, ?, ?, ?, ?, 'PENDIENTE') ON DUPLICATE KEY UPDATE id=id
-            """, id, usuario.getSubject(), datos.tratamientoId(), datos.profesionalId(), datos.bloqueId());
+            """, id, usuario.getSubject(), datos.tratamientoId(), datos.profesionalId(), datos.bloqueId()));
+        try {
+            return tx.execute(estado -> confirmar(datos, usuario));
+        } catch (ResponseStatusException error) {
+            if (error.getStatusCode() == HttpStatus.BAD_REQUEST) {
+                db.update("DELETE FROM reserva WHERE id=? AND correo=? AND estado='PENDIENTE'", id, usuario.getSubject());
+            }
+            throw error;
+        }
+    }
+
+    private Reserva confirmar(Solicitud datos, Jwt usuario) {
+        String id = datos.id().toString();
         Reserva anterior = cargar(id, usuario);
         if (anterior.tratamientoId() != datos.tratamientoId() || anterior.profesionalId() != datos.profesionalId()
             || anterior.bloqueId() != datos.bloqueId() || anterior.estado().equals("CANCELADA")) {
@@ -55,10 +62,8 @@ public class Reservas {
         return cargar(id, usuario);
     }
 
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     @Transactional
-    public void cancelar(@PathVariable UUID id, @AuthenticationPrincipal Jwt usuario) {
+    public void cancelar(UUID id, Jwt usuario) {
         Reserva reserva = cargar(id.toString(), usuario);
         if (reserva.estado().equals("CANCELADA")) return;
         clinica.liberar(reserva.bloqueId(), reserva.id(), usuario.getTokenValue());

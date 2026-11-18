@@ -42,8 +42,8 @@ export default function MisReservas() {
         <ul>
           {lista.map((item) => (
             <li key={item.id}>
-              <p>{item.tratamiento} · {item.profesional} · {item.inicio.replace("T", " ").slice(0, 16)} · {item.estado}</p>
-              {item.estado === "CONFIRMADA" &&
+              <p>{item.inicio ? item.tratamiento + " · " + item.profesional + " · " + item.inicio.replace("T", " ").slice(0, 16) : "Solicitud sin confirmar"} · {item.estado}</p>
+              {item.estado !== "CANCELADA" &&
                 <button className="btn btn-secundario" disabled={ocupado} onClick={() => cancelar(item.id)}>Cancelar reserva</button>}
             </li>
           ))}
