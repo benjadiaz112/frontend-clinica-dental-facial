@@ -1,0 +1,32 @@
+server:
+  address: 127.0.0.1
+  port: 8080
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          httpclient:
+            connect-timeout: 2000
+            response-timeout: 5s
+          routes:
+            - id: usuarios
+              uri: http://127.0.0.1:8081
+              predicates:
+                - Path=/api/auth,/api/auth/**
+            - id: tratamientos
+              uri: http://127.0.0.1:8082
+              predicates:
+                - Path=/api/tratamientos,/api/tratamientos/**
+            - id: profesionales
+              uri: http://127.0.0.1:8083
+              predicates:
+                - Path=/api/profesionales,/api/profesionales/**
+            - id: agenda
+              uri: http://127.0.0.1:8084
+              predicates:
+                - Path=/api/agenda,/api/agenda/**
+            - id: reservas
+              uri: http://127.0.0.1:8085
+              predicates:
+                - Path=/api/reservas,/api/reservas/**
