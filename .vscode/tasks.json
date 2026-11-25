@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Clínica Aura: iniciar backend",
+      "type": "process",
+      "command": "bash",
+      "args": [
+        "-c",
+        "source ~/.clinica-aura-local.env && docker compose up -d --wait mysql && bash iniciar-local.sh"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/backend"
+      },
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    }
+  ]
+}
