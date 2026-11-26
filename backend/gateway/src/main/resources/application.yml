@@ -30,3 +30,50 @@ spring:
               uri: http://127.0.0.1:8085
               predicates:
                 - Path=/api/reservas,/api/reservas/**
+            - id: docs-usuarios
+              uri: http://127.0.0.1:8081
+              predicates:
+                - Path=/documentacion/usuarios
+              filters:
+                - SetPath=/v3/api-docs
+            - id: docs-tratamientos
+              uri: http://127.0.0.1:8082
+              predicates:
+                - Path=/documentacion/tratamientos
+              filters:
+                - SetPath=/v3/api-docs
+            - id: docs-profesionales
+              uri: http://127.0.0.1:8083
+              predicates:
+                - Path=/documentacion/profesionales
+              filters:
+                - SetPath=/v3/api-docs
+            - id: docs-agenda
+              uri: http://127.0.0.1:8084
+              predicates:
+                - Path=/documentacion/agenda
+              filters:
+                - SetPath=/v3/api-docs
+            - id: docs-reservas
+              uri: http://127.0.0.1:8085
+              predicates:
+                - Path=/documentacion/reservas
+              filters:
+                - SetPath=/v3/api-docs
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
+    disable-swagger-default-url: true
+    urls:
+      - name: Usuarios
+        url: /documentacion/usuarios
+      - name: Tratamientos
+        url: /documentacion/tratamientos
+      - name: Profesionales
+        url: /documentacion/profesionales
+      - name: Agenda
+        url: /documentacion/agenda
+      - name: Reservas
+        url: /documentacion/reservas
