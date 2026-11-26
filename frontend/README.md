@@ -13,6 +13,6 @@ Abre [localhost:3000](http://localhost:3000). Las peticiones de la web a `/api` 
 - Administrador: crea, edita y elimina tratamientos.
 - Las vistas protegidas consultan la sesión y la API verifica el rol en cada operación protegida.
 
-`npm test` conserva cinco comprobaciones QUnit del proyecto anterior. `npm run test:web` las muestra en [localhost:4000](http://127.0.0.1:4000/tests/index.html). Las pruebas actuales de integración están en Java en el backend.
+`npm test` conserva cinco comprobaciones QUnit del proyecto anterior. `npm run test:web` las muestra en [localhost:4000](http://127.0.0.1:4000/tests/index.html). Las pruebas unitarias y de integración del backend están documentadas en la [guía de pruebas](../backend/PRUEBAS.md).
 
-Los HTML originales, `api_simulada` y el ERS del Parcial 2 quedan como referencia. Consulta el [manual del Parcial 3](docs/MANUAL-PARCIAL-3.md) para el recorrido actual.
+Consulta el [ERS del Parcial 3](ERS.docx) para ver los requisitos y el [manual](docs/MANUAL-PARCIAL-3.md) para seguir el recorrido actual. Los HTML originales y `api_simulada` se conservan como referencia del Parcial 2.

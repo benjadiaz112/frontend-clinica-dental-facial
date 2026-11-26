@@ -6,4 +6,4 @@
 4. Muestra la prueba JUnit de integración y explica por qué un horario admite una sola reserva. El Gateway recibe las cinco rutas públicas. Agenda aplica el bloqueo y Reservas guarda la cita.
 5. Entrega los ZIP de frontend y backend, el manual, el documento de integración y los enlaces públicos que indique el docente.
 
-El ERS y el informe QUnit de la etapa anterior están en el frontend como material de referencia.
+El [ERS del Parcial 3](../frontend/ERS.docx) describe la aplicación actual. El [informe QUnit](../frontend/INFORME-TESTING.md) documenta las pruebas de validación de la etapa anterior.

@@ -42,11 +42,15 @@ Abre [Clínica Aura en localhost](http://localhost:3000). Usa `admin@clinica.tes
 | Reservas | 8085 | aura_reservas |
 | Next.js | 3000 | — |
 
+Abre [Swagger del Gateway](http://127.0.0.1:8080/swagger-ui.html) y usa **Select a definition** para elegir uno de los cinco microservicios. Las operaciones de esa pantalla pasan por el Gateway.
+
 Puedes abrir Swagger en [Usuarios](http://127.0.0.1:8081/swagger-ui.html), [Tratamientos](http://127.0.0.1:8082/swagger-ui.html), [Profesionales](http://127.0.0.1:8083/swagger-ui.html), [Agenda](http://127.0.0.1:8084/swagger-ui.html) y [Reservas](http://127.0.0.1:8085/swagger-ui.html). Para probar operaciones protegidas, usa el token devuelto por `POST /api/auth/entrar` en **Authorize**. Los endpoints internos de Agenda requieren también la credencial entre servicios.
 
 Detén el frontend y los servicios con **Ctrl+C** en sus terminales. `docker compose stop mysql` detiene la base y conserva su volumen.
 
 ## Verificación
+
+Desde `backend`, ejecuta `mvn test` para correr las pruebas unitarias con JUnit y Mockito. Pueden ejecutarse con MySQL y las aplicaciones apagados. La [guía de pruebas](PRUEBAS.md) explica cómo probar un solo módulo y cómo iniciar el backend desde VS Code.
 
 Con todas las aplicaciones iniciadas, desde otra terminal con las claves de prueba exportadas:
 
@@ -57,4 +61,4 @@ AURA_PRUEBA_INTEGRACION=true mvn -pl gateway test
 
 La prueba Java llama a Next.js y pasa por el Gateway. Comprueba renovación y cierre de sesión, permisos, validación, CRUD y dos solicitudes simultáneas para un mismo bloque. Usa los datos iniciales y cancela las reservas que crea. Ejecútala sobre una base de demostración.
 
-Consulta el [documento de integración](ARQUITECTURA.md) para explicar el flujo de datos y permisos.
+Consulta el [documento de integración](ARQUITECTURA.md) para revisar el flujo de datos y los permisos. El [ERS del Parcial 3](../frontend/ERS.docx) reúne los requisitos del sistema.

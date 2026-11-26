@@ -1,4 +1,4 @@
-# Estado actual y pendientes
+# Estado y pendientes al cierre del Parcial 2
 
 ## Completado
 
@@ -9,7 +9,7 @@
 - Cinco pruebas con QUnit y documento de resultados.
 - Compilación y revisión del recorrido principal en el navegador.
 - Guías Markdown alineadas con los archivos y comandos actuales.
-- `ERS.docx` actualizado al 27 de octubre de 2026 con el alcance real, QUnit y sus límites.
+- ERS del Parcial 2 fechado el 27 de octubre de 2026. Los requisitos vigentes están en el [ERS del Parcial 3](../ERS.docx).
 
 ## Pendiente de entrega
 
