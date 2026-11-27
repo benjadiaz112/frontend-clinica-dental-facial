@@ -18,11 +18,9 @@ SE UTILIZO LA HERRAMIENTA GITHUB COPILOT PARA LAS REDACCIONES DE TEXTO.
 - [Web de Clínica Aura](http://127.0.0.1:3000)
 - [Swagger del Gateway](http://127.0.0.1:8080/swagger-ui.html)
 
-En la web, abre **Mi sesión** e inicia sesión con el correo de administrador `admin@clinica.test` y la contraseña que definiste en `AURA_ADMIN_PASSWORD` al crear la cuenta de demostración.
+En la web, abre **Mi sesión** e inicia sesión con una de estas cuentas locales de demostración.
 
-Si guardaste esa contraseña en `~/.clinica-aura-local.env`, puedes consultarla en tu terminal:
+- **Administrador** ` admin@clinica.test ` · Contraseña ` 76caf9c611e51a338b9a6c54b577cefc `
+- **Paciente** ` paciente@clinica.test ` · Contraseña ` 042828cd5189840d81e02e78e7b4d695 `
 
-```bash
-source ~/.clinica-aura-local.env
-printf '%s\n' "$AURA_ADMIN_PASSWORD"
-```
+Estas claves corresponden a la base local usada en la demostración. Si creas una base nueva, usa las claves que definas durante su configuración.
