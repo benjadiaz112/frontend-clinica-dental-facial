@@ -12,3 +12,17 @@ Proyecto académico de Benjamin Diaz y Bikenson Fenelus para la Evaluación Parc
 Para ejecutarlo en localhost, inicia MySQL con Docker Compose, compila los servicios con Maven y ejecuta el script de arranque. Luego inicia Next.js desde `frontend` y abre [localhost:3000](http://localhost:3000). La guía del backend incluye los comandos y cómo crear las cuentas de demostración.
 
 SE UTILIZO LA HERRAMIENTA GITHUB COPILOT PARA LAS REDACCIONES DE TEXTO.
+
+## Acceso local para la demostración
+
+- [Web de Clínica Aura](http://127.0.0.1:3000)
+- [Swagger del Gateway](http://127.0.0.1:8080/swagger-ui.html)
+
+En la web, abre **Mi sesión** e inicia sesión con el correo de administrador `admin@clinica.test` y la contraseña que definiste en `AURA_ADMIN_PASSWORD` al crear la cuenta de demostración.
+
+Si guardaste esa contraseña en `~/.clinica-aura-local.env`, puedes consultarla en tu terminal:
+
+```bash
+source ~/.clinica-aura-local.env
+printf '%s\n' "$AURA_ADMIN_PASSWORD"
+```
